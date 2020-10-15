@@ -16,7 +16,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/modernizr-2.8.3.min.js') }}"></script>
 
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ mix('js/app.js') }}" defer></script>
 
     </head>
     <body>
@@ -33,7 +33,7 @@
 						<div class="col-sm-12">
 							<div class="middel-top">
 								<div class="left floatleft">
-									<p><i class="mdi mdi-clock"></i> Mon-Fri : 09:00-19:00</p>
+								<p><i class="mdi mdi-clock"></i> Mon-Fri : 09:00-19:00 </p>
 								</div>
 							</div>
 							<div class="middel-top clearfix">
@@ -43,16 +43,16 @@
 										<ul>
 											<li><a href="/login">Login</a></li>
 											<li><a href="/register">Registar</a></li>
-											<li><a href="my-account.html">My account</a></li>
+											<li><a href="/home">My account</a></li>
 										</ul>
 									</li>
 									<li>
 										<a href="#"><i class="mdi mdi-settings"></i></a>
 										<ul>
-											<li><a href="my-account.html">My account</a></li>
-											<li><a href="cart.html">My cart</a></li>
-											<li><a href="wishlist.html">My wishlist</a></li>
-											<li><a href="checkout.html">Check out</a></li>
+											<li><a href="my-account">My account</a></li>
+											<li><a href="cart">My cart</a></li>
+											<li><a href="wishlist.">My wishlist</a></li>
+											<li><a href="checkout">Check out</a></li>
 										</ul>
 									</li>
 								</ul>
@@ -71,7 +71,7 @@
 				<div class="row">
 					<div class="col-sm-2">
 						<div class="logo">
-							<a href="index.html"><img src="sellshop/img/logo2.png" alt="Sellshop"></a>
+							<a href="index.html"><img src="/img/logo.png" alt="Sellshop"></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
@@ -241,6 +241,9 @@
 				</div>
 			</div>
 		</header>
+
+
+		
         <!-- header section end -->
         <!-- slider-section-start -->
         <div class="main-slider-one main-slider-two slider-area">
@@ -261,7 +264,8 @@
 								</div>
 							</div>
 						</div>
-					</div><div class="nivo-directionNav"><a class="nivo-prevNav"><i class="mdi mdi-chevron-left"></i></a><a class="nivo-nextNav"><i class="mdi mdi-chevron-right"></i></a></div><div class="nivo-slice" name="0" style="left: 0px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-0px;"></div><div class="nivo-slice" name="1" style="left: 75px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-75px;"></div><div class="nivo-slice" name="2" style="left: 150px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-150px;"></div><div class="nivo-slice" name="3" style="left: 225px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-225px;"></div><div class="nivo-slice" name="4" style="left: 300px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-300px;"></div><div class="nivo-slice" name="5" style="left: 375px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-375px;"></div><div class="nivo-slice" name="6" style="left: 450px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-450px;"></div><div class="nivo-slice" name="7" style="left: 525px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-525px;"></div><div class="nivo-slice" name="8" style="left: 600px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-600px;"></div><div class="nivo-slice" name="9" style="left: 675px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-675px;"></div><div class="nivo-slice" name="10" style="left: 750px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-750px;"></div><div class="nivo-slice" name="11" style="left: 825px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-825px;"></div><div class="nivo-slice" name="12" style="left: 900px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-900px;"></div><div class="nivo-slice" name="13" style="left: 975px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-975px;"></div><div class="nivo-slice" name="14" style="left: 1050px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-1050px;"></div><div class="nivo-slice" name="15" style="left: 1125px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-1125px;"></div><div class="nivo-slice" name="16" style="left: 1200px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-1200px;"></div><div class="nivo-slice" name="17" style="left: 1275px; width: 79px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-1275px;"></div></div><div class="nivo-controlNav"><a class="nivo-control active" rel="0">1</a><a class="nivo-control" rel="1">2</a></div>
+					</div>
+					<div class="nivo-directionNav"><a class="nivo-prevNav"><i class="mdi mdi-chevron-left"></i></a><a class="nivo-nextNav"><i class="mdi mdi-chevron-right"></i></a></div><div class="nivo-slice" name="0" style="left: 0px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-0px;"></div><div class="nivo-slice" name="1" style="left: 75px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-75px;"></div><div class="nivo-slice" name="2" style="left: 150px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-150px;"></div><div class="nivo-slice" name="3" style="left: 225px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-225px;"></div><div class="nivo-slice" name="4" style="left: 300px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-300px;"></div><div class="nivo-slice" name="5" style="left: 375px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-375px;"></div><div class="nivo-slice" name="6" style="left: 450px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-450px;"></div><div class="nivo-slice" name="7" style="left: 525px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-525px;"></div><div class="nivo-slice" name="8" style="left: 600px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-600px;"></div><div class="nivo-slice" name="9" style="left: 675px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-675px;"></div><div class="nivo-slice" name="10" style="left: 750px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-750px;"></div><div class="nivo-slice" name="11" style="left: 825px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-825px;"></div><div class="nivo-slice" name="12" style="left: 900px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-900px;"></div><div class="nivo-slice" name="13" style="left: 975px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-975px;"></div><div class="nivo-slice" name="14" style="left: 1050px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-1050px;"></div><div class="nivo-slice" name="15" style="left: 1125px; width: 75px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-1125px;"></div><div class="nivo-slice" name="16" style="left: 1200px; width: 75px; height: 564px; opacity: 1; overflow: hidden; top: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-1200px;"></div><div class="nivo-slice" name="17" style="left: 1275px; width: 79px; height: 564px; opacity: 1; overflow: hidden; bottom: 0px;"><img src="sellshop/img/slider/home2/1.jpg" style="position:absolute; width:1354px; height:auto; display:block !important; top:0; left:-1275px;"></div></div><div class="nivo-controlNav"><a class="nivo-control active" rel="0">1</a><a class="nivo-control" rel="1">2</a></div>
 					<div id="htmlcaption" class="nivo-html-caption slider-caption">
 						<div class="container">
 							<div class="slider-left slider-right">

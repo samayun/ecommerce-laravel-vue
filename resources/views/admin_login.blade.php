@@ -19,11 +19,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body  id="admin">
-<div class="container nm">
-  <div class="login-box"  style="margin: 7% auto;">
+<body  id="admin" style="background: url('/img/background.jpg')">
+<div class="container" >
+  <div class="login-box bg-primary"  style="margin: 7% auto;">
     <div class="login-logo">
-      <a href="/"><b>Admin</b>LTE</a>
+      <a href="/" class="text-white"><b>{{env('APP_NAME')}}</b></a>
+      
     </div>
     <!-- /.login-logo -->
     <div class="card">
@@ -38,13 +39,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <strong>{{ $message }}</strong>
                   </span>
               @enderror
-          <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+          <input id="email" type="email" placeholder="Enter Your Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
             <div class="input-group-append input-group-text">
                 <span class="fas fa-envelope"></span>
             </div>
           </div>
           <div class="input-group mb-3">
-              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+              <input id="password"  placeholder="Enter Your Password"  type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="password">
 
               @error('password')
                   <span class="invalid-feedback" role="alert">
@@ -57,8 +58,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
           <div class="row">
             <div class="col-8">
-              <div class="icheck-primary">
-                   <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+              <div class="ml-3">
+                   <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
                 <label for="remember">
                   Remember Me
                 </label>
@@ -72,23 +73,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
         </form>
 
-        <div class="social-auth-links text-center mb-3">
-          <p>- OR -</p>
-          <a href="#" class="btn btn-block btn-primary">
-            <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-          </a>
-          <a href="#" class="btn btn-block btn-danger">
-            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-          </a>
-        </div>
-        <!-- /.social-auth-links -->
-
-        <p class="mb-1">
-          <a href="#">I forgot my password</a>
-        </p>
-        <p class="mb-0">
-          <a href="register.html" class="text-center">Register a new membership</a>
-        </p>
       </div>
       <!-- /.login-card-body -->
     </div>

@@ -16,9 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('content');
 });
+
+Route::get('/user-login', function () {
+    return view('user_login');
+})->name('login');
+
 Route::get('/admin', function () {
     return view('admin_layout');
 })->middleware('auth:admin');
+
+Route::view('/{any}', 'admin_layout');
 
 Route::get('/login/admin', [App\Http\Controllers\AdminController::class, 'getLoginForm'])->name('getAdminLogin');
 
