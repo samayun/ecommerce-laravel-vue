@@ -13,24 +13,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('content');
-});
+Route::view('/', 'content');
+Route::view('/user-login', 'user_login')->name('login');
 
-Route::get('/user-login', function () {
-    return view('user_login');
-})->name('login');
+// Route::any('{any}', function () {
+//     return view('admin_layout');
+// });
 
-Route::get('/admin', function () {
-    return view('admin_layout');
-})->middleware('auth:admin');
-
+Route::view('/{any}/{anyTwo}', 'admin_layout');
 Route::view('/{any}', 'admin_layout');
 
-Route::get('/login/admin', [App\Http\Controllers\AdminController::class, 'getLoginForm'])->name('getAdminLogin');
+// Route::any('/admin', function () {
+//     return view('admin_layout');
+// });
 
-Route::post('/login/admin', [App\Http\Controllers\AdminController::class, 'login'])->name('adminLogin');
+Route::group(['prefix' => 'api/admin' , 'middleware' => 'isAdmin' ], function () {
+    Route::resource('categories' , App\Http\Controllers\Admin\CategoryController::class);
+    
+});
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Route::get('/login/admin', [App\Http\Controllers\AdminController::class, 'getLoginForm'])->name('getAdminLogin');
+Route::get('/api/logout/admin', [App\Http\Controllers\AdminController::class, 'logout'])->name('adminLogout');
+
+Route::post('/api/login/admin', [App\Http\Controllers\AdminController::class, 'login'])->name('adminLogin');
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

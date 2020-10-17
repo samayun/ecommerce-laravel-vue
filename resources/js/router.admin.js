@@ -3,14 +3,28 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
 import AdminHomePage from './admin/pages/AdminHomePage.vue'
+import NotFound from './admin/pages/NotFound.vue'
+import AdminLogin from './admin/components/AdminLogin.vue'
 
 const defaultRoutes = [
+    {
+        path: '/admin/login',
+        name: 'AdminLogin',
+        title: 'Admin Login',
+        component: AdminLogin
+    },
     {
         path: '/admin',
         name: 'AdminHome',
         title: 'Home',
         component: AdminHomePage
+    },
+    {
+        path: '*',
+        name: "404",
+        component : NotFound
     }
+
 ]
 
 

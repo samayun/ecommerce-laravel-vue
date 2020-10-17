@@ -13,21 +13,17 @@ class AdminController extends Controller
 {  
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/admin';
+    // protected $redirectTo = '/admin';
     public function __construct()
     {
-        $this->middleware('guest');
-        $this->middleware('guest:admin');
+        $this->middleware('guest')->except('logout');;
+        // $this->middleware('guest:admin')->except('logout');
 
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+    public function getContent()
     {
-        //
+        return \view('admin_layout');
     }
     
     public function getLoginForm()
@@ -44,15 +40,27 @@ class AdminController extends Controller
         ]);
         return redirect()->intended('login/admin');
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function logout()
     {
-        //
+        try {
+            $this->guard()->logout();
+            session()->flush();
+            return response()->json([
+                'success' => true ,
+                'message' => 'Admin Logout Successfully'
+            ], 200);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false ,
+                'message' => 'Admin Logout Failed'
+            ], 402);
+        }
     }
+    protected function guard(){
+        return Auth::guard('admin');
+    } 
 
     /**
      * Store a newly created resource in storage.
@@ -69,54 +77,16 @@ class AdminController extends Controller
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
 
-            return redirect()->intended('/admin');
+            return response()->json([
+                'success' => true ,
+                'message' => 'Admin Login Successfully',
+                'user' => Auth::guard('admin')->user()
+            ], 200);
         }
         return back()->withInput($request->only('email', 'remember'));
         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Admin $admin)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Admin $admin)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Admin $admin)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Admin $admin)
-    {
-        //
-    }
 }

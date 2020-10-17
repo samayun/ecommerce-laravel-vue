@@ -9,16 +9,16 @@
       <div class="card-body login-card-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form >
+        <form @click.prevent="doAdminLogin">
           <div class="input-group mb-3">
 
-          <input id="email" type="email" placeholder="Enter Your Email" class="form-control" name="email" value="" required autocomplete="email" autofocus>
+          <input id="email" type="email" placeholder="Enter Your Email" class="form-control" v-model="data.email"  required autocomplete="email" autofocus>
             <div class="input-group-append input-group-text">
                 <span class="fas fa-envelope"></span>
             </div>
           </div>
           <div class="input-group mb-3">
-              <input id="password"  placeholder="Enter Your Password"  type="password" class="form-control" name="password" required autocomplete="password">
+              <input id="password"  placeholder="Enter Your Password"  type="password" class="form-control" v-model="data.password"  required autocomplete="password">
 
             <div class="input-group-append input-group-text">
                 <span class="fas fa-lock"></span>
@@ -48,8 +48,32 @@
 </template>
 <script>
     export default {
+      data(){
+        return {
+          data : {
+            email: '',
+            password: ''
+          }
+        }
+      },
+       methods:{
+         async doAdminLogin() {
+            try {
+                let res = await axios.post('/api/login/admin' , this.data);
+                console.log(res.data);
+                if (res.status == 200) {
+                  this.$store.dispatch('updateUser' , res.data.user)
+                  this.$router.push({name : 'AdminHome'})
+                }
+            } catch (error) {
+              this.$Notice.info({
+                title : error.response
+              })
+            }
+         }
+       },
         created() {
-            console.log('admin Component mounted.')
+            console.log('admin  login Component mounted.')
         }
     }
 </script>

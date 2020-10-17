@@ -62,10 +62,10 @@
 import { mapState } from 'vuex'
     export default {
      computed: mapState([
-  // map this.count to store.state.count
-  'app_name'
-])
-,
+          // map this.app_name to store.state.app_name
+          'app_name'
+        ])
+        ,
         created() {
             console.log('admin home mounted.')
         }

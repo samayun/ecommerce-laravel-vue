@@ -16,7 +16,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/modernizr-2.8.3.min.js') }}"></script>
 
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
 
     </head>
     <body>

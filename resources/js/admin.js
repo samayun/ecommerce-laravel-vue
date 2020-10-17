@@ -16,7 +16,10 @@ import locale from 'view-design/dist/locale/en-US';
 Vue.use(ViewUI, { locale });
 
 
+
 router.beforeEach((to, from, next) => {
+    
+    
     ViewUI.LoadingBar.start();
     next();
 });
@@ -25,7 +28,8 @@ router.afterEach(route => {
     ViewUI.LoadingBar.finish();
 });
 
-
+import common from "./common";
+Vue.mixin(common)
 Vue.component('admin-app', require('./admin/components/AdminApp.vue').default);
 
 import router from './router.admin'
