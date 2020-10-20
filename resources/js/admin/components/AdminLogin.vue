@@ -9,7 +9,7 @@
       <div class="card-body login-card-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form @click.prevent="doAdminLogin">
+        <form @submit.prevent="doAdminLogin">
           <div class="input-group mb-3">
 
           <input id="email" type="email" placeholder="Enter Your Email" class="form-control" v-model="data.email"  required autocomplete="email" autofocus>
@@ -27,7 +27,7 @@
           <div class="row">
             <div class="col-8">
               <div class="ml-3">
-                   <input class="form-check-input" type="checkbox" name="remember" id="remember" />
+                   <input class="form-check-input" type="checkbox" v-model="data.remember" name="remember" id="remember" />
                 <label for="remember">
                   Remember Me
                 </label>
@@ -52,7 +52,8 @@
         return {
           data : {
             email: '',
-            password: ''
+            password: '',
+            remember: false
           }
         }
       },
@@ -60,20 +61,19 @@
          async doAdminLogin() {
             try {
                 let res = await axios.post('/api/login/admin' , this.data);
-                console.log(res.data);
+                
                 if (res.status == 200) {
-                  this.$store.dispatch('updateUser' , res.data.user)
-                  this.$router.push({name : 'AdminHome'})
+                   this.$store.dispatch('updateUser' , res.data.user)
+                   localStorage.setItem('adminAuthUser' , JSON.stringify(res.data.user))
+                   this.$router.replace({name : 'AdminHome'})
                 }
             } catch (error) {
-              this.$Notice.info({
-                title : error.response
-              })
+                this.$Notice.info({
+                  title : error.response.data.error
+                })
             }
          }
        },
-        created() {
-            console.log('admin  login Component mounted.')
-        }
+
     }
 </script>

@@ -34,11 +34,11 @@ Route::group(['prefix' => 'api/admin' , 'middleware' => 'isAdmin' ], function ()
 
 
 
+Route::post('/api/login/admin', [App\Http\Controllers\AdminController::class, 'login'])->name('adminLogin');
 
 // Route::get('/login/admin', [App\Http\Controllers\AdminController::class, 'getLoginForm'])->name('getAdminLogin');
-Route::get('/api/logout/admin', [App\Http\Controllers\AdminController::class, 'logout'])->name('adminLogout');
+Route::post('/api/logout/admin', [App\Http\Controllers\Admin\LoginController::class, 'logout'])->name('adminLogout');
 
-Route::post('/api/login/admin', [App\Http\Controllers\AdminController::class, 'login'])->name('adminLogin');
 
 // Auth::routes();
 

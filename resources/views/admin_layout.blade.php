@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
        @if (Auth::guard('admin')->check())
          <admin-app :user="{{ Auth::guard('admin')->user() }}"></admin-app>
        @else
-         <admin-app ></admin-app>
+         <admin-app :user="false"></admin-app>
        @endif
   </div>
 <!-- REQUIRED SCRIPTS -->

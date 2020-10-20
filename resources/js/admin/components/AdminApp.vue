@@ -1,8 +1,9 @@
 <template>
-  <div class="wrapper" v-if="authUser">
+  <div v-if="!authUser"> <router-view></router-view> </div>
+  <div class="wrapper" v-else>
     <!-- <admin-navbar></admin-navbar> -->
 
-    <admin-sidebar :user="user" />
+    <admin-sidebar :user="authUser" />
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -18,7 +19,7 @@
     <!-- /.content-wrapper -->
     <admin-footer />
   </div> 
-  <div v-else> <router-view></router-view> </div>
+
     <!-- ./wrapper -->
 </template>
 
@@ -28,8 +29,8 @@ import AdminSidebar from "./AdminSidebar";
 import { mapGetters , mapState , mapActions } from 'vuex'
 
 export default {
-    props: ['user'],
     components : { AdminFooter , AdminSidebar},
+    props: ['user'],
     computed: {
       // mix the getters into computed with object spread operator
       ...mapGetters({
@@ -41,12 +42,26 @@ export default {
           'updateUser'])
     },
     created() {
-        if (this.user) {
-          this.$store.dispatch('updateUser' , this.user)
-        }
-        if (!this.authUser) {
-          this.$router.push({name : 'AdminLogin'});
-        }
+        // if (this.user) {
+        //   this.$store.dispatch('updateUser' , this.user)
+        // }
+
+         if (!this.getAuthUserData) {
+           let authUserDT = localStorage.getItem('adminAuthUser' ) ? JSON.parse(localStorage.getItem('adminAuthUser' )) : false
+           
+            this.updateUser(authUserDT)
+         }else{
+           this.$router.push({name : 'AdminLogin'});
+         }
+
+        //  let authUserDT = localStorage.getItem('adminAuthUser' ) ? JSON.parse(localStorage.getItem('adminAuthUser' )) : false
+        //  let isAuthenticated = authUserDT && authUserDT.id && authUserDT.email ? true : false
+        //  if (!isAuthenticated) {
+        //     this.updateUser(this.getAuthUserData)
+        //  }
+        // if (!this.getAuthUserData) {
+        //   this.$router.push({name : 'AdminLogin'});
+        // }
 
     }
 }

@@ -16,7 +16,7 @@ class AdminController extends Controller
     // protected $redirectTo = '/admin';
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');;
+        $this->middleware('guest')->except('logout');
         // $this->middleware('guest:admin')->except('logout');
 
     }
@@ -44,8 +44,8 @@ class AdminController extends Controller
     public function logout()
     {
         try {
-            $this->guard()->logout();
-            session()->flush();
+            Auth::guard('admin')->user()->logout();
+            // session()->flush();
             return response()->json([
                 'success' => true ,
                 'message' => 'Admin Logout Successfully'
@@ -55,7 +55,7 @@ class AdminController extends Controller
             return response()->json([
                 'success' => false ,
                 'message' => 'Admin Logout Failed'
-            ], 402);
+            ], 401);
         }
     }
     protected function guard(){
@@ -71,8 +71,8 @@ class AdminController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email'   => 'required|email',
-            'password' => 'required|min:6'
+            'email'   => 'bail|required|email',
+            'password' => 'bail|required|min:6'
         ]);
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
@@ -83,7 +83,9 @@ class AdminController extends Controller
                 'user' => Auth::guard('admin')->user()
             ], 200);
         }
-        return back()->withInput($request->only('email', 'remember'));
+        return response()->json([
+            'error' => 'Your Email or Password is incorrect'
+        ] , 401);
         
     }
 

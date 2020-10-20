@@ -7,7 +7,7 @@ export default {
                 return await axios({method , url , data});
 
             } catch (error) {
-                return error.response
+                return error.response.data
             }
         }
     }

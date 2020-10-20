@@ -7,13 +7,14 @@ import axios from "axios";
 
 // load modules 
 import modules from './modules.admin'
+;
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     modules,
     state: {
         app_name: 'Hanli ECommerce',
-        authUser: false,
+        authUser: null,
         error : false
     }, 
     getters: {
@@ -25,15 +26,23 @@ export default new Vuex.Store({
         }
       },
     actions: {
-        async doLogOut({ commit }){
-            try {
-                let res =  await axios.get('/logout/admin');
-                if (res.status == 200) {
-                    commit('UPDATE_AUTH_USER' , false)
-                }
-            } catch (error) {
-                commit('ERROR_OCCURED' , error.response)
-            }
+         doLogOut({ commit }){
+                axios.post('/api/logout/admin')
+                .then(res=> { 
+                    if (res.status == 200) {
+                        commit('UPDATE_AUTH_USER' , false);
+                        localStorage.removeItem('adminAuthUser')
+                        $Notice.info({title: res.data.message });
+                        location.reload();
+                    }
+            }).catch (error => {
+                console.log('logout error ',error.response.data);
+                
+                $Notice.info({
+                    title : error.response.data ? error.response.data.message : "Something went wrong"
+                })
+                commit('ERROR_OCCURED' , error.response.data)
+            })
             //
             
         },
@@ -43,6 +52,7 @@ export default new Vuex.Store({
     },
     mutations: {
         UPDATE_AUTH_USER (state , userData ) {
+            // localStorage.setItem()
             state.authUser = userData
         },
         ERROR_OCCURED(state , error){

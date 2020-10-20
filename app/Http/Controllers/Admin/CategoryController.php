@@ -18,7 +18,6 @@ class CategoryController extends Controller
        return Category::latest()->get();
     }
 
-
     /**
      * Store a newly created resource in storage.
      *

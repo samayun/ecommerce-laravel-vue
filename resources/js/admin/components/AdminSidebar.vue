@@ -44,6 +44,15 @@
                 </p>
               </router-link>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" @click.prevent="doLogOut">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  LogOut
+                  <span class="right badge badge-danger">+</span>
+                </p>
+              </a>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -63,9 +72,13 @@ export default {
       })
     },
     props: ['user'],
+    methods: {
+      ...mapActions(['doLogOut'])
+    },
     created(){
         if (this.error) {
-            this.$router.push({name : 'NotFound'});
+            console.log(this.error)
+            // this.$router.push({name : 'NotFound'});
         }
     }
 
