@@ -18,11 +18,18 @@ Vue.use(ViewUI, { locale });
 
 window.$Notice = Notice
 window.$Bus = new Vue
+// v-form
+import { Form , HasError , AlertError} from 'vform'
 
 
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
+// window.Form = Form;
+Vue.prototype.Form = Form
 
 import common from "./common";
-Vue.mixin(common)
+// Vue.mixin(common);
+
 Vue.component('admin-app', require('./admin/components/AdminApp.vue').default);
 
 import router from './router.admin'
@@ -52,6 +59,7 @@ import store from './store.admin';
 
 const app = new Vue({
     el: '#admin', 
+    mixins: [common] ,
     router,
     store,
 });

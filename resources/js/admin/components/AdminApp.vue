@@ -1,6 +1,6 @@
 <template>
-  <div v-if="!authUser"> <router-view></router-view> </div>
-  <div class="wrapper" v-else>
+<div>
+  <div class="wrapper" v-if="authUser">
     <!-- <admin-navbar></admin-navbar> -->
 
     <admin-sidebar :user="authUser" />
@@ -11,7 +11,9 @@
       <!-- Main content -->
       <div class="content">
         <div class="container-fluid">
-              <router-view></router-view>
+              <transition name="fade">
+                <router-view></router-view>
+              </transition>
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content -->
@@ -19,8 +21,11 @@
     <!-- /.content-wrapper -->
     <admin-footer />
   </div> 
-
     <!-- ./wrapper -->
+    <div v-else>
+        <router-view></router-view>
+    </div>
+</div>
 </template>
 
 <script>
@@ -46,7 +51,7 @@ export default {
         //   this.$store.dispatch('updateUser' , this.user)
         // }
 
-         if (!this.getAuthUserData) {
+         if (!this.authUser) {
            let authUserDT = localStorage.getItem('adminAuthUser' ) ? JSON.parse(localStorage.getItem('adminAuthUser' )) : false
            
             this.updateUser(authUserDT)

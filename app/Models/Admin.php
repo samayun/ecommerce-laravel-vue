@@ -20,4 +20,9 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token'
     ];
+
+    public function scopeIsSuperAdmin($query)
+    {
+        return $query->where('is_super' , 1);
+    }
 }

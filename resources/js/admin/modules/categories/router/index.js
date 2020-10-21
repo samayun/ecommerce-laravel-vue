@@ -7,12 +7,12 @@ import categories from '../pages/categories.vue'
 const routes = [
     {
         path: '/admin/categories',
-        name: 'Tag',
+        name: 'Categories',
         component: categories,
         title: 'This is a test page',
         meta: {
-            guest : true,
-            allowedUserType: ['All']
+            guest : false,
+            allowedUserType: ['Admin']
         }
         
     }

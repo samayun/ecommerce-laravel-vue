@@ -3,11 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Policies\CategoryPolicies;
 use App\Models\Category;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        // $this->authorizeResource(Category::class, 'category');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       return Category::latest()->get();
+        
+        return Category::latest()->get();
     }
 
     /**
