@@ -25,15 +25,30 @@ try {
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-let token = document.head.querySelector('meta[name="csrf-token"]');
+let token = document.head.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-    // window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + token.content;
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
+    window.axios.defaults.headers.common['Authorization'] = token;
 
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+// axios.interceptors.request.use( req => {
+//     req.headers.authorization = token
+//     return req;
+// })
+
+// axios.interceptors.response.use( res => {
+//     console.log(res)
+//    res => res ,
+//    err => {
+//        if (err.response.status == 401) {
+//            throw new Error(`${err.config.url} not found`)
+//        }
+//        throw err
+//    }
+// })
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

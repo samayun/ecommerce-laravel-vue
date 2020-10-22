@@ -1,11 +1,18 @@
 <template>
     <div>
-        <Checkbox @change="handleSelectAll(true)"> Select/Deselect All </Checkbox>
+         <span v-if="multiSelected.length > 0">
+             <Button type="error" @click="multiDelete"> Multiple Delete </Button> {{multiSelected }} selected
+         </span>
         <Loading :show="getAllCategory.length == 0"/>
-        <Table border ref="selection"
+        <Table border
+           @on-selection-change="handleSelectionChange"
+            ref="selection"
             :columns="dataStructureTable"
             v-if="getAllCategory.length"
             :data="getAllCategory"></Table>
+            <br/>
+
+        <Checkbox @on-change="handleSelectAll"> Select/Deselect All </Checkbox>
     </div>
 </template>
 <script>
@@ -15,6 +22,11 @@ export default {
    data(){
        return {
                  dataStructureTable: [
+                    {
+                        type: 'selection',
+                        align: 'center',
+                        width: 50 
+                    },
                     {
                         title: 'ID',
                         key: 'id',
@@ -84,12 +96,12 @@ export default {
        }
    },
    computed: {
-       ...mapState("categoriesStoreIndex", [ 'showEditModal' , 'editData' , 'isEditing','errors']),
-       ...mapGetters("categoriesStoreIndex",['getAllCategory'])
+       ...mapState("categoriesStoreIndex", [ 'showEditModal' , 'editData' , 'isEditing','errors' ,'multiSelected' ]),
+       ...mapGetters("categoriesStoreIndex",['getAllCategory' ])
    },
    methods:{
-         ...mapActions("categoriesStoreIndex", ['getCategories','editCategory' ,'deleteCategory' ]),
-         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_EDIT_MODAL' ,'GET_EDIT_DATA']),
+         ...mapActions("categoriesStoreIndex", ['getCategories','editCategory' ,'deleteCategory' ,'multiDelete' ]),
+         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_EDIT_MODAL' ,'GET_EDIT_DATA' , 'handleSelectionChange']),
          clickEditBtn(cat){
              this.TOGGLE_EDIT_MODAL()
              this.GET_EDIT_DATA(cat);
@@ -103,8 +115,8 @@ export default {
                  }
              })
          },
-        handleSelectAll(status){
-             this.$refs.selection.selectAll(status)
+        handleSelectAll(v){
+            this.$refs['selection'].selectAll(v)
          }
    },
     created(){

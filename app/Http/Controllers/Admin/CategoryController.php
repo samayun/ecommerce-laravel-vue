@@ -7,13 +7,13 @@ use App\Policies\CategoryPolicies;
 use App\Models\Category;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use DB;
 
 class CategoryController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('isAdmin');
-        // $this->authorizeResource(Category::class, 'category');
+        $this->authorizeResource(Category::class, 'category');
     }
     /**
      * Display a listing of the resource.
@@ -22,8 +22,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // $this->authorize('view', Category::class);
-        return Category::latest()->get();
+        // if (\Gate::forUser(\Auth::guard('admin')->user())->allows('super')) {
+            return Category::latest()->paginate(5);
+        // }
+        // return abort(403);
     }
 
     /**
@@ -39,7 +41,18 @@ class CategoryController extends Controller
         ]);
         return Category::create($request->all());
     }
-
+    public function multiDelete(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            foreach ($request->all() as $category) {
+                Category::find($category['id'])->delete();
+            }
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollback();
+        }
+    }
     /**
      * Display the specified resource.
      *
@@ -50,8 +63,6 @@ class CategoryController extends Controller
     {
         return $category;
     }
-
-
 
     /**
      * Update the specified resource in storage.

@@ -1,6 +1,7 @@
 // import axios from "axios";
 import { Form } from "vform";
 import { Modal } from "view-design";
+import { object } from "vue-types";
 export default {   
     state: {
         categories : [],
@@ -21,16 +22,20 @@ export default {
             id: '',
             name: ""
         }),
-        errors: {}
+        errors: {},
+        multiSelected: [],
+        paginationData: {}
        
     },
     getters: {
         getAllCategory(state){
            return state.categories
+       },
+       paginatedMetaData(state){
+          return state.paginationData
        }
     },
     actions: {
-
         addCategory({commit , dispatch , state} ){
             commit('SET_IS_ADDING' , true)
             state.addData.post('/api/admin/categories')
@@ -60,15 +65,17 @@ export default {
            })
            
        },
-       async getCategories({commit }){
+       async getCategories({commit ,state }){
            try {
 
-            commit('SET_IS_ADDING' , true)
+            commit('SET_IS_LOADING' , true)
             let res =   await axios.get('/api/admin/categories');
             // let res = this.callApi('get', '/api/admin/categories')
             if (res.status == 200) {
-                commit('FETCH_CATEGORIES' , res.data);
-                commit('SET_IS_ADDING' , false)
+                console.log(res.data);
+                state.paginationData = res.data
+                commit('FETCH_CATEGORIES' , res.data.data);
+                commit('SET_IS_LOADING' , false)
              }
            } catch (error) {
                 commit('SET_IS_LOADING' , false)
@@ -139,6 +146,31 @@ export default {
                 });
             }
            
+        },
+        async multiDelete({state , commit}){
+            try {
+                let res =   await axios.post(`/api/admin/categories/multi`,state.multiSelected);
+                if (res.status == 200) {
+                    commit('DELETE_MULTI_CATEGORY' , state.multiSelected);
+                    $Notice.success({
+                        title: 'Selected Category Deleted Successfully',
+                        desc: ` deleted`
+                    });
+ 
+                }
+            } catch (error) {
+               if (error.response.status == 403) {
+                  this.$Notice.error({
+                        title: 'Category Delete Failed!',
+                        desc: error.response.data.message
+                    });
+               }
+                $Notice.error({
+                    title: 'Something went wrong',
+                    desc: error.response.data.message
+                });
+            }
+           
         }
     },
     mutations: {
@@ -159,12 +191,22 @@ export default {
             let index= state.categories.findIndex(item => item.id === category.id);
             state.categories.splice(index , 1)
         },
+        DELETE_MULTI_CATEGORY(state , multiSelectedCat){
+            let arr = state.categories.filter( objectA => {
+                return !multiSelectedCat.find(objectB => objectA.id === objectB.id)
+            })
+            state.categories = arr;
+            state.multiSelected = [];
+        },
         TOGGLE_MODAL(state){
             state.showModal = !state.showModal
         },
         TOGGLE_EDIT_MODAL(state){
             state.showEditModal = !state.showEditModal
         },
+        handleSelectionChange(state , val){
+            state.multiSelected = val
+        }, 
         SET_IS_LOADING(state, data){
             state.isLoading =  data
         },

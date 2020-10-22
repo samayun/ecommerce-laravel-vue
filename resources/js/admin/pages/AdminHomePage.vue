@@ -65,9 +65,5 @@ import { mapState } from 'vuex'
           // map this.app_name to store.state.app_name
           'app_name'
         ])
-        ,
-        created() {
-            console.log('admin home mounted.')
-        }
     }
 </script>

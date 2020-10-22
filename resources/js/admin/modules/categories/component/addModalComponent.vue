@@ -4,7 +4,7 @@
     type="success"
     @click="TOGGLE_MODAL" 
     :disabled="isAdding"
-    :loading="isLoading"><Icon type="md-add" /> Add Category</Button>
+    :loading="isAdding"><Icon type="ios-add" /> Add Category</Button>
 
 <Modal v-model="showModal" role="form" title="Add category" :mask-closable="false" :closable="false" @keyup.enter="addCategory">
             <Spin v-if="isAdding">

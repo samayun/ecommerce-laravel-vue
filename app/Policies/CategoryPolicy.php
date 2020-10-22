@@ -11,16 +11,16 @@ class CategoryPolicy
 {
     use HandlesAuthorization;
 
-    // public function before($user, $ability)
+    // public function before($admin, $ability)
     // {
-    //     if ($user->isSuperAdmin()) {
+    //     if ($admin->isSuperAdmin()) {
     //         return true;
     //     }
     // }
     /**
      * Determine whether the Admin can view any models.
      *
-     * @param  \App\Models\Admin  $Admin
+     * @param  \App\Models\Admin  $admin
      * @return mixed
      */
     public function viewAny(Admin $admin)
@@ -31,11 +31,11 @@ class CategoryPolicy
     /**
      * Determine whether the Admin can view the model.
      *
-     * @param  \App\Models\Admin  $Admin
+     * @param  \App\Models\Admin  $admin
      * @param  \App\Models\Category  $category
      * @return mixed
      */
-    public function view(Admin $Admin, Category $category)
+    public function view(Admin $admin, Category $category)
     {
         return true;
     }
@@ -43,59 +43,59 @@ class CategoryPolicy
     /**
      * Determine whether the Admin can create models.
      *
-     * @param  \App\Models\Admin  $Admin
+     * @param  \App\Models\Admin  $admin
      * @return mixed
      */
     public function create(Admin $admin)
     {
-       return $admin->is_super == 0 || $admin->is_super == 1;
+      return $admin->is_super == 1;
     }
 
     /**
      * Determine whether the Admin can update the model.
      *
-     * @param  \App\Models\Admin  $Admin
+     * @param  \App\Models\Admin  $admin
      * @param  \App\Models\Category  $category
      * @return mixed
      */
-    public function update(Admin $Admin, Category $category)
+    public function update(Admin $admin, Category $category)
     {
-        return $Admin->isSuperAdmin();
+        return $admin->is_super == 1 || $admin->is_super == 0;
     }
 
     /**
      * Determine whether the Admin can delete the model.
      *
-     * @param  \App\Models\Admin  $Admin
+     * @param  \App\Models\Admin  $admin
      * @param  \App\Models\Category  $category
      * @return mixed
      */
-    public function delete(Admin $Admin, Category $category)
+    public function delete(Admin $admin, Category $category)
     {
-        //
+        return $admin->is_super == 1;
     }
 
     /**
      * Determine whether the Admin can restore the model.
      *
-     * @param  \App\Models\Admin  $Admin
+     * @param  \App\Models\Admin  $admin
      * @param  \App\Models\Category  $category
      * @return mixed
      */
-    public function restore(Admin $Admin, Category $category)
+    public function restore(Admin $admin, Category $category)
     {
-        //
+        return $admin->is_super == 1;
     }
 
     /**
      * Determine whether the Admin can permanently delete the model.
      *
-     * @param  \App\Models\Admin  $Admin
+     * @param  \App\Models\Admin  $admin
      * @param  \App\Models\Category  $category
      * @return mixed
      */
-    public function forceDelete(Admin $Admin, Category $category)
+    public function forceDelete(Admin $admin, Category $category)
     {
-        //
+        return $admin->is_super == 1;
     }
 }

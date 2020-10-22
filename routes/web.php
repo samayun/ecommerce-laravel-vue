@@ -28,9 +28,10 @@ Route::any('/admin', function () {
     return view('admin_layout');
 });
 
-Route::group(['prefix' => 'api/admin' , 'middleware' => 'isAdmin' ], function () {
+Route::group(['prefix' => 'api/admin' , 'middleware' => 'auth:admin' ], function () {
+    Route::post('categories/multi' , [App\Http\Controllers\Admin\CategoryController::class , 'multiDelete']);
     Route::resource('categories' , App\Http\Controllers\Admin\CategoryController::class);
-    // Route::put('update-categories' , [App\Http\Controllers\Admin\CategoryController::class , 'update']);
+
 });
 
 

@@ -31,8 +31,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   @auth
   <script>
-      window.adminUser = @json(auth()->guard('admin')->user())
-
+      window.adminUser = @json(auth()->guard('admin')->user());
+      console.log(adminUser);
+      
   </script>
   @endauth
 <!-- REQUIRED SCRIPTS -->
