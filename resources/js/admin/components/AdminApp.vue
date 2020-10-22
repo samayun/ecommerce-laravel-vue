@@ -34,7 +34,7 @@ import AdminSidebar from "./AdminSidebar";
 import { mapGetters , mapState , mapActions } from 'vuex'
 
 export default {
-    components : { AdminFooter , AdminSidebar},
+    components : { AdminFooter , AdminSidebar },
     props: ['user'],
     computed: {
       // mix the getters into computed with object spread operator

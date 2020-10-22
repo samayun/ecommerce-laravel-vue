@@ -29,7 +29,7 @@ Vue.prototype.Form = Form
 
 import Gate from './Gate.admin';
 Vue.prototype.$gate = new Gate(JSON.parse(localStorage.getItem('adminAuthUser')));
-
+Vue.component('Loading', require('./admin/components/Loading.vue').default);
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 Vue.component('admin-app', require('./admin/components/AdminApp.vue').default);
@@ -55,7 +55,11 @@ router.afterEach(route => {
 // $Bus.on('redirectToAdminLogin' , function(){
 //     router.push({name: 'AdminLogin'})
 // })
-
+import moment from "moment";
+Vue.filter('timeFormat' , arg => {
+    return moment(arg).format('MMMM dddd YYYY ,h:mm:ss a')
+    // return moment(arg).endOf('day').fromNow()
+})
 // IMPORT THE STORE 
 import store from './store.admin';
 

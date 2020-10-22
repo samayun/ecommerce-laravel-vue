@@ -1,9 +1,10 @@
 <template>
 <span>
     <Modal v-model="showEditModal" role="form" title="Edit category" :mask-closable="false" :closable="false" :loading="isEditing">
-            <div class="jumbotron" v-if="isEditing">
-                <h2> Loading.....</h2>
-            </div>
+            <Spin v-if="isEditing">
+                <Icon type="ios-loading" size="50" class="demo-spin-icon-load"></Icon>
+               <h2> Loading.....</h2>
+            </Spin>
             <Input v-model="editData.name" placeholder="Edit category name"
             :class="{ 'is-invalid': editData.errors.has('name') }"
             />
@@ -36,7 +37,7 @@
             <div slot="footer">
                 <Button type="default" @click="TOGGLE_EDIT_MODAL">Close</Button>
                 <Button
-                    type="default"
+                    type="warning"
                     @click="editCategory"
                     :disabled="isEditing"
                     :loading="isEditing"
@@ -63,3 +64,4 @@ export default {
     }
 }
 </script>
+

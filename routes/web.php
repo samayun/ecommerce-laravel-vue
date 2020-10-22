@@ -20,12 +20,13 @@ Route::view('/user-login', 'user_login')->name('login');
 //     return view('admin_layout');
 // });
 
-Route::view('/{any}/{anyTwo}', 'admin_layout');
-Route::view('/{any}', 'admin_layout');
 
-// Route::any('/admin', function () {
-//     return view('admin_layout');
-// });
+
+Route::view('/{any}', 'admin_layout')->where('any', 'admin.*');
+
+Route::any('/admin', function () {
+    return view('admin_layout');
+});
 
 Route::group(['prefix' => 'api/admin' , 'middleware' => 'isAdmin' ], function () {
     Route::resource('categories' , App\Http\Controllers\Admin\CategoryController::class);

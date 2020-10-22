@@ -1,14 +1,16 @@
 <template>
-<span>
+<span class="float-right mr-3">
 <Button
+    type="success"
     @click="TOGGLE_MODAL" 
     :disabled="isAdding"
     :loading="isLoading"><Icon type="md-add" /> Add Category</Button>
 
 <Modal v-model="showModal" role="form" title="Add category" :mask-closable="false" :closable="false" @keyup.enter="addCategory">
-            <div class="jumbotron" v-if="isAdding">
+            <Spin v-if="isAdding">
+                <Icon type="ios-loading" size="50" class="demo-spin-icon-load"></Icon>
                <h2> Loading.....</h2>
-            </div>
+            </Spin>
         <Input v-model="addData.name" placeholder="Add category name"
         :class="{ 'is-invalid': addData.errors.has('name') }"
         autofocus
