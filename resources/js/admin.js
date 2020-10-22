@@ -19,19 +19,22 @@ Vue.use(ViewUI, { locale });
 window.$Notice = Notice
 window.$Bus = new Vue
 // v-form
-import { Form , HasError , AlertError} from 'vform'
+import { Form , HasError , AlertError} from 'vform';
 
+window.Form = Form;
+Vue.prototype.Form = Form
+
+
+// bootstrap.js
+
+import Gate from './Gate.admin';
+Vue.prototype.$gate = new Gate(JSON.parse(localStorage.getItem('adminAuthUser')));
 
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
-// window.Form = Form;
-Vue.prototype.Form = Form
-
-import common from "./common";
-// Vue.mixin(common);
-
 Vue.component('admin-app', require('./admin/components/AdminApp.vue').default);
-
+import common from "./common";
+Vue.mixin(common);
 import router from './router.admin'
 
 router.beforeEach((to, from, next) => {
@@ -59,7 +62,6 @@ import store from './store.admin';
 
 const app = new Vue({
     el: '#admin', 
-    mixins: [common] ,
     router,
     store,
 });

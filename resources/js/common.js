@@ -1,11 +1,6 @@
 // import axios from "axios";
 
 export default {
-    data(){
-        return {
-
-        }
-    }, 
     methods: {
         async callApi(method, url, dataObj ){
             try {

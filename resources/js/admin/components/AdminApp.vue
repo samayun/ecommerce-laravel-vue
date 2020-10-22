@@ -53,8 +53,10 @@ export default {
 
          if (!this.authUser) {
            let authUserDT = localStorage.getItem('adminAuthUser' ) ? JSON.parse(localStorage.getItem('adminAuthUser' )) : false
-           
-            this.updateUser(authUserDT)
+            this.updateUser(authUserDT);
+            this.$gate = Object.assign({},{
+              user : authUserDT
+            })
          }else{
            this.$router.push({name : 'AdminLogin'});
          }

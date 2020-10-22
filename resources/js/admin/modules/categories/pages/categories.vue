@@ -1,15 +1,12 @@
 <template>
     <div class="content">
         <div class="container-fluid">
-            
+
             <!--~~~~~~~ TABLE ONE ~~~~~~~~~-->
             <div class="card p-2">
-                <p class="card-title ml-3">Categories
-                     <Button
-                     
-                      @click="TOGGLE_MODAL" 
-                      :disabled="isAdding"
-                      :loading="isLoading"><Icon type="md-add" /> Add Category</Button></p>
+            <p class="card-title ml-3">Categories
+            <!--  adding modal -->
+            <add-modal-component></add-modal-component> </p>
 
                 <div class="card-body">
                     <table class="table" v-if="getAllCategory.length">
@@ -28,53 +25,15 @@
                             <td><img src="/img/logo.png" alt="" width="120"></td>
                             <td> {{cat.created_at }} </td>
                             <td>
-                                <Button type="info" size="small" >Edit</Button>
-                                <Button type="error" size="small" >Delete</Button>
+                                <Button type="info" size="small" @click="clickEditBtn(cat)">Edit</Button>
+                                <Button type="error" size="small" @click="deleteConfirmation(cat)" >Delete</Button>
                             </td>
                         </tr>
                     </table>
             </div>
-          <!--  adding modal -->
-            <Modal v-model="showModal" role="form" title="Add category" :mask-closable="false" :closable="false">
-                <Input v-model="addData.name" placeholder="Add category name"
-                 :class="{ 'is-invalid': addData.errors.has('name') }"
-                 />
-                 <has-error :form="addData" field="name"></has-error>
-                <div class="space"></div>
-                <!-- <Upload
-                    ref="uploads"
-                    type="drag"
-                     :headers="{'x-csrf-token' : token, 'X-Requested-With' : 'XMLHttpRequest'}"
-                    :on-success="handleSuccess"
-                    :on-error="handleError"
-                    :format="['jpg','jpeg','png']"
-                    :max-size="2048"
-                    :on-format-error="handleFormatError"
-                    :on-exceeded-size="handleMaxSize" 
-                    action="/app/upload"
-                > -->
-                    <!-- <div style="padding: 20px 0">
-                    <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
-                    <p>Click or drag files here to upload</p>
-                    </div>
-                </Upload> -->
-                <!-- <div class="demo-upload-list" v-if="data.iconImage">
-                    <img :src="`${data.iconImage}`" />
-                    <div class="demo-upload-list-cover">
-                    <Icon type="ios-trash-outline" @click="deleteImage"></Icon>
-                    </div>
-                </div> -->
 
-                <div slot="footer">
-                    <Button type="default" @click="TOGGLE_MODAL">Close</Button>
-                    <Button
-                        type="primary"
-                        @click="addCategory"
-                        :disabled="isAdding"
-                        :loading="isAdding"
-                    >{{isAdding ? 'Adding..' : 'Add Category'}}</Button>
-                </div>
-                </Modal>
+            <!-- edit Modal -->
+            <edit-modal-component ></edit-modal-component>
             </div>
 
         </div>
@@ -83,20 +42,36 @@
 
 <script>
 import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
+import addModalComponent from "../component/addModalComponent"
+import editModalComponent from "../component/editModalComponent"
 
 export default {
     computed:{ 
-        ...mapState("categoriesStoreIndex", [
-          'showModal' , 'isLoading' , 'isAdding' ,'addData'
+        ...mapState("categoriesStoreIndex", [ 'showEditModal' , 'editData' , 'isEditing','errors'
        ]),
        ...mapGetters("categoriesStoreIndex",['getAllCategory'])
     },
+    components:{ addModalComponent , editModalComponent  },
     methods:{
-         ...mapActions("categoriesStoreIndex", ['addCategory','getCategories' ]),
-         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_MODAL'])
+         ...mapActions("categoriesStoreIndex", ['getCategories','editCategory' ,'deleteCategory' ]),
+         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_EDIT_MODAL' ,'GET_EDIT_DATA']),
+         clickEditBtn(cat){
+             this.TOGGLE_EDIT_MODAL()
+             this.GET_EDIT_DATA(cat);
+         },
+         deleteConfirmation(category){
+             this.$Modal.confirm({
+                 title: '<Icon type="ios-information-circle"></Icon> Are you sure to delete',
+                 content: "Click OK to proceed",
+                 onOk: () => {
+                     this.deleteCategory(category)
+                 }
+             })
+         }
     },
     created(){
-        this.getCategories()
+        this.getCategories();
     }
 }
 </script>
+

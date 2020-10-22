@@ -12,6 +12,7 @@ class CategoryController extends Controller
 {
     public function __construct()
     {
+        // $this->middleware('isAdmin');
         // $this->authorizeResource(Category::class, 'category');
     }
     /**
@@ -21,7 +22,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
+        // $this->authorize('view', Category::class);
         return Category::latest()->get();
     }
 
@@ -61,7 +62,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        return $category->update($request->all());
+        $this->validate($request , [
+            'name' => 'bail|required|min:3'
+        ]);
+
+        return $category->update($request->except('id'));
     }
 
     /**

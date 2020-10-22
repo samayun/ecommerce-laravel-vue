@@ -1,5 +1,6 @@
 // import axios from "axios";
 import { Form } from "vform";
+import { Modal } from "view-design";
 export default {   
     state: {
         categories : [],
@@ -14,11 +15,13 @@ export default {
         }),
         // addData:{ name: ""  ,  errors:{}},
         isEditing: false ,
-        editModal: false,
+        showEditModal: false,
         
-        editData: {
-            name:""
-        },
+        editData: new Form({
+            id: '',
+            name: ""
+        }),
+        errors: {}
        
     },
     getters: {
@@ -29,14 +32,18 @@ export default {
     actions: {
 
         addCategory({commit , dispatch , state} ){
-            commit('SET_IS_LOADING' , true)
             commit('SET_IS_ADDING' , true)
-
             state.addData.post('/api/admin/categories')
             .then(res => {
                 if (res.status == 201) {
                     commit('CREATE_CATEGORY' , res.data);
+                    $Notice.info({
+                        title: 'Category Added Successfully',
+                        desc: `${state.addData.name} added`
+                    });
+                    state.addData = new Form({name:""})
                     commit('TOGGLE_MODAL')
+
                  }
             }).catch (error => {
                 if (error.response.status == 403){
@@ -49,7 +56,6 @@ export default {
                  commit('SET_ERRORS' , error.response.data.errors)
                }
            }).finally( () => {
-                commit('SET_IS_LOADING' , false)
                 commit('SET_IS_ADDING' , false)
            })
            
@@ -59,7 +65,7 @@ export default {
 
             commit('SET_IS_ADDING' , true)
             let res =   await axios.get('/api/admin/categories');
-
+            // let res = this.callApi('get', '/api/admin/categories')
             if (res.status == 200) {
                 commit('FETCH_CATEGORIES' , res.data);
                 commit('SET_IS_ADDING' , false)
@@ -75,26 +81,65 @@ export default {
                
            }
         },
-        async editCategory({commit , state } , editData){
-        //     if(editData.name.trim()=='') return this.e('Category name is required');
-        //     this.swr('RUN !')
-			// const res = await callApi('post', 'api/edit_tag', editData)
-			// if(res.status === 200){
-			// 	state.categories[this.index].name = editData.name
-			// 	this.s('Category has been edited successfully!')
-			// 	state.editModal = false
-				
-			// }else{
-			// 	if(res.status == 422){
-			// 		if(res.data.errors.name){
-			// 			this.e(res.data.errors.name[0])
-			// 		}
-					
-			// 	}else{
-			// 		this.swr()
-			// 	}
-				
-		}
+
+     editCategory({commit,dispatch , state } ){
+            commit('SET_IS_EDITING' , true);
+            state.editData.put(`/api/admin/categories/${state.editData.id}`).then(res => {
+                if (res.status == 200) {
+                    $Notice.info({
+                        title: 'Category Updated Successfully',
+                        desc: `${state.editData.name} edited`
+                    });
+                    // dispatch get categories can make slow browsing - this is an old idea
+                    // dispatch('getCategories');
+                    // best practice is updating UI without making a new ajax request
+                    commit('UPDATE_CATEGORY')
+                    commit('TOGGLE_EDIT_MODAL')
+                 }
+            }).catch (error => {
+                if (error.response.status == 403){
+                    $Notice.error({
+                        title: 'Category Update Failed!',
+                        desc: error.response.data.message
+                    });
+                }
+                if (error.response.status == 422) {
+                    
+                    $Notice.error({
+                        title: 'Category Update Failed!',
+                        desc: error.response.data.message
+                    });
+                    commit('SET_ERRORS' , error.response.data.errors)
+                  }
+           }).finally( () => {
+                commit('SET_IS_EDITING' , false)
+           })	
+        },
+        async deleteCategory({commit} , category){
+            try {
+                let res =   await axios.delete('/api/admin/categories/'+ category.id);
+                if (res.status == 200) {
+                    
+                    $Notice.success({
+                        title: 'Category Deleted Successfully',
+                        desc: `${category.name} deleted`
+                    });
+                    commit('DELETE_CATEGORY' , category);
+                }
+            } catch (error) {
+               if (error.response.status == 403) {
+                  $Notice.error({
+                        title: 'Category Delete Failed!',
+                        desc: error.response.data.message
+                    });
+               }
+                $Notice.error({
+                    title: 'Something went wrong',
+                    desc: error.response.data.message
+                });
+            }
+           
+        }
     },
     mutations: {
         CREATE_CATEGORY(state , category){
@@ -103,18 +148,31 @@ export default {
         FETCH_CATEGORIES(state , categories){
             state.categories = categories
         },
+        GET_EDIT_DATA(state , payload){
+            state.editData =  new Form(payload)
+        },
+        UPDATE_CATEGORY(state ){
+            let index = state.categories.findIndex(item => item.id === state.editData.id);
+            state.categories[index].name = state.editData.name
+        },
         DELETE_CATEGORY(state , category){
             let index= state.categories.findIndex(item => item.id === category.id);
-            state.posts.splice(index , 1)
+            state.categories.splice(index , 1)
         },
         TOGGLE_MODAL(state){
             state.showModal = !state.showModal
+        },
+        TOGGLE_EDIT_MODAL(state){
+            state.showEditModal = !state.showEditModal
         },
         SET_IS_LOADING(state, data){
             state.isLoading =  data
         },
         SET_IS_ADDING(state , data){
             state.isAdding = data
+        },
+        SET_IS_EDITING(state , data){
+            state.isEditing = data
         },
         SET_ERRORS(state , errors){
             state.errors = errors

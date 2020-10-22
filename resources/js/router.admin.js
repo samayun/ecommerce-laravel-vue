@@ -11,18 +11,18 @@ const defaultRoutes = [
         path: '/admin/login',
         name: 'AdminLogin',
         title: 'Admin Login',
-        component: AdminLogin
+        component: () => import('./admin/components/AdminLogin.vue')
     },
     {
         path: '/admin',
         name: 'AdminHome',
         title: 'Home',
-        component: AdminHomePage
+        component: () => import('./admin/pages/AdminHomePage.vue')
     },
     {
         path: '*',
         name: "404",
-        component : NotFound
+        component : () =>import('./admin/pages/NotFound.vue')
     }
 
 ]

@@ -29,7 +29,7 @@ Route::view('/{any}', 'admin_layout');
 
 Route::group(['prefix' => 'api/admin' , 'middleware' => 'isAdmin' ], function () {
     Route::resource('categories' , App\Http\Controllers\Admin\CategoryController::class);
-    
+    // Route::put('update-categories' , [App\Http\Controllers\Admin\CategoryController::class , 'update']);
 });
 
 

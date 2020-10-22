@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Models\Category' => 'App\Policies\CategoryPolicy',
+        // 'App\Models\Category' => 'App\Policies\CategoryPolicy',
     ];
 
     /**
@@ -25,6 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('update-category', 'App\Policies\CategoryPolicy@update');
     }
 }

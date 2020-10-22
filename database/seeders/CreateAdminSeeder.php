@@ -15,17 +15,17 @@ class CreateAdminSeeder extends Seeder
     public function run()
     {
         Admin::create([
-            'name'=>'Admin ',
+            'name'=>'Samayun Chowdhury ',
             'email'=>'samayun.m.chowdhury@gmail.com',
             'is_super' => 1,
-            'password'=> bcrypt('123456'),
+            'password'=> \Hash::make('123456'),
         ]);
 
         Admin::create([
-            'name'=>'Admin ',
-            'email'=>'samayun.m.chowdhury@gmail.comm',
+            'name'=>'Admin BoSs',
+            'email'=>'samayunmc99@gmail.com',
             'is_super' => 0,
-            'password'=> bcrypt('123456'),
+            'password'=> \Hash::make('123456'),
         ]);
     }
 }

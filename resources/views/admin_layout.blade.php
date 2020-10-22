@@ -28,6 +28,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
          <admin-app :user="false"></admin-app>
        @endif
   </div>
+
+  @auth
+  <script>
+      window.adminUser = @json(auth()->guard('admin')->user())
+
+  </script>
+  @endauth
 <!-- REQUIRED SCRIPTS -->
 <script src="{{mix('js/admin.js')}}" defer></script>
 </body>
