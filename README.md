@@ -126,6 +126,6 @@ export default {
 ```
 ### Now Test in browser
 
-![Add Category Image] (/docs/images/add-category-image.png)
+![Add Category Image](docs/images/add-category-image.png)
 
-![View Added Image] (https//github.com/samayun/ecommerce-laravel-vue/blob/file-upload/docs/images/view-added-category-image.png?raw=true)
+![View Added Image](https://raw.githubusercontent.com/samayun/ecommerce-laravel-vue/file-upload/docs/images/view-added-category-image.png)
