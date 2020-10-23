@@ -11,12 +11,12 @@ class CategoryPolicy
 {
     use HandlesAuthorization;
 
-    // public function before($admin, $ability)
-    // {
-    //     if ($admin->isSuperAdmin()) {
-    //         return true;
-    //     }
-    // }
+    public function before($admin, $ability)
+    {
+        if ($admin->is_super == 1) {
+            return true;
+        }
+    }
     /**
      * Determine whether the Admin can view any models.
      *
@@ -74,7 +74,10 @@ class CategoryPolicy
     {
         return $admin->is_super == 1;
     }
-
+    public function multiDelete(Admin $admin, Category $category)
+    {
+        return $admin->is_super == 1;
+    }
     /**
      * Determine whether the Admin can restore the model.
      *

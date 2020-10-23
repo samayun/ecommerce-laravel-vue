@@ -17,9 +17,10 @@
         />
         <has-error :form="addData" field="name"></has-error>
         <div class="space"></div>
-        <!-- <Upload
+        <Upload
             ref="uploads"
             type="drag"
+            multiple="false"
             :headers="{'x-csrf-token' : token, 'X-Requested-With' : 'XMLHttpRequest'}"
             :on-success="handleSuccess"
             :on-error="handleError"
@@ -27,19 +28,19 @@
             :max-size="2048"
             :on-format-error="handleFormatError"
             :on-exceeded-size="handleMaxSize" 
-            action="/app/upload"
-        > -->
-            <!-- <div style="padding: 20px 0">
-            <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
-            <p>Click or drag files here to upload</p>
-            </div>
-        </Upload> -->
-        <!-- <div class="demo-upload-list" v-if="data.iconImage">
-            <img :src="`${data.iconImage}`" />
+            action="/api/admin/upload"
+        > 
+          <div style="padding: 20px 0">
+             <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+              <p>Click or drag files here to upload</p>
+          </div>
+        </Upload>
+        <div class="image-thumb" v-if="addData.icon">
+            <img :src="`${addData.icon}`" style="width:10rem;height:6rem;"/>
             <div class="demo-upload-list-cover">
-            <Icon type="ios-trash-outline" @click="deleteImage"></Icon>
+               <Icon type="ios-trash-outline" size="large"></Icon>
             </div>
-        </div> -->
+        </div>
 
         <div slot="footer">
             <Button type="default" @click="TOGGLE_MODAL">Close</Button>
@@ -67,9 +68,13 @@ export default {
     },
 
     methods:{
-         ...mapActions("categoriesStoreIndex", ['addCategory' ]),
+         ...mapActions("categoriesStoreIndex", ['addCategory' , 'handleMaxSize' ,'handleFormatError' ,'handleSuccess','handleError' ]),
          ...mapMutations("categoriesStoreIndex" , ['TOGGLE_MODAL' ]),
+
     },
+    async created(){
+        this.token = window.Laravel.csrfToken;
+    }
 
 }
 </script>

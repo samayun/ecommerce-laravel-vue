@@ -1,3 +1,5 @@
+const { reject } = require('lodash');
+
 window._ = require('lodash');
 
 
@@ -25,28 +27,27 @@ try {
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-let token = document.head.querySelector('meta[name="csrf-token"]').getAttribute('content');
+let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
-    window.axios.defaults.headers.common['Authorization'] = token;
+    window.token = token.content
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    // window.axios.defaults.headers.common['Authorization'] = token;
 
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
-// axios.interceptors.request.use( req => {
-//     req.headers.authorization = token
-//     return req;
-// })
+
 
 // axios.interceptors.response.use( res => {
-//     console.log(res)
 //    res => res ,
 //    err => {
-//        if (err.response.status == 401) {
-//            throw new Error(`${err.config.url} not found`)
+//        if (err.status == 401) {
+//             // localStorage.removeItem('adminAuthUser')
+//             // location.reload();
+//             return err;
 //        }
-//        throw err
+//        return  err
 //    }
 // })
 

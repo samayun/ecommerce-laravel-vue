@@ -1,7 +1,6 @@
 // import axios from "axios";
 import { Form } from "vform";
-import { Modal } from "view-design";
-import { object } from "vue-types";
+
 export default {   
     state: {
         categories : [],
@@ -12,7 +11,8 @@ export default {
         isLoading: false ,
 
         addData : new Form({
-            name:""
+            name:"",
+            icon :""
         }),
         // addData:{ name: ""  ,  errors:{}},
         isEditing: false ,
@@ -24,6 +24,8 @@ export default {
         }),
         errors: {},
         multiSelected: [],
+        isIconImageNew: false,
+        isEditingItem: false,
         paginationData: {}
        
     },
@@ -160,7 +162,7 @@ export default {
                 }
             } catch (error) {
                if (error.response.status == 403) {
-                  this.$Notice.error({
+                  $Notice.error({
                         title: 'Category Delete Failed!',
                         desc: error.response.data.message
                     });
@@ -171,7 +173,33 @@ export default {
                 });
             }
            
-        }
+        },
+        handleSuccess({state},res) {
+            res = `/uploads/categories/${res}`;
+            if (state.isEditingItem) {
+                console.log("inside");
+                return (state.addData.icon = res);
+            }
+            return state.addData.icon = res;
+        },
+        handleError(res, file) {
+            $Notice.warning({
+                title: "The file format is incorrect",
+                desc: `${file.errors.file.length ? file.errors.file[0]: "Something went wrong!"}`
+            });
+        },
+        handleFormatError(file) {
+            $Notice.warning({
+                title: "The file format is incorrect",
+                desc: "File format of " +file.name +" is incorrect, please select jpg or png."
+            });
+        },
+        handleMaxSize(file) {
+            $Notice.warning({
+                title: "Exceeding file size limit",
+                desc: "File  " + file.name + " is too large, no more than 2M."
+            });
+        },
     },
     mutations: {
         CREATE_CATEGORY(state , category){

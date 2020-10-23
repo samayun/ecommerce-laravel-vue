@@ -17,6 +17,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css"> -->
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <script>
+
+    (function () {
+        window.Laravel = {
+            csrfToken: '{{ csrf_token() }}'
+        };
+    })();
+
+</script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -29,13 +38,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
        @endif
   </div>
 
-  @auth
   <script>
       window.adminUser = @json(auth()->guard('admin')->user());
-      console.log(adminUser);
-      
   </script>
-  @endauth
 <!-- REQUIRED SCRIPTS -->
 <script src="{{mix('js/admin.js')}}" defer></script>
 </body>

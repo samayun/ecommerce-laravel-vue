@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Brand;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,7 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(10)->create();
         $this->call(CreateAdminSeeder::class);
+        Category::factory(20)->create();
+        Brand::factory(20)->create();
+        Product::factory(20)->create();
     }
 }

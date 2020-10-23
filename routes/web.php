@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,9 +29,9 @@ Route::any('/admin', function () {
 });
 
 Route::group(['prefix' => 'api/admin' , 'middleware' => 'auth:admin' ], function () {
-    Route::post('categories/multi' , [App\Http\Controllers\Admin\CategoryController::class , 'multiDelete']);
-    Route::resource('categories' , App\Http\Controllers\Admin\CategoryController::class);
-
+    Route::post('categories/multi' , [CategoryController::class , 'multiDelete']);
+    Route::resource('categories' , CategoryController::class);
+    Route::post('/upload', [CategoryController::class ,'upload']);
 });
 
 

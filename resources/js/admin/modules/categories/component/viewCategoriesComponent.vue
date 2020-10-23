@@ -3,13 +3,15 @@
          <span v-if="multiSelected.length > 0">
              <Button type="error" @click="multiDelete"> Multiple Delete </Button> {{multiSelected }} selected
          </span>
-        <Loading :show="getAllCategory.length == 0"/>
+         <!-- <Loading show="getAllCategory.length < 1"/> -->
         <Table border
            @on-selection-change="handleSelectionChange"
             ref="selection"
             :columns="dataStructureTable"
             v-if="getAllCategory.length"
-            :data="getAllCategory"></Table>
+            :data="getAllCategory">
+       
+            </Table>
             <br/>
 
         <Checkbox @on-change="handleSelectAll"> Select/Deselect All </Checkbox>
@@ -45,12 +47,13 @@ export default {
                         render: (h,params) => {
                             return h('img', {
                                         attrs: {
-                                            src: `/img/${params.row.icon}`,
-                                            alt:  `${params.row.icon}`
+                                            src: `${params.row.icon}`,
+                                            alt:  `${params.row.name}`
                                         },
                                         style: {
                                             marginRight: '5px',
-                                            width: '10rem'
+                                            width: '10rem',
+                                            height:'5rem'
                                         }
 
                                     })

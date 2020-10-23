@@ -7,6 +7,7 @@ use App\Policies\CategoryPolicies;
 use App\Models\Category;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use DB;
 
 class CategoryController extends Controller
@@ -43,7 +44,9 @@ class CategoryController extends Controller
     }
     public function multiDelete(Request $request)
     {
+     if (Gate::forUser(\Auth::guard('admin')->user())->allows('super')) {
         try {
+            Gate::authorize('super');
             DB::beginTransaction();
             foreach ($request->all() as $category) {
                 Category::find($category['id'])->delete();
@@ -52,6 +55,8 @@ class CategoryController extends Controller
         } catch (\Throwable $th) {
             DB::rollback();
         }
+     }
+      return abort(403);
     }
     /**
      * Display the specified resource.
@@ -62,6 +67,14 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         return $category;
+    }
+    public function upload(Request $request){
+        $this->validate($request,[
+            'file' => 'required|mimes:jpg,jpeg,png|image'
+        ]);
+       $picName = time().'.'.$request->file->extension();
+       $request->file->move(public_path('uploads/categories'),$picName);
+       return $picName;
     }
 
     /**
