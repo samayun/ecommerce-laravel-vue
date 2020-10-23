@@ -17,7 +17,8 @@ import { Notice } from "view-design";
 Vue.use(ViewUI, { locale });
 
 window.$Notice = Notice
-window.$Bus = new Vue
+window.$Bus = new Vue()
+Vue.prototype.$EventBus = new Vue()
 // v-form
 import { Form , HasError , AlertError} from 'vform';
 
@@ -27,8 +28,8 @@ Vue.prototype.Form = Form
 
 // bootstrap.js
 
-import Gate from './Gate.admin';
-Vue.prototype.$gate = new Gate(JSON.parse(localStorage.getItem('adminAuthUser')));
+// import Gate from './Gate.admin';
+// Vue.prototype.$gate = new Gate(JSON.parse(localStorage.getItem('adminAuthUser')));
 Vue.component('Loading', require('./admin/components/Loading.vue').default);
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);

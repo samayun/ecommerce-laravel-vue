@@ -26,6 +26,7 @@ export default {
         multiSelected: [],
         isIconImageNew: false,
         isEditingItem: false,
+        isImageVisible: false,
         paginationData: {}
        
     },
@@ -48,7 +49,7 @@ export default {
                         title: 'Category Added Successfully',
                         desc: `${state.addData.name} added`
                     });
-                    state.addData = new Form({name:""})
+                    state.addData = new Form({name:"",icon:""})
                     commit('TOGGLE_MODAL')
 
                  }
@@ -74,7 +75,7 @@ export default {
             let res =   await axios.get('/api/admin/categories');
             // let res = this.callApi('get', '/api/admin/categories')
             if (res.status == 200) {
-                console.log(res.data);
+                // console.log(res.data);
                 state.paginationData = res.data
                 commit('FETCH_CATEGORIES' , res.data.data);
                 commit('SET_IS_LOADING' , false)
@@ -154,6 +155,7 @@ export default {
                 let res =   await axios.post(`/api/admin/categories/multi`,state.multiSelected);
                 if (res.status == 200) {
                     commit('DELETE_MULTI_CATEGORY' , state.multiSelected);
+                    // state.multiSelected = [];
                     $Notice.success({
                         title: 'Selected Category Deleted Successfully',
                         desc: ` deleted`
@@ -161,11 +163,13 @@ export default {
  
                 }
             } catch (error) {
+                state.multiSelected = [];
                if (error.response.status == 403) {
                   $Notice.error({
                         title: 'Category Delete Failed!',
                         desc: error.response.data.message
                     });
+                    return;
                }
                 $Notice.error({
                     title: 'Something went wrong',
@@ -176,6 +180,7 @@ export default {
         },
         handleSuccess({state},res) {
             res = `/uploads/categories/${res}`;
+            // this.$refs.upload.clearFiles()
             if (state.isEditingItem) {
                 console.log("inside");
                 return (state.addData.icon = res);
@@ -183,9 +188,12 @@ export default {
             return state.addData.icon = res;
         },
         handleError(res, file) {
+            console.log(res.status);
+            console.log(res.errors);
+            
             $Notice.warning({
                 title: "The file format is incorrect",
-                desc: `${file.errors.file.length ? file.errors.file[0]: "Something went wrong!"}`
+                // desc: `${res.errors.file.length ? res.errors.file[0] : "Something went wrong!"}`
             });
         },
         handleFormatError(file) {
@@ -200,6 +208,34 @@ export default {
                 desc: "File  " + file.name + " is too large, no more than 2M."
             });
         },
+        async deleteImage({state}){
+            let img = state.addData.icon
+            state.addData.icon = ''
+            // $Bus.emit('clearAddedFiles')
+            
+            let res = await axios.post('/api/admin/delete_category_image', {image : img});
+            if (res.status != 200) {
+                state.addData.icon = img
+                $Notice.warning({
+                    title: "Something Went Wrong"
+                });
+            }
+        },
+        async deleteEditImage({state}){
+            let img = state.editData.icon
+            state.editData.icon = ''
+            // $Bus.emit('clearAddedFiles')
+            
+            let res = await axios.post('/api/admin/delete_category_image', {image : img});
+            if (res.status != 200) {
+                state.editData.icon = img
+                $Notice.warning({
+                    title: "Something Went Wrong"
+                });
+            }
+        },
+        
+
     },
     mutations: {
         CREATE_CATEGORY(state , category){
@@ -220,10 +256,10 @@ export default {
             state.categories.splice(index , 1)
         },
         DELETE_MULTI_CATEGORY(state , multiSelectedCat){
-            let arr = state.categories.filter( objectA => {
+            state.categories.filter( objectA => {
                 return !multiSelectedCat.find(objectB => objectA.id === objectB.id)
             })
-            state.categories = arr;
+            // state.categories = arr;
             state.multiSelected = [];
         },
         TOGGLE_MODAL(state){
@@ -246,6 +282,9 @@ export default {
         },
         SET_ERRORS(state , errors){
             state.errors = errors
+        },
+        HANDLE_VIEW(state){
+            state.isImageVisible = !state.isImageVisible
         }
     }
   }

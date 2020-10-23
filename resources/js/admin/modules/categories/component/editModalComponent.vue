@@ -1,18 +1,18 @@
 <template>
 <span>
     <Modal v-model="showEditModal" role="form" title="Edit category" :mask-closable="false" :closable="false" :loading="isEditing">
-            <Spin v-if="isEditing">
-                <Icon type="ios-loading" size="50" class="demo-spin-icon-load"></Icon>
-               <h2> Loading.....</h2>
-            </Spin>
+            <Loading :show="isEditing"/>
+            
             <Input v-model="editData.name" placeholder="Edit category name"
             :class="{ 'is-invalid': editData.errors.has('name') }"
             />
             <has-error :form="editData" field="name"></has-error>
             <div class="space"></div>
-            <!-- <Upload
-                    ref="uploads"
+                <Upload
+                    ref="upload"
                     type="drag"
+                    :multiple="false"
+                    :show-upload-list="false"
                     :headers="{'x-csrf-token' : token, 'X-Requested-With' : 'XMLHttpRequest'}"
                     :on-success="handleSuccess"
                     :on-error="handleError"
@@ -20,20 +20,24 @@
                     :max-size="2048"
                     :on-format-error="handleFormatError"
                     :on-exceeded-size="handleMaxSize" 
-                    action="/app/upload"
-                    > -->
-                    <!-- <div style="padding: 20px 0">
-                    <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
-                    <p>Click or drag files here to upload</p>
-                    </div>
-                    </Upload> -->
-                    <!-- <div class="demo-upload-list" v-if="data.iconImage">
-                        <img :src="`${data.iconImage}`" />
-                        <div class="demo-upload-list-cover">
-                        <Icon type="ios-trash-outline" @click="deleteImage"></Icon>
-                        </div>
-                    </div> -->
+                    action="/api/admin/upload_category_image"
+                > 
+                    <div style="padding: 20px 0">
+                        <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+                        <p  :class="{ 'text-danger': editData.errors.has('icon') }">Click or drag files here to upload</p>
 
+                    </div>
+                </Upload>
+                <div class="demo-upload-list" v-if="editData.icon">
+                    <img :src="`${editData.icon}`" style="width:10rem;height:6rem;"/>
+                    <div class="demo-upload-list-cover">
+                         <Icon type="ios-camera-outline" size="large" @click="HANDLE_VIEW"></Icon>
+                         <Icon type="ios-trash-outline" size="large" @click="deleteImageAndClearFiles"></Icon>
+                    </div>
+                </div>
+                <Modal title="View image" v-model="isImageVisible">
+                        <img :src="editData.icon" :alt="editData.name" style="width:100%;"/>
+                    </Modal>
             <div slot="footer">
                 <Button type="default" @click="TOGGLE_EDIT_MODAL">Close</Button>
                 <Button
@@ -54,13 +58,19 @@ import {mapState, mapActions, mapMutations } from 'vuex'
 export default {
     name: 'editModalComponent',
     computed:{ 
-        ...mapState("categoriesStoreIndex", ['showEditModal' , 'editData' , 'isEditing','errors'
+        ...mapState("categoriesStoreIndex", ['showEditModal' , 'editData' , 'isEditing','errors'  ,'isImageVisible'
        ]),
     },
     methods:{
-         ...mapActions("categoriesStoreIndex", ['editCategory']),
-         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_EDIT_MODAL'])
-
+         ...mapActions("categoriesStoreIndex", ['editCategory' ,'handleMaxSize' ,'handleFormatError' ,'handleSuccess','handleError' ,'deleteEditImage'  ]),
+         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_EDIT_MODAL','HANDLE_VIEW']),
+         deleteImageAndClearFiles(){
+             this.deleteEditImage();
+             this.$refs.upload.clearFiles()
+         }
+    },
+    async created(){
+        this.token = window.Laravel.csrfToken;
     }
 }
 </script>

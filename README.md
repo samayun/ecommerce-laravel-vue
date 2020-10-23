@@ -1,17 +1,18 @@
-> # Php artisan commands
+#### Php artisan commands
 
-```console
- composer create-project --prefer-dist laravel/laravel ECommerce "8"
- composer require laravel/ui --dev
- php artisan ui vue --auth
- npm install admin-lte vue-router vuex @fortawesome/fontawesome-free moment vform view-design
- npm install
- npm run watch
+``` console
+
+    composer create-project --prefer-dist laravel/laravel ECommerce "8"
+    composer require laravel/ui --dev
+    php artisan ui vue --auth
+    npm install admin-lte vue-router vuex @fortawesome/fontawesome-free moment vform view-design
+    npm install
+    npm run watch 
 ```
 
 > How to upload imge by iViewUi 
  
-## Step-1: Make a route for uploading image
+##### Step-1: Make a route for uploading image
 ``` bash
     [...]
     use App\Http\Controllers\Admin\CategoryController;
@@ -32,7 +33,7 @@
        return $picName;
     }
 ```
-## Step - 2: Use Upload Component In AddComponentModal 
+##### Step - 2: Use Upload Component In AddComponentModal 
 ``` bash
  <template>
         <Upload
@@ -78,7 +79,8 @@ export default {
 </script>
 ```
 
-##Step-2 Handle Methods like this
+[![View Added Image](docs/images/add-category-image.png)](docs/images/add-category-image.png)
+* ##### Step-3 Handle Methods like this
 ``` js
 // import axios from "axios"; // already imported in ./bootstrap.js
 import { Form } from "vform";
@@ -124,8 +126,10 @@ export default {
         },
     }
 ```
-### Now Test in browser
+###### Now Test in browser
 
-![Add Category Image] (/docs/images/add-category-image.png)
+[![View Added Image](docs/images/view-added-category-image.png)](docs/images/view-added-category-image.png)
 
-![View Added Image] (https//github.com/samayun/ecommerce-laravel-vue/blob/file-upload/docs/images/view-added-category-image.png?raw=true)
+* **Happy Coding!**
+----
+  **[Authors FaceBook](https://facebook.com/samayunmc)**

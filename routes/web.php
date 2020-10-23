@@ -31,7 +31,8 @@ Route::any('/admin', function () {
 Route::group(['prefix' => 'api/admin' , 'middleware' => 'auth:admin' ], function () {
     Route::post('categories/multi' , [CategoryController::class , 'multiDelete']);
     Route::resource('categories' , CategoryController::class);
-    Route::post('/upload', [CategoryController::class ,'upload']);
+    Route::post('/upload_category_image', [CategoryController::class ,'upload']);
+    Route::post('/delete_category_image', [CategoryController::class ,'deleteImage']);
 });
 
 

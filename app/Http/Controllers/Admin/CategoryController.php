@@ -38,15 +38,15 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request , [
-            'name' => 'bail|required|min:3'
+            'name' => 'bail|required|min:3',
+            'icon' => 'required'
         ]);
         return Category::create($request->all());
     }
     public function multiDelete(Request $request)
     {
-     if (Gate::forUser(\Auth::guard('admin')->user())->allows('super')) {
+    //  if (Gate::forUser(\Auth::guard('admin')->user())->allows('super')) {
         try {
-            Gate::authorize('super');
             DB::beginTransaction();
             foreach ($request->all() as $category) {
                 Category::find($category['id'])->delete();
@@ -55,8 +55,8 @@ class CategoryController extends Controller
         } catch (\Throwable $th) {
             DB::rollback();
         }
-     }
-      return abort(403);
+    //  }
+    //   return response()->json(['message' => 'Action Not Permitted'], 403);
     }
     /**
      * Display the specified resource.
@@ -68,6 +68,9 @@ class CategoryController extends Controller
     {
         return $category;
     }
+    // Upload Images
+    // @request file
+    // @return filname.png etc  
     public function upload(Request $request){
         $this->validate($request,[
             'file' => 'required|mimes:jpg,jpeg,png|image'
@@ -76,7 +79,19 @@ class CategoryController extends Controller
        $request->file->move(public_path('uploads/categories'),$picName);
        return $picName;
     }
-
+    public function deleteImage(Request $request)
+    {
+        $filePath = public_path().$request->image;
+        $this->deleteFileFromServer($filePath);
+        return "done";
+    }
+    public function deleteFileFromServer($filePath)
+    {
+        if (file_exists($filePath)) {
+           @unlink($filePath);
+        }
+        return;
+    }
     /**
      * Update the specified resource in storage.
      *
