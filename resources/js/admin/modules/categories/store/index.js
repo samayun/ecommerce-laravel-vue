@@ -129,10 +129,7 @@ export default {
             try {
                 console.log(category);
                 
-                let res =   await axios.delete(`/api/admin/categories/${category.id}` ,{
-                    id: category.id,
-                    icon: category.icon
-                } );
+                let res =   await axios.delete(`/api/admin/categories/${category.id}`);
                 if (res.status == 200) {
                     
                     $Notice.success({
