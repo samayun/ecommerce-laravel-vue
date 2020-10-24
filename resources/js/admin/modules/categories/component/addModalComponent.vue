@@ -44,7 +44,7 @@
                <Icon type="ios-trash-outline" size="large" @click="deleteImageAndClearFiles"></Icon>
             </div>
         </div>
-        <Modal title="View image" v-model="isImageVisible">
+        <Modal title="View image" v-model="imageVisible">
                 <img :src="addData.icon" :alt="addData.name" style="width:100%;"/>
             </Modal>
         <div slot="footer">
@@ -62,21 +62,30 @@
 
 
 <script>
-import {mapState, mapActions, mapMutations } from 'vuex'
+import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 
 export default {
     name: "addModalComponent",
     computed:{ 
         ...mapState("categoriesStoreIndex", [
-          'showModal' ,'isLoading', 'isAdding' ,'addData' ,'isImageVisible'
-       ])
+          'showModal' ,'isLoading', 'isAdding' ,'addData'
+       ]),
+       ...mapGetters("categoriesStoreIndex", ['isImageVisible']),
+        imageVisible: {
+            get(){
+                return this.isImageVisible
+            },
+            set(value){
+                this.HANDLE_VIEW(true)
+            }
+        }
     },
     methods:{
-         ...mapActions("categoriesStoreIndex", ['addCategory' , 'handleMaxSize' ,'handleFormatError' ,'handleSuccess','handleError' ,'deleteImage' ]),
-         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_MODAL' ,'HANDLE_VIEW' ]),
+         ...mapActions("categoriesStoreIndex", ['addCategory' , 'handleMaxSize' ,'handleFormatError' ,'handleSuccess','handleError' ,'deleteImage' ,'HANDLE_VIEW'  ]),
+         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_MODAL']),
          deleteImageAndClearFiles(){
              this.deleteImage();
-             this.$refs.upload.clearFiles()
+            //  this.$refs.upload.clearFiles()
          }
 
     },
@@ -87,11 +96,9 @@ export default {
     mounted(){
         let _this = this
         $Bus.$on('clearAddedFiles' , () => {
-            _this.$refs.upload.clearFiles()
+            _this.$refs.upload.clearFiles();
+            _this.$Notice.info({title:"EventBus Event emitted : clearAddedFiles"})
         })
-
-        console.log(this.$Bus);
-        console.log(this.$Eventbus);
     }
 
 }
@@ -99,7 +106,7 @@ export default {
 
 <style>
     .demo-upload-list{
-
+       
         text-align: center;
         line-height: 60px;
         border: 1px solid transparent;

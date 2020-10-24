@@ -49,6 +49,7 @@ class CategoryController extends Controller
         try {
             DB::beginTransaction();
             foreach ($request->all() as $category) {
+                $this->deleteFileFromServer(public_path().$category['icon']);
                 Category::find($category['id'])->delete();
             }
             DB::commit();
@@ -102,9 +103,9 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $this->validate($request , [
-            'name' => 'bail|required|min:3'
+            'name' => 'bail|required|min:3',
+            'icon' => 'required'
         ]);
-
         return $category->update($request->except('id'));
     }
 
@@ -114,8 +115,23 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Request $request , Category $category)
     {
-        return $category->delete();
+        try {
+            DB::beginTransaction();
+            $this->deleteFileFromServer(public_path().$category->icon);
+            // $this->validate($request , [
+            //     // 'name' => 'bail|required|min:3',
+            //     'id' => 'required',
+            //     'icon' => 'required'
+            // ]);
+            $category->delete();
+            DB::commit();
+            return response()->json([
+                'message' => $category->name." deleted successfully"
+            ], 200);;
+        } catch (\Throwable $th) {
+            DB::rollback();
+        }
     }
 }

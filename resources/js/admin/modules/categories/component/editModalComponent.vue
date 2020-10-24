@@ -31,11 +31,11 @@
                 <div class="demo-upload-list" v-if="editData.icon">
                     <img :src="`${editData.icon}`" style="width:10rem;height:6rem;"/>
                     <div class="demo-upload-list-cover">
-                         <Icon type="ios-camera-outline" size="large" @click="HANDLE_VIEW"></Icon>
+                         <Icon type="ios-camera-outline" size="large" @click="HANDLE_VIEW(false)"></Icon>
                          <Icon type="ios-trash-outline" size="large" @click="deleteImageAndClearFiles"></Icon>
                     </div>
                 </div>
-                <Modal title="View image" v-model="isImageVisible">
+                <Modal :closable="false"  v-model="imageVisible">
                         <img :src="editData.icon" :alt="editData.name" style="width:100%;"/>
                     </Modal>
             <div slot="footer">
@@ -53,17 +53,26 @@
 
 
 <script>
-import {mapState, mapActions, mapMutations } from 'vuex'
+import {mapState, mapActions, mapMutations,mapGetters } from 'vuex'
 
 export default {
     name: 'editModalComponent',
     computed:{ 
-        ...mapState("categoriesStoreIndex", ['showEditModal' , 'editData' , 'isEditing','errors'  ,'isImageVisible'
+        ...mapState("categoriesStoreIndex", ['showEditModal' , 'editData' , 'isEditing','errors' , 'isEditImageVisible'
        ]),
+        imageVisible: {
+            get(){
+                return this.isEditImageVisible
+            },
+            set(value){
+                this.HANDLE_VIEW(value)
+            }
+        }
+    //    ...mapGetters("categoriesStoreIndex", ['isEditImageVisible'])
     },
     methods:{
-         ...mapActions("categoriesStoreIndex", ['editCategory' ,'handleMaxSize' ,'handleFormatError' ,'handleSuccess','handleError' ,'deleteEditImage'  ]),
-         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_EDIT_MODAL','HANDLE_VIEW']),
+         ...mapActions("categoriesStoreIndex", ['editCategory' ,'handleMaxSize' ,'handleFormatError' ,'handleSuccess','handleError' ,'deleteEditImage' ,'HANDLE_VIEW'   ]),
+         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_EDIT_MODAL']),
          deleteImageAndClearFiles(){
              this.deleteEditImage();
              this.$refs.upload.clearFiles()

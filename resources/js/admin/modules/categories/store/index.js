@@ -20,23 +20,23 @@ export default {
         
         editData: new Form({
             id: '',
-            name: ""
+            name: "",
+            icon:""
         }),
         errors: {},
         multiSelected: [],
         isIconImageNew: false,
         isEditingItem: false,
         isImageVisible: false,
+        isEditImageVisible: false,
         paginationData: {}
        
     },
     getters: {
-        getAllCategory(state){
-           return state.categories
-       },
-       paginatedMetaData(state){
-          return state.paginationData
-       }
+       getAllCategory       : state => state.categories, 
+       paginatedMetaData    : state => state.paginationData,
+       isImageVisible       : state => state.isImageVisible,
+       isEditImageVisible   : state => state.isEditImageVisible
     },
     actions: {
         addCategory({commit , dispatch , state} ){
@@ -127,7 +127,12 @@ export default {
         },
         async deleteCategory({commit} , category){
             try {
-                let res =   await axios.delete('/api/admin/categories/'+ category.id);
+                console.log(category);
+                
+                let res =   await axios.delete(`/api/admin/categories/${category.id}` ,{
+                    id: category.id,
+                    icon: category.icon
+                } );
                 if (res.status == 200) {
                     
                     $Notice.success({
@@ -182,15 +187,11 @@ export default {
             res = `/uploads/categories/${res}`;
             // this.$refs.upload.clearFiles()
             if (state.isEditingItem) {
-                console.log("inside");
-                return (state.addData.icon = res);
+                return (state.editData.icon = res);
             }
             return state.addData.icon = res;
         },
         handleError(res, file) {
-            console.log(res.status);
-            console.log(res.errors);
-            
             $Notice.warning({
                 title: "The file format is incorrect",
                 // desc: `${res.errors.file.length ? res.errors.file[0] : "Something went wrong!"}`
@@ -211,7 +212,7 @@ export default {
         async deleteImage({state}){
             let img = state.addData.icon
             state.addData.icon = ''
-            // $Bus.emit('clearAddedFiles')
+            $Bus.$emit('clearAddedFiles')
             
             let res = await axios.post('/api/admin/delete_category_image', {image : img});
             if (res.status != 200) {
@@ -222,9 +223,10 @@ export default {
             }
         },
         async deleteEditImage({state}){
+            state.isEditingItem = true
             let img = state.editData.icon
             state.editData.icon = ''
-            // $Bus.emit('clearAddedFiles')
+            $Bus.$emit('clearAddedFiles')
             
             let res = await axios.post('/api/admin/delete_category_image', {image : img});
             if (res.status != 200) {
@@ -234,7 +236,9 @@ export default {
                 });
             }
         },
-        
+        HANDLE_VIEW({commit}, payload){
+            commit('HANDLE_VIEW' , payload)
+        }
 
     },
     mutations: {
@@ -250,13 +254,14 @@ export default {
         UPDATE_CATEGORY(state ){
             let index = state.categories.findIndex(item => item.id === state.editData.id);
             state.categories[index].name = state.editData.name
+            state.categories[index].icon = state.editData.icon
         },
         DELETE_CATEGORY(state , category){
             let index= state.categories.findIndex(item => item.id === category.id);
             state.categories.splice(index , 1)
         },
         DELETE_MULTI_CATEGORY(state , multiSelectedCat){
-            state.categories.filter( objectA => {
+            state.categories = state.categories.filter( objectA => {
                 return !multiSelectedCat.find(objectB => objectA.id === objectB.id)
             })
             // state.categories = arr;
@@ -283,8 +288,12 @@ export default {
         SET_ERRORS(state , errors){
             state.errors = errors
         },
-        HANDLE_VIEW(state){
-            state.isImageVisible = !state.isImageVisible
+        HANDLE_VIEW(state, addHandleView = true){
+            if (addHandleView) {
+                state.isImageVisible = !state.isImageVisible                
+            } else {
+                state.isEditImageVisible = !state.isEditImageVisible                
+            }
         }
     }
   }
