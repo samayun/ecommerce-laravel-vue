@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             
-            $table->string('name');
+            $table->string('name')->index();
             $table->float('price' , 8,2);
             $table->float('discount_price' , 8,2)->nullable();
             $table->text('description')->nullable();

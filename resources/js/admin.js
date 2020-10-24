@@ -7,43 +7,38 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import locale from 'view-design/dist/locale/en-US';
 import { Notice } from "view-design";
 
-
+window.$Notice = Notice // Toast Notification . alternative sweetalert2 . I`ll use IViewUI  
+window.$Bus = new Vue() // EventBus Service for communicating component via component
 Vue.use(ViewUI, { locale });
 
-window.$Notice = Notice
-window.$Bus = new Vue()
-Vue.prototype.$EventBus = new Vue()
+
+import Gate from './Gate.admin';
+Vue.prototype.$gate = new Gate(window.adminUser);
 // v-form
 import { Form , HasError , AlertError} from 'vform';
-
 window.Form = Form;
-Vue.prototype.Form = Form
-
-
-// bootstrap.js
-
-// import Gate from './Gate.admin';
-// Vue.prototype.$gate = new Gate(JSON.parse(localStorage.getItem('adminAuthUser')));
-Vue.component('Loading', require('./admin/components/Loading.vue').default);
+// Vue.prototype.Form = Form
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 Vue.component('admin-app', require('./admin/components/AdminApp.vue').default);
+Vue.component('Loading', require('./admin/components/Loading.vue').default);
+
 import common from "./common";
 Vue.mixin(common);
+// ROUTER 
 import router from './router.admin'
 
 router.beforeEach((to, from, next) => {
-    let authUserDT = localStorage.getItem('adminAuthUser' ) ? JSON.parse(localStorage.getItem('adminAuthUser' )) : false;
-    let isAuthenticated = authUserDT && authUserDT.id && authUserDT.email ? true : false;
+    // let authUserDT = localStorage.getItem('adminAuthUser' ) ? JSON.parse(localStorage.getItem('adminAuthUser' )) : false;
+    // let isAuthenticated = authUserDT && authUserDT.id && authUserDT.email ? true : false;
 
     ViewUI.LoadingBar.start();
-
+    let isAuthenticated = window.adminUser;
     if (to.name != 'AdminLogin' && !isAuthenticated) next({name : 'AdminLogin'})
     else if(to.name === 'AdminLogin' && isAuthenticated) next({name:'AdminHome'})
     else next(); 

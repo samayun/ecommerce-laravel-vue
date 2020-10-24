@@ -47,19 +47,21 @@ export default {
           'updateUser'])
     },
     created() {
-        // if (this.user) {
-        //   this.$store.dispatch('updateUser' , this.user)
-        // }
+        if (this.user) {
+          this.$store.dispatch('updateUser' , this.user)
+        }else {
+           this.$router.push({name : 'AdminLogin'});
+        }
 
-         if (!this.authUser) {
-           let authUserDT = localStorage.getItem('adminAuthUser' ) ? JSON.parse(localStorage.getItem('adminAuthUser' )) : false
-            this.updateUser(authUserDT);
+        //  if (!this.authUser) {
+          //  let authUserDT = localStorage.getItem('adminAuthUser' ) ? JSON.parse(localStorage.getItem('adminAuthUser' )) : false
+            // this.updateUser(authUserDT);
             // this.$gate = Object.assign({},{
             //   user : authUserDT
             // })
-         }else{
-           this.$router.push({name : 'AdminLogin'});
-         }
+        //  }else{
+          
+        //  }
 
         //  let authUserDT = localStorage.getItem('adminAuthUser' ) ? JSON.parse(localStorage.getItem('adminAuthUser' )) : false
         //  let isAuthenticated = authUserDT && authUserDT.id && authUserDT.email ? true : false

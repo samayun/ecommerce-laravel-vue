@@ -15,10 +15,11 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->index();
             $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->string('address')->nullable();
+            $table->string('address')->nullable(); // Nabigonj Habigonj (v2: Post Code , Regional Code ,District, Thana All information added in profile tables)
+            $table->string('status',10); // verified , created , golden(who ordered at least one product)
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->string('provider_id')->nullable();

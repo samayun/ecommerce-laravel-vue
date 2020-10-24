@@ -65,7 +65,8 @@
                 if (res.status == 200) {
                    this.$store.dispatch('updateUser' , res.data.user)
                    localStorage.setItem('adminAuthUser' , JSON.stringify(res.data.user))
-                   this.$router.replace({name : 'AdminHome'})
+                   window.location.reload();
+                  //  this.$router.replace({name : 'AdminHome'})
                 }
             } catch (error) {
                 this.$Notice.info({

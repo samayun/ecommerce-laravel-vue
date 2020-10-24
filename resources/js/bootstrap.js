@@ -1,7 +1,5 @@
 const { reject } = require('lodash');
-
 window._ = require('lodash');
-
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -9,11 +7,14 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
+
+
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
     require('bootstrap');
-    
+    // IMPORT PACKAGES HERE 
+
     require('admin-lte/dist/js/adminlte');
     require('@fortawesome/fontawesome-free/js/all');
 } catch (e) {}

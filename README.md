@@ -128,8 +128,14 @@ export default {
 ```
 ###### Now Test in browser
 
+<<<<<<< HEAD
 [![View Added Image](docs/images/view-added-category-image.png)](docs/images/view-added-category-image.png)
 
 * **Happy Coding!**
 ----
   **[Authors FaceBook](https://facebook.com/samayunmc)**
+=======
+![Add Category Image](docs/images/add-category-image.png)
+
+![View Added Image](https://raw.githubusercontent.com/samayun/ecommerce-laravel-vue/file-upload/docs/images/view-added-category-image.png)
+>>>>>>> 352727b329c096ac89edc14772a70c428ea46d99

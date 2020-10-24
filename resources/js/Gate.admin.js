@@ -29,6 +29,6 @@ export default class Gate
 
     deny(action, type, model = null)
     {
-        return ! this.allow(action, type, model);
+        return !this.allow(action, type, model);
     }
 }

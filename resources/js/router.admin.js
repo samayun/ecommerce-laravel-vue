@@ -22,7 +22,7 @@ const defaultRoutes = [
     {
         path: '*',
         name: "404",
-        component : () =>import('./admin/pages/NotFound.vue')
+        component : () => import('./admin/pages/NotFound.vue')
     }
 
 ]
