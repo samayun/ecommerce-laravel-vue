@@ -23,10 +23,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // if (\Gate::forUser(\Auth::guard('admin')->user())->allows('super')) {
-            return Category::latest()->paginate(5);
-        // }
-        // return abort(403);
+        return Category::latest()->paginate(5);
     }
 
     /**
@@ -45,7 +42,7 @@ class CategoryController extends Controller
     }
     public function multiDelete(Request $request)
     {
-    //  if (Gate::forUser(\Auth::guard('admin')->user())->allows('super')) {
+     if (Gate::forUser(\Auth::guard('admin')->user())->allows('super')) {
         try {
             DB::beginTransaction();
             foreach ($request->all() as $category) {
@@ -56,8 +53,8 @@ class CategoryController extends Controller
         } catch (\Throwable $th) {
             DB::rollback();
         }
-    //  }
-    //   return response()->json(['message' => 'Action Not Permitted'], 403);
+     }
+      return response()->json(['message' => 'Action Not Permitted'], 403);
     }
     /**
      * Display the specified resource.

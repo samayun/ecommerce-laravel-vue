@@ -17,14 +17,14 @@
                 </form>
             <p class="card-title ml-3">Categories
             <!--  adding modal -->
-            <add-modal-component></add-modal-component> </p>
+            <add-modal-component v-if="isPermitted('create','category')"></add-modal-component> </p>
 
             <div class="card-body">
-                <view-categories-component ></view-categories-component>
+                <view-categories-component v-if="isPermitted('view','category')"></view-categories-component>
             </div>
 
             <!-- edit Modal -->
-            <edit-modal-component ></edit-modal-component>
+            <edit-modal-component v-if="isPermitted('update','category')"></edit-modal-component>
             </div>
 
         </div>
@@ -39,7 +39,6 @@ import viewCategoriesComponent from '../component/viewCategoriesComponent';
 
 export default {
     components:{ addModalComponent , editModalComponent , viewCategoriesComponent }
-
 }
 </script>
 

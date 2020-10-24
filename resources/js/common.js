@@ -2,6 +2,9 @@
 
 export default {
     methods: {
+        isPermitted(action,type){
+            return $gate.allows(action,type);
+        },
         async callApi(method, url, dataObj ){
             try {
               return await axios({

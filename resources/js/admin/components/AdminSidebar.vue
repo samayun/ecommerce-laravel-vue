@@ -26,7 +26,7 @@
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
 
-            <li class="nav-item">
+            <li class="nav-item" v-if="isPermitted('view','category')">
               <router-link to="/admin/categories" class="nav-link"  exact-active-class="active">
                 <i class="nav-icon fas fa-th"></i>
                 <p>

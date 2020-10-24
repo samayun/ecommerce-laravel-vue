@@ -1,6 +1,6 @@
 <template>
     <div>
-         <span v-if="multiSelected.length > 0">
+         <span v-if="isPermitted('delete','category') && multiSelected.length > 0">
              <Button type="error" @click="multiDelete"> Multiple Delete </Button> {{multiSelected }} selected
          </span>
          <!-- <Loading show="getAllCategory.length < 1"/> -->
@@ -10,11 +10,11 @@
             :columns="dataStructureTable"
             v-if="getAllCategory.length"
             :data="getAllCategory">
-       
+          
             </Table>
             <br/>
 
-        <Checkbox @on-change="handleSelectAll"> Select/Deselect All </Checkbox>
+        <Checkbox v-if="isPermitted('delete','category')" @on-change="handleSelectAll"> Select/Deselect All </Checkbox>
     </div>
 </template>
 <script>

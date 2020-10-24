@@ -29,5 +29,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('super' , function(Admin $admin){
             return $admin->is_super == 1;
         });
+        Gate::define('multiDelete' , 'App\Policies\CategoryPolicy@multiDelete');
     }
 }

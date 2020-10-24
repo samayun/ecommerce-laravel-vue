@@ -18,7 +18,8 @@ Vue.use(ViewUI, { locale });
 
 
 import Gate from './Gate.admin';
-Vue.prototype.$gate = new Gate(window.adminUser);
+// Vue.prototype.$gate = new Gate(window.adminUser);
+window.$gate = new Gate(window.adminUser);
 // v-form
 import { Form , HasError , AlertError} from 'vform';
 window.Form = Form;

@@ -2,7 +2,7 @@
 
 import CategoryPolicy from './admin/policies/CategoryPolicy';
 
-export default class Gate
+class Gate
 {
     constructor(user)
     {
@@ -18,7 +18,7 @@ export default class Gate
         return this.user && this.user.is_super == 1;
     }
 
-    allow(action, type, model = null)
+    allows(action, type, model = null)
     {
         if (this.before()) {
             return true;
@@ -27,8 +27,11 @@ export default class Gate
         return this.policies[type][action](this.user, model);
     }
 
-    deny(action, type, model = null)
+    denies(action, type, model = null)
     {
-        return !this.allow(action, type, model);
+        return !this.allows(action, type, model);
     }
 }
+
+
+export default Gate;
