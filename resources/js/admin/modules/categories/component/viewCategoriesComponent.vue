@@ -1,7 +1,7 @@
 <template>
     <div>
          <span v-if="isPermitted('delete','category') && multiSelected.length > 0">
-             <Button type="error" @click="multiDelete"> Multiple Delete </Button> {{multiSelected }} selected
+             <Button type="error" @click="multiDelete"> Multiple Delete </Button> {{multiSelected.length }} selected
          </span>
          <!-- <Loading show="getAllCategory.length < 1"/> -->
         <Table border
@@ -9,18 +9,21 @@
             ref="selection"
             :columns="dataStructureTable"
             v-if="getAllCategory.length"
+            :loading="isLoading"
             :data="getAllCategory">
-          
             </Table>
             <br/>
+            <Pagination />
 
         <Checkbox v-if="isPermitted('delete','category')" @on-change="handleSelectAll"> Select/Deselect All </Checkbox>
     </div>
 </template>
 <script>
+import Pagination from './Pagination'
 import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 export default {
    name : "viewCategoriesComponent",
+   components:{Pagination},
    data(){
        return {
                  dataStructureTable: [
@@ -68,7 +71,7 @@ export default {
                                         }
 
                                     })
-                                   
+
                         }
                     },
                     {
@@ -117,7 +120,7 @@ export default {
        }
    },
    computed: {
-       ...mapState("categoriesStoreIndex", [ 'showEditModal' , 'editData' , 'isEditing','errors' ,'multiSelected' ]),
+       ...mapState("categoriesStoreIndex", [ 'showEditModal' , 'editData','isLoading' , 'isEditing','errors' ,'multiSelected' ]),
        ...mapGetters("categoriesStoreIndex",['getAllCategory' ])
    },
    methods:{

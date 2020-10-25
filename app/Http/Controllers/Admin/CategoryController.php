@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 use DB;
 
 class CategoryController extends Controller
@@ -21,9 +22,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Category::latest()->paginate(5);
+        $perPage =  $request->has('perPage') ? $request->query('perPage') : 5;
+        $orderBy =  $request->has('orderBy') ? $request->query('orderBy') : 'created_at';
+        $sortBy  =  $request->has('sortBy') ? $request->query('sortBy') : 'desc';
+        $q       =  $request->has('q') ? $request->query('q') : '' ;
+        // these code must be efactored - we wil need this again and again
+        return Category::search($q)->orderBy($orderBy , $sortBy)->paginate($perPage );
     }
 
     /**
@@ -42,7 +48,7 @@ class CategoryController extends Controller
     }
     public function multiDelete(Request $request)
     {
-     if (Gate::forUser(\Auth::guard('admin')->user())->allows('multiDelete')) {
+     if (Gate::forUser(Auth::guard('admin')->user())->allows('multiDelete')) {
         try {
             DB::beginTransaction();
             foreach ($request->all() as $category) {
@@ -68,7 +74,7 @@ class CategoryController extends Controller
     }
     // Upload Images
     // @request file
-    // @return filname.png etc  
+    // @return filname.png etc
     public function upload(Request $request){
         $this->validate($request,[
             'file' => 'required|mimes:jpg,jpeg,png|image'

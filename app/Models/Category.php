@@ -14,4 +14,10 @@ class Category extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function scopeSearch($query , $q)
+    {
+        if($q == null) return;
+        return $query->where('name','LIKE', "%$q%");
+    }
 }

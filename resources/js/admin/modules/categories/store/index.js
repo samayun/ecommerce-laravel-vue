@@ -1,15 +1,12 @@
 // import axios from "axios";
 import { Form } from "vform";
 
-export default {   
+export default {
     state: {
         categories : [],
-        getCategory: null ,
-
         showModal: false,
         isAdding: false,
         isLoading: false ,
-
         addData : new Form({
             name:"",
             icon :""
@@ -17,7 +14,7 @@ export default {
         // addData:{ name: ""  ,  errors:{}},
         isEditing: false ,
         showEditModal: false,
-        
+
         editData: new Form({
             id: '',
             name: "",
@@ -29,17 +26,40 @@ export default {
         isEditingItem: false,
         isImageVisible: false,
         isEditImageVisible: false,
-        paginationData: {}
-       
+
+        filterString:{
+            page: 1,
+            perPage : 6,
+            orderBy: 'created_at',
+            sortBy: 'desc',
+            q: "",
+            total: 0
+        }
+
     },
     getters: {
-       getAllCategory       : state => state.categories, 
+       getAllCategory       : state => state.categories,
        paginatedMetaData    : state => state.paginationData,
        isImageVisible       : state => state.isImageVisible,
-       isEditImageVisible   : state => state.isEditImageVisible
+       isEditImageVisible   : state => state.isEditImageVisible,
+       filterString         : state => state.filterString,
+       getFilteredURLString : state => {
+           let {page,perPage,orderBy,sortBy,q} = state.filterString;
+           let queryString = "";
+           if (q != "") {
+              queryString = `page=1&q=${q}`
+           } else {
+              queryString = `page=${page}`
+           }
+           (perPage !="") ? queryString += `&perPage=${perPage}` : null;
+           (orderBy !="") ? queryString += `&orderBy=${orderBy}` : null;
+           (sortBy !="") ? queryString += `&sortBy=${sortBy}` : null;
+
+           return queryString;
+       }
     },
     actions: {
-        addCategory({commit , dispatch , state} ){
+        addCategory({commit , dispatch , state } ){
             commit('SET_IS_ADDING' , true)
             state.addData.post('/api/admin/categories')
             .then(res => {
@@ -66,19 +86,22 @@ export default {
            }).finally( () => {
                 commit('SET_IS_ADDING' , false)
            })
-           
-       },
-       async getCategories({commit ,state }){
-           try {
 
+       },
+        async getCategories({commit ,state , getters}){
+           try {
             commit('SET_IS_LOADING' , true)
-            let res =   await axios.get('/api/admin/categories');
-            // let res = this.callApi('get', '/api/admin/categories')
+            let res =   await axios.get(`/api/admin/categories?${getters.getFilteredURLString}`);
             if (res.status == 200) {
-                // console.log(res.data);
-                state.paginationData = res.data
+                let updatedFilterString = {
+                    page: parseInt(res.data.current_page),
+                    perPage :parseInt(res.data.per_page),
+                    total: parseInt(res.data.total)
+                }
+                commit('FILTER_DATA', updatedFilterString)
                 commit('FETCH_CATEGORIES' , res.data.data);
                 commit('SET_IS_LOADING' , false)
+
              }
            } catch (error) {
                 commit('SET_IS_LOADING' , false)
@@ -88,11 +111,10 @@ export default {
                         desc: error.response.data.message
                     });
                }
-               
+
            }
         },
-
-     editCategory({commit,dispatch , state } ){
+        editCategory({commit,dispatch , state } ){
             commit('SET_IS_EDITING' , true);
             state.editData.put(`/api/admin/categories/${state.editData.id}`).then(res => {
                 if (res.status == 200) {
@@ -114,7 +136,7 @@ export default {
                     });
                 }
                 if (error.response.status == 422) {
-                    
+
                     $Notice.error({
                         title: 'Category Update Failed!',
                         desc: error.response.data.message
@@ -123,15 +145,15 @@ export default {
                   }
            }).finally( () => {
                 commit('SET_IS_EDITING' , false)
-           })	
+           })
         },
         async deleteCategory({commit} , category){
             try {
                 console.log(category);
-                
+
                 let res =   await axios.delete(`/api/admin/categories/${category.id}`);
                 if (res.status == 200) {
-                    
+
                     $Notice.success({
                         title: 'Category Deleted Successfully',
                         desc: `${category.name} deleted`
@@ -150,7 +172,7 @@ export default {
                     desc: error.response.data.message
                 });
             }
-           
+
         },
         async multiDelete({state , commit}){
             try {
@@ -162,7 +184,7 @@ export default {
                         title: 'Selected Category Deleted Successfully',
                         desc: ` deleted`
                     });
- 
+
                 }
             } catch (error) {
                 state.multiSelected = [];
@@ -178,7 +200,7 @@ export default {
                     desc: error.response.data.message
                 });
             }
-           
+
         },
         handleSuccess({state},res) {
             res = `/uploads/categories/${res}`;
@@ -210,7 +232,7 @@ export default {
             let img = state.addData.icon
             state.addData.icon = ''
             $Bus.$emit('clearAddedFiles')
-            
+
             let res = await axios.post('/api/admin/delete_category_image', {image : img});
             if (res.status != 200) {
                 state.addData.icon = img
@@ -224,7 +246,7 @@ export default {
             let img = state.editData.icon
             state.editData.icon = ''
             $Bus.$emit('clearAddedFiles')
-            
+
             let res = await axios.post('/api/admin/delete_category_image', {image : img});
             if (res.status != 200) {
                 state.editData.icon = img
@@ -235,6 +257,14 @@ export default {
         },
         HANDLE_VIEW({commit}, payload){
             commit('HANDLE_VIEW' , payload)
+        },
+        changePaginatedPage({state,commit ,dispatch } , page){
+           commit('FILTER_DATA', {page})
+           dispatch('getCategories')
+        },
+        changePerPaginatedPage({state,commit , dispatch} , perPage){
+            commit('FILTER_DATA', {perPage})
+            dispatch('getCategories')
         }
 
     },
@@ -244,6 +274,12 @@ export default {
         },
         FETCH_CATEGORIES(state , categories){
             state.categories = categories
+        },
+        FILTER_DATA(state , payload){
+            // state.filterString = payload
+            for(let obj in payload){
+                state.filterString[obj] = payload[obj]
+            }
         },
         GET_EDIT_DATA(state , payload){
             state.editData =  new Form(payload)
@@ -272,7 +308,7 @@ export default {
         },
         handleSelectionChange(state , val){
             state.multiSelected = val
-        }, 
+        },
         SET_IS_LOADING(state, data){
             state.isLoading =  data
         },
@@ -287,9 +323,9 @@ export default {
         },
         HANDLE_VIEW(state, addHandleView = true){
             if (addHandleView) {
-                state.isImageVisible = !state.isImageVisible                
+                state.isImageVisible = !state.isImageVisible
             } else {
-                state.isEditImageVisible = !state.isEditImageVisible                
+                state.isEditImageVisible = !state.isEditImageVisible
             }
         }
     }
