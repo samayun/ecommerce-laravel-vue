@@ -42,7 +42,7 @@ class CategoryController extends Controller
     }
     public function multiDelete(Request $request)
     {
-     if (Gate::forUser(\Auth::guard('admin')->user())->allows('super')) {
+     if (Gate::forUser(\Auth::guard('admin')->user())->allows('multiDelete')) {
         try {
             DB::beginTransaction();
             foreach ($request->all() as $category) {

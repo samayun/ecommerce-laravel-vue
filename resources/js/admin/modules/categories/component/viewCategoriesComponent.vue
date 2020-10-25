@@ -27,8 +27,19 @@ export default {
                     {
                         type: 'selection',
                         align: 'center',
-                        width: 50 
-                    },
+                        width: 50 ,
+                        render: (h,params) => {
+                            if (this.isPermitted('delete','category')) {
+                                return h('Checkbox' , {
+                                    props: {
+                                        type: 'success'
+                                    }
+                                },NO)
+                            }
+                            return h('i', 'delete')
+                        }
+                    }
+                    ,
                     {
                         title: 'ID',
                         key: 'id',
@@ -66,8 +77,23 @@ export default {
                         width: 150,
                         align: 'center',
                         render: (h, params) => {
-                            return h('div', [
-                                h('Button', {
+                            let deleteButton = h('')
+                            if (this.isPermitted('delete','category')) {
+                                deleteButton =   h('Button', {
+                                                    props: {
+                                                        type: 'error',
+                                                        size: 'small'
+                                                    },
+                                                    on: {
+                                                        click: () => {
+                                                            this.deleteConfirmation(params.row)
+                                                        }
+                                                    }
+                                            }, 'Delete')
+                            };
+                            let edit = h('')
+                            if(this.isPermitted('update','category')){
+                             edit = h('Button', {
                                     props: {
                                         type: 'info',
                                         size: 'small'
@@ -80,18 +106,10 @@ export default {
                                             this.clickEditBtn(params.row);
                                         }
                                     }
-                                }, 'Edit'),
-                                h('Button', {
-                                    props: {
-                                        type: 'error',
-                                        size: 'small'
-                                    },
-                                    on: {
-                                        click: () => {
-                                            this.deleteConfirmation(params.row)
-                                        }
-                                    }
-                                }, 'Delete')
+                                }, 'Edit');
+                            }
+                            return h('div', [
+                                edit, deleteButton
                             ]);
                         }
                     }

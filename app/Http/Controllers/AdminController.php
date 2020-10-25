@@ -71,11 +71,19 @@ class AdminController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email'   => 'bail|required|email',
-            'password' => 'bail|required|min:6'
+            'email'   => 'required|email',
+            'password' => 'required|min:6'
         ]);
+        $hasAccount = Admin::where('email',$request->email)->first();
+        if (!$hasAccount) {
+            return response()->json([
+                'errors' => [
+                    'email' => ['There has no account with this email']
+                ]
+            ] , 422);
+        }
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
 
             return response()->json([
                 'success' => true ,
@@ -84,8 +92,10 @@ class AdminController extends Controller
             ], 200);
         }
         return response()->json([
-            'error' => 'Your Email or Password is incorrect'
-        ] , 401);
+            'errors' => [
+                'password' => ['Your Password is incorrect']
+            ]
+        ] , 422);
         
     }
 

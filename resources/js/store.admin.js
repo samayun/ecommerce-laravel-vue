@@ -30,10 +30,10 @@ export default new Vuex.Store({
                 axios.post('/api/logout/admin')
                 .then(res=> { 
                     if (res.status == 200) {
-                        commit('UPDATE_AUTH_USER' , false);
-                        localStorage.removeItem('adminAuthUser')
-                        $Notice.info({title: res.data.message });
                         location.reload();
+                        commit('UPDATE_AUTH_USER' , false);
+                        $Notice.info({title: res.data.message });
+                        
                     }
             }).catch (error => {
                 console.log('logout error ',error.response.data);

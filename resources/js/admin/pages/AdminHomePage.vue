@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h5 class="mb-2"> {{ app_name }} </h5>  
+        <h5 class="mb-2"> Messages </h5>  
         <div class="row">
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box">
@@ -59,11 +59,10 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
     export default {
-     computed: mapState([
-          // map this.app_name to store.state.app_name
-          'app_name'
-        ])
+      created(){
+        console.log('Loaded');
+      }
+      
     }
 </script>

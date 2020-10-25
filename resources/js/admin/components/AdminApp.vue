@@ -1,9 +1,9 @@
 <template>
 <div>
-  <div class="wrapper" v-if="authUser">
+  <div class="wrapper" v-if="getAuthUserData">
     <!-- <admin-navbar></admin-navbar> -->
 
-    <admin-sidebar :user="authUser" />
+    <admin-sidebar v-if="getAuthUserData" :user="getAuthUserData" />
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -21,10 +21,7 @@
     <!-- /.content-wrapper -->
     <admin-footer />
   </div> 
-    <!-- ./wrapper -->
-    <div v-else>
-        <router-view></router-view>
-    </div>
+  <div v-else> <router-view></router-view> </div>
 </div>
 </template>
 
@@ -38,9 +35,7 @@ export default {
     props: ['user'],
     computed: {
       // mix the getters into computed with object spread operator
-      ...mapGetters({
-        authUser : 'getAuthUserData'
-      })
+      ...mapGetters(['getAuthUserData'])
     },
     methods: {
       ...mapActions([

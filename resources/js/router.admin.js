@@ -2,32 +2,25 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
-import AdminHomePage from './admin/pages/AdminHomePage.vue'
-import NotFound from './admin/pages/NotFound.vue'
-import AdminLogin from './admin/components/AdminLogin.vue'
-
 const defaultRoutes = [
     {
         path: '/admin/login',
         name: 'AdminLogin',
         title: 'Admin Login',
-        component: () => import('./admin/components/AdminLogin.vue')
+        component: () => import('./admin/pages/AdminLogin.vue')
     },
     {
         path: '/admin',
         name: 'AdminHome',
         title: 'Home',
-        component: () => import('./admin/pages/AdminHomePage.vue')
+        component: () => import('./admin/pages/AdminHomePage.vue'),
     },
     {
         path: '*',
         name: "404",
         component : () => import('./admin/pages/NotFound.vue')
     }
-
 ]
-
-
 /**
  * IMPORT ALL ROUTES DYNAMICALLY FROM THE MODULES FOLDERS....
 */
@@ -51,8 +44,9 @@ requireModule.keys().forEach(fileName => {
 /**
  * CONCAT ALL THE IMPORTED ROUTES WITH MAIN ROUTES...
  */
-allRoutes = allRoutes.concat(defaultRoutes , importedRoutes)
-const routes = allRoutes
+
+
+const routes = allRoutes.concat(defaultRoutes , importedRoutes)
 
 export default new VueRouter({
     mode: 'history',

@@ -41,7 +41,7 @@ router.beforeEach((to, from, next) => {
     ViewUI.LoadingBar.start();
     let isAuthenticated = window.adminUser;
     if (to.name != 'AdminLogin' && !isAuthenticated) next({name : 'AdminLogin'})
-    else if(to.name === 'AdminLogin' && isAuthenticated) next({name:'AdminHome'})
+    else if(to.name == 'AdminLogin' && isAuthenticated) next({name:'AdminHome'})
     else next(); 
 });
 
