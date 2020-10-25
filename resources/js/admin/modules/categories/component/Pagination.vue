@@ -1,10 +1,10 @@
 <template>
     <Page
-        :total="filterString.total"
-        :current="filterString.page"
-        :page-size="filterString.perPage"
+        :total="meta.total"
+        :current="meta.page"
+        :page-size="meta.perPage"
         @on-change="changePaginatedPage"
-        @on-page-size-change="changePerPaginatedPage"
+        @on-page-size-change="changePaginatedPerPage"
         show-total
         show-elevator
         show-sizer
@@ -12,13 +12,18 @@
         next-text="NeXT"/>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex'
-export default {
-    computed: {
-       ...mapGetters("categoriesStoreIndex",['filterString']),
-   },
-   methods:{
-       ...mapActions("categoriesStoreIndex" , ['changePaginatedPage','changePerPaginatedPage'])
-   }
-}
+    export default {
+        props: {
+            meta : {
+                type: Object ,
+                required : true
+            },
+            changePaginatedPage : {
+                type: [Object , Function]
+            },
+            changePaginatedPerPage : {
+                type: [Object , Function]
+            },
+        }
+    }
 </script>

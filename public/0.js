@@ -9,13 +9,6 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -29,10 +22,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("categoriesStoreIndex", ['filterString'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ['changePaginatedPage', 'changePerPaginatedPage']))
+  props: {
+    meta: {
+      type: Object,
+      required: true
+    },
+    changePaginatedPage: {
+      type: [Object, Function]
+    },
+    changePaginatedPerPage: {
+      type: [Object, Function]
+    }
+  }
 });
 
 /***/ }),
@@ -431,8 +433,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }]
     };
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])("categoriesStoreIndex", ['showEditModal', 'editData', 'isLoading', 'isEditing', 'errors', 'multiSelected'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])("categoriesStoreIndex", ['getAllCategory'])),
-  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])("categoriesStoreIndex", ['getCategories', 'editCategory', 'deleteCategory', 'multiDelete'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])("categoriesStoreIndex", ['TOGGLE_EDIT_MODAL', 'GET_EDIT_DATA', 'handleSelectionChange'])), {}, {
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])("categoriesStoreIndex", ['showEditModal', 'editData', 'isLoading', 'isEditing', 'errors', 'multiSelected'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])("categoriesStoreIndex", ['getAllCategory', 'filterString'])),
+  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])("categoriesStoreIndex", ['getCategories', 'editCategory', 'deleteCategory', 'multiDelete', 'changePaginatedPage', 'changePaginatedPerPage'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])("categoriesStoreIndex", ['TOGGLE_EDIT_MODAL', 'GET_EDIT_DATA', 'handleSelectionChange'])), {}, {
     clickEditBtn: function clickEditBtn(cat) {
       this.TOGGLE_EDIT_MODAL();
       this.GET_EDIT_DATA(cat);
@@ -585,9 +587,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("Page", {
     attrs: {
-      total: _vm.filterString.total,
-      current: _vm.filterString.page,
-      "page-size": _vm.filterString.perPage,
+      total: _vm.meta.total,
+      current: _vm.meta.page,
+      "page-size": _vm.meta.perPage,
       "show-total": "",
       "show-elevator": "",
       "show-sizer": "",
@@ -596,7 +598,7 @@ var render = function() {
     },
     on: {
       "on-change": _vm.changePaginatedPage,
-      "on-page-size-change": _vm.changePerPaginatedPage
+      "on-page-size-change": _vm.changePaginatedPerPage
     }
   })
 }
@@ -1057,7 +1059,13 @@ var render = function() {
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
-      _c("Pagination"),
+      _c("Pagination", {
+        attrs: {
+          meta: _vm.filterString,
+          changePaginatedPage: _vm.changePaginatedPage,
+          changePaginatedPerPage: _vm.changePaginatedPerPage
+        }
+      }),
       _vm._v(" "),
       _vm.isPermitted("delete", "category")
         ? _c("Checkbox", { on: { "on-change": _vm.handleSelectAll } }, [

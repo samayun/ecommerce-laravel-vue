@@ -1,8 +1,7 @@
-// import axios from "axios";
+import mutations from "./mutations";
 import { Form } from "vform";
-
 export default {
-    state: {
+    state:{
         categories : [],
         showModal: false,
         isAdding: false,
@@ -35,30 +34,29 @@ export default {
             q: "",
             total: 0
         }
-
     },
-    getters: {
-       getAllCategory       : state => state.categories,
-       paginatedMetaData    : state => state.paginationData,
-       isImageVisible       : state => state.isImageVisible,
-       isEditImageVisible   : state => state.isEditImageVisible,
-       filterString         : state => state.filterString,
-       getFilteredURLString : state => {
-           let {page,perPage,orderBy,sortBy,q} = state.filterString;
-           let queryString = "";
-           if (q != "") {
-              queryString = `page=1&q=${q}`
-           } else {
-              queryString = `page=${page}`
-           }
-           (perPage !="") ? queryString += `&perPage=${perPage}` : null;
-           (orderBy !="") ? queryString += `&orderBy=${orderBy}` : null;
-           (sortBy !="") ? queryString += `&sortBy=${sortBy}` : null;
+    getters : {
+        getAllCategory       : state => state.categories,
+        paginatedMetaData    : state => state.paginationData,
+        isImageVisible       : state => state.isImageVisible,
+        isEditImageVisible   : state => state.isEditImageVisible,
+        filterString         : state => state.filterString,
+        getFilteredURLString : state => {
+            let {page,perPage,orderBy,sortBy,q} = state.filterString;
+            let queryString = "";
+            if (q != "") {
+               queryString = `page=1&q=${q}`
+            } else {
+               queryString = `page=${page}`
+            }
+            (perPage !="") ? queryString += `&perPage=${perPage}` : null;
+            (orderBy !="") ? queryString += `&orderBy=${orderBy}` : null;
+            (sortBy !="") ? queryString += `&sortBy=${sortBy}` : null;
 
-           return queryString;
-       }
+            return queryString;
+        }
     },
-    actions: {
+    actions : {
         addCategory({commit , dispatch , state } ){
             commit('SET_IS_ADDING' , true)
             state.addData.post('/api/admin/categories')
@@ -262,71 +260,10 @@ export default {
            commit('FILTER_DATA', {page})
            dispatch('getCategories')
         },
-        changePerPaginatedPage({state,commit , dispatch} , perPage){
+        changePaginatedPerPage({state,commit , dispatch} , perPage){
             commit('FILTER_DATA', {perPage})
             dispatch('getCategories')
         }
-
-    },
-    mutations: {
-        CREATE_CATEGORY(state , category){
-            state.categories.unshift(category)
-        },
-        FETCH_CATEGORIES(state , categories){
-            state.categories = categories
-        },
-        FILTER_DATA(state , payload){
-            // state.filterString = payload
-            for(let obj in payload){
-                state.filterString[obj] = payload[obj]
-            }
-        },
-        GET_EDIT_DATA(state , payload){
-            state.editData =  new Form(payload)
-        },
-        UPDATE_CATEGORY(state ){
-            let index = state.categories.findIndex(item => item.id === state.editData.id);
-            state.categories[index].name = state.editData.name
-            state.categories[index].icon = state.editData.icon
-        },
-        DELETE_CATEGORY(state , category){
-            let index= state.categories.findIndex(item => item.id === category.id);
-            state.categories.splice(index , 1)
-        },
-        DELETE_MULTI_CATEGORY(state , multiSelectedCat){
-            state.categories = state.categories.filter( objectA => {
-                return !multiSelectedCat.find(objectB => objectA.id === objectB.id)
-            })
-            // state.categories = arr;
-            state.multiSelected = [];
-        },
-        TOGGLE_MODAL(state){
-            state.showModal = !state.showModal
-        },
-        TOGGLE_EDIT_MODAL(state){
-            state.showEditModal = !state.showEditModal
-        },
-        handleSelectionChange(state , val){
-            state.multiSelected = val
-        },
-        SET_IS_LOADING(state, data){
-            state.isLoading =  data
-        },
-        SET_IS_ADDING(state , data){
-            state.isAdding = data
-        },
-        SET_IS_EDITING(state , data){
-            state.isEditing = data
-        },
-        SET_ERRORS(state , errors){
-            state.errors = errors
-        },
-        HANDLE_VIEW(state, addHandleView = true){
-            if (addHandleView) {
-                state.isImageVisible = !state.isImageVisible
-            } else {
-                state.isEditImageVisible = !state.isEditImageVisible
-            }
-        }
-    }
+    } ,
+    mutations
   }

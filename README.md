@@ -20,7 +20,7 @@
             :current="filterString.page"
             :page-size="filterString.perPage"
             @on-change="changePaginatedPage"
-            @on-page-size-change="changePerPaginatedPage"
+            @on-page-size-change="changePaginatedPerPage"
             show-total
             show-elevator
             show-sizer
@@ -34,7 +34,7 @@
         ...mapGetters("categoriesStoreIndex",['filterString']),
     },
     methods:{
-        ...mapActions("categoriesStoreIndex" , ['changePaginatedPage','changePerPaginatedPage'])
+        ...mapActions("categoriesStoreIndex" , ['changePaginatedPage','changePaginatedPerPage'])
     }
     }
     </script>
@@ -101,7 +101,7 @@ export default {
            commit('FILTER_DATA', {page})
            dispatch('getCategories')
         },
-        changePerPaginatedPage({state,commit , dispatch} , perPage){
+        changePaginatedPerPage({state,commit , dispatch} , perPage){
             commit('FILTER_DATA', {perPage})
             dispatch('getCategories')
         }
@@ -190,3 +190,60 @@ class CategoryController extends Controller
 #### Now Test in browser :smile:
 
 
+### Reusable Single File Pagination Component
+```js
+    <template>
+        <Page
+            :total="meta.total"
+            :current="meta.page"
+            :page-size="meta.perPage"
+            @on-change="changePaginatedPage"
+            @on-page-size-change="changePaginatedPerPage"
+            show-total
+            show-elevator
+            show-sizer
+            prev-text="Previous"
+            next-text="NeXT"/>
+    </template>
+    <script>
+        export default {
+            props: {
+                meta : {
+                    type: Object ,
+                    required : true
+                },
+                changePaginatedPage : {
+                    type: [Object , Function]
+                },
+                changePaginatedPerPage : {
+                    type: [Object , Function]
+                },
+            }
+        }
+    </script>
+
+```
+> Use it in your project like this >>
+
+ 
+``` js
+<Pagination :meta="filterString"
+    :changePaginatedPage="changePaginatedPage" 
+        :changePaginatedPerPage="changePaginatedPerPage" />
+
+    [...]
+
+import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
+export default {
+   name : "viewCategoriesComponent",
+   components:{Pagination},
+    computed: {
+            ...mapState("categoriesStoreIndex", [ 'showEditModal' , 'editData','isLoading' , 'isEditing','errors' ,'multiSelected' ]),
+            ...mapGetters("categoriesStoreIndex",['getAllCategory','filterString' ])
+    },
+    methods:{
+            ...mapActions("categoriesStoreIndex", ['changePaginatedPage','changePaginatedPerPage']),
+    }
+}
+[...]
+```

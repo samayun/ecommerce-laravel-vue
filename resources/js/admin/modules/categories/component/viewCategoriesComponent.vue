@@ -13,7 +13,7 @@
             :data="getAllCategory">
             </Table>
             <br/>
-            <Pagination />
+            <Pagination :meta="filterString" :changePaginatedPage="changePaginatedPage" :changePaginatedPerPage="changePaginatedPerPage" />
 
         <Checkbox v-if="isPermitted('delete','category')" @on-change="handleSelectAll"> Select/Deselect All </Checkbox>
     </div>
@@ -121,10 +121,10 @@ export default {
    },
    computed: {
        ...mapState("categoriesStoreIndex", [ 'showEditModal' , 'editData','isLoading' , 'isEditing','errors' ,'multiSelected' ]),
-       ...mapGetters("categoriesStoreIndex",['getAllCategory' ])
+       ...mapGetters("categoriesStoreIndex",['getAllCategory','filterString' ])
    },
    methods:{
-         ...mapActions("categoriesStoreIndex", ['getCategories','editCategory' ,'deleteCategory' ,'multiDelete' ]),
+         ...mapActions("categoriesStoreIndex", ['getCategories','editCategory' ,'deleteCategory' ,'multiDelete','changePaginatedPage','changePaginatedPerPage']),
          ...mapMutations("categoriesStoreIndex" , ['TOGGLE_EDIT_MODAL' ,'GET_EDIT_DATA' , 'handleSelectionChange']),
          clickEditBtn(cat){
              this.TOGGLE_EDIT_MODAL()
