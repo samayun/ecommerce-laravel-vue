@@ -18,6 +18,9 @@ class Category extends Model
     public function scopeSearch($query , $q)
     {
         if($q == null) return;
-        return $query->where('name','LIKE', "%$q%");
+        return $query->where('name','LIKE', "%$q%")
+                    ->orWhere('id','LIKE', "%$q%")
+                    ->orWhere('created_at','LIKE', "%$q%")
+                    ->orWhere('icon','LIKE', "%$q%");
     }
 }

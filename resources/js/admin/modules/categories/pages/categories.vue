@@ -1,7 +1,9 @@
 <template>
     <div class="content bg-transparent">
         <div class="container-fluid">
-            <filter-data ></filter-data>
+            <filter-data
+              :defaultFilter="filterString"
+              :getResult="getCategories" ></filter-data>
             <!--~~~~~~~ TABLE ONE ~~~~~~~~~-->
             <div class="card p-2">
 
@@ -22,14 +24,21 @@
 </template>
 
 <script>
-import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import addModalComponent from "../component/addModalComponent"
 import editModalComponent from "../component/editModalComponent"
 import viewCategoriesComponent from '../component/viewCategoriesComponent';
 import FilterData from '../component/FilterData';
 
+
 export default {
-    components:{ addModalComponent , editModalComponent , viewCategoriesComponent , FilterData }
+    components:{ addModalComponent , editModalComponent , viewCategoriesComponent , FilterData },
+    computed: {
+       ...mapGetters("categoriesStoreIndex",['filterString' ])
+    },
+    methods:{
+        ...mapActions("categoriesStoreIndex", ['getCategories'])
+    }
 }
 </script>
 

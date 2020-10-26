@@ -48,14 +48,15 @@ class CategoryController extends Controller
     }
     public function multiDelete(Request $request)
     {
-     if (Gate::forUser(Auth::guard('admin')->user())->allows('multiDelete')) {
+     if (Gate::forUser(Auth::guard('admin')->user())->allows('super')) {
         try {
             DB::beginTransaction();
             foreach ($request->all() as $category) {
-                $this->deleteFileFromServer(public_path().$category['icon']);
+                $this->deleteFileFromServer($category['icon']);
                 Category::find($category['id'])->delete();
             }
             DB::commit();
+            return response()->json(['message' => "SUCCESS"], 200);
         } catch (\Throwable $th) {
             DB::rollback();
         }
@@ -85,14 +86,17 @@ class CategoryController extends Controller
     }
     public function deleteImage(Request $request)
     {
-        $filePath = public_path().$request->image;
+        $filePath = $request->image;
         $this->deleteFileFromServer($filePath);
         return "done";
     }
-    public function deleteFileFromServer($filePath)
+    public function deleteFileFromServer($filePath , $hasFullPath = false)
     {
+        if(!$hasFullPath){
+            $filePath = public_path().$filePath;
+        }
         if (file_exists($filePath)) {
-           @unlink($filePath);
+           return @unlink($filePath);
         }
         return;
     }

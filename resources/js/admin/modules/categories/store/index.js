@@ -94,7 +94,8 @@ export default {
                 let updatedFilterString = {
                     page: parseInt(res.data.current_page),
                     perPage :parseInt(res.data.per_page),
-                    total: parseInt(res.data.total)
+                    total: parseInt(res.data.total),
+                    q: ""
                 }
                 commit('FILTER_DATA', updatedFilterString)
                 commit('FETCH_CATEGORIES' , res.data.data);
@@ -191,7 +192,7 @@ export default {
                         title: 'Category Delete Failed!',
                         desc: error.response.data.message
                     });
-                    return;
+
                }
                 $Notice.error({
                     title: 'Something went wrong',

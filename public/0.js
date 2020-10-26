@@ -9,13 +9,6 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -52,10 +45,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "FilterData",
+  props: {
+    defaultFilter: Object,
+    getResult: [Function]
+  },
   data: function data() {
     return {
       perPageList: [{
@@ -104,13 +99,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         value: "desc"
       }]
     };
-  },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("categoriesStoreIndex", ['filterString'])),
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ['getCategories'])), {}, {
-    getFilterResult: function getFilterResult() {
-      this.getCategories();
-    }
-  })
+  }
 });
 
 /***/ }),
@@ -590,6 +579,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component_editModalComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../component/editModalComponent */ "./resources/js/admin/modules/categories/component/editModalComponent.vue");
 /* harmony import */ var _component_viewCategoriesComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../component/viewCategoriesComponent */ "./resources/js/admin/modules/categories/component/viewCategoriesComponent.vue");
 /* harmony import */ var _component_FilterData__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../component/FilterData */ "./resources/js/admin/modules/categories/component/FilterData.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
 //
 //
 //
@@ -624,7 +621,9 @@ __webpack_require__.r(__webpack_exports__);
     editModalComponent: _component_editModalComponent__WEBPACK_IMPORTED_MODULE_2__["default"],
     viewCategoriesComponent: _component_viewCategoriesComponent__WEBPACK_IMPORTED_MODULE_3__["default"],
     FilterData: _component_FilterData__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("categoriesStoreIndex", ['filterString'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ['getCategories']))
 });
 
 /***/ }),
@@ -695,6 +694,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "Card",
+    { attrs: { translate: "bn", type: "primary" } },
     [
       _c(
         "Row",
@@ -707,7 +707,7 @@ var render = function() {
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    return _vm.getFilterResult($event)
+                    return _vm.getResult($event)
                   }
                 }
               },
@@ -718,8 +718,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.filterString.q,
-                        expression: "filterString.q"
+                        value: _vm.defaultFilter.q,
+                        expression: "defaultFilter.q"
                       }
                     ],
                     staticClass: "form-control form-control-navbar",
@@ -728,13 +728,13 @@ var render = function() {
                       placeholder: "Search",
                       "aria-label": "Search"
                     },
-                    domProps: { value: _vm.filterString.q },
+                    domProps: { value: _vm.defaultFilter.q },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.filterString, "q", $event.target.value)
+                        _vm.$set(_vm.defaultFilter, "q", $event.target.value)
                       }
                     }
                   }),
@@ -763,11 +763,11 @@ var render = function() {
                 {
                   staticStyle: { width: "200px" },
                   model: {
-                    value: _vm.filterString.orderBy,
+                    value: _vm.defaultFilter.orderBy,
                     callback: function($$v) {
-                      _vm.$set(_vm.filterString, "orderBy", $$v)
+                      _vm.$set(_vm.defaultFilter, "orderBy", $$v)
                     },
-                    expression: "filterString.orderBy"
+                    expression: "defaultFilter.orderBy"
                   }
                 },
                 _vm._l(_vm.orderList, function(item) {
@@ -791,11 +791,11 @@ var render = function() {
                 "Select",
                 {
                   model: {
-                    value: _vm.filterString.sortBy,
+                    value: _vm.defaultFilter.sortBy,
                     callback: function($$v) {
-                      _vm.$set(_vm.filterString, "sortBy", $$v)
+                      _vm.$set(_vm.defaultFilter, "sortBy", $$v)
                     },
-                    expression: "filterString.sortBy"
+                    expression: "defaultFilter.sortBy"
                   }
                 },
                 _vm._l(_vm.SortList, function(sort, i) {
@@ -819,11 +819,11 @@ var render = function() {
                 "Select",
                 {
                   model: {
-                    value: _vm.filterString.perPage,
+                    value: _vm.defaultFilter.perPage,
                     callback: function($$v) {
-                      _vm.$set(_vm.filterString, "perPage", $$v)
+                      _vm.$set(_vm.defaultFilter, "perPage", $$v)
                     },
-                    expression: "filterString.perPage"
+                    expression: "defaultFilter.perPage"
                   }
                 },
                 _vm._l(_vm.perPageList, function(per, i) {
@@ -845,7 +845,7 @@ var render = function() {
                 "Button",
                 {
                   attrs: { type: "default", icon: "ios-settings" },
-                  on: { click: _vm.getFilterResult }
+                  on: { click: _vm.getResult }
                 },
                 [_vm._v(" Filter ")]
               )
@@ -1399,7 +1399,12 @@ var render = function() {
       "div",
       { staticClass: "container-fluid" },
       [
-        _c("filter-data"),
+        _c("filter-data", {
+          attrs: {
+            defaultFilter: _vm.filterString,
+            getResult: _vm.getCategories
+          }
+        }),
         _vm._v(" "),
         _c(
           "div",
