@@ -1,20 +1,10 @@
 <template>
     <div class="content bg-transparent">
         <div class="container-fluid">
-
+            <filter-data ></filter-data>
             <!--~~~~~~~ TABLE ONE ~~~~~~~~~-->
             <div class="card p-2">
-                <!-- SEARCH FORM -->
-                <form class="form-inline ml-3 mb-4">
-                    <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                    </div>
-                </form>
+
             <p class="card-title ml-3">Categories
             <!--  adding modal -->
             <add-modal-component v-if="isPermitted('create','category')"></add-modal-component> </p>
@@ -36,9 +26,10 @@ import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 import addModalComponent from "../component/addModalComponent"
 import editModalComponent from "../component/editModalComponent"
 import viewCategoriesComponent from '../component/viewCategoriesComponent';
+import FilterData from '../component/FilterData';
 
 export default {
-    components:{ addModalComponent , editModalComponent , viewCategoriesComponent }
+    components:{ addModalComponent , editModalComponent , viewCategoriesComponent , FilterData }
 }
 </script>
 

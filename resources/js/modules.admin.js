@@ -6,16 +6,16 @@ requireModule.keys().forEach(fileName => {
     let str = fileName.split('/')
     str = str[1]
 
-        
+
     if (fileName === `./${str}/store/index.js`){
-        
-        // filter fullstops and extension 
+
+        // filter fullstops and extension
     // and return a camel-case name for the file
         const moduleName = camelCase(
             fileName.replace(/(\.\/|\.js)/g, '')
         )
-        console.log(moduleName );
-        
+        // console.log(moduleName );
+
     // create a dynamic object with all modules
         modules[moduleName] = {
         // add namespace here

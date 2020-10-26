@@ -28,14 +28,14 @@
             next-text="NeXT"/>
     </template>
     <script>
-    import { mapActions, mapGetters } from 'vuex'
-    export default {
-        computed: {
-        ...mapGetters("categoriesStoreIndex",['filterString']),
-    },
-    methods:{
-        ...mapActions("categoriesStoreIndex" , ['changePaginatedPage','changePaginatedPerPage'])
-    }
+        import { mapActions, mapGetters } from 'vuex'
+        export default {
+            computed: {
+            ...mapGetters("categoriesStoreIndex",['filterString']),
+        },
+        methods:{
+            ...mapActions("categoriesStoreIndex" , ['changePaginatedPage','changePaginatedPerPage'])
+        }
     }
     </script>
 
@@ -225,7 +225,7 @@ class CategoryController extends Controller
 ```
 > Use it in your project like this >>
 
- 
+
 ``` js
 <Pagination :meta="filterString"
     :changePaginatedPage="changePaginatedPage" 
@@ -247,3 +247,11 @@ export default {
 }
 [...]
 ```
+
+> Now Preparing project for Localization & Translating
+
+Run this npm command
+
+    npm install vue-i18n vuex-persistedstate
+
+

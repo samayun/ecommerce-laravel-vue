@@ -11,8 +11,9 @@ import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import locale from 'view-design/dist/locale/en-US';
 import { Notice } from "view-design";
+Vue.config.productionTips = false
 
-window.$Notice = Notice // Toast Notification . alternative sweetalert2 . I`ll use IViewUI  
+window.$Notice = Notice // Toast Notification . alternative sweetalert2 . I`ll use IViewUI
 window.$Bus = new Vue() // EventBus Service for communicating component via component
 Vue.use(ViewUI, { locale });
 
@@ -31,7 +32,7 @@ Vue.component('Loading', require('./admin/components/Loading.vue').default);
 
 import common from "./common";
 Vue.mixin(common);
-// ROUTER 
+// ROUTER
 import router from './router.admin'
 
 router.beforeEach((to, from, next) => {
@@ -42,7 +43,7 @@ router.beforeEach((to, from, next) => {
     let isAuthenticated = window.adminUser;
     if (to.name != 'AdminLogin' && !isAuthenticated) next({name : 'AdminLogin'})
     else if(to.name == 'AdminLogin' && isAuthenticated) next({name:'AdminHome'})
-    else next(); 
+    else next();
 });
 
 router.afterEach(route => {
@@ -57,12 +58,12 @@ Vue.filter('timeFormat' , arg => {
     return moment(arg).format('MMMM dddd YYYY ,h:mm:ss a')
     // return moment(arg).endOf('day').fromNow()
 })
-// IMPORT THE STORE 
+// IMPORT THE STORE
 import store from './store.admin';
 
 
 const app = new Vue({
-    el: '#admin', 
+    el: '#admin',
     router,
     store,
 });
