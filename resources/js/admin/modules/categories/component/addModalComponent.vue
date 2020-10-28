@@ -2,15 +2,15 @@
 <span class="float-right mr-3">
 <Button
     type="success"
-    @click="TOGGLE_MODAL" 
+    @click="TOGGLE_MODAL"
     :disabled="isAdding"
     :loading="isAdding"><Icon type="ios-add" /> Add Category</Button>
 
     <Modal v-model="showModal" role="form" title="Add category" :mask-closable="false" :closable="false" @keyup.enter="addCategory">
         <Loading :show="isAdding"/>
-        
+
         <Input v-model="addData.name" placeholder="Add category name"
-        :class="{ 'is-invalid': addData.errors.has('name') }"
+        :class="{ 'has-error': addData.errors.has('name') }"
         autofocus
         />
         <has-error :form="addData" field="name"></has-error>
@@ -26,9 +26,9 @@
             :format="['jpg','jpeg','png']"
             :max-size="2048"
             :on-format-error="handleFormatError"
-            :on-exceeded-size="handleMaxSize" 
+            :on-exceeded-size="handleMaxSize"
             action="/api/admin/upload_category_image"
-        > 
+        >
             <div style="padding: 20px 0">
                 <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
                 <p  :class="{ 'text-danger': addData.errors.has('icon') }">Click or drag files here to upload</p>
@@ -66,7 +66,12 @@ import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 
 export default {
     name: "addModalComponent",
-    computed:{ 
+    // data(){
+    //     return {
+    //         ...mapState("categoriesStoreIndex", ['addData'])
+    //     }
+    // },
+    computed:{
         ...mapState("categoriesStoreIndex", [
           'showModal' ,'isLoading', 'isAdding' ,'addData'
        ]),
@@ -89,11 +94,8 @@ export default {
          }
 
     },
-    async created(){
+     created(){
         this.token = window.Laravel.csrfToken;
-        
-    },
-    mounted(){
         let _this = this
         $Bus.$on('clearAddedFiles' , () => {
             _this.$refs.upload.clearFiles();
@@ -106,7 +108,7 @@ export default {
 
 <style>
     .demo-upload-list{
-       
+
         text-align: center;
         line-height: 60px;
         border: 1px solid transparent;

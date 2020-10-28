@@ -1,12 +1,12 @@
 /**
- * TEST MODULE ROUTES. THIS IS A CUSTOM ROUTES. 
- * A TEST SET UP... 
+ * TEST MODULE ROUTES. THIS IS A CUSTOM ROUTES.
+ * A TEST SET UP...
  * ALL TEAM MEMBERS SHOULD JUST COPY AND PASTE TO EXTENDS THE APP
  */
 
 const routes = [
     {
-        path: '/admin/categories',
+        path: 'categories',
         name: 'Categories',
         component: () => import('../pages/categories.vue'),
         title: 'This is a test page',
@@ -14,7 +14,7 @@ const routes = [
             guest : false,
             allowedUserType: ['Admin']
         }
-        
+
     }
 ]
 

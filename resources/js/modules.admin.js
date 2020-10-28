@@ -14,7 +14,7 @@ requireModule.keys().forEach(fileName => {
         const moduleName = camelCase(
             fileName.replace(/(\.\/|\.js)/g, '')
         )
-        // console.log(moduleName );
+        console.log(moduleName );
 
     // create a dynamic object with all modules
         modules[moduleName] = {

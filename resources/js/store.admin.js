@@ -4,19 +4,20 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 // import axios from "axios";
-Vue.use(Vuex);
-// load modules 
-import modules from './modules.admin'
-;
 
+// import i18n, { selectedLocale } from './i18n'
+
+Vue.use(Vuex);
+// load modules
+import modules from './modules.admin';
 
 export default new Vuex.Store({
     modules,
     state: {
-        app_name: 'Hanli ECommerce',
         authUser: null,
-        error : false
-    }, 
+        error : false,
+        // locale: selectedLocale
+    },
     getters: {
         getAuthUserData (state) {
           return state.authUser
@@ -28,27 +29,31 @@ export default new Vuex.Store({
     actions: {
          doLogOut({ commit }){
                 axios.post('/api/logout/admin')
-                .then(res=> { 
+                .then(res=> {
                     if (res.status == 200) {
                         location.reload();
                         commit('UPDATE_AUTH_USER' , false);
                         $Notice.info({title: res.data.message });
-                        
+
                     }
             }).catch (error => {
                 console.log('logout error ',error.response.data);
-                
+
                 $Notice.info({
                     title : error.response.data ? error.response.data.message : "Something went wrong"
                 })
                 commit('ERROR_OCCURED' , error.response.data)
             })
             //
-            
+
         },
         updateUser( { commit }, userData){
             commit('UPDATE_AUTH_USER' , userData)
-        }
+        },
+        // changeLocale({ commit }, newLocale) {
+        //     i18n.locale = newLocale // important!
+        //     commit('UPDATE_LOCALE', newLocale)
+        //   }
     },
     mutations: {
         UPDATE_AUTH_USER (state , userData ) {
@@ -57,7 +62,10 @@ export default new Vuex.Store({
         },
         ERROR_OCCURED(state , error){
             state.error = error
-        }
+        },
+        // UPDATE_LOCALE(state, newLocale) {
+        //     state.locale = newLocale
+        // }
     }
-    
+
 });

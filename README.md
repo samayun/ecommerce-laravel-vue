@@ -8,7 +8,7 @@
     npm run watch 
 ```
 
-> ## <h2 style="color:green;background:#eee;padding-left:13px;"> How to Sorting , Paginating and Filtering </h2>
+> ### <h2 style="color:green;background:#eee;padding-left:13px;"> How to Sorting , Paginating and Filtering </h2>
 </br> 
 
 ### Step-1: Pagination.vue
@@ -406,11 +406,142 @@ export default {
 > OUTPUT
 [![ GET FILTER RESULT](docs/images/filter_result.png)](docs/images/filter_result.png)
 
-> <p style="color:yellow;font-size:20px;">Now Preparing project for Localization & Translating</p>
+> ## <p style="color:green;font-size:20px;">Now Preparing project for Localization & Translating</p>
+
 
 Run this npm command
 
     npm install vue-i18n vuex-persistedstate
 
-# Here is final output of categories.vue
-[![Categories OUTPUT](docs/images/categories.vue.png)](docs/images/categories.vue.png)
+### Create i18n.js ( It acts like plugin)
+
+``` javascript
+import Vue from'vue'
+import VueI18n from 'vue-i18n'
+
+Vue.use(VueI18n);
+function checkDefaultLanguage() {
+    let matched = null
+    let languages = Object.getOwnPropertyNames(loadLocaleMessages())
+    languages.forEach(lang => {
+      if (lang === navigator.language) {
+        matched = lang
+      }
+    })
+    if (!matched) {
+      languages.forEach(lang => {
+        let languagePartials = navigator.language.split('-')[0]
+        if (lang === languagePartials) {
+          matched = lang
+        }
+      })
+    }
+    return matched
+  }
+function loadLocaleMessages() {
+    const locales = require.context(
+      "./locales",
+      true,
+      /[A-Za-z0-9-_,\s]+\.json$/i
+    );
+    const messages = {};
+    locales.keys().forEach(key => {
+      const matched = key.match(/([A-Za-z0-9-_]+)\./i);
+      if (matched && matched.length > 1) {
+        const locale = matched[1];
+        messages[locale] = locales(key);
+      }
+    });
+    return messages;
+  }
+  export const selectedLocale = checkDefaultLanguage() || process.env.VUE_APP_I18N_LOCALE || 'en'
+  export const languages = Object.getOwnPropertyNames(loadLocaleMessages())
+
+  export default new VueI18n({
+    locale: selectedLocale,
+    fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
+    messages: loadLocaleMessages()
+  })
+
+```
+
+Create `vue.config.js` 
+``` js
+    module.exports = {
+        pluginOptions: {
+        i18n: {
+            locale: "en",s
+            fallbackLocale: "en",
+            localeDir: "locales",
+            enableInSFC: false
+        }
+        }
+    };
+```
+ Folder Structure must like this (@ above code )
+
+[![](docs/images/localization_folder_structure.png)](docs/images/localization_folder_structure.png)
+
+## STORE
+
+``` js
+    //  store.admin.js
+    import Vue from 'vue';
+    import Vuex from 'vuex';
+    // import axios from "axios";
+    import createPersistedState from 'vuex-persistedstate'
+    import i18n, { selectedLocale } from './i18n'
+    Vue.use(Vuex);
+
+    export default new Vuex.Store({
+        state: {
+            locale: selectedLocale
+        },
+        actions: {
+            changeLocale({ commit }, newLocale) {
+                i18n.locale = newLocale // important!
+                commit('UPDATE_LOCALE', newLocale)
+            }
+        },
+        mutations: {
+            UPDATE_LOCALE(state, newLocale) {
+                state.locale = newLocale
+            }
+        },
+        plugins: [createPersistedState()]
+});
+
+
+```
+
+``` js
+    //admin.js
+
+    import router from './router.admin'
+    import i18n, { selectedLocale } from './i18n'
+    // IMPORT THE STORE
+    import store from './store.admin';
+
+    router.beforeEach((to, from, next) => {
+        if (store.state.locale !== selectedLocale) {
+            store.dispatch('changeLocale' , store.state.locale)
+        }
+    }
+```
+
+># Here is final output of categories
+
+[![Categories OUTPUT](docs/images/categories.vue.png)](docs/images/categories.vue.png) 
+
+> # PHP Artisan Clear Commands  
+    php artisan config:clear && php artisan route:clear && php artisan view:clear
+
+
+ So, what's NeXT ? 
+* Cloud  Storage (AWS S3) 
+* Caching , Queue with redis 
+* Emailing , Event Listener , Observer ?? Notifications 
+
+<p> :smile: much much fun are coming.. so stay with me. </p>
+
+<h4>Happy Coding :smile: </h4>

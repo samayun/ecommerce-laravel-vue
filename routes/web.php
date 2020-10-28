@@ -1,7 +1,14 @@
 <?php
 
+use App\Events\AdminLoginAlert;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Jobs\SendEmailJobs;
+use App\Mail\AdminAlertMail;
+use App\Notifications\AdminLoginResponser;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

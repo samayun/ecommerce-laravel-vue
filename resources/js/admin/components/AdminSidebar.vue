@@ -25,12 +25,14 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
-
+            <li>
+                <LanguegeSwitcher ></LanguegeSwitcher>
+            </li>
             <li class="nav-item" v-if="isPermitted('view','category')">
               <router-link to="/admin/categories" class="nav-link"  exact-active-class="active">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
-                  Category
+                  {{ $t('sidebar.category')}}
                   <span class="right badge badge-danger">+</span>
                 </p>
               </router-link>
@@ -39,7 +41,7 @@
               <router-link to="/admin/brands" class="nav-link"  exact-active-class="active">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
-                  Brand
+                  {{ $t('sidebar.brand')}}
                   <span class="right badge badge-danger">+</span>
                 </p>
               </router-link>
@@ -48,7 +50,7 @@
               <a class="nav-link" @click.prevent="doLogOut">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
-                  LogOut
+                  {{ $t('sidebar.logout')}}
                   <span class="right badge badge-danger">+</span>
                 </p>
               </a>
@@ -63,14 +65,14 @@
 
 <script>
 import { mapGetters , mapState , mapActions } from 'vuex'
-
+import  LanguegeSwitcher from './LanguegeSwitcher'
 export default {
     computed: {
-      // mix the getters into computed with object spread operator
       ...mapGetters({
         error : 'getErrorData'
       })
     },
+    components:{ LanguegeSwitcher},
     props: ['user'],
     methods: {
       ...mapActions(['doLogOut'])

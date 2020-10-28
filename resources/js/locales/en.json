@@ -1,0 +1,8 @@
+{
+    "hello" : "Hello Guys",
+    "sidebar": {
+        "category" : "Category",
+        "brand" : "Brand",
+        "logout" : "logout"
+    }
+}

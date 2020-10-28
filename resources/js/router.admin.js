@@ -2,25 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
-const defaultRoutes = [
-    {
-        path: '/admin/login',
-        name: 'AdminLogin',
-        title: 'Admin Login',
-        component: () => import('./admin/pages/AdminLogin.vue')
-    },
-    {
-        path: '/admin',
-        name: 'AdminHome',
-        title: 'Home',
-        component: () => import('./admin/pages/AdminHomePage.vue'),
-    },
-    {
-        path: '*',
-        name: "404",
-        component : () => import('./admin/pages/NotFound.vue')
-    }
-]
+
 /**
  * IMPORT ALL ROUTES DYNAMICALLY FROM THE MODULES FOLDERS....
 */
@@ -45,10 +27,38 @@ requireModule.keys().forEach(fileName => {
  * CONCAT ALL THE IMPORTED ROUTES WITH MAIN ROUTES...
  */
 
+const defaultRoutes = [
+    {
+        path: '/admin/login',
+        name: 'AdminLogin',
+        title: 'Admin Login',
+        component: () => import('./admin/pages/AdminLogin.vue')
+    },
+    {
+        path: '/admin',
+        name: 'AdminHome',
+        title: 'Home',
+        component: () => import('./admin/pages/AdminHomePage.vue'),
+        children : [
+            {
+                path: '',
+                name: 'AdminHomeDashboard',
+                component: () => import('./admin/pages/AdminHomeDashboard.vue'),
+                title: 'This is a test page'
 
-const routes = allRoutes.concat(defaultRoutes , importedRoutes)
+            },
+            ...importedRoutes
+        ]
+    },
+    {
+        path: '*',
+        name: "404",
+        component : () => import('./admin/pages/NotFound.vue')
+    }
+]
+// const routes = allRoutes.concat(defaultRoutes , importedRoutes)
 
 export default new VueRouter({
     mode: 'history',
-    routes
+    routes : defaultRoutes
 })

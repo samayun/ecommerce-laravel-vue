@@ -22,11 +22,10 @@ import Gate from './Gate.admin';
 // Vue.prototype.$gate = new Gate(window.adminUser);
 window.$gate = new Gate(window.adminUser);
 // v-form
-import { Form , HasError , AlertError} from 'vform';
+import { Form , HasError } from 'vform';
 window.Form = Form;
-// Vue.prototype.Form = Form
 Vue.component(HasError.name, HasError);
-Vue.component(AlertError.name, AlertError);
+
 Vue.component('admin-app', require('./admin/components/AdminApp.vue').default);
 Vue.component('Loading', require('./admin/components/Loading.vue').default);
 
@@ -34,10 +33,17 @@ import common from "./common";
 Vue.mixin(common);
 // ROUTER
 import router from './router.admin'
+import i18n, { selectedLocale } from './i18n'
+// IMPORT THE STORE
+import store from './store.admin';
+import {mapState , mapActions} from 'vuex'
 
 router.beforeEach((to, from, next) => {
-    // let authUserDT = localStorage.getItem('adminAuthUser' ) ? JSON.parse(localStorage.getItem('adminAuthUser' )) : false;
-    // let isAuthenticated = authUserDT && authUserDT.id && authUserDT.email ? true : false;
+    let locale = store.state.settingsStoreIndex.locale
+    if (locale !== selectedLocale) {
+        store.dispatch('settingsStoreIndex/changeLocale', locale)
+    }
+    console.log("locale" , locale);
 
     ViewUI.LoadingBar.start();
     let isAuthenticated = window.adminUser;
@@ -50,20 +56,19 @@ router.afterEach(route => {
     ViewUI.LoadingBar.finish();
 });
 
-// $Bus.on('redirectToAdminLogin' , function(){
-//     router.push({name: 'AdminLogin'})
-// })
+
 import moment from "moment";
 Vue.filter('timeFormat' , arg => {
     return moment(arg).format('MMMM dddd YYYY ,h:mm:ss a')
     // return moment(arg).endOf('day').fromNow()
 })
-// IMPORT THE STORE
-import store from './store.admin';
+
+
 
 
 const app = new Vue({
     el: '#admin',
+    i18n,
     router,
     store,
 });
