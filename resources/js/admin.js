@@ -36,14 +36,13 @@ import router from './router.admin'
 import i18n, { selectedLocale } from './i18n'
 // IMPORT THE STORE
 import store from './store.admin';
-import {mapState , mapActions} from 'vuex'
+
 
 router.beforeEach((to, from, next) => {
     let locale = store.state.settingsStoreIndex.locale
     if (locale !== selectedLocale) {
         store.dispatch('settingsStoreIndex/changeLocale', locale)
     }
-    console.log("locale" , locale);
 
     ViewUI.LoadingBar.start();
     let isAuthenticated = window.adminUser;

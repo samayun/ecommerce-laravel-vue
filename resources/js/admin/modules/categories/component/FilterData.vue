@@ -29,7 +29,7 @@
             </Select>
         </Col>
         <Col span="3">
-            <Button type="default" @click="getResult" icon="ios-settings"> Filter </Button>
+            <Button type="default" @click="getResult" icon="ios-settings"> {{ $t('filter.name') }} </Button>
         </Col>
     </Row>
 </Card>

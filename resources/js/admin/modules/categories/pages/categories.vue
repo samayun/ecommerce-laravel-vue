@@ -7,7 +7,7 @@
             <!--~~~~~~~ TABLE ONE ~~~~~~~~~-->
             <div class="card p-2">
 
-            <p class="card-title ml-3">Categories
+            <p class="card-title ml-3"> {{ $t('categories.name') }}
             <!--  adding modal -->
             <add-modal-component v-if="isPermitted('create','category')"></add-modal-component> </p>
 

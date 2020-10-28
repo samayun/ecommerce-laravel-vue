@@ -1,8 +1,33 @@
 {
-    "hello" : "VAla ni bah :) ",
+    "loading" : "লোডিং হচ্ছে",
+    "edit" : "সম্পাদনা করুন",
+    "delete" : "মুছে ফেলুন",
+    "name": "নাম",
+    "image" : "ছবি",
     "sidebar": {
-        "category" : "Ketagori",
-        "brand" : "Brand er mal :) ",
-        "logout" : "BahirHou"
+        "category" : "ক্যাটাগরি",
+        "brand" : "ব্র্যান্ড",
+        "logout" : "লগ আউট"
+    },
+    "categories" : {
+        "name" : "ক্যাটাগরি সমূহ",
+        "add": "@:sidebar.category যোগ করুন",
+        "adding": "@:sidebar.category যোগ করা হচ্ছে",
+        "edit" : "@:sidebar.category এডিট ",
+        "editing" : "@:sidebar.category সম্পাদনা করা হচ্ছে",
+        "delete" : "@:sidebar.category ডিলেট করুন"
+
+    },
+    "brands" : {
+        "name" : "ব্র্যান্ড সমূহ",
+        "add": "@:sidebar.brand যোগ করুন",
+        "adding": "@:sidebar.brand যোগ করা হচ্ছে",
+        "edit" : "@:sidebar.brand @:edit",
+        "editing" : "@:sidebar.brand সম্পাদনা করা হচ্ছে",
+        "delete" : "@:sidebar.brand @:delete"
+
+    },
+    "filter":{
+        "name" : "ফিল্টার করুন"
     }
 }

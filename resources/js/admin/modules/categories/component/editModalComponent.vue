@@ -1,8 +1,8 @@
 <template>
 <span>
-    <Modal v-model="showEditModal" role="form" title="Edit category" :mask-closable="false" :closable="false" :loading="isEditing">
+    <Modal v-model="showEditModal" role="form" :title="$t('categories.edit')" :mask-closable="false" :closable="false" :loading="isEditing">
             <Loading :show="isEditing"/>
-            
+
             <Input v-model="editData.name" placeholder="Edit category name"
             :class="{ 'is-invalid': editData.errors.has('name') }"
             />
@@ -19,9 +19,9 @@
                     :format="['jpg','jpeg','png']"
                     :max-size="2048"
                     :on-format-error="handleFormatError"
-                    :on-exceeded-size="handleMaxSize" 
+                    :on-exceeded-size="handleMaxSize"
                     action="/api/admin/upload_category_image"
-                > 
+                >
                     <div style="padding: 20px 0">
                         <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
                         <p  :class="{ 'text-danger': editData.errors.has('icon') }">Click or drag files here to upload</p>
@@ -45,7 +45,7 @@
                     @click="editCategory"
                     :disabled="isEditing"
                     :loading="isEditing"
-                >{{isEditing ? 'Editing..' : 'Edit Category'}}</Button>
+                >{{isEditing ? $t('categories.editing') : $t('categories.edit') }}</Button>
             </div>
         </Modal>
 </span>
@@ -57,7 +57,7 @@ import {mapState, mapActions, mapMutations,mapGetters } from 'vuex'
 
 export default {
     name: 'editModalComponent',
-    computed:{ 
+    computed:{
         ...mapState("categoriesStoreIndex", ['showEditModal' , 'editData' , 'isEditing','errors' , 'isEditImageVisible'
        ]),
         imageVisible: {

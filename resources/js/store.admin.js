@@ -5,7 +5,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 // import axios from "axios";
 
-// import i18n, { selectedLocale } from './i18n'
 
 Vue.use(Vuex);
 // load modules
@@ -16,7 +15,6 @@ export default new Vuex.Store({
     state: {
         authUser: null,
         error : false,
-        // locale: selectedLocale
     },
     getters: {
         getAuthUserData (state) {
@@ -49,11 +47,7 @@ export default new Vuex.Store({
         },
         updateUser( { commit }, userData){
             commit('UPDATE_AUTH_USER' , userData)
-        },
-        // changeLocale({ commit }, newLocale) {
-        //     i18n.locale = newLocale // important!
-        //     commit('UPDATE_LOCALE', newLocale)
-        //   }
+        }
     },
     mutations: {
         UPDATE_AUTH_USER (state , userData ) {
@@ -62,10 +56,7 @@ export default new Vuex.Store({
         },
         ERROR_OCCURED(state , error){
             state.error = error
-        },
-        // UPDATE_LOCALE(state, newLocale) {
-        //     state.locale = newLocale
-        // }
+        }
     }
 
 });

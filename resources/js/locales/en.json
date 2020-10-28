@@ -1,8 +1,30 @@
 {
-    "hello" : "Hello Guys",
+    "loading" : "Loading",
+    "edit" : "Edit",
+    "delete" : "Delete",
+    "name": "Name",
+    "image" : "Image",
     "sidebar": {
         "category" : "Category",
         "brand" : "Brand",
         "logout" : "logout"
+    },
+    "categories" : {
+        "name" : "Categories",
+        "add": "Add @:sidebar.category",
+        "edit" : "Edit @:sidebar.category",
+        "delete" : "Delete @:sidebar.category"
+    },
+    "brands" : {
+        "name" : "Brands",
+        "add": "Add @:sidebar.brand",
+        "adding": " Adding...",
+        "edit" : "Edit @:sidebar.brand",
+        "editing" : "Editing @:sidebar.brand",
+        "delete" : "Delete @:sidebar.brand"
+
+    },
+    "filter":{
+        "name" : "Filter"
     }
 }

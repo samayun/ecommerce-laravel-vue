@@ -4,9 +4,9 @@
     type="success"
     @click="TOGGLE_MODAL"
     :disabled="isAdding"
-    :loading="isAdding"><Icon type="ios-add" /> Add Category</Button>
+    :loading="isAdding"><Icon type="ios-add" /> {{$t('categories.add')}}</Button>
 
-    <Modal v-model="showModal" role="form" title="Add category" :mask-closable="false" :closable="false" @keyup.enter="addCategory">
+    <Modal v-model="showModal" role="form" :title="$t('categories.add')" :mask-closable="false" :closable="false" @keyup.enter="addCategory">
         <Loading :show="isAdding"/>
 
         <Input v-model="addData.name" placeholder="Add category name"
@@ -31,7 +31,7 @@
         >
             <div style="padding: 20px 0">
                 <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
-                <p  :class="{ 'text-danger': addData.errors.has('icon') }">Click or drag files here to upload</p>
+                <p  :class="{ 'text-danger': addData.errors.has('icon') }"> {{ $t('click_here_upload') }} </p>
 
             </div>
         </Upload>
@@ -48,13 +48,13 @@
                 <img :src="addData.icon" :alt="addData.name" style="width:100%;"/>
             </Modal>
         <div slot="footer">
-            <Button type="default" @click="TOGGLE_MODAL">Close</Button>
+            <Button type="default" @click="TOGGLE_MODAL"> {{$t('close') }} </Button>
             <Button
                 type="primary"
                 @click="addCategory"
                 :disabled="isAdding"
                 :loading="isAdding"
-            >{{isAdding ? 'Adding..' : 'Add Category'}}</Button>
+            >{{isAdding ? $t('categories.adding')+'..' : $t('categories.add')}}</Button>
         </div>
     </Modal>
     </span>
@@ -145,3 +145,16 @@ export default {
         line-height: 58px;
     } */
 </style>
+
+<i18n>
+{
+    "en" : {
+        "click_here_upload" : "Click or drag files here to upload",
+        "close": "Close"
+    },
+    "bn" : {
+        "click_here_upload" : "আপলোড করতে এখানে ক্লিক করুন",
+        "close" : "বন্ধ করুন"
+    }
+}
+</i18n>

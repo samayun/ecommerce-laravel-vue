@@ -454,7 +454,7 @@ function loadLocaleMessages() {
     });
     return messages;
   }
-  export const selectedLocale = checkDefaultLanguage() || process.env.VUE_APP_I18N_LOCALE || 'en'
+  export const selectedLocale = localStorage.getItem('locale')  || checkDefaultLanguage() || process.env.VUE_APP_I18N_LOCALE || 'en'
   export const languages = Object.getOwnPropertyNames(loadLocaleMessages())
 
   export default new VueI18n({
@@ -485,12 +485,12 @@ Create `vue.config.js`
 ## STORE
 
 ``` js
-    //  store.admin.js
+    //  /modules/setings/store/index.ja
     import Vue from 'vue';
     import Vuex from 'vuex';
     // import axios from "axios";
     import createPersistedState from 'vuex-persistedstate'
-    import i18n, { selectedLocale } from './i18n'
+    import i18n, { selectedLocale } from '../../../i18n'
     Vue.use(Vuex);
 
     export default new Vuex.Store({
@@ -506,6 +506,8 @@ Create `vue.config.js`
         mutations: {
             UPDATE_LOCALE(state, newLocale) {
                 state.locale = newLocale
+                // added after bug fix ( addData.errors.has not a function)
+                localStorage.setItem('locale',newLocale)
             }
         },
         plugins: [createPersistedState()]
@@ -523,11 +525,126 @@ Create `vue.config.js`
     import store from './store.admin';
 
     router.beforeEach((to, from, next) => {
-        if (store.state.locale !== selectedLocale) {
-            store.dispatch('changeLocale' , store.state.locale)
+        // if (store.state.locale !== selectedLocale) {
+        //     store.dispatch('changeLocale' , store.state.locale)
+        // }
+        // changed
+        let locale = store.state.settingsStoreIndex.locale
+        if (locale !== selectedLocale) {
+            store.dispatch('settingsStoreIndex/changeLocale', locale)
         }
     }
 ```
+
+# Resuable LanguegeSwitcher.vue Component
+``` js
+        <template>
+            <Select v-model="current_languege">
+                <Option
+                    v-for="(lang,i) in langArray"
+                    :key="`lang${i}`"
+                    :value="lang"
+                > {{lang}} </Option>
+            </Select>
+        </template>
+
+        <script>
+        import { languages } from '../../i18n'
+        export default {
+        data() {
+            return {
+            langArray: languages
+            }
+        },
+        computed: {
+            current_languege: {
+            get: function() {
+                return this.$store.state.settingsStoreIndex.locale
+            },
+            set: function(newVal) {
+                this.$store.dispatch('settingsStoreIndex/changeLocale', newVal)
+            }
+            }
+        }
+        }
+        </script>
+
+```
+### very basic example
+
+// locale/en.json
+``` json
+{
+    "loading" : "Loading",
+    "edit" : "Edit",
+    "delete" : "Delete",
+    "name": "Name",
+    "image" : "Image",
+    "sidebar": {
+        "category" : "Category",
+        "brand" : "Brand",
+        "logout" : "logout"
+    },
+    "categories" : {
+        "name" : "Categories",
+        "add": "Add @:sidebar.category",
+        "edit" : "Edit @:sidebar.category",
+        "delete" : "Delete @:sidebar.category"
+    },
+    "brands" : {
+        "name" : "Brands",
+        "add": "Add @:sidebar.brand",
+        "adding": " Adding...",
+        "edit" : "Edit @:sidebar.brand",
+        "editing" : "Editing @:sidebar.brand",
+        "delete" : "Delete @:sidebar.brand"
+
+    },
+    "filter":{
+        "name" : "Filter"
+    }
+}
+
+```
+// locale/bn.json
+``` json
+{
+    "loading" : "লোডিং হচ্ছে",
+    "edit" : "সম্পাদনা করুন",
+    "delete" : "মুছে ফেলুন",
+    "name": "নাম",
+    "image" : "ছবি",
+    "sidebar": {
+        "category" : "ক্যাটাগরি",
+        "brand" : "ব্র্যান্ড",
+        "logout" : "লগ আউট"
+    },
+    "categories" : {
+        "name" : "ক্যাটাগরি সমূহ",
+        "add": "@:sidebar.category যোগ করুন",
+        "adding": "@:sidebar.category যোগ করা হচ্ছে",
+        "edit" : "@:sidebar.category এডিট ",
+        "delete" : "@:sidebar.category ডিলেট করুন"
+
+    },
+    "brands" : {
+        "name" : "ব্র্যান্ড সমূহ",
+        "add": "@:sidebar.brand যোগ করুন",
+        "adding": "@:sidebar.brand যোগ করা হচ্ছে",
+        "edit" : "@:sidebar.brand @:edit",
+        "editing" : "@:sidebar.brand সম্পাদনা করা হচ্ছে",
+        "delete" : "@:sidebar.brand @:delete"
+
+    },
+    "filter":{
+        "name" : "ফিল্টার করুন"
+    }
+}
+
+```
+### OUTPUT of Languege Switcher
+![localization example](docs/images/localization.png)
+
 
 ># Here is final output of categories
 

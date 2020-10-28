@@ -828,7 +828,7 @@ var render = function() {
                   attrs: { type: "default", icon: "ios-settings" },
                   on: { click: _vm.getResult }
                 },
-                [_vm._v(" Filter ")]
+                [_vm._v(" " + _vm._s(_vm.$t("filter.name")) + " ")]
               )
             ],
             1
@@ -915,7 +915,10 @@ var render = function() {
           },
           on: { click: _vm.TOGGLE_MODAL }
         },
-        [_c("Icon", { attrs: { type: "ios-add" } }), _vm._v(" Add Category")],
+        [
+          _c("Icon", { attrs: { type: "ios-add" } }),
+          _vm._v(" " + _vm._s(_vm.$t("categories.add")))
+        ],
         1
       ),
       _vm._v(" "),
@@ -924,7 +927,7 @@ var render = function() {
         {
           attrs: {
             role: "form",
-            title: "Add category",
+            title: _vm.$t("categories.add"),
             "mask-closable": false,
             closable: false
           },
@@ -1000,7 +1003,7 @@ var render = function() {
                     {
                       class: { "text-danger": _vm.addData.errors.has("icon") }
                     },
-                    [_vm._v("Click or drag files here to upload")]
+                    [_vm._v(" " + _vm._s(_vm.$t("click_here_upload")) + " ")]
                   )
                 ],
                 1
@@ -1063,7 +1066,7 @@ var render = function() {
               _c(
                 "Button",
                 { attrs: { type: "default" }, on: { click: _vm.TOGGLE_MODAL } },
-                [_vm._v("Close")]
+                [_vm._v(" " + _vm._s(_vm.$t("close")) + " ")]
               ),
               _vm._v(" "),
               _c(
@@ -1076,7 +1079,15 @@ var render = function() {
                   },
                   on: { click: _vm.addCategory }
                 },
-                [_vm._v(_vm._s(_vm.isAdding ? "Adding.." : "Add Category"))]
+                [
+                  _vm._v(
+                    _vm._s(
+                      _vm.isAdding
+                        ? _vm.$t("categories.adding") + ".."
+                        : _vm.$t("categories.add")
+                    )
+                  )
+                ]
               )
             ],
             1
@@ -1118,7 +1129,7 @@ var render = function() {
         {
           attrs: {
             role: "form",
-            title: "Edit category",
+            title: _vm.$t("categories.edit"),
             "mask-closable": false,
             closable: false,
             loading: _vm.isEditing
@@ -1267,7 +1278,15 @@ var render = function() {
                   },
                   on: { click: _vm.editCategory }
                 },
-                [_vm._v(_vm._s(_vm.isEditing ? "Editing.." : "Edit Category"))]
+                [
+                  _vm._v(
+                    _vm._s(
+                      _vm.isEditing
+                        ? _vm.$t("categories.editing")
+                        : _vm.$t("categories.edit")
+                    )
+                  )
+                ]
               )
             ],
             1
@@ -1311,7 +1330,7 @@ var render = function() {
               _c(
                 "Button",
                 { attrs: { type: "error" }, on: { click: _vm.multiDelete } },
-                [_vm._v(" Multiple Delete ")]
+                [_vm._v(" Multiple " + _vm._s(_vm.$t("delete")) + " ")]
               ),
               _vm._v(
                 " " + _vm._s(_vm.multiSelected.length) + " selected\n     "
@@ -1395,7 +1414,7 @@ var render = function() {
               "p",
               { staticClass: "card-title ml-3" },
               [
-                _vm._v("Categories\n        "),
+                _vm._v(" " + _vm._s(_vm.$t("categories.name")) + "\n        "),
                 _vm._v(" "),
                 _vm.isPermitted("create", "category")
                   ? _c("add-modal-component")
@@ -1584,6 +1603,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _addModalComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addModalComponent.vue?vue&type=script&lang=js& */ "./resources/js/admin/modules/categories/component/addModalComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _addModalComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./addModalComponent.vue?vue&type=style&index=0&lang=css& */ "./resources/js/admin/modules/categories/component/addModalComponent.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _addModalComponent_vue_vue_type_custom_index_0_blockType_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./addModalComponent.vue?vue&type=custom&index=0&blockType=i18n */ "./resources/js/admin/modules/categories/component/addModalComponent.vue?vue&type=custom&index=0&blockType=i18n");
+/* harmony import */ var _addModalComponent_vue_vue_type_custom_index_0_blockType_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_addModalComponent_vue_vue_type_custom_index_0_blockType_i18n__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -1603,10 +1624,25 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   
 )
 
+/* custom blocks */
+
+if (typeof _addModalComponent_vue_vue_type_custom_index_0_blockType_i18n__WEBPACK_IMPORTED_MODULE_4___default.a === 'function') _addModalComponent_vue_vue_type_custom_index_0_blockType_i18n__WEBPACK_IMPORTED_MODULE_4___default()(component)
+
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/admin/modules/categories/component/addModalComponent.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/admin/modules/categories/component/addModalComponent.vue?vue&type=custom&index=0&blockType=i18n":
+/*!**********************************************************************************************************************!*\
+  !*** ./resources/js/admin/modules/categories/component/addModalComponent.vue?vue&type=custom&index=0&blockType=i18n ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
 
 /***/ }),
 

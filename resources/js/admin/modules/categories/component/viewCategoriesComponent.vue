@@ -1,7 +1,7 @@
 <template>
     <div>
          <span v-if="isPermitted('delete','category') && multiSelected.length > 0">
-             <Button type="error" @click="multiDelete"> Multiple Delete </Button> {{multiSelected.length }} selected
+             <Button type="error" @click="multiDelete"> Multiple {{ $t('delete') }} </Button> {{multiSelected.length }} selected
          </span>
          <!-- <Loading show="getAllCategory.length < 1"/> -->
         <Table border
