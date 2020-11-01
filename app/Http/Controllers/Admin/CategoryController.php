@@ -24,12 +24,8 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $perPage =  $request->has('perPage') ? $request->query('perPage') : 5;
-        $orderBy =  $request->has('orderBy') ? $request->query('orderBy') : 'created_at';
-        $sortBy  =  $request->has('sortBy') ? $request->query('sortBy') : 'desc';
-        $q       =  $request->has('q') ? $request->query('q') : '' ;
         // these code must be efactored - we wil need this again and again
-        return Category::search($q)->orderBy($orderBy , $sortBy)->paginate($perPage );
+        return Category::filter($request);
     }
 
     /**

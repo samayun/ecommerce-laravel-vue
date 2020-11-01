@@ -1,3 +1,4 @@
+import BrandPolicy from './admin/policies/BrandPolicy';
 // Gate.js
 
 import CategoryPolicy from './admin/policies/CategoryPolicy';
@@ -9,7 +10,8 @@ class Gate
         this.user = user;
 
         this.policies = {
-            category: CategoryPolicy
+            category: CategoryPolicy,
+            brand: BrandPolicy,
         };
     }
 

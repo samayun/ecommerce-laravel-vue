@@ -1,0 +1,128 @@
+<template>
+    <div class="col-md-12">
+
+         <!-- <Loading show="getAllCategory.length < 1"/> -->
+        <Table border
+            ref="selection"
+            :columns="dataStructureTable"
+            v-if="getAllBrand.length"
+            :loading="isLoading"
+            :data="getAllBrand">
+            </Table>
+            <br/>
+            <Pagination :meta="filterString" :changePaginatedPage="changePaginatedPage" :changePaginatedPerPage="changePaginatedPerPage" />
+
+    </div>
+</template>
+<script>
+
+import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
+export default {
+   name : "ShowAllData",
+   data(){
+       return {
+                 dataStructureTable: [
+                    {
+                        type: 'selection',
+                        align: 'center',
+                        width: 50 ,
+                        render: (h,params) => {
+                            if (this.isPermitted('delete','brand')) {
+                                return h('Checkbox' , {
+                                    props: {
+                                        type: 'success'
+                                    }
+                                },NO)
+                            }
+                            return h('i', 'delete')
+                        }
+                    }
+                    ,
+                    {
+                        title: 'ID',
+                        key: 'id',
+                        sortable: true,
+                        tooltip:true,
+                    },
+                    {
+                        title: 'Name',
+                        key: 'name',
+                        sortable: true,
+                        tooltip:true
+                    },
+                    {
+                        title: 'LOGO',
+                        key: 'logo',
+                        render: (h,params) => {
+                            return h('img', {
+                                        attrs: {
+                                            src: `${params.row.logo}`,
+                                            alt:  `${params.row.name}`
+                                        },
+                                        style: {
+                                            marginRight: '5px',
+                                            width: '10rem',
+                                            height:'5rem'
+                                        }
+
+                                    })
+
+                        }
+                    },
+                    {
+                        title: 'Action',
+                        key: 'action',
+                        width: 150,
+                        align: 'center',
+                        render: (h, params) => {
+                            let deleteButton = h('')
+                            if (this.isPermitted('delete','brand')) {
+                                deleteButton =   h('Button', {
+                                                    props: {
+                                                        type: 'error',
+                                                        size: 'small'
+                                                    },
+                                                    on: {
+                                                        click: () => {
+                                                            // this.deleteConfirmation(params.row)
+                                                        }
+                                                    }
+                                            }, 'Delete')
+                            };
+                            let edit = h('')
+                            if(this.isPermitted('update','brand')){
+                             edit = h('Button', {
+                                    props: {
+                                        type: 'info',
+                                        size: 'small'
+                                    },
+                                    style: {
+                                        marginRight: '5px'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            // this.clickEditBtn(params.row);
+                                        }
+                                    }
+                                }, 'Edit');
+                            }
+                            return h('div', [
+                                edit, deleteButton
+                            ]);
+                        }
+                    }
+                ],
+       }
+   },
+   computed: {
+       ...mapState("brandsStoreIndex", [ 'isLoading']),
+       ...mapGetters("brandsStoreIndex",['getAllBrand','filterString'])
+   },
+   methods:{
+         ...mapActions("brandsStoreIndex", ['getBrands','changePaginatedPage','changePaginatedPerPage']),
+   },
+    created(){
+        this.getBrands();
+    }
+}
+</script>

@@ -19,11 +19,9 @@
     </div>
 </template>
 <script>
-import Pagination from './Pagination'
 import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 export default {
    name : "viewCategoriesComponent",
-   components:{Pagination},
    data(){
        return {
                  dataStructureTable: [

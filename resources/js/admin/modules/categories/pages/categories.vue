@@ -28,16 +28,18 @@ import { mapActions, mapGetters } from 'vuex'
 import addModalComponent from "../component/addModalComponent"
 import editModalComponent from "../component/editModalComponent"
 import viewCategoriesComponent from '../component/viewCategoriesComponent';
-import FilterData from '../component/FilterData';
 
 
 export default {
-    components:{ addModalComponent , editModalComponent , viewCategoriesComponent , FilterData },
+    components:{ addModalComponent , editModalComponent , viewCategoriesComponent  },
     computed: {
        ...mapGetters("categoriesStoreIndex",['filterString' ])
     },
     methods:{
         ...mapActions("categoriesStoreIndex", ['getCategories'])
+    },
+    created(){
+        document.title = 'Categories'
     }
 }
 </script>

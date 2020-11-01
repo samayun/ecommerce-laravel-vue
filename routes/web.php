@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\AdminLoginAlert;
+use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Jobs\SendEmailJobs;
@@ -42,7 +43,12 @@ Route::group(['prefix' => 'api/admin' , 'middleware' => 'auth:admin' ], function
     Route::post('/delete_category_image', [CategoryController::class ,'deleteImage']);
 });
 
-
+Route::group(['prefix' => 'api/admin' , 'middleware' => 'auth:admin' ], function () {
+    // Route::post('brands/multi' , [BrandController::class , 'multiDelete']);
+    Route::resource('brands' , BrandController::class);
+    // Route::post('/upload_category_image', [BrandController::class ,'upload']);
+    // Route::post('/delete_category_image', [BrandController::class ,'deleteImage']);
+});
 
 Route::post('/api/login/admin', [App\Http\Controllers\AdminController::class, 'login'])->name('adminLogin');
 

@@ -1,5 +1,5 @@
 // Body
-$body-bg: #f8fafc;
+$body-bg: #eee;
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
@@ -7,16 +7,45 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+// $blue: #3ccc54;
+// $indigo: #6574cd;
+// $purple: #9561e2;
+// $pink: #f66d9b;
+// $red: #e3342f;
+// $orange: #f6993f;
+// $yellow: #ffed4a;
+// $green: #38c172;
+// $teal: #4dc0b5;
+// $cyan: #6cb2eb;
+
+
+$blue:    #314ec2 !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$yellow:  #ffc107 !default;
+$green:   #43c762 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+
+// $danger:       $chocholate !default;
+
+$modal-content-border-radius: .1rem !default;
+
+$btn-border-radius: .0rem !default;
 
 
 $border-radius: 0;
+$green:   #009688 !default;
+$primary:   $green !default;
+
+.navbar-custom , .bg-custom {
+    background-color: #009688;
+}
+.btn-primary , .btn-primary:hover {
+    color: #FFF;
+    background-color: #007065;
+    border-color: #00635a;
+}

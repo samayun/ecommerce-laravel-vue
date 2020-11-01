@@ -28,6 +28,8 @@ Vue.component(HasError.name, HasError);
 
 Vue.component('admin-app', require('./admin/components/AdminApp.vue').default);
 Vue.component('Loading', require('./admin/components/Loading.vue').default);
+Vue.component('filter-data', require('./admin/components/FilterData.vue').default);
+Vue.component('Pagination', require('./admin/components/Pagination.vue').default);
 
 import common from "./common";
 Vue.mixin(common);
