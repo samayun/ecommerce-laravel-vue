@@ -10,7 +10,7 @@ export default {
         showModal: false,
         isImageVisible: false
     },
-    editBrand: new Form({
+    editBrandData: new Form({
         id: "",
         name:"",
         logo:""

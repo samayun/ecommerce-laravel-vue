@@ -78,9 +78,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "addModalComponent",
@@ -189,7 +186,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'editModalComponent',
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])("categoriesStoreIndex", ['showEditModal', 'editData', 'isEditing', 'errors', 'isEditImageVisible'])), {}, {
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])("categoriesStoreIndex", ['showEditModal', 'editBrandData', 'isEditing', 'errors', 'isEditImageVisible'])), {}, {
     imageVisible: {
       get: function get() {
         return this.isEditImageVisible;
@@ -200,7 +197,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     } //    ...mapGetters("categoriesStoreIndex", ['isEditImageVisible'])
 
   }),
-  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])("categoriesStoreIndex", ['editCategory', 'handleMaxSize', 'handleFormatError', 'handleSuccess', 'handleError', 'deleteEditImage', 'HANDLE_VIEW'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])("categoriesStoreIndex", ['TOGGLE_EDIT_MODAL'])), {}, {
+  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])("categoriesStoreIndex", ['updateBrand', 'handleMaxSize', 'handleFormatError', 'handleSuccess', 'handleError', 'deleteEditImage', 'HANDLE_VIEW'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])("categoriesStoreIndex", ['TOGGLE_EDIT_MODAL'])), {}, {
     deleteImageAndClearFiles: function deleteImageAndClearFiles() {
       this.deleteEditImage();
       this.$refs.upload.clearFiles();
@@ -323,7 +320,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 size: 'small'
               },
               on: {
-                click: function click() {// this.deleteConfirmation(params.row)
+                click: function click() {
+                  _this.deleteBrand(params.row);
                 }
               }
             }, 'Delete');
@@ -354,7 +352,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("brandsStoreIndex", ['isLoading'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("brandsStoreIndex", ['getAllBrand', 'filterString'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("brandsStoreIndex", ['getBrands', 'changePaginatedPage', 'changePaginatedPerPage'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("brandsStoreIndex", ['getBrands', 'changePaginatedPage', 'changePaginatedPerPage', 'deleteConfirmation', 'deleteBrand'])),
   created: function created() {
     this.getBrands();
   }
@@ -717,7 +715,7 @@ var render = function() {
         {
           attrs: {
             role: "form",
-            title: _vm.$t("categories.edit"),
+            title: _vm.$t("brands.edit"),
             "mask-closable": false,
             closable: false,
             loading: _vm.isEditing
@@ -734,18 +732,20 @@ var render = function() {
           _c("Loading", { attrs: { show: _vm.isEditing } }),
           _vm._v(" "),
           _c("Input", {
-            class: { "is-invalid": _vm.editData.errors.has("name") },
+            class: { "is-invalid": _vm.editBrandData.errors.has("name") },
             attrs: { placeholder: "Edit category name" },
             model: {
-              value: _vm.editData.name,
+              value: _vm.editBrandData.name,
               callback: function($$v) {
-                _vm.$set(_vm.editData, "name", $$v)
+                _vm.$set(_vm.editBrandData, "name", $$v)
               },
-              expression: "editData.name"
+              expression: "editBrandData.name"
             }
           }),
           _vm._v(" "),
-          _c("has-error", { attrs: { form: _vm.editData, field: "name" } }),
+          _c("has-error", {
+            attrs: { form: _vm.editBrandData, field: "name" }
+          }),
           _vm._v(" "),
           _c("div", { staticClass: "space" }),
           _vm._v(" "),
@@ -783,7 +783,9 @@ var render = function() {
                   _c(
                     "p",
                     {
-                      class: { "text-danger": _vm.editData.errors.has("icon") }
+                      class: {
+                        "text-danger": _vm.editBrandData.errors.has("logo")
+                      }
                     },
                     [_vm._v("Click or drag files here to upload")]
                   )
@@ -793,11 +795,11 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.editData.icon
+          _vm.editBrandData.logo
             ? _c("div", { staticClass: "demo-upload-list" }, [
                 _c("img", {
                   staticStyle: { width: "10rem", height: "6rem" },
-                  attrs: { src: "" + _vm.editData.icon }
+                  attrs: { src: "" + _vm.editBrandData.logo }
                 }),
                 _vm._v(" "),
                 _c(
@@ -838,7 +840,10 @@ var render = function() {
             [
               _c("img", {
                 staticStyle: { width: "100%" },
-                attrs: { src: _vm.editData.icon, alt: _vm.editData.name }
+                attrs: {
+                  src: _vm.editBrandData.logo,
+                  alt: _vm.editBrandData.name
+                }
               })
             ]
           ),
@@ -861,17 +866,17 @@ var render = function() {
                 {
                   attrs: {
                     type: "warning",
-                    disabled: _vm.isEditing,
-                    loading: _vm.isEditing
+                    disabled: _vm.editBrandData.busy,
+                    loading: _vm.editBrandData.busy
                   },
-                  on: { click: _vm.editCategory }
+                  on: { click: _vm.updateBrand }
                 },
                 [
                   _vm._v(
                     _vm._s(
-                      _vm.isEditing
-                        ? _vm.$t("categories.editing")
-                        : _vm.$t("categories.edit")
+                      _vm.editBrandData.busy
+                        ? _vm.$t("brands.editing")
+                        : _vm.$t("brands.edit")
                     )
                   )
                 ]

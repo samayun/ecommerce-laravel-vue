@@ -1,3 +1,4 @@
+import { Modal } from 'view-design'
 export default {
     async getBrands({commit ,state , getters}){
         try {
@@ -48,19 +49,18 @@ export default {
 
    },
 
-    editCategory({commit,dispatch , state } ){
-        commit('SET_IS_EDITING' , true);
-        state.editData.put(`/api/admin/categories/${state.editData.id}`).then(res => {
+    updateBrand({commit,dispatch , state } ){
+        state.editBrandData.put(`/api/admin/brand/${state.editBrandData.id}`).then(res => {
             if (res.status == 200) {
                 $Notice.info({
                     title: 'Brand Updated Successfully',
-                    desc: `${state.editData.name} edited`
+                    desc: `${state.editBrandData.name} edited`
                 });
                 // dispatch get categories can make slow browsing - this is an old idea
                 // dispatch('getCategories');
                 // best practice is updating UI without making a new ajax request
-                commit('UPDATE_CATEGORY')
-                commit('TOGGLE_EDIT_MODAL')
+                commit('UPDATE_BRAND')
+                commit('TOGGLE_MODAL',"edit")
              }
         }).catch (error => {
             if (error.response.status == 403){
@@ -77,22 +77,29 @@ export default {
                 });
                 commit('SET_ERRORS' , error.response.data.errors)
               }
-       }).finally( () => {
-            commit('SET_IS_EDITING' , false)
        })
     },
-    async deleteCategory({commit} , Brand){
+    deleteConfirmation({dispatch} , brand){
+        Modal.confirm({
+            title: `<Icon type="ios-information-circle"></Icon> Are you sure to delete`,
+            content: "Click OK to proceed",
+            onOk: () => {
+                dispatch('deleteBrand' , brand)
+            }
+        })
+    },
+    async deleteBrand({commit} , brand){
         try {
-            console.log(Brand);
-
-            let res =   await axios.delete(`/api/admin/categories/${Brand.id}`);
-            if (res.status == 200) {
+            let res =   await axios.delete(`/api/admin/brands/${brand.id}`,{
+               brand: brand
+            });
+            if (res.status == 202) {
 
                 $Notice.success({
                     title: 'Brand Deleted Successfully',
-                    desc: `${Brand.name} deleted`
+                    desc: `${brand.name} deleted`
                 });
-                commit('DELETE_CATEGORY' , Brand);
+                commit('DELETE_BRAND' , brand);
             }
         } catch (error) {
            if (error.response.status == 403) {
@@ -155,8 +162,6 @@ export default {
         }
     },
     handleSuccess({state},res) {
-        console.log(res);
-
         // res = `/uploads/${res}`;
         // this.$refs.upload.clearFiles()
         if (state.isEditingItem) {
@@ -186,14 +191,6 @@ export default {
         let img = state.addBrandData.logo
         state.addBrandData.logo = ''
         $Bus.$emit('clearAddedFiles')
-
-        // let res = await axios.delete('/api/admin/brands', {image : img});
-        // if (res.status != 200) {
-        //     state.addBrandData.logo = img
-        //     $Notice.warning({
-        //         title: "Something Went Wrong"
-        //     });
-        // }
     },
     async deleteEditImage({state}){
         state.isEditingItem = true
@@ -201,13 +198,6 @@ export default {
         state.editData.logo = ''
         $Bus.$emit('clearAddedFiles')
 
-        let res = await axios.post('/api/admin/delete_category_image', {image : img});
-        if (res.status != 200) {
-            state.editData.logo = img
-            $Notice.warning({
-                title: "Something Went Wrong"
-            });
-        }
     },
     HANDLE_VIEW({commit}, payload){
         commit('HANDLE_VIEW' , payload)

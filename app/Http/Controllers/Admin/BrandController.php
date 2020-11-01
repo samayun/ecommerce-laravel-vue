@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Traits\UploadAble;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Image;
 
@@ -51,7 +52,7 @@ class BrandController extends Controller
 
 
         $uploadedFile = $this->uploadBase64File($request->logo , 'uploads/brands/','public');
-        info($uploadedFile);
+
         return Brand::create([
             'name' => $request->name,
             'logo' => '/storage/uploads/brands/'.$uploadedFile['name']
@@ -111,6 +112,38 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        return $brand->delete();
+        // try {
+            // DB::beginTransaction();
+
+            // $logo = preg_replace('/^/\/storage/\//',"",$brand->logo);
+            // $this->deleteOne($logo);
+            // WORKED FINE : IF INSERT : logo' => $uploadedFile['name'] 566.png
+            // $path = "/uploads/brands/".$brand->logo;
+            // if(Storage::delete($path)){
+            //     $brand->delete();
+            //     return response()->json([
+            //     'message' => $brand->name." deleted successfully"
+            // ], 200);
+            // }
+            $path = preg_replace("/storage/","", $brand->logo);
+
+            if(Storage::delete($path)){
+                    $brand->delete();
+                    return response()->json([
+                    'message' => $brand->name." deleted successfully"
+                ], 202);
+            }
+
+            // $this->deleteFileFromServer($brand->logo,true);
+            // return Storage::disk('public')->delete(public_path().'storage/uploads/brands/1604244861.png');
+
+            // $brand->delete();
+            // DB::commit();
+            return response()->json([
+                'message' => $brand->name." deleted failed"
+            ], 404);
+        // } catch (\Throwable $th) {
+            // DB::rollback();
+        // }
     }
 }

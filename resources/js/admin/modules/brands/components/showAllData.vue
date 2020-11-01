@@ -84,7 +84,7 @@ export default {
                                                     },
                                                     on: {
                                                         click: () => {
-                                                            // this.deleteConfirmation(params.row)
+                                                            this.deleteBrand(params.row)
                                                         }
                                                     }
                                             }, 'Delete')
@@ -119,7 +119,7 @@ export default {
        ...mapGetters("brandsStoreIndex",['getAllBrand','filterString'])
    },
    methods:{
-         ...mapActions("brandsStoreIndex", ['getBrands','changePaginatedPage','changePaginatedPerPage']),
+         ...mapActions("brandsStoreIndex", ['getBrands','changePaginatedPage','changePaginatedPerPage','deleteConfirmation','deleteBrand']),
    },
     created(){
         this.getBrands();

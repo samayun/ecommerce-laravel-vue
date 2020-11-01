@@ -1,6 +1,20 @@
+import {Form} from 'vform';
+
 export default {
     CREATE_BRAND(state,brand){
         state.brands.unshift(brand)
+    },
+    DELETE_BRAND(state,brand){
+        let index= state.brands.findIndex(item => item.id === brand.id);
+        state.brands.splice(index , 1)
+    },
+    GET_EDIT_DATA(state , payload){
+        state.editBrandData =  new Form(payload)
+    },
+    UPDATE_BRAND(state ){
+        let index = state.brands.findIndex(item => item.id === state.editBrandData.id);
+        state.brands[index].name = state.editBrandData.name
+        state.brands[index].logo = state.editBrandData.logo
     },
     SET_IS_LOADING(state, payload){
         state.isLoading = payload

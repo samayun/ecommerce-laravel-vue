@@ -36,9 +36,6 @@
 
                 </div>
             </Upload>
-            <!-- <Input v-model="addBrandData.logo" type="file" name="logo" :placeholder="$t('brands.add')"
-                :class="{ 'is-invalid border-danger': addBrandData.errors.has('logo') }"
-            /> -->
             <has-error :form="addBrandData" field="logo"></has-error>
 
             <div class="demo-upload-list" v-if="addBrandData.logo">
