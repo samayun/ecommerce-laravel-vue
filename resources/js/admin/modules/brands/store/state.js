@@ -13,6 +13,7 @@ export default {
     editBrandData: new Form({
         id: "",
         name:"",
+        slug:"",
         logo:""
     }),
     editMeta: {
@@ -27,5 +28,6 @@ export default {
         sortBy: 'desc',
         q: "",
         total: 0
-    }
+    },
+    multiSelected: []
 }

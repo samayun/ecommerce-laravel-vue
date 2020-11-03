@@ -9,12 +9,27 @@ export default {
         state.brands.splice(index , 1)
     },
     GET_EDIT_DATA(state , payload){
-        state.editBrandData =  new Form(payload)
+        state.editMeta.showModal = !state.editMeta.showModal
+        state.editBrandData =  new Form(payload);
     },
     UPDATE_BRAND(state ){
         let index = state.brands.findIndex(item => item.id === state.editBrandData.id);
-        state.brands[index].name = state.editBrandData.name
-        state.brands[index].logo = state.editBrandData.logo
+        // Automatically >>
+        for( let key in state.editBrandData){
+            if (state.brands[index].hasOwnProperty(key)) {
+                state.brands[index][key] = state.editBrandData[key];
+            }
+        }
+        // Manually >
+        // state.brands[index].name = state.editBrandData.name
+        // state.brands[index].slug = state.editBrandData.slug
+        // state.brands[index].logo = state.editBrandData.logo
+    },
+    DELETE_MULTI_BRAND(state,selectedBrands){
+        state.brands = state.brands.filter( objectA => {
+            return !selectedBrands.find(objectB => objectA.id === objectB.id)
+        })
+        state.multiSelected = [];
     },
     SET_IS_LOADING(state, payload){
         state.isLoading = payload

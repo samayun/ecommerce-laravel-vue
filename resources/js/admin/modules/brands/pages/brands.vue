@@ -15,6 +15,7 @@
 
             <show-all-data v-if="isPermitted('view','brand')"   ></show-all-data>
         </div>
+        <edit-modal-component v-if="isPermitted('update','brand')"></edit-modal-component>
     </main>
 </template>
 

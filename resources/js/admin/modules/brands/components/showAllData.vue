@@ -1,11 +1,13 @@
 <template>
     <div class="col-md-12">
-
-         <!-- <Loading show="getAllCategory.length < 1"/> -->
+         <span class="m-2 " v-if="isPermitted('delete','brand') && multiSelected.length !== 0">
+             <Button type="error" @click="multiDelete"> Multiple {{ $t('delete') }} </Button> {{multiSelected.length }} selected
+         </span>
         <Table border
             ref="selection"
             :columns="dataStructureTable"
             v-if="getAllBrand.length"
+             @on-selection-change="handleSelectionChange"
             :loading="isLoading"
             :data="getAllBrand">
             </Table>
@@ -101,7 +103,7 @@ export default {
                                     },
                                     on: {
                                         click: () => {
-                                            // this.clickEditBtn(params.row);
+                                            this.GET_EDIT_DATA(params.row);
                                         }
                                     }
                                 }, 'Edit');
@@ -115,14 +117,17 @@ export default {
        }
    },
    computed: {
-       ...mapState("brandsStoreIndex", [ 'isLoading']),
+       ...mapState("brandsStoreIndex", [ 'isLoading','multiSelected']),
        ...mapGetters("brandsStoreIndex",['getAllBrand','filterString'])
    },
    methods:{
-         ...mapActions("brandsStoreIndex", ['getBrands','changePaginatedPage','changePaginatedPerPage','deleteConfirmation','deleteBrand']),
+         ...mapActions("brandsStoreIndex", ['getBrands','changePaginatedPage','changePaginatedPerPage','deleteConfirmation','deleteBrand','multiDelete','handleSelectionChange']),
+         ...mapMutations("brandsStoreIndex",["GET_EDIT_DATA"])
    },
     created(){
-        this.getBrands();
+       if (this.getAllBrand.length == 0) {
+            this.getBrands();
+       }
     }
 }
 </script>

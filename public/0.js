@@ -183,26 +183,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'editModalComponent',
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])("categoriesStoreIndex", ['showEditModal', 'editBrandData', 'isEditing', 'errors', 'isEditImageVisible'])), {}, {
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])("brandsStoreIndex", ['editMeta', 'editBrandData'])), {}, {
     imageVisible: {
       get: function get() {
-        return this.isEditImageVisible;
+        return this.editMeta.isImageVisible;
       },
       set: function set(value) {
         this.HANDLE_VIEW(value);
       }
-    } //    ...mapGetters("categoriesStoreIndex", ['isEditImageVisible'])
-
-  }),
-  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])("categoriesStoreIndex", ['updateBrand', 'handleMaxSize', 'handleFormatError', 'handleSuccess', 'handleError', 'deleteEditImage', 'HANDLE_VIEW'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])("categoriesStoreIndex", ['TOGGLE_EDIT_MODAL'])), {}, {
-    deleteImageAndClearFiles: function deleteImageAndClearFiles() {
-      this.deleteEditImage();
-      this.$refs.upload.clearFiles();
     }
   }),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])("brandsStoreIndex", ['updateBrand', 'handleBeforeUpload', 'handleMaxSize', 'handleFormatError', 'handleSuccess', 'handleError', 'deleteImage', 'HANDLE_VIEW'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])("brandsStoreIndex", ['TOGGLE_MODAL'])),
   created: function created() {
     var _this = this;
 
@@ -241,6 +241,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -340,7 +342,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 marginRight: '5px'
               },
               on: {
-                click: function click() {// this.clickEditBtn(params.row);
+                click: function click() {
+                  _this.GET_EDIT_DATA(params.row);
                 }
               }
             }, 'Edit');
@@ -351,10 +354,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }]
     };
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("brandsStoreIndex", ['isLoading'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("brandsStoreIndex", ['getAllBrand', 'filterString'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("brandsStoreIndex", ['getBrands', 'changePaginatedPage', 'changePaginatedPerPage', 'deleteConfirmation', 'deleteBrand'])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("brandsStoreIndex", ['isLoading', 'multiSelected'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("brandsStoreIndex", ['getAllBrand', 'filterString'])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("brandsStoreIndex", ['getBrands', 'changePaginatedPage', 'changePaginatedPerPage', 'deleteConfirmation', 'deleteBrand', 'multiDelete', 'handleSelectionChange'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])("brandsStoreIndex", ["GET_EDIT_DATA"])),
   created: function created() {
-    this.getBrands();
+    if (this.getAllBrand.length == 0) {
+      this.getBrands();
+    }
   }
 });
 
@@ -379,6 +384,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -614,7 +620,11 @@ var render = function() {
                     _vm._v(" "),
                     _c("Icon", {
                       attrs: { type: "ios-trash-outline", size: "large" },
-                      on: { click: _vm.deleteImage }
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteImage("add")
+                        }
+                      }
                     })
                   ],
                   1
@@ -718,22 +728,22 @@ var render = function() {
             title: _vm.$t("brands.edit"),
             "mask-closable": false,
             closable: false,
-            loading: _vm.isEditing
+            loading: _vm.editBrandData.busy
           },
           model: {
-            value: _vm.showEditModal,
+            value: _vm.editMeta.showModal,
             callback: function($$v) {
-              _vm.showEditModal = $$v
+              _vm.$set(_vm.editMeta, "showModal", $$v)
             },
-            expression: "showEditModal"
+            expression: "editMeta.showModal"
           }
         },
         [
-          _c("Loading", { attrs: { show: _vm.isEditing } }),
+          _c("Loading", { attrs: { show: _vm.editBrandData.busy } }),
           _vm._v(" "),
           _c("Input", {
             class: { "is-invalid": _vm.editBrandData.errors.has("name") },
-            attrs: { placeholder: "Edit category name" },
+            attrs: { placeholder: "Edit brand name" },
             model: {
               value: _vm.editBrandData.name,
               callback: function($$v) {
@@ -747,6 +757,22 @@ var render = function() {
             attrs: { form: _vm.editBrandData, field: "name" }
           }),
           _vm._v(" "),
+          _c("Input", {
+            class: { "is-invalid": _vm.editBrandData.errors.has("slug") },
+            attrs: { placeholder: "Edit brand slug" },
+            model: {
+              value: _vm.editBrandData.slug,
+              callback: function($$v) {
+                _vm.$set(_vm.editBrandData, "slug", $$v)
+              },
+              expression: "editBrandData.slug"
+            }
+          }),
+          _vm._v(" "),
+          _c("has-error", {
+            attrs: { form: _vm.editBrandData, field: "slug" }
+          }),
+          _vm._v(" "),
           _c("div", { staticClass: "space" }),
           _vm._v(" "),
           _c(
@@ -755,19 +781,21 @@ var render = function() {
               ref: "upload",
               attrs: {
                 type: "drag",
+                name: "logo",
                 multiple: false,
                 "show-upload-list": false,
                 headers: {
                   "x-csrf-token": _vm.token,
                   "X-Requested-With": "XMLHttpRequest"
                 },
+                "before-upload": _vm.handleBeforeUpload,
                 "on-success": _vm.handleSuccess,
                 "on-error": _vm.handleError,
                 format: ["jpg", "jpeg", "png"],
                 "max-size": 2048,
                 "on-format-error": _vm.handleFormatError,
                 "on-exceeded-size": _vm.handleMaxSize,
-                action: "/api/admin/upload_category_image"
+                action: ""
               }
             },
             [
@@ -817,7 +845,11 @@ var render = function() {
                     _vm._v(" "),
                     _c("Icon", {
                       attrs: { type: "ios-trash-outline", size: "large" },
-                      on: { click: _vm.deleteImageAndClearFiles }
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteImage("edit")
+                        }
+                      }
                     })
                   ],
                   1
@@ -856,7 +888,11 @@ var render = function() {
                 "Button",
                 {
                   attrs: { type: "default" },
-                  on: { click: _vm.TOGGLE_EDIT_MODAL }
+                  on: {
+                    click: function($event) {
+                      return _vm.TOGGLE_MODAL("edit")
+                    }
+                  }
                 },
                 [_vm._v("Close")]
               ),
@@ -865,7 +901,7 @@ var render = function() {
                 "Button",
                 {
                   attrs: {
-                    type: "warning",
+                    type: "success",
                     disabled: _vm.editBrandData.busy,
                     loading: _vm.editBrandData.busy
                   },
@@ -917,6 +953,24 @@ var render = function() {
     "div",
     { staticClass: "col-md-12" },
     [
+      _vm.isPermitted("delete", "brand") && _vm.multiSelected.length !== 0
+        ? _c(
+            "span",
+            { staticClass: "m-2 " },
+            [
+              _c(
+                "Button",
+                { attrs: { type: "error" }, on: { click: _vm.multiDelete } },
+                [_vm._v(" Multiple " + _vm._s(_vm.$t("delete")) + " ")]
+              ),
+              _vm._v(
+                " " + _vm._s(_vm.multiSelected.length) + " selected\n     "
+              )
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
       _vm.getAllBrand.length
         ? _c("Table", {
             ref: "selection",
@@ -925,7 +979,8 @@ var render = function() {
               columns: _vm.dataStructureTable,
               loading: _vm.isLoading,
               data: _vm.getAllBrand
-            }
+            },
+            on: { "on-selection-change": _vm.handleSelectionChange }
           })
         : _vm._e(),
       _vm._v(" "),
@@ -964,40 +1019,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main", { staticClass: "app-content", attrs: { id: "app" } }, [
-    _c(
-      "div",
-      { staticClass: "app-title" },
-      [
-        _c("div", [
-          _c("h1", [
-            _c("i", { staticClass: "fa fa-cogs" }),
-            _vm._v(" " + _vm._s(_vm.$t("brands.name")) + " ")
+  return _c(
+    "main",
+    { staticClass: "app-content", attrs: { id: "app" } },
+    [
+      _c(
+        "div",
+        { staticClass: "app-title" },
+        [
+          _c("div", [
+            _c("h1", [
+              _c("i", { staticClass: "fa fa-cogs" }),
+              _vm._v(" " + _vm._s(_vm.$t("brands.name")) + " ")
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v(" List of all brands ")])
           ]),
           _vm._v(" "),
-          _c("p", [_vm._v(" List of all brands ")])
-        ]),
-        _vm._v(" "),
-        _vm.isPermitted("create", "brand")
-          ? _c("add-modal-component")
-          : _vm._e()
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row " },
-      [
-        _c("filter-data", {
-          attrs: { defaultFilter: _vm.filterString, getResult: _vm.getBrands }
-        }),
-        _vm._v(" "),
-        _vm.isPermitted("view", "brand") ? _c("show-all-data") : _vm._e()
-      ],
-      1
-    )
-  ])
+          _vm.isPermitted("create", "brand")
+            ? _c("add-modal-component")
+            : _vm._e()
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row " },
+        [
+          _c("filter-data", {
+            attrs: { defaultFilter: _vm.filterString, getResult: _vm.getBrands }
+          }),
+          _vm._v(" "),
+          _vm.isPermitted("view", "brand") ? _c("show-all-data") : _vm._e()
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm.isPermitted("update", "brand") ? _c("edit-modal-component") : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

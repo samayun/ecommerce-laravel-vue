@@ -142,7 +142,9 @@ export default {
          }
    },
     created(){
-        this.getCategories();
+        if (this.getAllCategory.length == 0) {
+             this.getCategories();
+        }
     }
 }
 </script>

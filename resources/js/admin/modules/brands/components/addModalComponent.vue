@@ -42,7 +42,7 @@
                 <img :src="`${addBrandData.logo}`" style="width:10rem;height:6rem;"/>
                 <div class="demo-upload-list-cover">
                 <Icon type="ios-camera-outline" size="large" @click="HANDLE_VIEW"></Icon>
-                <Icon type="ios-trash-outline" size="large" @click="deleteImage"></Icon>
+                <Icon type="ios-trash-outline" size="large" @click="deleteImage('add')"></Icon>
                 </div>
             </div>
              <Modal title="View image" v-model="imageVisible">

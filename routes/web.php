@@ -38,13 +38,13 @@ Route::view('/{any}', 'admin_layout')->where('any', 'admin.*');
 
 Route::group(['prefix' => 'api/admin' , 'middleware' => 'auth:admin' ], function () {
     Route::post('categories/multi' , [CategoryController::class , 'multiDelete']);
-    Route::resource('categories' , CategoryController::class);
+    Route::apiResource('categories' , CategoryController::class);
     Route::post('/upload_category_image', [CategoryController::class ,'upload']);
     Route::post('/delete_category_image', [CategoryController::class ,'deleteImage']);
 });
 
 Route::group(['prefix' => 'api/admin' , 'middleware' => 'auth:admin' ], function () {
-    // Route::post('brands/multi' , [BrandController::class , 'multiDelete']);
+    Route::post('brands/multi' , [BrandController::class , 'multiDelete']);
     Route::resource('brands' , BrandController::class);
     // Route::post('/upload_category_image', [BrandController::class ,'upload']);
     // Route::post('/delete_category_image', [BrandController::class ,'deleteImage']);

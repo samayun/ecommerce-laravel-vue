@@ -392,7 +392,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   created: function created() {
-    this.getCategories();
+    if (this.getAllCategory.length == 0) {
+      this.getCategories();
+    }
   }
 });
 

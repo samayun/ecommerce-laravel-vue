@@ -5,25 +5,25 @@ namespace App\Traits;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
 /**
  * Trait UploadAble
  * @package App\Traits
  */
 trait UploadAble{
+
     public function base64ToImage($encoded_request_data)
     {
         $encoded_image  = preg_replace('/^data:image\/\w+;base64,/','',$encoded_request_data);
         $extension      = explode('/', explode(';',$encoded_request_data)[0])[1];
         return [
-            'data'     => base64_decode($encoded_image),
+            'image'     => base64_decode($encoded_image),
             'extension' => $extension
         ];
     }
     public function setImageValidationError(string $extension, string $feild = 'logo', array $whitelist = [])
     {
-        info($extension);
         if (!in_array( $extension , $whitelist)) {
-            info($whitelist);
             return [
                 'status' => 422,
                 'error' => 'FIle is not an image',
@@ -65,7 +65,7 @@ trait UploadAble{
 
     public function uploadBase64File($request_file, $folder = null, $disk = 'public')
     {
-        $file      = $this->base64ToImage($request_file)['data'];
+        $file      = $this->base64ToImage($request_file)['image'];
         $extension = $this->base64ToImage($request_file)['extension'];
         $filename = time(). '.' . $extension;
         Storage::disk($disk)->put($folder.$filename, $file);
@@ -79,22 +79,26 @@ trait UploadAble{
      * @param null $path
      * @param string $disk
      */
-    public function deleteOne($path = null, $disk = 'public')
+    public function deleteBase64RequestedFile($request_file , $disk = 'public')
     {
-        Storage::disk($disk)->delete($path);
+        // $path = preg_replace("/storage/","", $request_file);
+        $path = preg_replace("/\/storage\//","", $request_file);
+
+        if (Storage::disk($disk)->exists($path)) {
+           return Storage::disk($disk)->delete($path);
+        }
+        return true;
     }
+
     public function deleteFileFromServer($filePath , $hasFullPath = false)
     {
         if(!$hasFullPath){
             $filePath = public_path().$filePath;
         }
         if (file_exists($filePath)) {
-            info($filePath);
-            return Storage::disk('public')->delete($filePath);
             return @unlink($filePath);
-        }
-        info('NO EXIST : ',$filePath);
-        return;
+        };
+        return true;
     }
 
 }

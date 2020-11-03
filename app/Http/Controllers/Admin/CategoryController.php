@@ -44,7 +44,7 @@ class CategoryController extends Controller
     }
     public function multiDelete(Request $request)
     {
-     if (Gate::forUser(Auth::guard('admin')->user())->allows('super')) {
+        $this->authorize('multi_delete');
         try {
             DB::beginTransaction();
             foreach ($request->all() as $category) {
@@ -56,8 +56,6 @@ class CategoryController extends Controller
         } catch (\Throwable $th) {
             DB::rollback();
         }
-     }
-      return response()->json(['message' => 'Action Not Permitted'], 403);
     }
     /**
      * Display the specified resource.

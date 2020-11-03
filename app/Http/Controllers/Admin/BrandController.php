@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+// use App\Jobs\BrandImageUploading;
 use App\Models\Brand;
 use App\Traits\UploadAble;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -12,12 +14,17 @@ use Image;
 
 class BrandController extends Controller
 {
+
     use UploadAble;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->authorizeResource(Brand::class, 'brand');
+    }
     public function index(Request $request)
     {
 
@@ -33,11 +40,12 @@ class BrandController extends Controller
      public function store(Request $request)
     {
         $this->validate($request , [
-            'name' => 'bail|required|min:3"unique:brands,slug',
+            'name' => 'bail|required|min:3|unique:brands,slug',
             'logo' => 'required'
         ]);
+        // EVENT LISTENER
 
-        $image      = $this->base64ToImage($request->logo)['data'];
+        $image      = $this->base64ToImage($request->logo)['image'];
         $extension  = $this->base64ToImage($request->logo)['extension'];
         $FileError = $this->setImageValidationError($extension,'logo',['jpg','jpeg','png','svg']);
         if ($FileError) {
@@ -48,14 +56,12 @@ class BrandController extends Controller
                 ]
             ], $FileError['status']);
         }
-
-
-
-        $uploadedFile = $this->uploadBase64File($request->logo , 'uploads/brands/','public');
+        // $uploadedFile = dispatch(new BrandImageUploading($request->logo));
+        $uploadedFile = $this->uploadBase64File($request->logo , 'brands/','public');
 
         return Brand::create([
             'name' => $request->name,
-            'logo' => '/storage/uploads/brands/'.$uploadedFile['name']
+            'logo' => '/storage/brands/'.$uploadedFile['name']
         ]);
     }
 
@@ -101,7 +107,52 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        return $brand->update($request->all());
+        $this->validate($request , [
+            'name' => 'bail|required|min:3',
+            'slug' => 'required|unique:brands,slug,'.$request->id,
+            'logo' => 'required'
+        ]);
+        if($request->logo !== $brand->logo){
+            // DELETE OLD IMAGE FIRST
+            $this->deleteBase64RequestedFile($brand->logo);
+            // PROCESS :: FOR NEW UPLOAD
+            $image      = $this->base64ToImage($request->logo)['image'];
+            $extension  = $this->base64ToImage($request->logo)['extension'];
+            $FileError = $this->setImageValidationError($extension,'logo',['jpg','jpeg','png','svg']);
+            if ($FileError) {
+                 return response()->json([
+                    'message' => $FileError['error'],
+                    'errors' => [
+                        $FileError['feild'] => [ $FileError['error'] ]
+                    ]
+                ], $FileError['status']);
+            }
+            $uploadedFile = $this->uploadBase64File($request->logo , 'brands/','public');
+            return $brand->update([
+                'name' => $request->name ,
+                'slug' => $request->slug ,
+                'logo' => '/storage/brands/'.$uploadedFile['name']
+            ]);
+        }
+
+        return $brand->update($request->except('id'));
+
+    }
+
+    public function multiDelete(Request $request)
+    {
+        $this->authorize('multi_delete');
+        try {
+            DB::beginTransaction();
+            foreach ($request->all() as $brand) {
+                $this->deleteFileFromServer($brand['logo']);
+                Brand::find($brand['id'])->delete();
+            }
+            DB::commit();
+            return response()->json(['message' => "SUCCESS"], 200);
+        } catch (\Throwable $th) {
+
+        }
     }
 
     /**
@@ -112,38 +163,20 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        // try {
+        try {
             // DB::beginTransaction();
-
-            // $logo = preg_replace('/^/\/storage/\//',"",$brand->logo);
-            // $this->deleteOne($logo);
-            // WORKED FINE : IF INSERT : logo' => $uploadedFile['name'] 566.png
-            // $path = "/uploads/brands/".$brand->logo;
-            // if(Storage::delete($path)){
-            //     $brand->delete();
-            //     return response()->json([
-            //     'message' => $brand->name." deleted successfully"
-            // ], 200);
-            // }
-            $path = preg_replace("/storage/","", $brand->logo);
-
-            if(Storage::delete($path)){
+            if($this->deleteBase64RequestedFile($brand->logo) ){
                     $brand->delete();
                     return response()->json([
                     'message' => $brand->name." deleted successfully"
                 ], 202);
             }
-
-            // $this->deleteFileFromServer($brand->logo,true);
-            // return Storage::disk('public')->delete(public_path().'storage/uploads/brands/1604244861.png');
-
-            // $brand->delete();
             // DB::commit();
             return response()->json([
                 'message' => $brand->name." deleted failed"
             ], 404);
-        // } catch (\Throwable $th) {
+        } catch (\Throwable $th) {
             // DB::rollback();
-        // }
+        }
     }
 }

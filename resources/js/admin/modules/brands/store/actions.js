@@ -50,7 +50,7 @@ export default {
    },
 
     updateBrand({commit,dispatch , state } ){
-        state.editBrandData.put(`/api/admin/brand/${state.editBrandData.id}`).then(res => {
+        state.editBrandData.put(`/api/admin/brands/${state.editBrandData.id}`).then(res => {
             if (res.status == 200) {
                 $Notice.info({
                     title: 'Brand Updated Successfully',
@@ -115,11 +115,14 @@ export default {
         }
 
     },
+    handleSelectionChange({state} , val){
+        state.multiSelected = val
+    },
     async multiDelete({state , commit}){
         try {
-            let res =   await axios.post(`/api/admin/categories/multi`,state.multiSelected);
+            let res =   await axios.post(`/api/admin/brands/multi`,state.multiSelected);
             if (res.status == 200) {
-                commit('DELETE_MULTI_CATEGORY' , state.multiSelected);
+                commit('DELETE_MULTI_BRAND' , state.multiSelected);
                 // state.multiSelected = [];
                 $Notice.success({
                     title: 'Selected Brand Deleted Successfully',
@@ -144,7 +147,7 @@ export default {
 
     },
     handleBeforeUpload({state},file){
-        if (state.addBrandData.name == "") {
+        if (state.addMeta.showModal && state.addBrandData.name == "" || state.editMeta.showModal && state.editBrandData.name == "" ) {
             $Notice.warning({
                 title: "Enter Brand Name First",
                 desc: "NAME REQUIRED"
@@ -156,7 +159,11 @@ export default {
             reader.readAsDataURL(file);
             reader.onloadend = function(e){
                 file.url = reader.result
-                state.addBrandData.logo = file.url
+                if (state.addMeta.showModal) {
+                    state.addBrandData.logo = file.url
+                } else {
+                    state.editBrandData.logo = file.url
+                }
             }
             return false;
         }
@@ -187,17 +194,15 @@ export default {
             desc: "File  " + file.name + " is too large, no more than 2M."
         });
     },
-    async deleteImage({state}){
-        let img = state.addBrandData.logo
-        state.addBrandData.logo = ''
+    async deleteImage({state},whichImage = 'add'){
+        if (whichImage == 'add') {
+            let img = state.addBrandData.logo
+            state.addBrandData.logo = ''
+        } else {
+            let img = state.editBrandData.logo
+            state.editBrandData.logo = ''
+        }
         $Bus.$emit('clearAddedFiles')
-    },
-    async deleteEditImage({state}){
-        state.isEditingItem = true
-        let img = state.editData.logo
-        state.editData.logo = ''
-        $Bus.$emit('clearAddedFiles')
-
     },
     HANDLE_VIEW({commit}, payload){
         commit('HANDLE_VIEW' , payload)
