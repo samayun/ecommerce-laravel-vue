@@ -23,30 +23,24 @@ import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 export default {
    name : "viewCategoriesComponent",
    data(){
-       return {
-                 dataStructureTable: [
-                    {
+         let deleteMultiple = {}
+                if (this.isPermitted('delete','category')){
+                    deleteMultiple =  {
                         type: 'selection',
                         align: 'center',
-                        width: 50 ,
-                        renderHeader: (h,params) => {
-                            if (this.isPermitted('delete','category')) {
-                                return h('Checkbox' , {
-                                    props: {
-                                        type: 'success'
-                                    }
-                                },"NO")
-                            }
-                            return h('i', 'delete')
-                        }
+                        width: 40
                     }
-                    ,
-                    {
+                }else{
+                    deleteMultiple = {
                         title: 'ID',
                         key: 'id',
                         sortable: true,
                         tooltip:true,
-                    },
+                    }
+            }
+       return {
+                 dataStructureTable: [
+                     deleteMultiple ,
                     {
                         title: 'Name',
                         key: 'name',
@@ -76,7 +70,7 @@ export default {
                     {
                         title: 'Action',
                         key: 'action',
-                        width: 150,
+                        width: 100,
                         align: 'center',
                         render: (h, params) => {
                             let deleteButton = h('')
@@ -109,7 +103,7 @@ export default {
                                         marginRight: '5px',
                                         fontSize: '25px',
                                         cursor: 'pointer',
-                                        color: "#s1f2"
+                                        color: "#f11"
                                     },
                                     on: {
                                         click: () => {

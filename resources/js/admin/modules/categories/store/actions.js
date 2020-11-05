@@ -26,9 +26,34 @@ export default {
        })
 
    },
+   createSubCategory({commit , dispatch , state }){
+    //    Validate First
+    state.addSubData.post('/api/admin/categories')
+    .then(res => {
+        if (res.status == 201) {
+            commit('CREATE_SUB_CATEGORY' , res.data);
+            $Notice.info({
+                title: 'Category Added Successfully',
+                desc: `${state.addSubData.name} added`
+            });
+            state.addSubData = new Form({name:"",slug:"",description:"",parent_id : ''})
+            commit('TOGGLE_MODAL','sub-add')
+
+         }
+    }).catch (error => {
+        if (error.response.status == 403){
+            $Notice.error({
+                title: 'Category Create Failed!',
+                desc: error.response.data.message
+            });
+        }
+
+   })
+
+},
     async getCategories({commit ,state , getters}){
        try {
-        let res =   await axios.get(`/api/admin/categories?${getters.getFilteredURLString}`);
+        let res = await axios.get(`/api/admin/categories?${getters.getFilteredURLString}`)
         if (res.status == 200) {
             let updatedFilterString = {
                 page: parseInt(res.data.current_page),
@@ -38,18 +63,28 @@ export default {
             }
             commit('FILTER_DATA', updatedFilterString)
             commit('FETCH_CATEGORIES' , res.data.data);
-
          }
        } catch (error) {
-           if (error.response.status == 403) {
-              $Notice.error({
-                    title: 'Category FETCH Failed!',
-                    desc: error.response.data.message
-                });
-           }
-
+           console.log('error in fetch categories : reload device');
        }
     },
+    async getSubCategories({commit ,state , getters}){
+        try {
+         let res = await axios.get(`/api/admin/subcategories?${getters.getFilteredURLString}`)
+         if (res.status == 200) {
+             let updatedFilterString = {
+                 page: parseInt(res.data.current_page),
+                 perPage :parseInt(res.data.per_page),
+                 total: parseInt(res.data.total),
+                 q: ""
+             }
+             commit('FILTER_DATA', updatedFilterString)
+             commit('FETCH_SUB_CATEGORIES' , res.data.data);
+          }
+        } catch (error) {
+            console.log('error in fetch sub categories : reload device');
+        }
+     },
     editCategory({commit,dispatch , state } ){
         state.editData.put(`/api/admin/categories/${state.editData.id}`).then(res => {
             if (res.status == 200) {
@@ -91,6 +126,32 @@ export default {
                 });
                 commit('DELETE_CATEGORY' , category);
                 // commit('DELETE_SUB_CATEGORIES',category.subcategories)
+            }
+        } catch (error) {
+           if (error.response.status == 403) {
+              $Notice.error({
+                    title: 'Category Delete Failed!',
+                    desc: error.response.data.message
+                });
+           }
+            $Notice.error({
+                title: 'Something went wrong',
+                desc: error.response.data.message
+            });
+        }
+
+    },
+    async deleteSubCategory({commit} , sub_category){
+        try {
+
+            let res =   await axios.delete(`/api/admin/categories/${sub_category.id}`);
+            if (res.status == 200) {
+                $Notice.success({
+                    title: 'Category Deleted Successfully',
+                    desc: `${sub_category.name} deleted`
+                });
+                commit('DELETE_SUB_CATEGORY' , sub_category);
+
             }
         } catch (error) {
            if (error.response.status == 403) {
@@ -158,7 +219,6 @@ export default {
         }
     },
     handleSuccess({state},res) {
-
         if (state.isEditingItem) {
             return (state.editData.icon = res);
         }
@@ -207,5 +267,13 @@ export default {
     changePaginatedPerPage({state,commit , dispatch} , perPage){
         commit('FILTER_DATA', {perPage})
         dispatch('getCategories')
-    }
+    },
+    changeSubPaginatedPage({state,commit ,dispatch } , page){
+        commit('FILTER_DATA', {page})
+        dispatch('getSubCategories')
+     },
+     changeSubPaginatedPerPage({state,commit , dispatch} , perPage){
+         commit('FILTER_DATA', {perPage})
+         dispatch('getSubCategories')
+     }
 }

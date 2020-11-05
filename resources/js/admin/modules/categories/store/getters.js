@@ -1,6 +1,7 @@
 import {Form} from 'vform'
 export default {
     getAllCategory       : state => state.categories,
+    getAllSubCategory    : state => state.subcategories,
     paginatedMetaData    : state => state.paginationData,
     isImageVisible       : state => state.addMeta.isImageVisible,
     isEditImageVisible   : state => state.editMeta.isImageVisible,

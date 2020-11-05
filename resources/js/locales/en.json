@@ -15,14 +15,21 @@
         "edit" : "Edit @:sidebar.category",
         "delete" : "Delete @:sidebar.category"
     },
-    "brands" : {
+    "subcategories" : {
+        "name" : "Sub @:categories.name",
+        "add": "Add Sub @:categories.name",
+        "adding": " Adding Subcategory...",
+        "edit" : "Edit @:categories.edit",
+        "editing" : "Editing Sub @:categories.name",
+        "delete" : "Delete Sub @:categories.name"
+    },
+        "brands" : {
         "name" : "Brands",
         "add": "Add @:sidebar.brand",
         "adding": " Adding...",
         "edit" : "Edit @:sidebar.brand",
         "editing" : "Editing @:sidebar.brand",
         "delete" : "Delete @:sidebar.brand"
-
     },
     "filter":{
         "name" : "Filter"

@@ -17,10 +17,12 @@
         <li class="app-search">
             <LanguegeSwitcher ></LanguegeSwitcher>
         </li>
-
+        <li class="app-search">
+            <router-link :to="{name:'Home'}">Visit Site</router-link>
+        </li>
         <!-- User Menu-->
         <li class="dropdown list-unstyled">
-            <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fab fa-arrow fa-lg"></i></a>
+            <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-globe fa-lg"></i></a>
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
                 <li>
                     <a class="dropdown-item" href="http://127.0.0.1:8001/admin/settings"><i class="fa fa-cog fa-lg"></i> Settings</a>

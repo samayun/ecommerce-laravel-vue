@@ -22,24 +22,24 @@ import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 export default {
    name : "ShowAllData",
    data(){
-       return {
-                 dataStructureTable: [
-                    {
+         let deleteMultiple = {}
+                if (this.isPermitted('delete','brand')){
+                    deleteMultiple =  {
                         type: 'selection',
                         align: 'center',
-                        width: 50 ,
-                        render: (h,params) => {
-                            if (this.isPermitted('delete','brand')) {
-                                return h('Checkbox' , {
-                                    props: {
-                                        type: 'success'
-                                    }
-                                },NO)
-                            }
-                            return h('i', 'delete')
-                        }
+                        width: 40
                     }
-                    ,
+                }else{
+                    deleteMultiple = {
+                        title: 'ID',
+                        key: 'id',
+                        sortable: true,
+                        tooltip:true,
+                    }
+            }
+         return {
+                 dataStructureTable: [
+                     deleteMultiple ,
                     {
                         title: 'ID',
                         key: 'id',

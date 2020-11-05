@@ -3,8 +3,17 @@ export default {
     CREATE_CATEGORY(state , category){
         state.categories.unshift(category)
     },
+    CREATE_SUB_CATEGORY(state , sub_category){
+        //
+        let goalId = sub_category.parent_id;
+        sub_category.category = state.categories.find(i => i.id == goalId)
+        state.subcategories.unshift(sub_category)
+    },
     FETCH_CATEGORIES(state , categories){
         state.categories = categories
+    },
+    FETCH_SUB_CATEGORIES(state,subcategories){
+        state.subcategories = subcategories
     },
     FILTER_DATA(state , payload){
         // state.filterString = payload
@@ -15,10 +24,31 @@ export default {
     GET_EDIT_DATA(state , payload){
         state.editData =  new Form(payload)
     },
+    GET_SUB_EDIT_DATA(state , payload){
+        state.editSubData =  new Form(payload)
+    },
     UPDATE_CATEGORY(state ){
         let index = state.categories.findIndex(item => item.id === state.editData.id);
-        state.categories[index].name = state.editData.name
-        state.categories[index].icon = state.editData.icon
+        // Automatically >>
+        for( let key in state.editData){
+        if (state.categories[index].hasOwnProperty(key)) {
+            state.categories[index][key] = state.editData[key];
+        }
+    }
+    },
+    UPDATE_SUB_CATEGORY(state ){
+        // I will make mixin : getByIdAndUpdate(categories = [] , keyId = id ) @return void;
+        let index = state.subcategories.findIndex(item => item.id === state.editSubData.id);
+        // Automatically >>
+        for( let key in state.editSubData){
+            if (state.subcategories[index].hasOwnProperty(key)) {
+                state.subcategories[index][key] = state.editSubData[key];
+            }
+        }
+    },
+    DELETE_SUB_CATEGORY(state , category){
+        let index= state.subcategories.findIndex(item => item.id === category.id);
+        state.subcategories.splice(index , 1)
     },
     DELETE_CATEGORY(state , category){
         let index= state.categories.findIndex(item => item.id === category.id);
@@ -30,6 +60,13 @@ export default {
         })
         // state.categories = arr;
         state.multiSelected = [];
+    },
+    DELETE_MULTI_SUB_CATEGORY(state , selected_sub_categories_id_array){
+        state.subcategories = state.subcategories.filter( objectA => {
+            return !selected_sub_categories_id_array.find(objectB => objectA.id === objectB.id)
+        })
+        // state.categories = arr;
+        state.subMeta.multiSelected = []
     },
     TOGGLE_MODAL(state, type = 'cat-add'){
         if (type == 'cat-add') {

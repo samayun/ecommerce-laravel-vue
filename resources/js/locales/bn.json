@@ -10,22 +10,29 @@
         "logout" : "লগ আউট"
     },
     "categories" : {
-        "name" : "ক্যাটাগরি সমূহ",
+        "name" : "@:sidebar.category সমূহ",
         "add": "@:sidebar.category যোগ করুন",
         "adding": "@:sidebar.category যোগ করা হচ্ছে",
-        "edit" : "@:sidebar.category এডিট ",
+        "edit" : "@:sidebar.category @:edit ",
         "editing" : "@:sidebar.category সম্পাদনা করা হচ্ছে",
         "delete" : "@:sidebar.category ডিলেট করুন"
 
     },
+    "subcategories" : {
+        "name" : "উপ @:categories.name",
+        "add": "উপ @:categories.name",
+        "adding": " উপ @:categories।adding ...",
+        "edit" : "@:categories.edit",
+        "editing" : "উপ @:categories.editing",
+        "delete" : "উপ @:categories.delete"
+    },
     "brands" : {
-        "name" : "ব্র্যান্ড সমূহ",
+        "name" : "@:sidebar.brand সমূহ",
         "add": "@:sidebar.brand যোগ করুন",
         "adding": "@:sidebar.brand যোগ করা হচ্ছে",
         "edit" : "@:sidebar.brand @:edit",
         "editing" : "@:sidebar.brand সম্পাদনা করা হচ্ছে",
         "delete" : "@:sidebar.brand @:delete"
-
     },
     "filter":{
         "name" : "ফিল্টার করুন"

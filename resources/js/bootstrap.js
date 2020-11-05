@@ -13,7 +13,7 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
     require('bootstrap');
-    // IMPORT PACKAGES HERE 
+    // IMPORT PACKAGES HERE
 
     require('admin-lte/dist/js/adminlte');
     require('@fortawesome/fontawesome-free/js/all');

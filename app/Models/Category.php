@@ -15,9 +15,9 @@ class Category extends Model
      * @var array
      */
     protected $guarded = [];
-    protected $casts = [
-        'parent_id' =>'integer'
-    ];
+    // protected $casts = [
+    //     'parent_id' =>'integer'
+    // ];
     // protected $with = ['subcategories','category'];
     public function subcategories()
     {

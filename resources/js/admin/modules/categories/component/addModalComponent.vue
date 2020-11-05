@@ -1,5 +1,5 @@
 <template>
-<span class="float-right mr-3">
+<span class="mr-3">
 <Button
     type="success"
     @click="TOGGLE_MODAL('cat-add')"
@@ -68,7 +68,7 @@
 import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 
 export default {
-    name: "addModalComponent",
+    name: "addSubModalComponent",
 
     computed:{
         ...mapState("categoriesStoreIndex", [

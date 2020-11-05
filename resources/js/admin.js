@@ -3,7 +3,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
+console.time('start')
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -73,3 +73,4 @@ const app = new Vue({
     router,
     store,
 });
+console.timeEnd('start')

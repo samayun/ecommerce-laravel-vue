@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
+use function PHPUnit\Framework\isNull;
+
 class CategoryController extends Controller
 {
     use UploadAble;
@@ -28,12 +30,12 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         // these code must be efactored - we wil need this again and again
-        return Category::where('parent_id',1)->where('id','!=',1)->filter($request);
+        return Category::where('parent_id',1)->with('subcategories')->where('id','!=',1)->filter($request);
     }
     public function subcategories(Request $request)
     {
         // these code must be efactored - we wil need this again and again
-        return Category::where('parent_id','!=',1)->filter($request);
+        return Category::where('parent_id','!=',1)->with('category')->filter($request);
     }
 
     /**
@@ -47,7 +49,9 @@ class CategoryController extends Controller
         $this->validate($request , [
             'name' => 'bail|required|min:3',
             'slug' => $request->slug ? "alpha_dash|unique:categories,slug" : "",
-            'icon' => 'required'
+            'icon' => $request->icon ? 'required' : '',
+            'description' => $request->description ? 'required|min:10' : '',
+            'parent_id' => !$request->icon ? 'required' : ''
         ]);
         if ($request->has('icon') && $request->icon != "" ) {
             $image      = $this->base64ToImage($request->icon)['image'];
@@ -144,7 +148,13 @@ class CategoryController extends Controller
     {
         $category = Category::where('id',$category->id)->first();
         try {
-            if($this->deleteBase64RequestedFile($category->icon) ){
+           if ($category->parent_id !== 1 && isNull($category->icon)) {
+              $category->delete();
+              return response()->json([
+                    'message' => $category->name." deleted successfully"
+                ], 200);
+           }
+            else if(isNull($category->icon) && $this->deleteBase64RequestedFile($category->icon) ){
                     DB::beginTransaction();
                     $category->delete();
                     DB::commit();
@@ -152,6 +162,8 @@ class CategoryController extends Controller
                     'message' => $category->name." deleted successfully"
                 ], 200);
             }
+
+
 
             return response()->json([
                 'message' => $category->name." deleted failed"
