@@ -15,6 +15,22 @@ class Category extends Model
      * @var array
      */
     protected $guarded = [];
+    protected $casts = [
+        'parent_id' =>'integer'
+    ];
+    // protected $with = ['subcategories','category'];
+    public function subcategories()
+    {
+        return $this->hasMany('App\Models\Category', 'parent_id');
+    }
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category', 'parent_id');
+    }
+    public function setNameAttribute($v){
+        $this->attributes['name'] = $v;
+        $this->attributes['slug'] = \Str::slug($v);
+    }
     public function scopeSearch($query , $q)
     {
         if($q == null) return;

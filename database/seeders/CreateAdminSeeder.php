@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Admin;
+use App\Models\Category;
 
 class CreateAdminSeeder extends Seeder
 {
@@ -19,6 +20,14 @@ class CreateAdminSeeder extends Seeder
             'email'=>'samayun.m.chowdhury@gmail.com',
             'is_super' => 1,
             'password'=> \Hash::make('123456'),
+        ]);
+
+        Category::create([
+            'id' => 1,
+            'name' => 'Root',
+            'slug' => 'root',
+            'description' => 'This is root category . don\'t change this',
+            'parent_id' => 1
         ]);
 
         Admin::create([

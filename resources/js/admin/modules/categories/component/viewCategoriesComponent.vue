@@ -9,7 +9,7 @@
             ref="selection"
             :columns="dataStructureTable"
             v-if="getAllCategory.length"
-            :loading="isLoading"
+            :loading="getAllCategory.length == 0"
             :data="getAllCategory">
             </Table>
             <br/>
@@ -29,13 +29,13 @@ export default {
                         type: 'selection',
                         align: 'center',
                         width: 50 ,
-                        render: (h,params) => {
+                        renderHeader: (h,params) => {
                             if (this.isPermitted('delete','category')) {
                                 return h('Checkbox' , {
                                     props: {
                                         type: 'success'
                                     }
-                                },NO)
+                                },"NO")
                             }
                             return h('i', 'delete')
                         }
@@ -65,7 +65,8 @@ export default {
                                         style: {
                                             marginRight: '5px',
                                             width: '10rem',
-                                            height:'5rem'
+                                            height:'5rem',
+                                            color: "#f55"
                                         }
 
                                     })
@@ -80,10 +81,15 @@ export default {
                         render: (h, params) => {
                             let deleteButton = h('')
                             if (this.isPermitted('delete','category')) {
-                                deleteButton =   h('Button', {
+                                deleteButton =   h('Icon', {
                                                     props: {
-                                                        type: 'error',
-                                                        size: 'small'
+                                                        type: 'ios-trash',
+                                                        size: 'large'
+                                                    },
+                                                    style: {
+                                                        fontSize: '25px',
+                                                        cursor: 'pointer',
+                                                        color: "#f55"
                                                     },
                                                     on: {
                                                         click: () => {
@@ -94,17 +100,21 @@ export default {
                             };
                             let edit = h('')
                             if(this.isPermitted('update','category')){
-                             edit = h('Button', {
+                             edit = h('Icon', {
                                     props: {
-                                        type: 'info',
-                                        size: 'small'
+                                        type: 'ios-download',
+                                        size: 'large'
                                     },
                                     style: {
-                                        marginRight: '5px'
+                                        marginRight: '5px',
+                                        fontSize: '25px',
+                                        cursor: 'pointer',
+                                        color: "#s1f2"
                                     },
                                     on: {
                                         click: () => {
-                                            this.clickEditBtn(params.row);
+                                            this.TOGGLE_MODAL('cat-edit')
+                                            this.GET_EDIT_DATA(params.row);
                                         }
                                     }
                                 }, 'Edit');
@@ -118,16 +128,12 @@ export default {
        }
    },
    computed: {
-       ...mapState("categoriesStoreIndex", [ 'showEditModal' , 'editData','isLoading' , 'isEditing','errors' ,'multiSelected' ]),
+       ...mapState("categoriesStoreIndex", [ 'editMeta' , 'editData','errors' ,'multiSelected' ]),
        ...mapGetters("categoriesStoreIndex",['getAllCategory','filterString' ])
    },
    methods:{
-         ...mapActions("categoriesStoreIndex", ['getCategories','editCategory' ,'deleteCategory' ,'multiDelete','changePaginatedPage','changePaginatedPerPage']),
-         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_EDIT_MODAL' ,'GET_EDIT_DATA' , 'handleSelectionChange']),
-         clickEditBtn(cat){
-             this.TOGGLE_EDIT_MODAL()
-             this.GET_EDIT_DATA(cat);
-         },
+         ...mapActions("categoriesStoreIndex", ['getCategories','editCategory' ,'deleteCategory' ,'multiDelete', 'handleSelectionChange','changePaginatedPage','changePaginatedPerPage']),
+         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_MODAL' ,'GET_EDIT_DATA' ]),
          deleteConfirmation(category){
              this.$Modal.confirm({
                  title: '<Icon type="ios-information-circle"></Icon> Are you sure to delete',

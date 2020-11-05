@@ -37,10 +37,11 @@ Route::view('/{any}', 'admin_layout')->where('any', 'admin.*');
 // });
 
 Route::group(['prefix' => 'api/admin' , 'middleware' => 'auth:admin' ], function () {
+    Route::get('subcategories' , [CategoryController::class , 'subcategories']);
     Route::post('categories/multi' , [CategoryController::class , 'multiDelete']);
     Route::apiResource('categories' , CategoryController::class);
-    Route::post('/upload_category_image', [CategoryController::class ,'upload']);
-    Route::post('/delete_category_image', [CategoryController::class ,'deleteImage']);
+    // Route::post('/upload_category_image', [CategoryController::class ,'upload']);
+    // Route::post('/delete_category_image', [CategoryController::class ,'deleteImage']);
 });
 
 Route::group(['prefix' => 'api/admin' , 'middleware' => 'auth:admin' ], function () {

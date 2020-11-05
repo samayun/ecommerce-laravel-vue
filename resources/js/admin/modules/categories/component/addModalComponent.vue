@@ -2,12 +2,12 @@
 <span class="float-right mr-3">
 <Button
     type="success"
-    @click="TOGGLE_MODAL"
-    :disabled="isAdding"
-    :loading="isAdding"><Icon type="ios-add" /> {{$t('categories.add')}}</Button>
+    @click="TOGGLE_MODAL('cat-add')"
+    :disabled="addData.busy"
+    :loading="addData.busy"><Icon type="ios-add" /> {{$t('categories.add')}}</Button>
 
-    <Modal v-model="showModal" role="form" :title="$t('categories.add')" :mask-closable="false" :closable="false" @keyup.enter="addCategory">
-        <Loading :show="isAdding"/>
+    <Modal v-model="addMeta.showModal" role="form" :title="$t('categories.add')" :mask-closable="false" :closable="false" @keyup.enter="addCategory">
+        <Loading :show="addData.busy"/>
 
         <Input v-model="addData.name" placeholder="Add category name"
         :class="{ 'has-error': addData.errors.has('name') }"
@@ -16,18 +16,21 @@
         <has-error :form="addData" field="name"></has-error>
 
         <Upload
+            v-show="addData.name && addData.name.length >= 3"
             ref="upload"
             type="drag"
+            name="icon"
             :multiple="false"
              :show-upload-list="false"
             :headers="{'x-csrf-token' : token, 'X-Requested-With' : 'XMLHttpRequest'}"
+            :before-upload="handleBeforeUpload"
             :on-success="handleSuccess"
             :on-error="handleError"
             :format="['jpg','jpeg','png']"
             :max-size="2048"
             :on-format-error="handleFormatError"
             :on-exceeded-size="handleMaxSize"
-            action="/api/admin/upload_category_image"
+            action="/api/admin/categories"
         >
             <div style="padding: 20px 0">
                 <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
@@ -40,21 +43,21 @@
         <div class="demo-upload-list" v-if="addData.icon">
             <img :src="`${addData.icon}`" style="width:10rem;height:6rem;"/>
             <div class="demo-upload-list-cover">
-               <Icon type="ios-camera-outline" size="large" @click="HANDLE_VIEW"></Icon>
-               <Icon type="ios-trash-outline" size="large" @click="deleteImageAndClearFiles"></Icon>
+               <Icon type="ios-camera-outline" size="large" @click="handleImageView(true)"></Icon>
+               <Icon type="ios-trash-outline" size="large" @click="deleteImage"></Icon>
             </div>
         </div>
         <Modal title="View image" v-model="imageVisible">
                 <img :src="addData.icon" :alt="addData.name" style="width:100%;"/>
             </Modal>
         <div slot="footer">
-            <Button type="default" @click="TOGGLE_MODAL"> {{$t('close') }} </Button>
+            <Button type="default" @click="TOGGLE_MODAL('cat-add')"> {{$t('close') }} </Button>
             <Button
                 type="primary"
                 @click="addCategory"
-                :disabled="isAdding"
-                :loading="isAdding"
-            >{{isAdding ? $t('categories.adding')+'..' : $t('categories.add')}}</Button>
+                :disabled="addData.busy"
+                :loading="addData.busy"
+            >{{addData.busy ? $t('categories.adding')+'..' : $t('categories.add')}}</Button>
         </div>
     </Modal>
     </span>
@@ -66,40 +69,30 @@ import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 
 export default {
     name: "addModalComponent",
-    // data(){
-    //     return {
-    //         ...mapState("categoriesStoreIndex", ['addData'])
-    //     }
-    // },
+
     computed:{
         ...mapState("categoriesStoreIndex", [
-          'showModal' ,'isLoading', 'isAdding' ,'addData'
+          'addMeta' ,'addData','errors'
        ]),
        ...mapGetters("categoriesStoreIndex", ['isImageVisible']),
         imageVisible: {
             get(){
-                return this.isImageVisible
+                return this.addMeta.isImageVisible
             },
             set(value){
-                this.HANDLE_VIEW(true)
+                this.handleImageView(true)
             }
         }
     },
     methods:{
-         ...mapActions("categoriesStoreIndex", ['addCategory' , 'handleMaxSize' ,'handleFormatError' ,'handleSuccess','handleError' ,'deleteImage' ,'HANDLE_VIEW'  ]),
-         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_MODAL']),
-         deleteImageAndClearFiles(){
-             this.deleteImage();
-            //  this.$refs.upload.clearFiles()
-         }
-
+         ...mapActions("categoriesStoreIndex", ['addCategory' , "handleBeforeUpload",'handleMaxSize' ,'handleFormatError' ,'handleSuccess','handleError' ,'deleteImage' ,'handleImageView'  ]),
+         ...mapMutations("categoriesStoreIndex" , ['TOGGLE_MODAL'])
     },
      created(){
         this.token = window.Laravel.csrfToken;
         let _this = this
         $Bus.$on('clearAddedFiles' , () => {
             _this.$refs.upload.clearFiles();
-            _this.$Notice.info({title:"EventBus Event emitted : clearAddedFiles"})
         })
     }
 

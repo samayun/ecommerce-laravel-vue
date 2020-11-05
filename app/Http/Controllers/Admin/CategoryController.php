@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Policies\CategoryPolicies;
 use App\Models\Category;
 use App\Models\Admin;
+use App\Traits\UploadAble;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,8 @@ use DB;
 
 class CategoryController extends Controller
 {
+    use UploadAble;
+
     public function __construct()
     {
         $this->authorizeResource(Category::class, 'category');
@@ -25,7 +28,12 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         // these code must be efactored - we wil need this again and again
-        return Category::filter($request);
+        return Category::where('parent_id',1)->where('id','!=',1)->filter($request);
+    }
+    public function subcategories(Request $request)
+    {
+        // these code must be efactored - we wil need this again and again
+        return Category::where('parent_id','!=',1)->filter($request);
     }
 
     /**
@@ -38,20 +46,42 @@ class CategoryController extends Controller
     {
         $this->validate($request , [
             'name' => 'bail|required|min:3',
+            'slug' => $request->slug ? "alpha_dash|unique:categories,slug" : "",
             'icon' => 'required'
         ]);
-        return Category::create($request->all());
+        if ($request->has('icon') && $request->icon != "" ) {
+            $image      = $this->base64ToImage($request->icon)['image'];
+            $extension  = $this->base64ToImage($request->icon)['extension'];
+            $FileError = $this->setImageValidationError($extension,'icon',['jpg','jpeg','png','svg']);
+            if ($FileError) {
+                 return response()->json([
+                    'message' => $FileError['error'],
+                    'errors' => [
+                        $FileError['feild'] => [ $FileError['error'] ]
+                    ]
+                ], $FileError['status']);
+            }
+            $uploadedFile = $this->uploadBase64File($request->icon , 'categories/','public');
+
+            return Category::create([
+                'name' => $request->name,
+                'icon' => '/storage/categories/'.$uploadedFile['name']
+            ]);
+        }
+        return Category::create($request->all()); // actually subcategory created
     }
     public function multiDelete(Request $request)
     {
         $this->authorize('multi_delete');
         try {
-            DB::beginTransaction();
+
             foreach ($request->all() as $category) {
                 $this->deleteFileFromServer($category['icon']);
+                DB::beginTransaction();
                 Category::find($category['id'])->delete();
+                DB::commit();
             }
-            DB::commit();
+
             return response()->json(['message' => "SUCCESS"], 200);
         } catch (\Throwable $th) {
             DB::rollback();
@@ -67,33 +97,7 @@ class CategoryController extends Controller
     {
         return $category;
     }
-    // Upload Images
-    // @request file
-    // @return filname.png etc
-    public function upload(Request $request){
-        $this->validate($request,[
-            'file' => 'required|mimes:jpg,jpeg,png|image'
-        ]);
-       $picName = time().'.'.$request->file->extension();
-       $request->file->move(public_path('uploads/categories'),$picName);
-       return $picName;
-    }
-    public function deleteImage(Request $request)
-    {
-        $filePath = $request->image;
-        $this->deleteFileFromServer($filePath);
-        return "done";
-    }
-    public function deleteFileFromServer($filePath , $hasFullPath = false)
-    {
-        if(!$hasFullPath){
-            $filePath = public_path().$filePath;
-        }
-        if (file_exists($filePath)) {
-           return @unlink($filePath);
-        }
-        return;
-    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -105,8 +109,28 @@ class CategoryController extends Controller
     {
         $this->validate($request , [
             'name' => 'bail|required|min:3',
-            'icon' => 'required'
+            'icon' =>  $request->icon ? 'required|min:6' : ''
         ]);
+        if ($request->has('icon') && $request->icon != ""  && $request->icon !== $category->icon) {
+            $image      = $this->base64ToImage($request->icon)['image'];
+            $extension  = $this->base64ToImage($request->icon)['extension'];
+            $FileError = $this->setImageValidationError($extension,'icon',['jpg','jpeg','png','svg']);
+            if ($FileError) {
+                 return response()->json([
+                    'message' => $FileError['error'],
+                    'errors' => [
+                        $FileError['feild'] => [ $FileError['error'] ]
+                    ]
+                ], $FileError['status']);
+            }
+
+            $uploadedFile = $this->uploadBase64File($request->icon , 'categories/','public');
+
+            return $category->update([
+                'name' => $request->name,
+                'icon' => '/storage/categories/'.$uploadedFile['name']
+            ]);
+        }
         return $category->update($request->except('id'));
     }
 
@@ -118,19 +142,20 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request , Category $category)
     {
+        $category = Category::where('id',$category->id)->first();
         try {
-            DB::beginTransaction();
-            $this->deleteFileFromServer(public_path().$category->icon);
-            // $this->validate($request , [
-            //     // 'name' => 'bail|required|min:3',
-            //     'id' => 'required',
-            //     'icon' => 'required'
-            // ]);
-            $category->delete();
-            DB::commit();
+            if($this->deleteBase64RequestedFile($category->icon) ){
+                    DB::beginTransaction();
+                    $category->delete();
+                    DB::commit();
+                    return response()->json([
+                    'message' => $category->name." deleted successfully"
+                ], 200);
+            }
+
             return response()->json([
-                'message' => $category->name." deleted successfully"
-            ], 200);;
+                'message' => $category->name." deleted failed"
+            ], 404);
         } catch (\Throwable $th) {
             DB::rollback();
         }

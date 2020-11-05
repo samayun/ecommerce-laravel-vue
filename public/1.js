@@ -79,29 +79,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "addModalComponent",
-  // data(){
-  //     return {
-  //         ...mapState("categoriesStoreIndex", ['addData'])
-  //     }
-  // },
-  computed: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("categoriesStoreIndex", ['showModal', 'isLoading', 'isAdding', 'addData'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("categoriesStoreIndex", ['isImageVisible'])), {}, {
+  computed: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("categoriesStoreIndex", ['addMeta', 'addData', 'errors'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("categoriesStoreIndex", ['isImageVisible'])), {}, {
     imageVisible: {
       get: function get() {
-        return this.isImageVisible;
+        return this.addMeta.isImageVisible;
       },
       set: function set(value) {
-        this.HANDLE_VIEW(true);
+        this.handleImageView(true);
       }
     }
   }),
-  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ['addCategory', 'handleMaxSize', 'handleFormatError', 'handleSuccess', 'handleError', 'deleteImage', 'HANDLE_VIEW'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])("categoriesStoreIndex", ['TOGGLE_MODAL'])), {}, {
-    deleteImageAndClearFiles: function deleteImageAndClearFiles() {
-      this.deleteImage(); //  this.$refs.upload.clearFiles()
-    }
-  }),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ['addCategory', "handleBeforeUpload", 'handleMaxSize', 'handleFormatError', 'handleSuccess', 'handleError', 'deleteImage', 'handleImageView'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])("categoriesStoreIndex", ['TOGGLE_MODAL'])),
   created: function created() {
     this.token = window.Laravel.csrfToken;
 
@@ -109,10 +103,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     $Bus.$on('clearAddedFiles', function () {
       _this.$refs.upload.clearFiles();
-
-      _this.$Notice.info({
-        title: "EventBus Event emitted : clearAddedFiles"
-      });
     });
   }
 });
@@ -197,26 +187,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'editModalComponent',
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])("categoriesStoreIndex", ['showEditModal', 'editData', 'isEditing', 'errors', 'isEditImageVisible'])), {}, {
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])("categoriesStoreIndex", ['editMeta', 'editData', 'errors'])), {}, {
     imageVisible: {
       get: function get() {
-        return this.isEditImageVisible;
+        return this.editMeta.isImageVisible;
       },
       set: function set(value) {
-        this.HANDLE_VIEW(value);
+        this.handleImageView(value);
       }
-    } //    ...mapGetters("categoriesStoreIndex", ['isEditImageVisible'])
-
-  }),
-  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])("categoriesStoreIndex", ['editCategory', 'handleMaxSize', 'handleFormatError', 'handleSuccess', 'handleError', 'deleteEditImage', 'HANDLE_VIEW'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])("categoriesStoreIndex", ['TOGGLE_EDIT_MODAL'])), {}, {
-    deleteImageAndClearFiles: function deleteImageAndClearFiles() {
-      this.deleteEditImage();
-      this.$refs.upload.clearFiles();
     }
   }),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])("categoriesStoreIndex", ['editCategory', "handleBeforeUpload", 'handleMaxSize', 'handleFormatError', 'handleSuccess', 'handleError', 'deleteImage', 'handleImageView'])), Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapMutations"])("categoriesStoreIndex", ['TOGGLE_MODAL'])),
   created: function created() {
     var _this = this;
 
@@ -286,13 +273,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         type: 'selection',
         align: 'center',
         width: 50,
-        render: function render(h, params) {
+        renderHeader: function renderHeader(h, params) {
           if (_this.isPermitted('delete', 'category')) {
             return h('Checkbox', {
               props: {
                 type: 'success'
               }
-            }, NO);
+            }, "NO");
           }
 
           return h('i', 'delete');
@@ -319,7 +306,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             style: {
               marginRight: '5px',
               width: '10rem',
-              height: '5rem'
+              height: '5rem',
+              color: "#f55"
             }
           });
         }
@@ -332,10 +320,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           var deleteButton = h('');
 
           if (_this.isPermitted('delete', 'category')) {
-            deleteButton = h('Button', {
+            deleteButton = h('Icon', {
               props: {
-                type: 'error',
-                size: 'small'
+                type: 'ios-trash',
+                size: 'large'
+              },
+              style: {
+                fontSize: '25px',
+                cursor: 'pointer',
+                color: "#f55"
               },
               on: {
                 click: function click() {
@@ -349,17 +342,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           var edit = h('');
 
           if (_this.isPermitted('update', 'category')) {
-            edit = h('Button', {
+            edit = h('Icon', {
               props: {
-                type: 'info',
-                size: 'small'
+                type: 'ios-download',
+                size: 'large'
               },
               style: {
-                marginRight: '5px'
+                marginRight: '5px',
+                fontSize: '25px',
+                cursor: 'pointer',
+                color: "#s1f2"
               },
               on: {
                 click: function click() {
-                  _this.clickEditBtn(params.row);
+                  _this.TOGGLE_MODAL('cat-edit');
+
+                  _this.GET_EDIT_DATA(params.row);
                 }
               }
             }, 'Edit');
@@ -370,12 +368,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }]
     };
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("categoriesStoreIndex", ['showEditModal', 'editData', 'isLoading', 'isEditing', 'errors', 'multiSelected'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("categoriesStoreIndex", ['getAllCategory', 'filterString'])),
-  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ['getCategories', 'editCategory', 'deleteCategory', 'multiDelete', 'changePaginatedPage', 'changePaginatedPerPage'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])("categoriesStoreIndex", ['TOGGLE_EDIT_MODAL', 'GET_EDIT_DATA', 'handleSelectionChange'])), {}, {
-    clickEditBtn: function clickEditBtn(cat) {
-      this.TOGGLE_EDIT_MODAL();
-      this.GET_EDIT_DATA(cat);
-    },
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("categoriesStoreIndex", ['editMeta', 'editData', 'errors', 'multiSelected'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("categoriesStoreIndex", ['getAllCategory', 'filterString'])),
+  methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ['getCategories', 'editCategory', 'deleteCategory', 'multiDelete', 'handleSelectionChange', 'changePaginatedPage', 'changePaginatedPerPage'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])("categoriesStoreIndex", ['TOGGLE_MODAL', 'GET_EDIT_DATA'])), {}, {
     deleteConfirmation: function deleteConfirmation(category) {
       var _this2 = this;
 
@@ -536,10 +530,14 @@ var render = function() {
         {
           attrs: {
             type: "success",
-            disabled: _vm.isAdding,
-            loading: _vm.isAdding
+            disabled: _vm.addData.busy,
+            loading: _vm.addData.busy
           },
-          on: { click: _vm.TOGGLE_MODAL }
+          on: {
+            click: function($event) {
+              return _vm.TOGGLE_MODAL("cat-add")
+            }
+          }
         },
         [
           _c("Icon", { attrs: { type: "ios-add" } }),
@@ -569,15 +567,15 @@ var render = function() {
             }
           },
           model: {
-            value: _vm.showModal,
+            value: _vm.addMeta.showModal,
             callback: function($$v) {
-              _vm.showModal = $$v
+              _vm.$set(_vm.addMeta, "showModal", $$v)
             },
-            expression: "showModal"
+            expression: "addMeta.showModal"
           }
         },
         [
-          _c("Loading", { attrs: { show: _vm.isAdding } }),
+          _c("Loading", { attrs: { show: _vm.addData.busy } }),
           _vm._v(" "),
           _c("Input", {
             class: { "has-error": _vm.addData.errors.has("name") },
@@ -596,22 +594,32 @@ var render = function() {
           _c(
             "Upload",
             {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.addData.name && _vm.addData.name.length >= 3,
+                  expression: "addData.name && addData.name.length >= 3"
+                }
+              ],
               ref: "upload",
               attrs: {
                 type: "drag",
+                name: "icon",
                 multiple: false,
                 "show-upload-list": false,
                 headers: {
                   "x-csrf-token": _vm.token,
                   "X-Requested-With": "XMLHttpRequest"
                 },
+                "before-upload": _vm.handleBeforeUpload,
                 "on-success": _vm.handleSuccess,
                 "on-error": _vm.handleError,
                 format: ["jpg", "jpeg", "png"],
                 "max-size": 2048,
                 "on-format-error": _vm.handleFormatError,
                 "on-exceeded-size": _vm.handleMaxSize,
-                action: "/api/admin/upload_category_image"
+                action: "/api/admin/categories"
               }
             },
             [
@@ -652,12 +660,16 @@ var render = function() {
                   [
                     _c("Icon", {
                       attrs: { type: "ios-camera-outline", size: "large" },
-                      on: { click: _vm.HANDLE_VIEW }
+                      on: {
+                        click: function($event) {
+                          return _vm.handleImageView(true)
+                        }
+                      }
                     }),
                     _vm._v(" "),
                     _c("Icon", {
                       attrs: { type: "ios-trash-outline", size: "large" },
-                      on: { click: _vm.deleteImageAndClearFiles }
+                      on: { click: _vm.deleteImage }
                     })
                   ],
                   1
@@ -691,7 +703,14 @@ var render = function() {
             [
               _c(
                 "Button",
-                { attrs: { type: "default" }, on: { click: _vm.TOGGLE_MODAL } },
+                {
+                  attrs: { type: "default" },
+                  on: {
+                    click: function($event) {
+                      return _vm.TOGGLE_MODAL("cat-add")
+                    }
+                  }
+                },
                 [_vm._v(" " + _vm._s(_vm.$t("close")) + " ")]
               ),
               _vm._v(" "),
@@ -700,15 +719,15 @@ var render = function() {
                 {
                   attrs: {
                     type: "primary",
-                    disabled: _vm.isAdding,
-                    loading: _vm.isAdding
+                    disabled: _vm.addData.busy,
+                    loading: _vm.addData.busy
                   },
                   on: { click: _vm.addCategory }
                 },
                 [
                   _vm._v(
                     _vm._s(
-                      _vm.isAdding
+                      _vm.addData.busy
                         ? _vm.$t("categories.adding") + ".."
                         : _vm.$t("categories.add")
                     )
@@ -758,18 +777,18 @@ var render = function() {
             title: _vm.$t("categories.edit"),
             "mask-closable": false,
             closable: false,
-            loading: _vm.isEditing
+            loading: _vm.editData.busy
           },
           model: {
-            value: _vm.showEditModal,
+            value: _vm.editMeta.showModal,
             callback: function($$v) {
-              _vm.showEditModal = $$v
+              _vm.$set(_vm.editMeta, "showModal", $$v)
             },
-            expression: "showEditModal"
+            expression: "editMeta.showModal"
           }
         },
         [
-          _c("Loading", { attrs: { show: _vm.isEditing } }),
+          _c("Loading", { attrs: { show: _vm.editData.busy } }),
           _vm._v(" "),
           _c("Input", {
             class: { "is-invalid": _vm.editData.errors.has("name") },
@@ -790,22 +809,35 @@ var render = function() {
           _c(
             "Upload",
             {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value:
+                    (_vm.editData.name && _vm.editData.name.length >= 3) ||
+                    _vm.editData.icon == "",
+                  expression:
+                    "editData.name && editData.name.length >= 3 || editData.icon == ''"
+                }
+              ],
               ref: "upload",
               attrs: {
                 type: "drag",
+                name: "icon",
                 multiple: false,
                 "show-upload-list": false,
                 headers: {
                   "x-csrf-token": _vm.token,
                   "X-Requested-With": "XMLHttpRequest"
                 },
+                "before-upload": _vm.handleBeforeUpload,
                 "on-success": _vm.handleSuccess,
                 "on-error": _vm.handleError,
                 format: ["jpg", "jpeg", "png"],
                 "max-size": 2048,
                 "on-format-error": _vm.handleFormatError,
                 "on-exceeded-size": _vm.handleMaxSize,
-                action: "/api/admin/upload_category_image"
+                action: "/api/admin/categories"
               }
             },
             [
@@ -846,14 +878,18 @@ var render = function() {
                       attrs: { type: "ios-camera-outline", size: "large" },
                       on: {
                         click: function($event) {
-                          return _vm.HANDLE_VIEW(false)
+                          return _vm.handleImageView(false)
                         }
                       }
                     }),
                     _vm._v(" "),
                     _c("Icon", {
                       attrs: { type: "ios-trash-outline", size: "large" },
-                      on: { click: _vm.deleteImageAndClearFiles }
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteImage(false)
+                        }
+                      }
                     })
                   ],
                   1
@@ -889,7 +925,11 @@ var render = function() {
                 "Button",
                 {
                   attrs: { type: "default" },
-                  on: { click: _vm.TOGGLE_EDIT_MODAL }
+                  on: {
+                    click: function($event) {
+                      return _vm.TOGGLE_MODAL("cat-edit")
+                    }
+                  }
                 },
                 [_vm._v("Close")]
               ),
@@ -899,15 +939,15 @@ var render = function() {
                 {
                   attrs: {
                     type: "warning",
-                    disabled: _vm.isEditing,
-                    loading: _vm.isEditing
+                    disabled: _vm.editData.busy,
+                    loading: _vm.editData.busy
                   },
                   on: { click: _vm.editCategory }
                 },
                 [
                   _vm._v(
                     _vm._s(
-                      _vm.isEditing
+                      _vm.editData.busy
                         ? _vm.$t("categories.editing")
                         : _vm.$t("categories.edit")
                     )
@@ -972,7 +1012,7 @@ var render = function() {
             attrs: {
               border: "",
               columns: _vm.dataStructureTable,
-              loading: _vm.isLoading,
+              loading: _vm.getAllCategory.length == 0,
               data: _vm.getAllCategory
             },
             on: { "on-selection-change": _vm.handleSelectionChange }
@@ -1040,7 +1080,9 @@ var render = function() {
               "p",
               { staticClass: "card-title ml-3" },
               [
-                _vm._v(" " + _vm._s(_vm.$t("categories.name")) + "\n        "),
+                _vm._v(
+                  " " + _vm._s(_vm.$t("categories.name")) + "\n            "
+                ),
                 _vm._v(" "),
                 _vm.isPermitted("create", "category")
                   ? _c("add-modal-component")

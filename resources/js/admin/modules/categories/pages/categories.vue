@@ -7,16 +7,16 @@
             <!--~~~~~~~ TABLE ONE ~~~~~~~~~-->
             <div class="card p-2">
 
-            <p class="card-title ml-3"> {{ $t('categories.name') }}
-            <!--  adding modal -->
-            <add-modal-component v-if="isPermitted('create','category')"></add-modal-component> </p>
+                <p class="card-title ml-3"> {{ $t('categories.name') }}
+                <!--  adding modal -->
+                <add-modal-component v-if="isPermitted('create','category')"></add-modal-component> </p>
 
-            <div class="card-body">
-                <view-categories-component v-if="isPermitted('view','category')"></view-categories-component>
-            </div>
+                <div class="card-body">
+                    <view-categories-component v-if="isPermitted('view','category')"></view-categories-component>
+                </div>
 
-            <!-- edit Modal -->
-            <edit-modal-component v-if="isPermitted('update','category')"></edit-modal-component>
+                <!-- edit Modal -->
+                <edit-modal-component v-if="isPermitted('update','category')"></edit-modal-component>
             </div>
 
         </div>
