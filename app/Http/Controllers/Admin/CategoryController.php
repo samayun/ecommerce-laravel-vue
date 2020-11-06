@@ -50,7 +50,7 @@ class CategoryController extends Controller
             'name' => 'bail|required|min:3',
             'slug' => $request->slug ? "alpha_dash|unique:categories,slug" : "",
             'icon' => $request->icon ? 'required' : '',
-            'description' => $request->description ? 'required|min:10' : '',
+            'description' => $request->description ? 'required|min:3' : '',
             'parent_id' => !$request->icon ? 'required' : ''
         ]);
         if ($request->has('icon') && $request->icon != "" ) {

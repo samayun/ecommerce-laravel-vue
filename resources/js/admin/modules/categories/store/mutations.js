@@ -3,10 +3,10 @@ export default {
         state.categories.unshift(category)
     },
     CREATE_SUB_CATEGORY(state , sub_category){
-        //
-        let goalId = sub_category.parent_id;
-        sub_category.category = state.categories.find(i => i.id == goalId)
-        state.subcategories.unshift(sub_category)
+        let data = state.categories.find(item => item.id === sub_category.parent_id)
+        // state.categories[index].subcategories.unshift(sub_category);
+        sub_category.category = data;
+        state.subcategories.unshift(sub_category); //added insubcategories list
     },
     FETCH_CATEGORIES(state , categories){
         state.categories = categories
@@ -46,10 +46,10 @@ export default {
         let index = state.categories.findIndex(item => item.id === state.editData.id);
         // Automatically >>
         for( let key in state.editData){
-        if (state.categories[index].hasOwnProperty(key)) {
-            state.categories[index][key] = state.editData[key];
+            if (state.categories[index].hasOwnProperty(key)) {
+                state.categories[index][key] = state.editData[key];
+            }
         }
-    }
     },
     UPDATE_SUB_CATEGORY(state ){
         // I will make mixin : getByIdAndUpdate(categories = [] , keyId = id ) @return void;
@@ -69,7 +69,9 @@ export default {
     },
     DELETE_CATEGORY(state , category){
         let index= state.categories.findIndex(item => item.id === category.id);
-        state.categories.splice(index , 1)
+        state.categories.splice(index , 1);
+        // DELETE Foreign KEY
+
     },
     DELETE_MULTI_CATEGORY(state , multiSelectedCat){
         state.categories = state.categories.filter( objectA => {

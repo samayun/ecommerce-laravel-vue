@@ -25,34 +25,34 @@ export default {
            }
        })
 
-   },
-   createSubCategory({commit , dispatch , state }){
-    //    Validate First
-    state.addSubData.post('/api/admin/categories')
-    .then(res => {
-        if (res.status == 201) {
-            commit('CREATE_SUB_CATEGORY' , res.data);
-            $Notice.info({
-                title: 'Category Added Successfully',
-                desc: `${state.addSubData.name} added`
-            });
-            state.addSubData = new Form({name:"",slug:"",description:"",parent_id : ''})
-            commit('TOGGLE_MODAL','sub-add')
+    },
+    createSubCategory({commit , dispatch , state }){
+        //    Validate First
+        state.addSubData.post('/api/admin/categories')
+        .then(res => {
+                if (res.status == 201) {
+                    commit('CREATE_SUB_CATEGORY' , res.data);
+                    $Notice.info({
+                        title: 'Category Added Successfully',
+                        desc: `${state.addSubData.name} added`
+                    });
+                    state.addSubData = new Form({name:"",slug:"",description:"",parent_id : ''})
+                    commit('TOGGLE_MODAL','sub-add')
 
-         }
-    }).catch (error => {
+                }
+        }).catch (error => {
+            console.log(error.response);
 
-        if ([403,401,422].includes(error.response.status)){
-            $Notice.error({
-                title: 'Category Create Failed!',
-                desc: error.response.data.message
-            });
-            commit('SET_ERRORS' , error.response.data.errors)
-        }
-
+            if(error.response.status == 422){
+                $Notice.error({
+                    title: 'Category Create Failed!',
+                    desc: error.response.data.message
+                });
+                commit('SET_ERRORS' , error.response.data.errors)
+            }
    })
 
-},
+    },
     async getCategories({commit ,state , getters}){
        try {
         let res = await axios.get(`/api/admin/categories?${getters.getFilteredURLString}`)
@@ -156,7 +156,7 @@ export default {
                     desc: `${category.name} deleted`
                 });
                 commit('DELETE_CATEGORY' , category);
-                // commit('DELETE_SUB_CATEGORIES',category.subcategories)
+                commit('DELETE_MULTI_SUB_CATEGORY',category.subcategories)
             }
         } catch (error) {
            if (error.response.status == 403) {
@@ -292,8 +292,15 @@ export default {
         $Bus.$emit('clearAddedFiles')
 
     },
-    handleSelectionChange({state} , val){
+    handleSelectionChange({state, dispatch} , val){
         state.multiSelected = val
+        let selectedItems = [];
+        state.multiSelected.forEach(e => {
+            if (e.hasOwnProperty('subcategories')) {
+                selectedItems.push(...e.subcategories)
+            }
+        });
+        dispatch('handleSelectionChangeSubCategory' , selectedItems)
     },
     handleSelectionChangeSubCategory({state} , val){
         state.subMeta.multiSelected = val
@@ -313,8 +320,8 @@ export default {
         commit('FILTER_DATA', {page})
         dispatch('getSubCategories')
      },
-     changeSubPaginatedPerPage({state,commit , dispatch} , perPage){
+    changeSubPaginatedPerPage({state,commit , dispatch} , perPage){
          commit('FILTER_DATA', {perPage})
          dispatch('getSubCategories')
-     }
+    }
 }
