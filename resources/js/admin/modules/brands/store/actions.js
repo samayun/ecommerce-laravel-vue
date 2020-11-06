@@ -17,7 +17,7 @@ export default {
 
             }
         } catch (error) {
-                commit('SET_IS_LOADING' , false)
+            commit('SET_IS_LOADING' , false)
             if (error.response.status == 403) {
                 $Notice.error({
                         title: 'Brand FETCH Failed!',
@@ -63,20 +63,14 @@ export default {
                 commit('TOGGLE_MODAL',"edit")
              }
         }).catch (error => {
-            if (error.response.status == 403){
+            if (/403|422/.test(error.response.status)){
                 $Notice.error({
                     title: 'Brand Update Failed!',
                     desc: error.response.data.message
                 });
             }
-            if (error.response.status == 422) {
+            commit('SET_ERRORS' , error.response.data.errors)
 
-                $Notice.error({
-                    title: 'Brand Update Failed!',
-                    desc: error.response.data.message
-                });
-                commit('SET_ERRORS' , error.response.data.errors)
-              }
        })
     },
     deleteConfirmation({dispatch} , brand){

@@ -19,7 +19,7 @@
         <Input v-model="addSubData.slug" placeholder="Add Sub Category slug"
         :class="{ 'has-error': addSubData.errors.has('slug') }"
         />
-        <has-error :form="addSubData" field="name"></has-error>
+        <has-error :form="addSubData" field="slug"></has-error>
         <div class="spacer"></div>
 
         <textarea v-model="addSubData.description" placeholder="Add Sub Category description"

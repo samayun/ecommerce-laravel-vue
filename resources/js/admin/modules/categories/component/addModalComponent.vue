@@ -68,7 +68,7 @@
 import {mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 
 export default {
-    name: "addSubModalComponent",
+    name: "addModalComponent",
 
     computed:{
         ...mapState("categoriesStoreIndex", [

@@ -41,11 +41,13 @@ export default {
 
          }
     }).catch (error => {
-        if (error.response.status == 403){
+
+        if ([403,401,422].includes(error.response.status)){
             $Notice.error({
                 title: 'Category Create Failed!',
                 desc: error.response.data.message
             });
+            commit('SET_ERRORS' , error.response.data.errors)
         }
 
    })
@@ -115,6 +117,35 @@ export default {
               }
        })
     },
+    editSubCategory({commit,dispatch , state } ){
+        state.editSubData.put(`/api/admin/categories/${state.editSubData.id}`).then(res => {
+            if (res.status == 200) {
+                $Notice.info({
+                    title: 'Sub Category Updated Successfully',
+                    desc: `${state.editSubData.name} edited`
+                });
+                // dispatch get categories can make slow browsing - this is an old idea
+                // dispatch('getCategories');
+                // best practice is updating UI without making a new ajax request
+                commit('UPDATE_SUB_CATEGORY')
+                commit('TOGGLE_MODAL','sub-edit')
+             }
+        }).catch (error => {
+            if (error.response.status == 403){
+                $Notice.error({
+                    title: 'Category Update Failed!',
+                    desc: error.response.data.message
+                });
+            }
+            if (error.response.status == 422) {
+                $Notice.error({
+                    title: 'Category Update Failed!',
+                    desc: error.response.data.message
+                });
+                commit('SET_ERRORS' , error.response.data.errors)
+              }
+       })
+    },
     async deleteCategory({commit} , category){
         try {
 
@@ -167,13 +198,19 @@ export default {
         }
 
     },
-    async multiDelete({state , commit}){
+    async multiDelete({state , commit}, categoryOrSubCategoryBeDeleted = true){
         try {
-            let res =   await axios.post(`/api/admin/categories/multi`,state.multiSelected);
+            let selectedItems = categoryOrSubCategoryBeDeleted ? state.multiSelected  : state.subMeta.multiSelected
+            let res =   await axios.post(`/api/admin/categories/multi`,selectedItems);
             if (res.status == 200) {
-                commit('DELETE_MULTI_CATEGORY' , state.multiSelected);
-                // commit('DELETE_MULTI_SUB_CATEGORY' , state.subMeta.multiSelected);
-                // state.multiSelected = [];
+               if (categoryOrSubCategoryBeDeleted) {
+                    commit('DELETE_MULTI_CATEGORY' , selectedItems);
+                    state.multiSelected = []
+               } else {
+                   console.log('DELETE_MULTI_SUB_CATEGORY : ', selectedItems);
+                    commit('DELETE_MULTI_SUB_CATEGORY' , selectedItems);
+                    state.subMeta.multiSelected = []
+               }
                 $Notice.success({
                     title: 'Selected Category Deleted Successfully',
                     desc: ` deleted`
@@ -181,7 +218,8 @@ export default {
 
             }
         } catch (error) {
-            state.multiSelected = [];
+           categoryOrSubCategoryBeDeleted ? state.multiSelected = []  : state.subMeta.multiSelected = [];
+
            if (error.response.status == 403) {
               $Notice.error({
                     title: 'Category Delete Failed!',
@@ -256,6 +294,9 @@ export default {
     },
     handleSelectionChange({state} , val){
         state.multiSelected = val
+    },
+    handleSelectionChangeSubCategory({state} , val){
+        state.subMeta.multiSelected = val
     },
     handleImageView({commit}, payload){
         commit('HANDLE_VIEW' , payload)

@@ -1,4 +1,3 @@
-import {Form} from 'vform'
 export default {
     CREATE_CATEGORY(state , category){
         state.categories.unshift(category)
@@ -22,10 +21,26 @@ export default {
         }
     },
     GET_EDIT_DATA(state , payload){
-        state.editData =  new Form(payload)
+        let defaultEditData = state.editData ;
+        for (const key in state.editData) {
+            if (payload.hasOwnProperty(key)) {
+                defaultEditData[key] = payload[key]
+            }
+        }
+        state.editData =  new Form(defaultEditData)
     },
     GET_SUB_EDIT_DATA(state , payload){
-        state.editSubData =  new Form(payload)
+        // payload.category = {}
+        let defaultSubEditData = {"id":"","name":"","slug":"","description":"","parent_id": null }
+        for (const key in defaultSubEditData) {
+            if (payload.hasOwnProperty(key)) {
+                defaultSubEditData[key] = payload[key]
+            }
+        }
+        console.log(state.editSubData);
+        console.log(defaultSubEditData);
+
+        state.editSubData =  new Form(defaultSubEditData)
     },
     UPDATE_CATEGORY(state ){
         let index = state.categories.findIndex(item => item.id === state.editData.id);
@@ -45,6 +60,8 @@ export default {
                 state.subcategories[index][key] = state.editSubData[key];
             }
         }
+        let goalId = state.editSubData.parent_id;
+        state.subcategories[index]['category'] = state.categories.find(i => i.id == goalId)
     },
     DELETE_SUB_CATEGORY(state , category){
         let index= state.subcategories.findIndex(item => item.id === category.id);
@@ -58,14 +75,13 @@ export default {
         state.categories = state.categories.filter( objectA => {
             return !multiSelectedCat.find(objectB => objectA.id === objectB.id)
         })
-        // state.categories = arr;
         state.multiSelected = [];
     },
-    DELETE_MULTI_SUB_CATEGORY(state , selected_sub_categories_id_array){
+    DELETE_MULTI_SUB_CATEGORY(state , selectedItems){
         state.subcategories = state.subcategories.filter( objectA => {
-            return !selected_sub_categories_id_array.find(objectB => objectA.id === objectB.id)
+            return !selectedItems.find(objectB => objectA.id === objectB.id)
         })
-        // state.categories = arr;
+
         state.subMeta.multiSelected = []
     },
     TOGGLE_MODAL(state, type = 'cat-add'){

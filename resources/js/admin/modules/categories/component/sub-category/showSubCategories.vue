@@ -1,11 +1,11 @@
 <template>
     <div>
-         <span v-if="isPermitted('delete','category') && multiSelected.length > 0">
-             <Button type="error" @click="multiDelete"> Multiple {{ $t('delete') }} </Button> {{multiSelected.length }} selected
+         <span v-if="isPermitted('delete','category') && subMeta.multiSelected.length > 0">
+             <Button type="error" @click="multiDelete(false)"> Multiple {{ $t('delete') }} </Button> {{subMeta.multiSelected.length }} selected
          </span>
          <!-- <Loading show="getAllSubCategory.length < 1"/> -->
         <Table border
-           @on-selection-change="handleSelectionChange"
+           @on-selection-change="handleSelectionChangeSubCategory"
             ref="selection"
             :columns="dataStructureTable"
             v-if="getAllSubCategory.length"
@@ -111,11 +111,11 @@ export default {
        }
    },
    computed: {
-       ...mapState("categoriesStoreIndex", [ 'editMeta' , 'editData','errors' ,'multiSelected' ]),
+       ...mapState("categoriesStoreIndex", [ 'editMeta' , 'editData','errors' ,'subMeta' ]),
        ...mapGetters("categoriesStoreIndex",['getAllSubCategory','filterString' ])
    },
    methods:{
-         ...mapActions("categoriesStoreIndex", ['getSubCategories','editCategory' ,'deleteSubCategory' ,'multiDelete', 'handleSelectionChange','changeSubPaginatedPage','changeSubPaginatedPerPage']),
+         ...mapActions("categoriesStoreIndex", ['getSubCategories','editCategory' ,'deleteSubCategory' ,'multiDelete', 'handleSelectionChangeSubCategory','changeSubPaginatedPage','changeSubPaginatedPerPage']),
          ...mapMutations("categoriesStoreIndex" , ['TOGGLE_MODAL','GET_SUB_EDIT_DATA' ]),
          deleteConfirmation(sub_category){
              this.$Modal.confirm({
