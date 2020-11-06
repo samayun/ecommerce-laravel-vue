@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         // Manual Service Load
         // Intervention\Image\ImageServiceProvider::class
-
+        App\Providers\RepositoryServiceProvider::class,
     ],
 
     /*

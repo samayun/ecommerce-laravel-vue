@@ -13,9 +13,7 @@
             :data="getAllCategory">
             </Table>
             <br/>
-            <Pagination :meta="filterString" :changePaginatedPage="changePaginatedPage" :changePaginatedPerPage="changePaginatedPerPage" />
 
-        <Checkbox v-if="isPermitted('delete','category')" @on-change="handleSelectAll"> Select/Deselect All </Checkbox>
     </div>
 </template>
 <script>

@@ -15,7 +15,6 @@
             <br/>
             <Pagination :meta="filterString" :changePaginatedPage="changeSubPaginatedPage" :changePaginatedPerPage="changeSubPaginatedPerPage" />
 
-
     </div>
 </template>
 <script>

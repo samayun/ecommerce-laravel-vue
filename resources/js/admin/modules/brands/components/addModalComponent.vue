@@ -53,7 +53,7 @@
                 <Button
                     type="primary"
                     @click="createBrand"
-                >{{addBrandData.busy ? $t('brands.adding')+'..' : $t('brands.add')}}</Button>
+                >    <i class="fa fa-fw fa-lg fa-check-circle"></i> {{addBrandData.busy ? $t('brands.adding')+'..' : $t('brands.add')}}</Button>
             </div>
         </Modal>
     </span>

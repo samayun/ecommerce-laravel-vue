@@ -678,12 +678,14 @@ var render = function() {
                 "Button",
                 { attrs: { type: "primary" }, on: { click: _vm.createBrand } },
                 [
+                  _c("i", { staticClass: "fa fa-fw fa-lg fa-check-circle" }),
                   _vm._v(
-                    _vm._s(
-                      _vm.addBrandData.busy
-                        ? _vm.$t("brands.adding") + ".."
-                        : _vm.$t("brands.add")
-                    )
+                    " " +
+                      _vm._s(
+                        _vm.addBrandData.busy
+                          ? _vm.$t("brands.adding") + ".."
+                          : _vm.$t("brands.add")
+                      )
                   )
                 ]
               )

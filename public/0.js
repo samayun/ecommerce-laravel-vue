@@ -408,7 +408,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "showSubCategories",
@@ -541,8 +540,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -1823,21 +1820,7 @@ var render = function() {
           })
         : _vm._e(),
       _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("Pagination", {
-        attrs: {
-          meta: _vm.filterString,
-          changePaginatedPage: _vm.changePaginatedPage,
-          changePaginatedPerPage: _vm.changePaginatedPerPage
-        }
-      }),
-      _vm._v(" "),
-      _vm.isPermitted("delete", "category")
-        ? _c("Checkbox", { on: { "on-change": _vm.handleSelectAll } }, [
-            _vm._v(" Select/Deselect All ")
-          ])
-        : _vm._e()
+      _c("br")
     ],
     1
   )

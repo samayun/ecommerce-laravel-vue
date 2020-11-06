@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Contracts\BrandContract;
 use App\Http\Controllers\Controller;
 // use App\Jobs\BrandImageUploading;
 use App\Models\Brand;
@@ -21,19 +22,19 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
+    private $brandrepositories;
+    public function __construct(BrandContract $brandrepositories)
     {
         $this->authorizeResource(Brand::class, 'brand');
+        $this->brandrepositories = $brandrepositories;
+
     }
     public function index(Request $request)
     {
-
+    //    cache()->forget('brands');
         // these code must be efactored - we wil need this again and again
-        return Brand::filter($request);
-
-        // Cache Repository Pattern
-        // withFilter
-        // rsponse
+        return $this->brandrepositories->lists($request);
+        // return Brand::filter($request);
     }
 
 

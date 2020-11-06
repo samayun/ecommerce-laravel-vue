@@ -30,7 +30,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         // these code must be efactored - we wil need this again and again
-        return Category::where('parent_id',1)->with('subcategories')->where('id','!=',1)->filter($request);
+        return Category::where('parent_id',1)->with('subcategories')->where('id','!=',1)->latest()->get();
     }
     public function subcategories(Request $request)
     {

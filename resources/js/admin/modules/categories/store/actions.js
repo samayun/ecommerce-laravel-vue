@@ -57,14 +57,14 @@ export default {
        try {
         let res = await axios.get(`/api/admin/categories?${getters.getFilteredURLString}`)
         if (res.status == 200) {
-            let updatedFilterString = {
-                page: parseInt(res.data.current_page),
-                perPage :parseInt(res.data.per_page),
-                total: parseInt(res.data.total),
-                q: ""
-            }
-            commit('FILTER_DATA', updatedFilterString)
-            commit('FETCH_CATEGORIES' , res.data.data);
+            // let updatedFilterString = {
+            //     page: parseInt(res.data.current_page),
+            //     perPage :parseInt(res.data.per_page),
+            //     total: parseInt(res.data.total),
+            //     q: ""
+            // }
+            // commit('FILTER_DATA', updatedFilterString)
+            commit('FETCH_CATEGORIES' , res.data);
          }
        } catch (error) {
            console.log('error in fetch categories : reload device');

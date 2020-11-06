@@ -37,9 +37,6 @@ export default {
                 defaultSubEditData[key] = payload[key]
             }
         }
-        console.log(state.editSubData);
-        console.log(defaultSubEditData);
-
         state.editSubData =  new Form(defaultSubEditData)
     },
     UPDATE_CATEGORY(state ){
