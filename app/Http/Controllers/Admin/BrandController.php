@@ -31,10 +31,7 @@ class BrandController extends Controller
     }
     public function index(Request $request)
     {
-    //    cache()->forget('brands');
-        // these code must be efactored - we wil need this again and again
         return $this->brandrepositories->lists($request);
-        // return Brand::filter($request);
     }
 
 
@@ -57,37 +54,15 @@ class BrandController extends Controller
                 ]
             ], $FileError['status']);
         }
-        // $uploadedFile = dispatch(new BrandImageUploading($request->logo));
+        // // $uploadedFile = dispatch(new BrandImageUploading($request->logo));
         $uploadedFile = $this->uploadBase64File($request->logo , 'brands/','public');
-
-        return Brand::create([
+        $attributes = [
             'name' => $request->name,
             'logo' => '/storage/brands/'.$uploadedFile['name']
-        ]);
+        ];
+        return $this->brandrepositories->create($attributes);
     }
 
-
-
-    public function storeViaBase(Request $request)
-    {
-        $this->validate($request , [
-            'name' => 'bail|required|min:3',
-            'logo' => 'required'
-        ]);
-        $strpos = strpos($request->logo,';');
-        $substr = substr($request->logo,0,$strpos);
-        $extension = explode('/', $substr)[1];
-
-        $picName = time(). '.' . $extension;
-        // Image::make();
-        $path = Storage::move(public_path().'uploads/brands' , $request->logo);
-
-        // return Storage::url($path);
-        return Brand::create([
-            'name' => $request->name,
-            'logo' => $path
-        ]);
-    }
     /**
      * Display the specified resource.
      *
@@ -129,11 +104,12 @@ class BrandController extends Controller
                 ], $FileError['status']);
             }
             $uploadedFile = $this->uploadBase64File($request->logo , 'brands/','public');
-            return $brand->update([
+            $attributes =  $brand->update([
                 'name' => $request->name ,
                 'slug' => $request->slug ,
                 'logo' => '/storage/brands/'.$uploadedFile['name']
             ]);
+            return $this->brandrepositories->update($attributes , $brand->id);
         }
 
         return $brand->update($request->except('id'));
@@ -165,19 +141,19 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         try {
-            // DB::beginTransaction();
             if($this->deleteBase64RequestedFile($brand->logo) ){
-                    $brand->delete();
-                    return response()->json([
+                DB::beginTransaction();
+                $this->brandrepositories->delete($brand->id);
+                DB::commit();
+                return response()->json([
                     'message' => $brand->name." deleted successfully"
                 ], 202);
             }
-            // DB::commit();
             return response()->json([
                 'message' => $brand->name." deleted failed"
             ], 404);
         } catch (\Throwable $th) {
-            // DB::rollback();
+            DB::rollback();
         }
     }
 }

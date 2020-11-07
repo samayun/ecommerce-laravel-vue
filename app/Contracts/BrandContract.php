@@ -22,23 +22,23 @@ interface BrandContract
      * @param int $id
      * @return mixed
      */
-    // public function findBrandById(int $id);
+    // public function findById(int $id);
 
     /**
      * @param array $params
      * @return mixed
      */
-    // public function create(array $params);
+    public function create(array $params);
 
     /**
      * @param array $params
      * @return mixed
      */
-    // public function update(array $params);
+    public function update(array $params,int $id);
 
     /**
      * @param $id
      * @return bool
      */
-    // public function delete($id);
+    public function delete(int $id);
 }
