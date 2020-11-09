@@ -2,19 +2,16 @@ import { Modal } from 'view-design'
 export default {
     async getBrands({commit ,state , getters}){
         try {
-            commit('SET_IS_LOADING' , true)
-            let res =   await axios.get(`/api/admin/brands?${getters.getFilteredURLString}`);
+            let res =   await axios.get(`/api/admin/brands`);
             if (res.status == 200) {
-                let updatedFilterString = {
-                    page: parseInt(res.data.current_page),
-                    perPage : parseInt(res.data.per_page) || 5,
-                    total: parseInt(res.data.total),
-                    q: ""
-                }
-                commit('FILTER_DATA', updatedFilterString)
-                commit('FETCH_BRANDS' , res.data.data);
-                commit('SET_IS_LOADING' , false)
-
+                // let updatedFilterString = {
+                //     page: parseInt(res.data.current_page),
+                //     perPage : parseInt(res.data.per_page) || 5,
+                //     total: parseInt(res.data.total),
+                //     q: ""
+                // }
+                // commit('FILTER_DATA', updatedFilterString)
+                commit('FETCH_BRANDS' , res.data);
             }
         } catch (error) {
             commit('SET_IS_LOADING' , false)

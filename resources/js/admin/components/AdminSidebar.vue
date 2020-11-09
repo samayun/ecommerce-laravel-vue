@@ -43,6 +43,14 @@
                   <span class="right badge badge-danger">+</span>
                 </p>
               </router-link>
+            </li>
+             <li class="nav-item">
+              <router-link to="/admin/products" class="nav-link"  exact-active-class="active">
+                <i class="nav-icon fa fa-cog"></i>
+                <p> {{ $t('sidebar.product')}} <span class="right badge badge-danger">+</span>
+                </p>
+              </router-link>
+            </li>
             <li class="nav-item">
               <router-link to="/admin/settings" class="nav-link"  exact-active-class="active">
                 <i class="nav-icon fa fa-cog"></i>

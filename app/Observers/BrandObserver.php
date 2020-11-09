@@ -49,5 +49,4 @@ class BrandObserver
         $this->flush($this->CACHE_KEY);
     }
 
-
 }

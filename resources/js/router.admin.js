@@ -41,9 +41,9 @@ const defaultRoutes = [
         component: () => import('./admin/pages/AdminHomePage.vue'),
         children : [
             {
-                path: '',
+                path: '/',
                 name: 'AdminHomeDashboard',
-                component: () => import('./admin/pages/AdminHomeDashboard.vue'),
+                component: () => import(  './admin/pages/AdminHomeDashboard.vue'),
                 title: 'This is a test page'
 
             },

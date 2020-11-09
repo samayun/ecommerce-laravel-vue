@@ -1,7 +1,6 @@
 import BrandPolicy from './admin/policies/BrandPolicy';
-// Gate.js
-
 import CategoryPolicy from './admin/policies/CategoryPolicy';
+import ProductPolicy from './admin/policies/ProductPolicy';
 
 class Gate
 {
@@ -12,6 +11,7 @@ class Gate
         this.policies = {
             category: CategoryPolicy,
             brand: BrandPolicy,
+            product: ProductPolicy,
         };
     }
 

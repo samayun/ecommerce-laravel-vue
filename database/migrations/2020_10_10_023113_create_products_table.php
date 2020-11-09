@@ -15,20 +15,18 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('brand_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
-            
             $table->string('name')->index();
+            $table->string('slug')->unique();
+            $table->unsignedBigInteger('brand_id');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+            $table->integer('sku');
             $table->float('price' , 8,2);
-            $table->float('discount_price' , 8,2)->nullable();
+            // $table->float('discount_price' , 8,2)->nullable();
             $table->text('description')->nullable();
-            $table->string('image');
-            $table->string('color')->nullable();
-            $table->string('size')->nullable();
-            $table->unsignedInteger('quantity')->nullable();
+            // $table->enum('status', ['pending','approved'])->nullable();
+            // $table->string('color')->nullable();
+            // $table->string('size')->nullable();
+            // $table->unsignedInteger('quantity')->nullable();
             $table->timestamps();
         });
     }

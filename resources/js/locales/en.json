@@ -1,11 +1,13 @@
 {
     "loading" : "Loading",
+    "add"  : "Add",
     "edit" : "Edit",
     "delete" : "Delete",
     "name": "Name",
     "image" : "Image",
     "sidebar": {
         "category" : "Category",
+        "product" : "Product",
         "brand" : "Brand",
         "logout" : "logout"
     },
@@ -23,7 +25,15 @@
         "editing" : "Editing Sub @:categories.name",
         "delete" : "Delete Sub @:categories.name"
     },
-        "brands" : {
+    "products" : {
+        "name" : "Products",
+        "add": "@:add @:sidebar.product",
+        "adding": " Adding Subcategory...",
+        "edit" : "@:edit @:sidebar.product",
+        "editing" : "Editing @:products.name",
+        "delete" : "@:delete @:sidebar.product"
+    },
+    "brands" : {
         "name" : "Brands",
         "add": "Add @:sidebar.brand",
         "adding": " Adding...",

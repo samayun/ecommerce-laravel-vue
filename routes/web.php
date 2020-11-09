@@ -4,6 +4,7 @@ use App\Events\AdminLoginAlert;
 use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Jobs\SendEmailJobs;
 use App\Mail\AdminAlertMail;
 use App\Models\Brand;
@@ -42,16 +43,13 @@ Route::group(['prefix' => 'api/admin' , 'middleware' => 'auth:admin' ], function
     Route::get('subcategories' , [CategoryController::class , 'subcategories']);
     Route::post('categories/multi' , [CategoryController::class , 'multiDelete']);
     Route::apiResource('categories' , CategoryController::class);
-    // Route::post('/upload_category_image', [CategoryController::class ,'upload']);
-    // Route::post('/delete_category_image', [CategoryController::class ,'deleteImage']);
+    Route::post('brands/multi' , [BrandController::class , 'multiDelete']);
+    Route::apiResource('brands' , BrandController::class);
+    Route::post('products/bulk_delete' , [ProductController::class , 'bulk_delete']);
+    Route::apiResource('products' , ProductController::class);
 });
 
-Route::group(['prefix' => 'api/admin' , 'middleware' => 'auth:admin' ], function () {
-    Route::post('brands/multi' , [BrandController::class , 'multiDelete']);
-    Route::resource('brands' , BrandController::class);
-    // Route::post('/upload_category_image', [BrandController::class ,'upload']);
-    // Route::post('/delete_category_image', [BrandController::class ,'deleteImage']);
-});
+
 
 Route::post('/api/login/admin', [App\Http\Controllers\AdminController::class, 'login'])->name('adminLogin');
 

@@ -21,13 +21,11 @@ class BrandRepository implements BrandContract
         $this->model = $model;
     }
 
-   public function lists($request)
+   public function lists()
    {
         $KEY = 'brands';
-        //  .$request->id.$request->orderBy.$request->sortBy.$request->perPage.$request->page;
-        //  page=1&perPage=10&orderBy=created_at&sortBy=desc;
-        return Cache::remember($KEY, now()->addMinutes(120), function () use ($request) {
-            return  $this->model::search($request->q)->orderBy($request->orderBy , $request->sortBy)->paginate($request->perPage);
+        return Cache::remember($KEY, now()->addMinutes(120), function () {
+            return  $this->model::all();
         });
    }
    public function create($attributes)

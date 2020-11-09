@@ -31,7 +31,7 @@ class BrandController extends Controller
     }
     public function index(Request $request)
     {
-        return $this->brandrepositories->lists($request);
+        return $this->brandrepositories->lists();
     }
 
 

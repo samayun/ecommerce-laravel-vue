@@ -12,7 +12,7 @@
             :data="getAllBrand">
             </Table>
             <br/>
-            <Pagination :meta="filterString" :changePaginatedPage="changePaginatedPage" :changePaginatedPerPage="changePaginatedPerPage" />
+            <!-- <Pagination :meta="filterString" :changePaginatedPage="changePaginatedPage" :changePaginatedPerPage="changePaginatedPerPage" /> -->
 
     </div>
 </template>

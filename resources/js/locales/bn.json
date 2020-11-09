@@ -1,10 +1,13 @@
 {
     "loading" : "লোডিং হচ্ছে",
+    "add" : "যোগ করুন",
     "edit" : "সম্পাদনা করুন",
+    "editing": "সম্পাদনা করা হচ্ছে",
     "delete" : "মুছে ফেলুন",
     "name": "নাম",
     "image" : "ছবি",
     "sidebar": {
+        "product" : "পণ্য",
         "category" : "ক্যাটাগরি",
         "brand" : "ব্র্যান্ড",
         "logout" : "লগ আউট"
@@ -25,6 +28,14 @@
         "edit" : "@:categories.edit",
         "editing" : "উপ @:categories.editing",
         "delete" : "উপ @:categories.delete"
+    },
+    "products" : {
+        "name" : "পণ্যসমূহ",
+        "add": "@:sidebar.product @:add",
+        "adding": " Adding Product...",
+        "edit" : "@:sidebar.product @:edit ",
+        "editing" : "@:editing @:products.name",
+        "delete" : "@:sidebar.product @:delete "
     },
     "brands" : {
         "name" : "@:sidebar.brand সমূহ",
