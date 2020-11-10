@@ -65,51 +65,71 @@ export default {
                         sortable: true,
                         tooltip:true
                     },
-                    // {
-                    //     title: 'Image',
-                    //     key: 'image',
-                    //     render: (h,params) => {
-                    //         return
+                    {
+                        title: 'Image',
+                        key: 'image',
+                        render: (h,params) => {
+                            return h('Avatar', {
+                                        props: {
+                                            src: `${params.row.image}`,
+                                            shape:'square',
+                                            alt:  `${params.row.name}`,
+                                            size: 'large'
+                                        },
 
-                    //     }
-                    // },
+                                        style: {
+                                            marginRight: '5px',
+                                            width: '6rem',
+                                            height:'5rem'
+                                        }
+                                    })
+                        }
+                    },
                     {
                         title: 'Action',
                         key: 'action',
-                        width: 150,
+                        width: 100,
                         align: 'center',
                         render: (h, params) => {
+                            let edit = h('')
+                            if(this.isPermitted('update','product')){
+                             edit = h('Button', {
+                                    props: {
+                                        icon: 'ios-editor fa fa-edit',
+                                        size: 'small',
+                                        color: 'primary'
+                                    },
+                                    style: {
+                                        marginRight: '7px',
+                                        cursor:'pointer'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            // this.GET_EDIT_DATA(params.row)
+                                            this.$router.push('/admin/products/edit/'+params.row.id);
+                                        }
+                                    }
+                                },'');
+                            }
                             let deleteButton = h('')
                             if (this.isPermitted('delete','product')) {
-                                deleteButton =   h('Button', {
+                                deleteButton =   h('Icon', {
                                                     props: {
-                                                        type: 'error',
-                                                        size: 'small'
+                                                        custom: 'fa fa-trash',
+                                                        size: 'large',
+                                                        color: 'red'
+                                                    },
+                                                    style: {
+                                                        cursor:'pointer'
                                                     },
                                                     on: {
                                                         click: () => {
                                                             this.deleteProduct(params.row)
                                                         }
                                                     }
-                                            }, 'Delete')
+                                            }, '')
                             };
-                            let edit = h('')
-                            if(this.isPermitted('update','product')){
-                             edit = h('Button', {
-                                    props: {
-                                        type: 'info',
-                                        size: 'small'
-                                    },
-                                    style: {
-                                        marginRight: '5px'
-                                    },
-                                    on: {
-                                        click: () => {
-                                            this.GET_EDIT_DATA(params.row);
-                                        }
-                                    }
-                                }, 'Edit');
-                            }
+
                             return h('div', [
                                 edit, deleteButton
                             ]);

@@ -6,10 +6,13 @@ use App\Contracts\ProductContract;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
+use App\Traits\UploadAble;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    use UploadAble;
+
     protected $productRepository;
     public function __construct(ProductContract $productRepository){
         $this->productRepository = $productRepository;
@@ -33,7 +36,25 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        return $this->productRepository->create($request->all());
+        $image      = $this->base64ToImage($request->image)['image'];
+        $extension  = $this->base64ToImage($request->image)['extension'];
+
+        $FileError = $this->setImageValidationError($extension,'image',['jpg','jpeg','png','svg']);
+
+        if ($FileError) {
+             return response()->json([
+                'message' => $FileError['error'],
+                'errors' => [
+                    $FileError['feild'] => [ $FileError['error'] ]
+                ]
+            ], $FileError['status']);
+        }
+        $uploadedFile = $this->uploadBase64File($request->image , 'products/','public');
+        $attributes = [
+            'image' => $uploadedFile['name']
+        ];
+        $merged = array_merge($request->all(),$attributes);
+        return $this->productRepository->create($merged);
     }
 
     /**
@@ -46,8 +67,6 @@ class ProductController extends Controller
     {
         return $this->productRepository->show($product->id);
     }
-
-
 
     /**
      * Update the specified resource in storage.

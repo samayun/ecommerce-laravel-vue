@@ -5,6 +5,7 @@ use App\Contracts\ProductContract;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class ProductRepository implements ProductContract
@@ -15,8 +16,12 @@ class ProductRepository implements ProductContract
         $this->model = $model;
     }
     public function all(){
-        $products =  $this->model->latest()->get();
-        return ProductResource::collection($products);
+        $KEY = 'products';
+        return Cache::remember($KEY, now()->addMinutes(120), function () {
+            $products =  $this->model->latest()->get();
+            return ProductResource::collection($products);
+        });
+
     }
 
     /**
@@ -36,8 +41,12 @@ class ProductRepository implements ProductContract
 
     public function show(int $id){
         $product = $this->findById($id);
+        $KEY = 'product.'.$id;
         if($product){
-             return new ProductResource($product);
+            return Cache::remember($KEY, now()->addMinutes(120), function () use($product) {
+                return new ProductResource($product);
+            });
+
         }
     }
     /**

@@ -9,7 +9,9 @@ export default {
         state.products.splice(index , 1)
     },
     GET_EDIT_DATA(state , payload){
-        state.editProductMeta.showModal = !state.editProductMeta.showModal
+        if(state.editProductMeta.modal){
+            state.editProductMeta.showModal = !state.editProductMeta.showModal
+        }
         payload.brand_id = payload.brand.id
         let defaultData = {
             id: '',
@@ -17,8 +19,11 @@ export default {
             name: "",
             slug:"",
             sku:"",
-            brand_id: "",
-            price:"",
+            price: "",
+            quantity:"",
+            image:"",
+            featured: false,
+            status: true ,
             description: ""
         }
         for (const key in defaultData) {

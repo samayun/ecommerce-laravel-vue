@@ -54,6 +54,15 @@ export default {
        })
 
    },
+
+   async getSingleProduct({state , commit}, id){
+       try {
+           let res = await axios.get(`/api/admin/products/${id}`);
+           commit('GET_EDIT_DATA', res.data.data)
+       } catch (error) {
+
+       }
+   },
     updateProduct({commit,dispatch , state } ){
         state.editProductData.put(`/api/admin/products/${state.editProductData.id}`).then(res => {
             if (res.status == 200) {
@@ -145,34 +154,20 @@ export default {
 
     },
     handleBeforeUpload({state},file){
-        if (state.addMeta.showModal && state.addProductData.name == "" || state.editMeta.showModal && state.editProductData.name == "" ) {
-            $Notice.warning({
-                title: "Enter Product Name First",
-                desc: "NAME REQUIRED"
-            });
-        } else {
             const reader = new FileReader();
             let _this = this
-
             reader.readAsDataURL(file);
             reader.onloadend = function(e){
                 file.url = reader.result
-                if (state.addMeta.showModal) {
-                    state.addProductData.logo = file.url
-                } else {
-                    state.editProductData.logo = file.url
-                }
+                state.addProductData.image  = file.url
             }
             return false;
-        }
     },
     handleSuccess({state},res) {
-        // res = `/uploads/${res}`;
-        // this.$refs.upload.clearFiles()
-        if (state.isEditingItem) {
-            return (state.editData.logo = res);
-        }
-        return state.addProductData.logo = res;
+        // if (state.isEditingItem) {
+        //     return (state.editProductData.image = res);
+        // }
+        return state.addProductData.image = res;
     },
     handleError(res, file) {
         $Notice.warning({
@@ -194,11 +189,11 @@ export default {
     },
     async deleteImage({state},whichImage = 'add'){
         if (whichImage == 'add') {
-            let img = state.addProductData.logo
-            state.addProductData.logo = ''
+            let img = state.addProductData.image
+            state.addProductData.image = ''
         } else {
-            let img = state.editProductData.logo
-            state.editProductData.logo = ''
+            let img = state.editProductData.image
+            state.editProductData.image = ''
         }
         $Bus.$emit('clearAddedFiles')
     },

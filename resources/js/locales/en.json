@@ -1,5 +1,7 @@
 {
     "loading" : "Loading",
+    "en":"English",
+    "bn":"বাংলা",
     "add"  : "Add",
     "edit" : "Edit",
     "delete" : "Delete",

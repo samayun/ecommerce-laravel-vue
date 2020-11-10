@@ -122,7 +122,46 @@
                             <textarea v-model="addProductData.description" id="description" rows="2" class="form-control" :class="{ 'is-invalid': addProductData.errors.has('description') }">It's good product </textarea>
                              <has-error :form="addProductData" field="description"></has-error>
                         </div>
+                        <Upload
+                            ref="upload"
+                            type="drag"
+                            :multiple="false"
+                            :show-upload-list="false"
+                            name="image"
+                            :headers="{'x-csrf-token' : token, 'X-Requested-With' : 'XMLHttpRequest'}"
+                            :before-upload="handleBeforeUpload"
+                            :on-success="handleSuccess"
+                            :format="['jpg','jpeg','png','svg']"
+                            :max-size="2048"
+                            :on-format-error="handleFormatError"
+                            :on-exceeded-size="handleMaxSize"
+                            action="/api/admin/products"
+                        >
+                            <div style="padding: 20px 0">
+                                <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+                                <p  :class="{ 'is-invalid text-danger': addProductData.errors.has('image') }"> {{ $t('click_here_upload') }} </p>
+                            </div>
+                        </Upload>
+                        <has-error :form="addProductData" field="image" style="display: block;"></has-error>
+                        <div class="demo-upload-list" v-if="addProductData.image">
+                            <img :src="`${addProductData.image}`" style="width:10rem;height:6rem;"/>
+                            <div class="demo-upload-list-cover">
+                                <Icon type="ios-camera-outline" size="large" @click="HANDLE_VIEW"></Icon>
+                                <Icon type="ios-trash-outline" size="large" @click="deleteImage('add')"></Icon>
+                            </div>
+                        </div>
+                        <div class="form-group mt-1" v-show="addProductData.image">
+                            <label for="featured"> Featured :   </label>
+                            <i-switch @on-change="addProductData.featured = !addProductData.featured" name="featured" > </i-switch>
+                        </div>
 
+                        <Modal title="View image" v-model="imageVisible">
+                            <img :src="addProductData.image" :alt="addProductData.name" style="width:100%;"/>
+                        </Modal>
+                    </div>
+                    <div class="form-group" >
+                        <label for="status"> Publish Now :   </label>
+                        <i-switch @on-change="addProductData.status = !addProductData.status" name="status" > </i-switch>
                     </div>
                     <div class="tile-footer">
                         <div class="row d-print-none mt-2">
@@ -139,9 +178,9 @@
                             </div>
                         </div>
                     </div>
+                     <div class="footer"></div>
                 </form>
             <!-- </div> -->
-                <div slot="footer"> </div>
 
         </Modal>
     </span>
@@ -159,10 +198,18 @@ export default {
           'addProductMeta' ,'addProductData'
        ]),
        ...mapGetters("brandsStoreIndex",['getAllBrand']),
+       imageVisible:{
+           get(){
+               return this.addProductMeta.isImageVisible
+           },
+           set(value){
+               this.HANDLE_VIEW(true)
+           }
+       }
     },
     methods:{
           ...mapActions("brandsStoreIndex", ['getBrands']),
-         ...mapActions("productsStoreIndex", ['createProduct' ]),
+         ...mapActions("productsStoreIndex", ['createProduct','handleMaxSize' ,'handleFormatError' ,'handleSuccess','handleBeforeUpload','handleError' ,'deleteImage' ,'HANDLE_VIEW' ]),
          ...mapMutations("productsStoreIndex", ['TOGGLE_MODAL' ]),
     },
     created(){

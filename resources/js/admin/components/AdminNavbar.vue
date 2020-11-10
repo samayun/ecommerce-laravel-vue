@@ -1,10 +1,11 @@
 <template>
         <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-custom border-bottom mb-4">
+    <nav class="main-header navbar navbar-expand border-bottom mb-4"
+    :class="getIsDark ? 'navbar-dark' : 'navbar-custom' ">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+          <router-link class="nav-link" data-widget="pushmenu" to="/"><i class="fas fa-bars"></i></router-link>
         </li>
       </ul>
       <ul class="app-nav">
@@ -17,33 +18,58 @@
         <li class="app-search">
             <LanguegeSwitcher ></LanguegeSwitcher>
         </li>
-        <li class="app-search">
-            <router-link :to="{name:'Home'}">Visit Site</router-link>
-        </li>
+        <!-- <li class="app-search">
+            <router-link :to="{name:'Home'}" class="text-white">Visit Site</router-link>
+        </li> -->
         <!-- User Menu-->
         <li class="dropdown list-unstyled">
-            <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-globe fa-lg"></i></a>
+            <router-link class="app-nav__item" to="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-globe fa-lg"></i></router-link>
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
                 <li>
-                    <a class="dropdown-item" href="http://127.0.0.1:8001/admin/settings"><i class="fa fa-cog fa-lg"></i> Settings</a>
+                    <router-link class="dropdown-item" to="/admin/settings"><i class="fa fa-cog fa-lg"></i> Settings</router-link>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a>
+                     <label for="theme"> {{ getTheme == "dark" ? "Dark" : "Light" }} </label>
+                     <i-switch @on-change="TOGGLE_THEME" name="theme" v-model="IsDark"> </i-switch>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="http://127.0.0.1:8001/admin/logout"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
+                    <router-link class="dropdown-item" to="/admin/logout"><i class="fa fa-sign-out fa-lg"></i> Logout</router-link>
                 </li>
             </ul>
         </li>
+
     </ul>
     </nav>
     <!-- /.navbar -->
 </template>
 <script>
+import { mapGetters, mapMutations, mapState } from 'vuex'
 import  LanguegeSwitcher from './LanguegeSwitcher'
 
 export default {
-    components: { LanguegeSwitcher}
+    components: { LanguegeSwitcher},
+    computed:{
+        ...mapGetters('settingsStoreIndex',['getTheme', 'getIsDark']),
+        IsDark: {
+            get(){
+                return this.getIsDark
+            },
+            set(value){
+                this.TOGGLE_THEME
+            }
+        }
+    },
+    methods:{
+        ...mapMutations('settingsStoreIndex',['TOGGLE_THEME'])
+    },
+    watch:{
+        getIsDark(value){
+            if (value) {
+                console.log('DARK APPILED');
+
+            }
+        }
+    }
 }
 </script>
 

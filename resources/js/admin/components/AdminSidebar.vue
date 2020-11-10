@@ -1,6 +1,6 @@
 <template>
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-light-primary elevation-4">
+    <aside class="main-sidebar elevation-4" :class="getIsDark == true ? 'sidebar-dark-primary' : 'sidebar-light-primary'">
       <!-- Brand Logo -->
       <router-link to="/admin" class="brand-link" exact-active-class="bg-primary">
         <img src="/img/logo.png" alt="SITE LOGO" class="brand-image img-circle elevation-3"
@@ -44,12 +44,21 @@
                 </p>
               </router-link>
             </li>
+
              <li class="nav-item">
               <router-link to="/admin/products" class="nav-link"  exact-active-class="active">
                 <i class="nav-icon fa fa-cog"></i>
-                <p> {{ $t('sidebar.product')}} <span class="right badge badge-danger">+</span>
+                <p> {{ $t('sidebar.product')}}  <i class="fas fa-angle-left right"></i>
                 </p>
               </router-link>
+                   <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                             <router-link to="/admin/products/create" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                             </router-link>
+                        </li>
+                    </ul>
             </li>
             <li class="nav-item">
               <router-link to="/admin/settings" class="nav-link"  exact-active-class="active">
@@ -82,20 +91,12 @@ import { mapGetters , mapState , mapActions } from 'vuex'
 
 export default {
     computed: {
-      ...mapGetters({
-        error : 'getErrorData'
-      })
+       ...mapGetters('settingsStoreIndex',[ 'getIsDark'])
     },
     props: ['user'],
     methods: {
       ...mapActions(['doLogOut'])
     },
-    created(){
-        if (this.error) {
-            console.log(this.error)
-            // this.$router.push({name : 'NotFound'});
-        }
-    }
 
 }
 </script>

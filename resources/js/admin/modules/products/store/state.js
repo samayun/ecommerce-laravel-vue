@@ -48,7 +48,10 @@ export default {
         sku:"",
         brand_id: "",
         price:"",
-        description: ""
+        description: "",
+        image:"",
+        featured: false,
+        status: true
     }),
     addProductMeta: {
         showModal: false,
@@ -65,7 +68,8 @@ export default {
     }),
     editProductMeta: {
         isImageVisible: false,
-        showModal: false
+        showModal: false,
+        modal: false
     },
     isLoading: false,
     filterString:{

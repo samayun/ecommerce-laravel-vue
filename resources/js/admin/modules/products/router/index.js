@@ -14,7 +14,18 @@ const routes = [
             guest : false,
             allowedUserType: ['Admin']
         }
-
+    },
+    {
+        path: 'products/create',
+        name: 'Create Products',
+        component: () => import('../pages/create.vue'),
+        title: 'This is create product page'
+    },
+    {
+        path: 'products/edit/:id',
+        name: 'Edit Products',
+        component: () => import('../pages/edit.vue'),
+        title: 'This is Edit product page'
     }
 ]
 

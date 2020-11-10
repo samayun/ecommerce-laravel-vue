@@ -32,6 +32,7 @@ class ProductObserver
      */
     public function updated(Product $product)
     {
+        $this->CACHE_KEY = 'product.'.$product->id;
         $this->flush($this->CACHE_KEY);
     }
 
