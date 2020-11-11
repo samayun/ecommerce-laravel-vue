@@ -95,7 +95,7 @@
                                         <i class="fa fa-exclamation-circle fa-fw"></i>  </div>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label" for="quantity">Quantity</label>
                                     <input
@@ -111,7 +111,7 @@
                                     <div class="invalid-feedback active">
                                         <i class="fa fa-exclamation-circle fa-fw"></i>    </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="description">Description</label>
@@ -157,14 +157,12 @@ export default {
        ...mapGetters("brandsStoreIndex",['getAllBrand']),
     },
     methods:{
-          ...mapActions("brandsStoreIndex", ['getBrands']),
+         ...mapActions("brandsStoreIndex", ['getBrands']),
          ...mapActions("productsStoreIndex", ['updateProduct' ]),
          ...mapMutations("productsStoreIndex", ['TOGGLE_MODAL' ]),
     },
     created(){
-       if (this.editProductMeta.showModal) {
-           document.title = 'Update Products';
-       }
+       document.title = 'Update Products';
        this.token = window.Laravel.csrfToken;
        if (this.getAllBrand.length == 0) {
             this.getBrands();

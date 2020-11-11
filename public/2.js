@@ -359,7 +359,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               on: {
                 click: function click() {
                   // this.GET_EDIT_DATA(params.row)
-                  _this.$router.push('/admin/products/edit/' + params.row.id);
+                  _this.$router.replace('/admin/products/edit/' + params.row.id);
                 }
               }
             }, '');
@@ -368,10 +368,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           var deleteButton = h('');
 
           if (_this.isPermitted('delete', 'product')) {
-            deleteButton = h('Icon', {
+            deleteButton = h('Button', {
               props: {
-                custom: 'fa fa-trash',
-                size: 'large',
+                icon: 'ios-trash',
+                size: 'small',
                 color: 'red'
               },
               style: {
@@ -572,10 +572,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("productsStoreIndex", ['editProductMeta', 'editProductData'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("brandsStoreIndex", ['getAllBrand'])),
   methods: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("brandsStoreIndex", ['getBrands'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("productsStoreIndex", ['updateProduct'])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])("productsStoreIndex", ['TOGGLE_MODAL'])),
   created: function created() {
-    if (this.editProductMeta.showModal) {
-      document.title = 'Update Products';
-    }
-
+    document.title = 'Update Products';
     this.token = window.Laravel.csrfToken;
 
     if (this.getAllBrand.length == 0) {
@@ -629,6 +626,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -640,7 +641,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     showAllData: _components_showAllData_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   created: function created() {
+    var _this = this;
+
     document.title = 'Products';
+    $Bus.$on('redirectToProducts', function () {
+      _this.$router.push({
+        name: "Products"
+      }); // this.$router.back()
+
+    });
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("productsStoreIndex", ['multiSelected'])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("productsStoreIndex", ['bulk_delete']))
@@ -1071,6 +1080,77 @@ var render = function() {
                               attrs: {
                                 form: _vm.addProductData,
                                 field: "price"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "invalid-feedback active" },
+                              [
+                                _c("i", {
+                                  staticClass: "fa fa-exclamation-circle fa-fw"
+                                })
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-6" }, [
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "control-label",
+                                attrs: { for: "quantity" }
+                              },
+                              [_vm._v("Quantity")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.addProductData.quantity,
+                                  expression: "addProductData.quantity"
+                                }
+                              ],
+                              staticClass: "form-control ",
+                              class: {
+                                "is-invalid": _vm.addProductData.errors.has(
+                                  "quantity"
+                                )
+                              },
+                              attrs: {
+                                type: "number",
+                                placeholder: "Enter product quantity",
+                                id: "quantity",
+                                value: "88"
+                              },
+                              domProps: { value: _vm.addProductData.quantity },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.addProductData,
+                                    "quantity",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("has-error", {
+                              attrs: {
+                                form: _vm.addProductData,
+                                field: "quantity"
                               }
                             }),
                             _vm._v(" "),
@@ -1844,6 +1924,77 @@ var render = function() {
                         ],
                         1
                       )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "quantity" }
+                            },
+                            [_vm._v("Quantity")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editProductData.quantity,
+                                expression: "editProductData.quantity"
+                              }
+                            ],
+                            staticClass: "form-control ",
+                            class: {
+                              "is-invalid": _vm.editProductData.errors.has(
+                                "quantity"
+                              )
+                            },
+                            attrs: {
+                              type: "number",
+                              placeholder: "Enter product quantity",
+                              id: "quantity",
+                              value: "88"
+                            },
+                            domProps: { value: _vm.editProductData.quantity },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editProductData,
+                                  "quantity",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: {
+                              form: _vm.editProductData,
+                              field: "quantity"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "invalid-feedback active" },
+                            [
+                              _c("i", {
+                                staticClass: "fa fa-exclamation-circle fa-fw"
+                              })
+                            ]
+                          )
+                        ],
+                        1
+                      )
                     ])
                   ]),
                   _vm._v(" "),
@@ -1993,44 +2144,52 @@ var render = function() {
     "main",
     { staticClass: "app-content", attrs: { id: "app" } },
     [
-      _c(
-        "div",
-        { staticClass: "app-title" },
-        [
-          _c("div", [
-            _c("h1", [
-              _c("i", { staticClass: "fa fa-fw fa-lg fa-check-circle" }),
-              _vm._v(" " + _vm._s(_vm.$t("products.name")) + " ")
-            ]),
-            _vm._v(" "),
-            _c("p", [_vm._v(" List of all products ")])
+      _c("div", { staticClass: "app-title" }, [
+        _c("div", [
+          _c("h1", [
+            _c("i", { staticClass: "fa fa-fw fa-lg fa-check-circle" }),
+            _vm._v(" " + _vm._s(_vm.$t("products.name")) + " ")
           ]),
           _vm._v(" "),
-          _vm.isPermitted("delete", "product") && _vm.multiSelected.length !== 0
-            ? _c(
-                "span",
-                { staticClass: "m-2 " },
-                [
-                  _c(
-                    "Button",
-                    {
-                      attrs: { type: "error" },
-                      on: { click: _vm.bulk_delete }
-                    },
-                    [_vm._v(" BULK " + _vm._s(_vm.$t("delete")) + " ")]
-                  ),
-                  _vm._v(
-                    " " + _vm._s(_vm.multiSelected.length) + " selected\n     "
-                  )
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.isPermitted("create", "product") ? _c("create-product") : _vm._e()
-        ],
-        1
-      ),
+          _c("p", [_vm._v(" List of all products ")])
+        ]),
+        _vm._v(" "),
+        _vm.isPermitted("delete", "product") && _vm.multiSelected.length !== 0
+          ? _c(
+              "span",
+              { staticClass: "m-2 " },
+              [
+                _c(
+                  "Button",
+                  { attrs: { type: "error" }, on: { click: _vm.bulk_delete } },
+                  [_vm._v(" BULK " + _vm._s(_vm.$t("delete")) + " ")]
+                ),
+                _vm._v(
+                  " " + _vm._s(_vm.multiSelected.length) + " selected\n     "
+                )
+              ],
+              1
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-primary",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.$router.push("/admin/products/create")
+              }
+            }
+          },
+          [
+            _c("Icon", { attrs: { type: "ios-add", size: "large" } }),
+            _vm._v(" " + _vm._s(_vm.$t("products.add")))
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _c(
         "div",

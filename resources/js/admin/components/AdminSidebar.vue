@@ -55,7 +55,7 @@
                         <li class="nav-item">
                              <router-link to="/admin/products/create" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Create</p>
+                            <p>{{ $t('products.add')}}</p>
                              </router-link>
                         </li>
                     </ul>

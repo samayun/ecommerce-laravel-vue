@@ -99,7 +99,7 @@
                                         <i class="fa fa-exclamation-circle fa-fw"></i>  </div>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label" for="quantity">Quantity</label>
                                     <input
@@ -115,7 +115,7 @@
                                     <div class="invalid-feedback active">
                                         <i class="fa fa-exclamation-circle fa-fw"></i>    </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="description">Description</label>

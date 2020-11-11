@@ -1,5 +1,6 @@
-import { data } from 'jquery';
-import { Modal } from 'view-design'
+import {  Modal } from 'view-design'
+import {  Form } from 'vform'
+
 export default {
     async getProducts({commit ,state , getters}){
         try {
@@ -22,20 +23,23 @@ export default {
         state.addProductData.post('/api/admin/products')
         .then(res => {
             if (res.status == 201) {
-                commit('CREATE_PRODUCT' , res.data);
+                state.addProductData.modal ? commit('TOGGLE_MODAL',"add"): "";
+                commit('CREATE_PRODUCT' , res.data.data);
                 $Notice.info({
                     title: 'Product Added Successfully',
                     desc: `${state.addProductData.name} added`
                 });
                 state.addProductData = new Form({
-                    name: " ",
-                    slug: "",
+                    name: "",
                     sku:"",
-                    product_id: '',
-                    price: '',
-                    description: ""
+                    brand_id: "",
+                    price:"",
+                    description: "",
+                    image:"",
+                    featured: false,
+                    status: true
                 });
-                commit('TOGGLE_MODAL','add')
+                $Bus.$emit('redirectToProducts');
 
              }
         }).catch (error => {
@@ -58,7 +62,7 @@ export default {
    async getSingleProduct({state , commit}, id){
        try {
            let res = await axios.get(`/api/admin/products/${id}`);
-           commit('GET_EDIT_DATA', res.data.data)
+           commit('GET_EDIT_DATA', res.data.data);
        } catch (error) {
 
        }
@@ -73,8 +77,24 @@ export default {
                 // dispatch get categories can make slow browsing - this is an old idea
                 // dispatch('getCategories');
                 // best practice is updating UI without making a new ajax request
-                commit('UPDATE_PRODUCT', res.data.data)
-                commit('TOGGLE_MODAL',"edit")
+                commit('UPDATE_PRODUCT', res.data.data);
+                state.editProductMeta.modal ? commit('TOGGLE_MODAL',"edit"): "";
+
+                // state.editProductData = new Form({
+                //     id: '',
+                //     brand_id:'',
+                //     name: "",
+                //     slug:"",
+                //     sku:"",
+                //     price: "",
+                //     quantity:"",
+                //     image:"",
+                //     featured: false,
+                //     status: false ,
+                //     description: ""
+                // });
+                $Bus.$emit('redirectToProducts');
+
              }
         }).catch (error => {
             console.log(error);
@@ -154,11 +174,15 @@ export default {
 
     },
     handleBeforeUpload({state},file){
-            const reader = new FileReader();
-            let _this = this
+            const reader     = new FileReader();
+            let _this        = this
             reader.readAsDataURL(file);
-            reader.onloadend = function(e){
-                file.url = reader.result
+            reader.onloadend    = function(e){
+                file.url        = reader.result
+                let existProId  = state.editProductData.id
+               if (existProId) {
+                 state.editProductData.image  = file.url
+               }
                 state.addProductData.image  = file.url
             }
             return false;

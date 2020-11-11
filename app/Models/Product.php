@@ -9,6 +9,10 @@ class Product extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $casts = [
+        'featured' => 'integer',
+        'status' => 'integer'
+    ];
     public function brand()
     {
         return $this->belongsTo('App\Models\Brand');

@@ -58,12 +58,16 @@ export default {
         isImageVisible: false
     },
     editProductData: new Form({
+        id: '',
         brand_id:'',
         name: "",
         slug:"",
         sku:"",
-        brand_id: "",
-        price:"",
+        price: "",
+        quantity:"",
+        image:"",
+        featured: false,
+        status: true ,
         description: ""
     }),
     editProductMeta: {

@@ -8,7 +8,11 @@
          <span class="m-2 " v-if="isPermitted('delete','product') && multiSelected.length !== 0">
              <Button type="error" @click="bulk_delete"> BULK {{ $t('delete') }} </Button> {{multiSelected.length }} selected
          </span>
-            <create-product v-if="isPermitted('create','product')"></create-product>
+            <a
+                class="btn btn-primary"
+                @click.prevent="$router.push('/admin/products/create')">
+                <Icon type="ios-add" size='large' /> {{$t('products.add')}}</a>
+            <!-- <router-link v-if="isPermitted('create','product')" to="/admin/products/create"></router-link> -->
         </div>
         <div class="row ">
             <!-- <filter-data
@@ -34,6 +38,10 @@ export default {
         createProduct , updateProduct , showAllData },
     created(){
         document.title = 'Products'
+        $Bus.$on('redirectToProducts',() => {
+            this.$router.push({name:"Products"})
+            // this.$router.back()
+        })
     },
     computed: {
        ...mapState("productsStoreIndex", [ 'multiSelected']),

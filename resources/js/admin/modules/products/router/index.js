@@ -17,13 +17,13 @@ const routes = [
     },
     {
         path: 'products/create',
-        name: 'Create Products',
+        name: 'CreateProducts',
         component: () => import('../pages/create.vue'),
         title: 'This is create product page'
     },
     {
         path: 'products/edit/:id',
-        name: 'Edit Products',
+        name: 'EditProducts',
         component: () => import('../pages/edit.vue'),
         title: 'This is Edit product page'
     }

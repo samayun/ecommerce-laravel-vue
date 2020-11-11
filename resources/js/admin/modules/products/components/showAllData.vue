@@ -106,17 +106,17 @@ export default {
                                     on: {
                                         click: () => {
                                             // this.GET_EDIT_DATA(params.row)
-                                            this.$router.push('/admin/products/edit/'+params.row.id);
+                                            this.$router.replace('/admin/products/edit/'+params.row.id);
                                         }
                                     }
                                 },'');
                             }
                             let deleteButton = h('')
                             if (this.isPermitted('delete','product')) {
-                                deleteButton =   h('Icon', {
+                                deleteButton =   h('Button', {
                                                     props: {
-                                                        custom: 'fa fa-trash',
-                                                        size: 'large',
+                                                        icon: 'ios-trash',
+                                                        size: 'small',
                                                         color: 'red'
                                                     },
                                                     style: {

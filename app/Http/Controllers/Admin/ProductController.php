@@ -8,6 +8,7 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Traits\UploadAble;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -77,7 +78,39 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, Product $product)
     {
-        return $this->productRepository->update($request->all(),$request->id);
+        $url = env('APP_URL').'/storage/products/'.$product->image;
+        if($request->image != $url){
+            // DELETE OLD IMAGE FIRST
+            $path = 'products/'.$product->image;
+            if (Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
+             }
+
+            $image      = $this->base64ToImage($request->image)['image'];
+            $extension  = $this->base64ToImage($request->image)['extension'];
+
+            $FileError = $this->setImageValidationError($extension,'image',['jpg','jpeg','png','svg']);
+
+            if ($FileError) {
+                return response()->json([
+                    'message' => $FileError['error'],
+                    'errors' => [
+                        $FileError['feild'] => [ $FileError['error'] ]
+                    ]
+                ], $FileError['status']);
+            }
+            $uploadedFile = $this->uploadBase64File($request->image , 'products/','public');
+            $attributes = [
+                'image' => $uploadedFile['name']
+            ];
+            $merged = array_merge($request->all(),$attributes);
+            return $this->productRepository->update($merged,$request->id);
+        }
+        $attributes = [
+            'image' => $product->image
+        ];
+        $merged = array_merge($request->all(),$attributes);
+        return $this->productRepository->update($merged,$request->id);
     }
 
     /**
@@ -88,6 +121,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $path = 'products/'.$product->image;
+        if (Storage::disk('public')->exists($path)) {
+            Storage::disk('public')->delete($path);
+         }
         return $this->productRepository->delete($product->id);
     }
 

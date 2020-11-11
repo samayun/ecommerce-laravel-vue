@@ -7,6 +7,8 @@ use App\Models\Product;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProductRepository implements ProductContract
 {
@@ -79,8 +81,13 @@ class ProductRepository implements ProductContract
     public function bulk_delete($selected_data)
     {
         foreach ($selected_data as $product) {
+            $found = $this->findById($product['id']);
+            $path = 'products/'.$found['image'];
+            if (Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->delete($path);
+            }
             DB::beginTransaction();
-            $this->findById($product['id'])->delete();
+            $found->delete();
             DB::commit();
         }
     }

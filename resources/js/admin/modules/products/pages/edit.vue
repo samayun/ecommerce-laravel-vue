@@ -189,7 +189,7 @@
                                             </div>
                                             <div class="form-group" v-show="editProductData.image">
                                                 <label for="featured"> Featured :   </label>
-                                                <i-switch @on-change="editProductData.featured = !editProductData.featured" name="featured" > </i-switch>
+                                                <i-switch @on-change="editProductData.featured = !editProductData.featured" v-model="editProductData.featured" name="featured" > </i-switch>
                                             </div>
 
                                         <Modal title="View image" v-model="imageVisible">
@@ -209,7 +209,7 @@
                         @click="updateProduct" >
                         <i class="fa fa-fw fa-lg fa-check-circle"></i>
                     {{editProductData.busy ? $t('products.editing')+'..' : $t('products.edit')}}</Button>
-                    <Button type="default" @click="$router.back()">
+                    <Button type="default" @click="$router.replace('/admin/products')">
                         <i class="fa fa-fw fa-lg fa-arrow-left"></i>Go Back </Button>
                 </div>
             </div>
@@ -247,11 +247,11 @@ export default {
     created(){
         let existProId = this.$store.state.productsStoreIndex.editProductData.id
         let id = this.$route.params.id
-       if (existProId != id) {
-           this.getSingleProduct(id)
-       }
+        if (existProId != id) {
+            this.getSingleProduct(id)
+                document.title = 'Edit Products';
+        }
 
-       document.title = 'Edit Products';
        this.token = window.Laravel.csrfToken;
        if (this.getAllBrand.length == 0) {
             this.getBrands();
@@ -260,6 +260,7 @@ export default {
         $Bus.$on('cleareditedFiles' , () => {
             _this.$refs.upload.clearFiles();
         });
+
     }
 }
 
