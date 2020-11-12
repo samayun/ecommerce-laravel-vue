@@ -10,7 +10,7 @@
             </Table>
             <br/>
 
-            <!-- <Pagination :meta="filterString" :changePaginatedPage="changePaginatedPage" :changePaginatedPerPage="changePaginatedPerPage" /> -->
+            <Pagination :meta="filterString" :changePaginatedPage="changePaginatedPage" :changePaginatedPerPage="changePaginatedPerPage" />
     </div>
 </template>
 <script>
@@ -96,6 +96,7 @@ export default {
                              edit = h('Button', {
                                     props: {
                                         icon: 'ios-editor fa fa-edit',
+                                        type: "primary",
                                         size: 'small',
                                         color: 'primary'
                                     },
@@ -116,6 +117,7 @@ export default {
                                 deleteButton =   h('Button', {
                                                     props: {
                                                         icon: 'ios-trash',
+                                                        type: "primary",
                                                         size: 'small',
                                                         color: 'red'
                                                     },

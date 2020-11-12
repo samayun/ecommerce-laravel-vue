@@ -18,6 +18,8 @@ interface ProductContract
     // {"page":"1","perPage":"10","orderBy":"created_at","sortBy":"desc"}
     public function all();
 
+    public function withFilter($request);
+
     /**
      * @param int $id
      * @return mixed

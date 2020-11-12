@@ -76,7 +76,7 @@ export default {
         modal: false
     },
     isLoading: false,
-    filterString:{
+    filterString: {
         page: 1,
         perPage : 10,
         orderBy: 'created_at',

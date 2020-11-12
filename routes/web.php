@@ -8,8 +8,10 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Jobs\SendEmailJobs;
 use App\Mail\AdminAlertMail;
 use App\Models\Brand;
+use App\Models\Product;
 use App\Notifications\AdminLoginResponser;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
@@ -31,7 +33,6 @@ Route::view('/user-login', 'user_login')->name('login');
 // Route::any('{any}', function () {
 //     return view('admin_layout');
 // });
-
 
 Route::view('/{any}', 'admin_layout')->where('any', 'admin.*');
 

@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Penguin\Bread\BreadServiceProvider::class,
         /*
          * Application Service Providers...
          */

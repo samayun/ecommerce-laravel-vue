@@ -4,15 +4,15 @@ import {  Form } from 'vform'
 export default {
     async getProducts({commit ,state , getters}){
         try {
-            let res =   await axios.get(`/api/admin/products`);
+            let res =   await axios.get(`/api/admin/products?${getters.getFilteredURLString}`);
             if (res.status == 200) {
-                // let updatedFilterString = {
-                //     page: parseInt(res.data.current_page),
-                //     perPage : parseInt(res.data.per_page) || 5,
-                //     total: parseInt(res.data.total),
-                //     q: ""
-                // }
-                // commit('FILTER_DATA', updatedFilterString)
+                let updatedFilterString = {
+                    page: parseInt(res.data.meta.current_page),
+                    perPage : parseInt(res.data.meta.per_page) || 5,
+                    total: parseInt(res.data.meta.total),
+                    q: ""
+                }
+                commit('FILTER_DATA', updatedFilterString)
                 commit('FETCH_PRODUCTS' , res.data.data);
             }
         } catch (error) {

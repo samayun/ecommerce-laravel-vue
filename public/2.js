@@ -349,6 +349,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             edit = h('Button', {
               props: {
                 icon: 'ios-editor fa fa-edit',
+                type: "primary",
                 size: 'small',
                 color: 'primary'
               },
@@ -371,6 +372,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             deleteButton = h('Button', {
               props: {
                 icon: 'ios-trash',
+                type: "primary",
                 size: 'small',
                 color: 'red'
               },
@@ -651,8 +653,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     });
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("productsStoreIndex", ['multiSelected'])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("productsStoreIndex", ['bulk_delete']))
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("productsStoreIndex", ['multiSelected', 'filterString'])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("productsStoreIndex", ['getProducts', 'bulk_delete']))
 });
 
 /***/ }),
@@ -1499,7 +1501,15 @@ var render = function() {
           })
         : _vm._e(),
       _vm._v(" "),
-      _c("br")
+      _c("br"),
+      _vm._v(" "),
+      _c("Pagination", {
+        attrs: {
+          meta: _vm.filterString,
+          changePaginatedPage: _vm.changePaginatedPage,
+          changePaginatedPerPage: _vm.changePaginatedPerPage
+        }
+      })
     ],
     1
   )
@@ -2194,7 +2204,16 @@ var render = function() {
       _c(
         "div",
         { staticClass: "row " },
-        [_vm.isPermitted("view", "product") ? _c("show-all-data") : _vm._e()],
+        [
+          _c("filter-data", {
+            attrs: {
+              defaultFilter: _vm.filterString,
+              getResult: _vm.getProducts
+            }
+          }),
+          _vm._v(" "),
+          _vm.isPermitted("view", "product") ? _c("show-all-data") : _vm._e()
+        ],
         1
       ),
       _vm._v(" "),

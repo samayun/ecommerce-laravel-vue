@@ -22,4 +22,21 @@ class Product extends Model
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = \Str::slug($value);
     }
+    public function scopeSearch($query , $q)
+    {
+        if($q == null) return;
+        return $query->where('name','LIKE', "%$q%")
+                    ->orWhere('id','LIKE', "%$q%")
+                    ->orWhere('created_at','LIKE', "%$q%");
+    }
+    public function scopeFilter($query,$request)
+    {
+        $perPage =  $request->has('perPage') ? (int)$request->query('perPage') : 10;
+        $orderBy =  $request->has('orderBy') ? $request->query('orderBy') : 'created_at';
+        $sortBy  =  $request->has('sortBy') ? $request->query('sortBy') : 'desc';
+        $q       =  $request->has('q') ? $request->query('q') : '' ;
+
+        return $query->search($q)->orderBy($orderBy , $sortBy)->paginate($perPage);
+    }
+
 }

@@ -15,9 +15,9 @@
             <!-- <router-link v-if="isPermitted('create','product')" to="/admin/products/create"></router-link> -->
         </div>
         <div class="row ">
-            <!-- <filter-data
+            <filter-data
               :defaultFilter="filterString"
-              :getResult="getBrands" ></filter-data> -->
+              :getResult="getProducts" ></filter-data>
 
             <show-all-data v-if="isPermitted('view','product')"   ></show-all-data>
         </div>
@@ -44,10 +44,10 @@ export default {
         })
     },
     computed: {
-       ...mapState("productsStoreIndex", [ 'multiSelected']),
+       ...mapState("productsStoreIndex", [ 'multiSelected','filterString']),
    },
    methods:{
-       ...mapActions("productsStoreIndex",['bulk_delete'])
+       ...mapActions("productsStoreIndex",['getProducts' , 'bulk_delete'])
    }
 }
 </script>

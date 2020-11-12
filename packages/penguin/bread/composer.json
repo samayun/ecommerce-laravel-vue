@@ -1,0 +1,27 @@
+{
+    "name": "penguin/bread",
+    "description": "CRUD Generator for artisan command",
+    "type": "meta-package",
+    "authors": [
+        {
+            "name": "Samayun Chowdhury",
+            "email": "samayunmc99@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "replace": {
+        "illuminate/support": "self.version"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Penguin\\Bread\\BreadServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Penguin\\Bread\\": "src/"
+        }
+    }
+}

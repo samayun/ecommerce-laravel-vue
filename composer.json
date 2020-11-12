@@ -31,12 +31,16 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [],
+            "providers": [
+                "Penguin\\Bread\\BreadServiceProvider"
+            ]
         }
     },
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+            "Penguin\\Bread\\": "packages/penguin/bread/src/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
