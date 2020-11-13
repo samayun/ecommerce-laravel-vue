@@ -68,7 +68,11 @@ class ProductRepository implements ProductContract
      */
     public function create(array $params){
         $this->flush($this->CACHE_KEY);
-        $product = $this->model->create($params);
+        $request = collect($params);
+        if($request->has('categories')){
+            $product = $this->model->create($request->except('categories')->toArray());
+            $product->categories()->sync($request['categories']);
+        }
         return new ProductResource($product);
     }
 
@@ -89,9 +93,15 @@ class ProductRepository implements ProductContract
     public function update( $params,$id){
         $product = $this->findById($id);
         if($product){
-            $updated  = $product->update($params);
-            $this->flush($this->CACHE_KEY);
-            return new ProductResource($product);
+            $request = collect($params);
+
+            if($request->has('categories')){
+                $updated  = $product->update($request->except('categories')->toArray());
+                $product->categories()->sync($request['categories']);
+
+                $this->flush($this->CACHE_KEY);
+                 return new ProductResource($product);
+            }
         }
     }
     public function findByCriteria($criteria = 'id', $data ){

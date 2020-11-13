@@ -17,6 +17,10 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Brand');
     }
+    public function categories()
+    {
+        return $this->morphToMany('App\Models\Category', 'categoryable');
+    }
 
     public function setNameAttribute($value){
         $this->attributes['name'] = $value;

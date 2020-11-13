@@ -1,6 +1,6 @@
 <template>
     <main class="app-content" id="app">
-        <div class="app-title">
+        <div class="app-title" :class="getIsDark ? 'app-title-dark' : 'app-title'">
             <div>
                 <h1><i class="fa fa-cogs"></i> {{ $t('brands.name') }} </h1>
                 <p> List of all brands </p>
@@ -33,10 +33,18 @@ export default {
         document.title = 'Brands'
     },
     computed: {
-       ...mapState("brandsStoreIndex", [ 'isLoading','filterString'])
+       ...mapState("brandsStoreIndex", [ 'isLoading','filterString']),
+       ...mapGetters('settingsStoreIndex',['getIsDark'])
    },
    methods:{
        ...mapActions("brandsStoreIndex",['getBrands'])
    }
 }
 </script>
+
+<style>
+    .app-title-dark {
+        background-color: #343a40;
+        color: #ffffff;
+    }
+</style>

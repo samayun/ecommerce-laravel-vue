@@ -44,6 +44,15 @@
                 </p>
               </router-link>
             </li>
+            <li class="nav-item">
+              <router-link to="/admin/attributes" class="nav-link"  exact-active-class="active">
+                <i class="nav-icon fas fa-tag"></i>
+                <p>
+                  {{ $t('sidebar.attribute')}}
+
+                </p>
+              </router-link>
+            </li>
 
              <li class="nav-item">
               <router-link to="/admin/products" class="nav-link"  exact-active-class="active">

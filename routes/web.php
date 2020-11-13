@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\AttributeController;
 use App\Jobs\SendEmailJobs;
 use App\Mail\AdminAlertMail;
 use App\Models\Brand;
@@ -42,10 +43,18 @@ Route::view('/{any}', 'admin_layout')->where('any', 'admin.*');
 
 Route::group(['prefix' => 'api/admin' , 'middleware' => 'auth:admin' ], function () {
     Route::get('subcategories' , [CategoryController::class , 'subcategories']);
+    Route::get('all_categories' , [CategoryController::class , 'all_categories']);
+
     Route::post('categories/multi' , [CategoryController::class , 'multiDelete']);
     Route::apiResource('categories' , CategoryController::class);
+
+    Route::get('values' , [AttributeController::class , 'values']);
+    Route::post('attributes/multi' , [AttributeController::class , 'multiDelete']);
+    Route::apiResource('attributes' , AttributeController::class);
+
     Route::post('brands/multi' , [BrandController::class , 'multiDelete']);
     Route::apiResource('brands' , BrandController::class);
+
     Route::post('products/bulk_delete' , [ProductController::class , 'bulk_delete']);
     Route::apiResource('products' , ProductController::class);
 });

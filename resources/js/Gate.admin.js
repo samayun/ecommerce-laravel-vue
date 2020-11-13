@@ -1,4 +1,5 @@
 import BrandPolicy from './admin/policies/BrandPolicy';
+import AttributePolicy from './admin/policies/AttributePolicy';
 import CategoryPolicy from './admin/policies/CategoryPolicy';
 import ProductPolicy from './admin/policies/ProductPolicy';
 
@@ -12,6 +13,7 @@ class Gate
             category: CategoryPolicy,
             brand: BrandPolicy,
             product: ProductPolicy,
+            attribute: AttributePolicy,
         };
     }
 

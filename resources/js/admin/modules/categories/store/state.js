@@ -2,6 +2,7 @@ import {Form} from 'vform'
 
 export default {
     categories : [],
+    allcategories:[],
     subcategories : [],
     addMeta: {
         showModal: false,

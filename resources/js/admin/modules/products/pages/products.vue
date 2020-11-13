@@ -1,13 +1,14 @@
 <template>
-    <main class="app-content" id="app">
-        <div class="app-title">
+    <main :class="'app-content'" id="app">
+        <div class="app-title" :class="getIsDark ? 'app-title-dark' : 'app-title'"
+        >
             <div>
                 <h1><i class="fa fa-fw fa-lg fa-check-circle"></i> {{ $t('products.name') }} </h1>
                 <p> List of all products </p>
             </div>
-         <span class="m-2 " v-if="isPermitted('delete','product') && multiSelected.length !== 0">
-             <Button type="error" @click="bulk_delete"> BULK {{ $t('delete') }} </Button> {{multiSelected.length }} selected
-         </span>
+            <span class="m-2 " v-if="isPermitted('delete','product') && multiSelected.length !== 0">
+                <Button type="error" @click="bulk_delete"> BULK {{ $t('delete') }} </Button> {{multiSelected.length }} selected
+            </span>
             <a
                 class="btn btn-primary"
                 @click.prevent="$router.push('/admin/products/create')">
@@ -45,9 +46,16 @@ export default {
     },
     computed: {
        ...mapState("productsStoreIndex", [ 'multiSelected','filterString']),
+        ...mapGetters('settingsStoreIndex',['getIsDark']),
    },
    methods:{
        ...mapActions("productsStoreIndex",['getProducts' , 'bulk_delete'])
    }
 }
 </script>
+<style>
+    .app-title-dark {
+        background-color: #343a40;
+        color: #ffffff;
+    }
+</style>

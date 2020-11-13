@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Illuminate\Support\Facades\Storage;
 
 use function PHPUnit\Framework\isNull;
 
@@ -27,15 +28,37 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function all_categories(Request $request)
     {
-        // these code must be efactored - we wil need this again and again
-        return Category::where('parent_id',1)->with('subcategories')->where('id','!=',1)->latest()->get();
+        if($request->has('with') && $request->with == 'subcategories'){
+            return Category::with('subcategories')->latest()->get();
+        }
+        if($request->has('with') && $request->with == 'products'){
+            return Category::with('products')->latest()->get();
+        }
+        if($request->has('with') && $request->with == 'subcategories' || $request->with == 'products'   ) {
+            return Category::with('subcategories')->with('products')->latest()->get();
+        }
+        return Category::latest()->get()->map(function($cat)
+        {
+            return [
+                'id' => $cat->id,
+                'name' => $cat->name,
+                'slug' => $cat->slug,
+                'icon' => $cat->icon ? url($cat->icon) :  Storage::url('categories/default.png')
+            ];
+        });
     }
     public function subcategories(Request $request)
     {
         // these code must be efactored - we wil need this again and again
-        return Category::where('parent_id','!=',1)->with('category')->filter($request);
+        return Category::where('parent_id','!=',1)->with('category')->with('products')->filter($request);
+    }
+
+    public function index()
+    {
+        // these code must be efactored - we wil need this again and again
+        return Category::where('parent_id',1)->with('subcategories')->with('products')->where('id','!=',1)->latest()->get();
     }
 
     /**
@@ -99,7 +122,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return $category;
+        return $category->products;
     }
 
     /**

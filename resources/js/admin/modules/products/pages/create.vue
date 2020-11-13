@@ -1,6 +1,8 @@
 <template>
 <main class="app-content" id="app">
-    <div class="app-title">
+    <div class="app-title"
+       :class="getIsDark ? 'app-title-dark': ''"
+     >
         <div>
             <h1><i class="fa fa-cogs"></i> {{$t('products.add')}}</h1>
         </div>
@@ -8,7 +10,9 @@
      <form role="form" @submit.prevent="createProduct">
         <div class="row user">
             <div class="col-md-9">
-                <div class="tile">
+                <div class="tile"
+                  :style="'background: url('+addProductData.image+')'"
+                >
                         <div class="tile-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -83,7 +87,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label" for="price">Price</label>
-                                        <input
+                                        <InputNumber
                                             class="form-control "
                                             type="text"
                                             placeholder="Enter product price"
@@ -100,7 +104,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label" for="quantity">Quantity</label>
-                                        <input
+                                        <InputNumber
+                                            min=1
                                             class="form-control "
                                             type="number"
                                             placeholder="Enter product quantity"
@@ -130,8 +135,7 @@
                         <div class="col-12">
                             <div class="card card-info collapsed-card">
                                         <div class="card-header">
-                                            <h3 class="card-title"> Featured / Publishing </h3>
-
+                                            <h3 class="card-title"> Categories / Publishing </h3>
                                             <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                                 <i class="fas fa-plus"></i>
@@ -140,7 +144,14 @@
                                         </div>
                                 <!-- /.card-header -->
                                         <div class="card-body" style="display: block;">
-                                            <div class="form-group">
+                                            <Select v-model="addProductData.categories" multiple
+                                            :class="{ 'is-invalid': addProductData.errors.has('categories') }">
+                                                <Option v-for="item in allcategories" :key="item.id" :value="item.id">
+                                                    <img :src="item.icon" alt="item.name" width="20rem">
+                                                    {{ item.name }} </Option>
+                                            </Select>
+                                             <has-error :form="addProductData" field="categories"></has-error>
+                                            <div class="form-group mt-3 mb-0">
                                                 <label for="status"> Publish  :  </label>
                                                 <i-switch  v-model="addProductData.status" color="success">  </i-switch>
                                             </div>
@@ -216,7 +227,6 @@
         </div>
      </form>
     </main>
-
 </template>
 
 
@@ -225,10 +235,10 @@ import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 export default {
     name: "createProduct",
     computed:{
-        ...mapState("productsStoreIndex", [
-          'addProductMeta' ,'addProductData'
-       ]),
-       ...mapGetters("brandsStoreIndex",['getAllBrand']),
+        ...mapState("productsStoreIndex", [ 'addProductMeta' ,'addProductData' ]),
+        ...mapState("categoriesStoreIndex", [ 'allcategories' ]),
+        ...mapGetters('settingsStoreIndex',['getIsDark']),
+        ...mapGetters("brandsStoreIndex",['getAllBrand']),
         imageVisible: {
             get(){
                 return this.addProductMeta.isImageVisible
@@ -239,15 +249,20 @@ export default {
         }
     },
     methods:{
+          ...mapActions("categoriesStoreIndex", [ 'getMergedCategories' ]),
           ...mapActions("brandsStoreIndex", ['getBrands']),
-         ...mapActions("productsStoreIndex", ['createProduct' , 'handleMaxSize' ,'handleFormatError' ,'handleSuccess','handleBeforeUpload','handleError' ,'deleteImage' ,'HANDLE_VIEW' ]),
-         ...mapMutations("productsStoreIndex", ['TOGGLE_MODAL' ]),
+          ...mapActions("productsStoreIndex", ['createProduct','handleMaxSize','handleFormatError','handleSuccess','handleBeforeUpload','handleError','deleteImage','HANDLE_VIEW']),
+          ...mapMutations("productsStoreIndex", ['TOGGLE_MODAL' ]),
     },
     created(){
-        document.title = 'Create Products';
+       document.title = 'Create Products';
        this.token = window.Laravel.csrfToken;
+
        if (this.getAllBrand.length == 0) {
             this.getBrands();
+       }
+       if (this.allcategories.length == 0) {
+            this.getMergedCategories();
        }
         let _this = this
         $Bus.$on('clearAddedFiles' , () => {
@@ -255,13 +270,10 @@ export default {
         });
     }
 }
-
-
 </script>
 
 <style>
     .demo-upload-list{
-
         text-align: center;
         line-height: 60px;
         border: 1px solid transparent;

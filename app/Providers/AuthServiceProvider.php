@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Admin;
+use App\Models\Attribute;
 use App\Policies\BrandPolicy;
 use App\Policies\CategoryPolicy;
 
@@ -18,7 +19,8 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Admin::class => [
             CategoryPolicy::class,
-            BrandPolicy::class
+            BrandPolicy::class,
+            Attribute::class,
         ]
     ];
 

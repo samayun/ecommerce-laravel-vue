@@ -8,7 +8,9 @@
      <form role="form" @submit.prevent="updateProduct">
         <div class="row user">
             <div class="col-md-9">
-                <div class="tile">
+                <div class="tile"
+                :style="'background: url('+editProductData.image+')'"
+                >
                         <div class="tile-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -65,10 +67,12 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label" for="brand_id">Brand</label>
-                                        <Select v-model="editProductData.brand_id"
-                                        :class="{ 'is-invalid': editProductData.errors.has('brand_id') }">
+                                        <Select
+                                            v-model="editProductData.brand_id"
+                                            prefix="brand.logo"
+                                            :class="{ 'is-invalid': editProductData.errors.has('brand_id') }" >
                                             <Option v-for="item in getAllBrand" :key="item.id" :value="item.id">
-                                                <img :src="item.logo" alt="item.name" width="20rem">
+                                                <Avatar :src="item.logo" :alt="item.name"  size="small" />
                                                 {{ item.name }} </Option>
                                         </Select>
                                         <has-error :form="editProductData" field="brand_id"></has-error>
@@ -140,6 +144,22 @@
                                         </div>
                                 <!-- /.card-header -->
                                         <div class="card-body" style="display: block;">
+                                            <Select v-model="editProductData.categories"
+                                                 multiple
+                                                :class="{ 'is-invalid': editProductData.errors.has('categories') }">
+
+                                                <Option v-for="(item,i) in allcategories"
+                                                    :key="item.id" :value="item.id"
+                                                    :tag=item.name
+                                                    :selected="editProductData.categories.includes(item)"
+                                                 >
+                                                    <Avatar
+                                                        :src="item.icon"
+                                                        :alt="item.name"
+                                                        size="small" />
+                                                    {{ item.name }} </Option>
+                                            </Select>
+                                             <has-error :form="editProductData" field="categories"></has-error>
                                             <div class="form-group">
                                                 <label for="status"> Publish  :  </label>
                                                 <i-switch  v-model="editProductData.status" color="success">  </i-switch>
@@ -228,6 +248,7 @@ export default {
         ...mapState("productsStoreIndex", [
           'editProductMeta' ,'editProductData'
        ]),
+        ...mapState("categoriesStoreIndex", [ 'allcategories' ]),
        ...mapGetters("brandsStoreIndex",['getAllBrand']),
         imageVisible: {
             get(){
@@ -240,9 +261,16 @@ export default {
     },
     methods:{
           ...mapActions("brandsStoreIndex", ['getBrands']),
-
+         ...mapActions("categoriesStoreIndex", [ 'getMergedCategories' ]),
          ...mapActions("productsStoreIndex", ['getSingleProduct','updateProduct' , 'handleMaxSize' ,'handleFormatError' ,'handleSuccess','handleBeforeUpload','handleError' ,'deleteImage' ,'HANDLE_VIEW' ]),
          ...mapMutations("productsStoreIndex", ['TOGGLE_MODAL' ]),
+         hanndleSelected(categories){
+             let _this = this
+                categories.forEach(element => {
+                    let index = this.allcategories.findIndex(i => i.id == element.id);
+                    return this.allcategories[index].id == element.id;
+                });
+         }
     },
     created(){
         let existProId = this.$store.state.productsStoreIndex.editProductData.id
@@ -251,7 +279,9 @@ export default {
             this.getSingleProduct(id)
                 document.title = 'Edit Products';
         }
-
+       if (this.allcategories.length == 0) {
+            this.getMergedCategories();
+       }
        this.token = window.Laravel.csrfToken;
        if (this.getAllBrand.length == 0) {
             this.getBrands();
@@ -260,6 +290,9 @@ export default {
         $Bus.$on('cleareditedFiles' , () => {
             _this.$refs.upload.clearFiles();
         });
+         $Bus.$on('redirectToProducts', () => {
+             _this.$route.push({name: "Products"})
+         });
 
     }
 }

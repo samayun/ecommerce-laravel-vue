@@ -70,6 +70,16 @@ export default {
            console.log('error in fetch categories : reload device');
        }
     },
+    async getMergedCategories({commit ,state , getters}){
+        try {
+         let res = await axios.get(`/api/admin/all_categories`)
+         if (res.status == 200) {
+             state.allcategories = res.data
+          }
+        } catch (error) {
+            console.log('error in fetch allcategories : reload device');
+        }
+    },
     async getSubCategories({commit ,state , getters}){
         try {
          let res = await axios.get(`/api/admin/subcategories?${getters.getFilteredURLString}`)

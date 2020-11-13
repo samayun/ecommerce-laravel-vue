@@ -26,6 +26,12 @@ const routes = [
         name: 'EditProducts',
         component: () => import('../pages/edit.vue'),
         title: 'This is Edit product page'
+    },
+    {
+        path: 'products/view/:id',
+        name: 'EditProducts',
+        component: () => import('../pages/view.vue'),
+        title: 'This is View product page'
     }
 ]
 

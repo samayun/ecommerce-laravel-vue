@@ -8,6 +8,9 @@ export default {
         let index= state.products.findIndex(item => item.id === product.id);
         state.products.splice(index , 1)
     },
+    VIEW_DATA(state, payload){
+        state.viewProductData =  payload
+    },
     GET_EDIT_DATA(state , payload){
         if(state.editProductMeta.modal){
             state.editProductMeta.showModal = !state.editProductMeta.showModal
@@ -20,6 +23,7 @@ export default {
             slug:"",
             sku:"",
             price: "",
+            categories: null,
             quantity:"",
             image:"",
             featured: false,
@@ -33,8 +37,8 @@ export default {
         }
         state.editProductData =  new Form(defaultData)
     },
-    UPDATE_PRODUCT(state , product){
-        let index = state.products.findIndex(item => item.id == product.id);
+    UPDATE_PRODUCT(state , response){
+        let index = state.products.findIndex(item => item.id == response.id);
         for( let key in product){
             if (state.products[index].hasOwnProperty(key)) {
                 state.products[index][key] = product[key];

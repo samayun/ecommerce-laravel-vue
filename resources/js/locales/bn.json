@@ -10,6 +10,7 @@
     "image" : "ছবি",
     "sidebar": {
         "product" : "পণ্য",
+        "attribute" : "উপাদান",
         "category" : "ক্যাটাগরি",
         "brand" : "ব্র্যান্ড",
         "logout" : "লগ আউট"
@@ -21,6 +22,15 @@
         "edit" : "@:sidebar.category @:edit ",
         "editing" : "@:sidebar.category সম্পাদনা করা হচ্ছে",
         "delete" : "@:sidebar.category ডিলেট করুন"
+
+    },
+    "attributes" : {
+        "name" : "@:sidebar.attribute সমূহ",
+        "add": "@:sidebar.attribute যোগ করুন",
+        "adding": "@:sidebar.attribute যোগ করা হচ্ছে",
+        "edit" : "@:sidebar.attribute @:edit ",
+        "editing" : "@:sidebar.attribute সম্পাদনা করা হচ্ছে",
+        "delete" : "@:sidebar.attribute ডিলেট করুন"
 
     },
     "subcategories" : {

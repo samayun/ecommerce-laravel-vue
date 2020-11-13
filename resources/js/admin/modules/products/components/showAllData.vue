@@ -60,6 +60,20 @@ export default {
 
                     },
                      {
+                        title: 'Categories',
+                        key: 'categories',
+                        sortable: true,
+                        tooltip:true,
+                        render: (h,params) => {
+                            let categories =  params.row.categories.map(element => {
+                                return h('Tag',{props: { color: 'success'}}, element.name)
+                            });
+                            return h('div',{attrs:{class:'d-block '}},
+                               categories
+                            )
+                        }
+                    },
+                     {
                         title: 'Price',
                         key: 'price',
                         sortable: true,
@@ -88,9 +102,30 @@ export default {
                     {
                         title: 'Action',
                         key: 'action',
-                        width: 100,
+                        width: 150,
                         align: 'center',
                         render: (h, params) => {
+                            let view = h('')
+                            if(this.isPermitted('view','product')){
+                             view = h('Button', {
+                                    props: {
+                                        icon: 'ios-camera fa fa-camera',
+                                        type: "success",
+                                        size: 'small',
+                                        color: 'primary'
+                                    },
+                                    style: {
+                                        marginRight: '3px',
+                                        cursor:'pointer'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            // this.GET_EDIT_DATA(params.row)
+                                            this.$router.replace('/admin/products/view/'+params.row.id);
+                                        }
+                                    }
+                                },'');
+                            }
                             let edit = h('')
                             if(this.isPermitted('update','product')){
                              edit = h('Button', {
@@ -101,7 +136,7 @@ export default {
                                         color: 'primary'
                                     },
                                     style: {
-                                        marginRight: '7px',
+                                        marginRight: '1px',
                                         cursor:'pointer'
                                     },
                                     on: {
@@ -117,7 +152,7 @@ export default {
                                 deleteButton =   h('Button', {
                                                     props: {
                                                         icon: 'ios-trash',
-                                                        type: "primary",
+                                                        type: "error",
                                                         size: 'small',
                                                         color: 'red'
                                                     },
@@ -132,9 +167,13 @@ export default {
                                             }, '')
                             };
 
-                            return h('div', [
-                                edit, deleteButton
-                            ]);
+                            return h('div',{
+                                    style:{
+                                        display : 'flex'
+                                    }
+                                }, [
+                                view, edit, deleteButton
+                                ]);
                         }
                     }
                 ],

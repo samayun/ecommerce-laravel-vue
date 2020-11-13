@@ -1,6 +1,6 @@
 <template>
         <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand border-bottom mb-4"
+    <nav class="main-header navbar navbar-expand border-bottom mb-0"
     :class="getIsDark ? 'navbar-dark' : 'navbar-custom' ">
       <!-- Left navbar links -->
       <ul class="navbar-nav">

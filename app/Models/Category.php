@@ -27,6 +27,11 @@ class Category extends Model
     {
         return $this->belongsTo('App\Models\Category', 'parent_id');
     }
+    public function products()
+    {
+        return $this->morphedByMany('App\Models\Product', 'categoryable');
+    }
+
     public function setNameAttribute($v){
         $this->attributes['name'] = $v;
         $this->attributes['slug'] = \Str::slug($v);

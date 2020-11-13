@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CreateAdminSeeder::class);
         // Category::factory(20)->create();
         // Brand::factory(10)->create();
-        Product::factory(20)->create();
+        // Product::factory(20)->create();
     }
 }

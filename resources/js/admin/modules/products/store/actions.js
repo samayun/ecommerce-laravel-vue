@@ -58,14 +58,18 @@ export default {
        })
 
    },
+   async getToViewSingleProduct({state , commit}, id){
+        try {
+            let res = await axios.get(`/api/admin/products/${id}`);
+            commit('VIEW_DATA', res.data.data);
+        } catch (error) {}
 
+    },
    async getSingleProduct({state , commit}, id){
        try {
            let res = await axios.get(`/api/admin/products/${id}`);
-           commit('GET_EDIT_DATA', res.data.data);
-       } catch (error) {
-
-       }
+           commit('GET_EDIT_DATA', res.data.data)
+       } catch (error) {}
    },
     updateProduct({commit,dispatch , state } ){
         state.editProductData.put(`/api/admin/products/${state.editProductData.id}`).then(res => {
@@ -98,13 +102,12 @@ export default {
              }
         }).catch (error => {
             console.log(error);
-
-            // if (/403|422/.test(error.response.status)){
-                // $Notice.error({
-                //     title: 'Product Update Failed!',
-                //     desc: error.response.data.message
-                // });
-            // }
+            if (/403|422/.test(error.response.status)){
+                $Notice.error({
+                    title: 'Product Update Failed!',
+                    desc: error.response.data.message
+                });
+            }
        })
     },
     deleteConfirmation({dispatch} , product){

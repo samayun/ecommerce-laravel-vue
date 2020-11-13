@@ -84,5 +84,6 @@ export default {
         q: "",
         total: 0
     },
-    multiSelected: []
+    multiSelected: [],
+    viewProductData: {},
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Admin;
+use App\Models\Attribute;
 use App\Models\Category;
 
 class CreateAdminSeeder extends Seeder
@@ -21,6 +22,8 @@ class CreateAdminSeeder extends Seeder
             'is_super' => 1,
             'password'=> \Hash::make('123456'),
         ]);
+        Attribute::create(['name' => 'Color','slug' => 'color']);
+        Attribute::create(['name' => 'Size','slug' => 'size']);
 
         Category::create([
             'id' => 1,

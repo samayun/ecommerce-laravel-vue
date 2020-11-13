@@ -8,10 +8,20 @@
     "name": "Name",
     "image" : "Image",
     "sidebar": {
+        "attribute": "Attribute",
         "category" : "Category",
         "product" : "Product",
         "brand" : "Brand",
         "logout" : "logout"
+    },
+    "attributes" : {
+        "name" : "@:sidebar.attributes",
+        "add": "Create @:sidebar.attribute",
+        "adding": "@:sidebar.attribute adding..",
+        "edit" : "@:sidebar.attribute @:edit ",
+        "editing" : "@:sidebar.attribute editing .. ",
+        "delete" : "@:delete @:sidebar.attribute"
+
     },
     "categories" : {
         "name" : "Categories",
