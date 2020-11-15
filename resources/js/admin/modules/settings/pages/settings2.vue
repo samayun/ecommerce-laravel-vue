@@ -5,7 +5,7 @@
             <h1><i class="fa fa-cogs"></i> Settings</h1>
         </div>
     </div>
-        <div class="row user">
+    <div class="row user">
         <div class="col-md-3">
             <div class="tile p-0">
                 <ul class="nav flex-column nav-tabs user-tabs">

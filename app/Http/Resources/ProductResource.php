@@ -27,15 +27,9 @@ class ProductResource extends JsonResource
             "quantity" => $this->quantity,
             "featured" => $this->featured == 1 ? true : false,
             "status" => $this->status == 1 ,
-            'categories' => $this->categories->map(function($cat)
-            {
-                return [
-                    'id' => $cat->id,
-                    'name' => $cat->name,
-                    'slug' => $cat->slug,
-                    'icon' => $cat->icon ? Storage::url('categories/'.$cat->icon) :  Storage::url('categories/default.png')
-                ];
-            }),
+            'categories' => CategoryResource::collection($this->categories),
+            'images' => ImageResource::collection($this->images),
+            'attributes' => ProductAttributeResource::collection($this->attributes),
             "image" => $this->image ? Storage::url('products/'.$this->image) :  Storage::url('products/default.png'),
             "description" => $this->description,
             "created_at" => $this->created_at->diffForHumans(),

@@ -31,6 +31,7 @@ class ProductRequest extends FormRequest
             'price' => 'required',
             'description' => 'required',
             'slug' => !$this->slug ? 'nullable|unique:products,slug' : 'nullable|unique:products,slug,'.$this->id,
+            'categories' => 'required',
             'brand_id' => 'required|exists:brands,id',
             'quantity' => 'required'
         ];

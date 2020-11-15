@@ -24,6 +24,8 @@ export default {
             sku:"",
             price: "",
             categories: null,
+            attributes: null,
+            images: null,
             quantity:"",
             image:"",
             featured: false,
@@ -37,12 +39,23 @@ export default {
         }
         state.editProductData =  new Form(defaultData)
     },
-    UPDATE_PRODUCT(state , response){
-        let index = state.products.findIndex(item => item.id == response.id);
-        for( let key in product){
-            if (state.products[index].hasOwnProperty(key)) {
-                state.products[index][key] = product[key];
+    UPDATE_PRODUCT(state , product){
+
+        // console.log(state.products);
+        let index = state.products.findIndex(item => item.id == product.id);
+        // console.log(index);
+
+        if (state.products[index]) {
+            for( let key in product){
+                console.log('product index=> ', index);
+                console.log('state.products[index] => ', state.products);
+                if (state.products[index].hasOwnProperty(key)) {
+                    console.log('products => ', state.product);
+
+                    state.products[index][key] = product[key];
+                }
             }
+            return state.products
         }
     },
     DELETE_MULTI_PRODUCT(state,selectedProducts){

@@ -39,10 +39,6 @@ export default {
         createProduct , updateProduct , showAllData },
     created(){
         document.title = 'Products'
-        $Bus.$on('redirectToProducts',() => {
-            this.$router.push({name:"Products"})
-            // this.$router.back()
-        })
     },
     computed: {
        ...mapState("productsStoreIndex", [ 'multiSelected','filterString']),

@@ -89,6 +89,14 @@ trait UploadAble{
         }
         return true;
     }
+    public function deleteOne($request_file,$folder= null, $disk = 'public')
+    {
+        $path = $folder.$request_file;
+        if (Storage::disk($disk)->exists($path)) {
+           return Storage::disk($disk)->delete($path);
+        }
+        return true;
+    }
 
     public function deleteFileFromServer($filePath , $hasFullPath = false)
     {

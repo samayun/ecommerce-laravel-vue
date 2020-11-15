@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Str;
 class Product extends Model
 {
     use HasFactory;
@@ -22,9 +22,18 @@ class Product extends Model
         return $this->morphToMany('App\Models\Category', 'categoryable');
     }
 
+    public function images()
+    {
+        return $this->morphMany('App\Models\Image', 'imageable');
+    }
+    public function attributes()
+    {
+        return $this->hasMany('App\Models\ProductAttribute');
+    }
+
     public function setNameAttribute($value){
         $this->attributes['name'] = $value;
-        $this->attributes['slug'] = \Str::slug($value);
+        $this->attributes['slug'] = Str::slug($value);
     }
     public function scopeSearch($query , $q)
     {

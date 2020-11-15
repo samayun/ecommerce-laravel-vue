@@ -146,8 +146,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "viewProduct",
@@ -281,47 +279,27 @@ var render = function() {
                         staticClass: "product-image-gallery",
                         attrs: { id: "product-zoom-gallery" }
                       },
-                      [
-                        _c(
+                      _vm._l(_vm.viewProductData.images, function(item) {
+                        return _c(
                           "a",
                           {
+                            key: item.id,
                             staticClass: "product-gallery-item active",
                             attrs: {
                               href: "#",
-                              "data-image": _vm.viewProductData.image,
-                              "data-zoom-image": _vm.viewProductData.image
+                              "data-image": item.url,
+                              "data-zoom-image": item.url
                             }
                           },
                           [
                             _c("img", {
-                              attrs: {
-                                src: _vm.viewProductData.image,
-                                alt: "product side"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "product-gallery-item",
-                            attrs: {
-                              href: "#",
-                              "data-image": _vm.viewProductData.image,
-                              "data-zoom-image": _vm.viewProductData.image
-                            }
-                          },
-                          [
-                            _c("img", {
-                              attrs: {
-                                src: _vm.viewProductData.image,
-                                alt: "product cross"
-                              }
+                              staticClass: "w-100 h-100",
+                              attrs: { src: item.url, alt: "product side" }
                             })
                           ]
                         )
-                      ]
+                      }),
+                      0
                     )
                   ])
                 ]
@@ -337,22 +315,32 @@ var render = function() {
                 _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "product-price" }, [
-                  _vm._v(
-                    "\n                                        $" +
-                      _vm._s(_vm.viewProductData.price) +
-                      "\n                                    "
-                  )
+                  _vm._v("\n                                        Price : "),
+                  _c("strong", [
+                    _vm._v(" $" + _vm._s(_vm.viewProductData.price) + " ")
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("h4", [
+                _c("h5", [
                   _vm._v(
-                    " Brand: " + _vm._s(_vm.viewProductData.brand.name) + " "
+                    " Brand: " +
+                      _vm._s(
+                        _vm.viewProductData.brand &&
+                          _vm.viewProductData.brand.name
+                          ? _vm.viewProductData.brand.name
+                          : ""
+                      ) +
+                      " "
                   )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "product-content" }, [
                   _c("p", [
-                    _vm._v(_vm._s(_vm.viewProductData.description) + ". ")
+                    _vm._v(
+                      " Description: " +
+                        _vm._s(_vm.viewProductData.description) +
+                        ". "
+                    )
                   ])
                 ]),
                 _vm._v(" "),
@@ -574,25 +562,16 @@ var staticRenderFns = [
             staticClass: "btn btn-success btn-product btn-cart",
             attrs: { href: "#" }
           },
-          [_c("span", [_vm._v("add to cart")])]
+          [_c("span", [_vm._v("Add to Cart")])]
         ),
         _vm._v(" "),
         _c(
           "a",
           {
-            staticClass: "btn btn-warning btn-product btn-wishlist",
+            staticClass: "btn btn-warning text-white",
             attrs: { href: "#", title: "Wishlist" }
           },
           [_c("span", [_vm._v("Add to Wishlist")])]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-warning btn-product btn-compare",
-            attrs: { href: "#", title: "Compare" }
-          },
-          [_c("span", [_vm._v("Add to Compare")])]
         )
       ])
     ])
@@ -607,7 +586,7 @@ var staticRenderFns = [
       _c(
         "a",
         {
-          staticClass: "social-icon fab fa-facebook",
+          staticClass: "social-icon fab fa-facebook text-info",
           attrs: { href: "#", title: "Facebook", target: "_blank" }
         },
         [_c("i", { staticClass: "icon-facebook-f" })]
@@ -616,7 +595,7 @@ var staticRenderFns = [
       _c(
         "a",
         {
-          staticClass: "social-icon fab fa-twitter",
+          staticClass: "social-icon fab fa-twitter text-info",
           attrs: { href: "#", title: "Twitter", target: "_blank" }
         },
         [_c("i", { staticClass: "icon-twitter" })]

@@ -79,6 +79,17 @@ export default {
                         sortable: true,
                         tooltip:true
                     },
+                     {
+                        title: 'Status',
+                        key: 'status',
+                            render: (h,params) => {
+                                let value = params.row.status ? 'Approved' : 'Pending';
+                                let color = params.row.status ?'success' : 'error';
+                                let type = params.row.status ?'dot' : 'border';
+                                return h('Tag',{props: { type, color }}, value)
+                            }
+                    },
+
                     {
                         title: 'Image',
                         key: 'image',

@@ -15,7 +15,7 @@ class {{ class }} extends Controller
      */
     public function index()
     {
-        //
+        return {{ model }}::latest()->get();
     }
 
     /**
@@ -26,7 +26,7 @@ class {{ class }} extends Controller
      */
     public function store(Request $request)
     {
-        //
+       return {{ model }}::create($request->all);
     }
 
     /**
@@ -37,7 +37,7 @@ class {{ class }} extends Controller
      */
     public function show({{ model }} ${{ modelVariable }})
     {
-        //
+        return ${{ modelVariable }};
     }
 
     /**
@@ -49,7 +49,7 @@ class {{ class }} extends Controller
      */
     public function update(Request $request, {{ model }} ${{ modelVariable }})
     {
-        //
+         return ${{ modelVariable }}->update($request->all());
     }
 
     /**
@@ -60,6 +60,6 @@ class {{ class }} extends Controller
      */
     public function destroy({{ model }} ${{ modelVariable }})
     {
-        //
+        return ${{ modelVariable }}->delete();
     }
 }

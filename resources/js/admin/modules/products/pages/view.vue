@@ -21,14 +21,13 @@
                                 </figure><!-- End .product-main-image -->
 
                                 <div id="product-zoom-gallery" class="product-image-gallery">
-                                    <a class="product-gallery-item active" href="#" :data-image="viewProductData.image" :data-zoom-image="viewProductData.image">
-                                        <img :src="viewProductData.image" alt="product side">
+
+                                    <a
+                                     v-for="item in viewProductData.images" :key="item.id"
+                                     class="product-gallery-item active" href="#" :data-image="item.url" :data-zoom-image="item.url">
+                                        <img :src="item.url" alt="product side" class="w-100 h-100">
                                     </a>
 
-                                    <a class="product-gallery-item" href="#" :data-image="viewProductData.image" :data-zoom-image="viewProductData.image">
-                                        <img :src="viewProductData.image" alt="product cross">
-                                    </a>
-                                    </a>
                                 </div><!-- End .product-image-gallery -->
                             </div><!-- End .row -->
                         </div><!-- End .product-gallery -->
@@ -45,12 +44,12 @@
                                     </div><!-- End .rating-container -->
 
                                     <div class="product-price">
-                                        ${{ viewProductData.price }}
+                                        Price : <strong> ${{ viewProductData.price }} </strong>
                                     </div><!-- End .product-price -->
-                                    <h4> Brand: {{ viewProductData.brand.name }} </h4>
+                                    <h5> Brand: {{ viewProductData.brand && viewProductData.brand.name ? viewProductData.brand.name : "" }} </h5>
 
                                     <div class="product-content">
-                                        <p>{{ viewProductData.description }}. </p>
+                                        <p> Description: {{ viewProductData.description }}. </p>
                                     </div><!-- End .product-content -->
 
                                     <div class="details-filter-row details-row-size">
@@ -87,9 +86,8 @@
 
                                     <div class="product-details-action">
                                         <div class="details-action-wrapper d-flex">
-                                             <a href="#" class="btn btn-success btn-product btn-cart"><span>add to cart</span></a>
-                                            <a href="#" class="btn btn-warning btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>
-                                            <a href="#" class="btn btn-warning btn-product btn-compare" title="Compare"><span>Add to Compare</span></a>
+                                             <a href="#" class="btn btn-success btn-product btn-cart"><span>Add to Cart</span></a>
+                                            <a href="#" class="btn btn-warning text-white" title="Wishlist"><span>Add to Wishlist</span></a>
                                         </div><!-- End .details-action-wrapper -->
                                     </div><!-- End .product-details-action -->
 
@@ -105,8 +103,8 @@
 
                                         <div class="social-icons social-icons-sm">
                                             <span class="social-label">Share:</span>
-                                            <a href="#" class="social-icon fab fa-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                            <a href="#" class="social-icon fab fa-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                                            <a href="#" class="social-icon fab fa-facebook text-info" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                                            <a href="#" class="social-icon fab fa-twitter text-info" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
                                         </div>
                                     </div><!-- End .product-details-footer -->
                                 </div><!-- End .product-details -->

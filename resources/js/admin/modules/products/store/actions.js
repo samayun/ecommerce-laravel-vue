@@ -25,7 +25,7 @@ export default {
             if (res.status == 201) {
                 state.addProductData.modal ? commit('TOGGLE_MODAL',"add"): "";
                 commit('CREATE_PRODUCT' , res.data.data);
-                $Notice.info({
+                $Notice.success({
                     title: 'Product Added Successfully',
                     desc: `${state.addProductData.name} added`
                 });
@@ -74,7 +74,7 @@ export default {
     updateProduct({commit,dispatch , state } ){
         state.editProductData.put(`/api/admin/products/${state.editProductData.id}`).then(res => {
             if (res.status == 200) {
-                $Notice.info({
+                $Notice.success({
                     title: 'Product Updated Successfully',
                     desc: `${state.editProductData.name} edited`
                 });
@@ -82,7 +82,9 @@ export default {
                 // dispatch('getCategories');
                 // best practice is updating UI without making a new ajax request
                 commit('UPDATE_PRODUCT', res.data.data);
-                state.editProductMeta.modal ? commit('TOGGLE_MODAL',"edit"): "";
+                $Bus.$emit('redirectToProducts');
+
+                // state.editProductMeta.modal ? commit('TOGGLE_MODAL',"edit"): "";
 
                 // state.editProductData = new Form({
                 //     id: '',
@@ -97,17 +99,15 @@ export default {
                 //     status: false ,
                 //     description: ""
                 // });
-                $Bus.$emit('redirectToProducts');
 
              }
         }).catch (error => {
-            console.log(error);
-            if (/403|422/.test(error.response.status)){
-                $Notice.error({
-                    title: 'Product Update Failed!',
-                    desc: error.response.data.message
+                $Notice.info({
+                    title: 'Product Update Failed!'
+                    // desc: error.response.data.message
                 });
-            }
+                console.log(error);
+
        })
     },
     deleteConfirmation({dispatch} , product){

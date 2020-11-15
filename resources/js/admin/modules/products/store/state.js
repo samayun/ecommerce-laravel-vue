@@ -66,6 +66,7 @@ export default {
         price: "",
         quantity:"",
         image:"",
+        categories:[],
         featured: false,
         status: true ,
         description: ""

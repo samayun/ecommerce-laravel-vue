@@ -21,9 +21,7 @@ class AttributeResource extends JsonResource
             "name" =>$this->name,
             "slug" => $this->slug ? $this->slug: "none",
             "type" => $this->value?['id'=>$this->value->id,'name'=>$this->value->name,'slug'=>$this->value->slug]: "",
-            "values" => $this->values,
-            "created_at" => $this->created_at->diffForHumans(),
-            "updated_at" => $this->updated_at->diffForHumans()
+            "values" => $this->values
         ];
     }
 }

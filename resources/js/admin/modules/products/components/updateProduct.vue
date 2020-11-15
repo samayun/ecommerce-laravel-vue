@@ -149,7 +149,7 @@
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 export default {
-    name: "updateProduct",
+    name: "updateProductModal",
     computed:{
         ...mapState("productsStoreIndex", [
           'editProductMeta' ,'editProductData'

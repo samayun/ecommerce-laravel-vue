@@ -33,7 +33,7 @@ class ProductRepository implements ProductContract
         $KEY = $this->getCachekey();
 
         return Cache::remember($KEY, now()->addMinutes(120), function () use($request) {
-            $products =  $this->model::filter($request);
+            $products =  $this->model::with('images')->filter($request);
             return ProductResource::collection($products);
         });
     }
@@ -83,7 +83,6 @@ class ProductRepository implements ProductContract
             return Cache::remember($KEY, now()->addMinutes(120), function () use($product) {
                 return new ProductResource($product);
             });
-
         }
     }
     /**
@@ -93,7 +92,7 @@ class ProductRepository implements ProductContract
     public function update( $params,$id){
         $product = $this->findById($id);
         if($product){
-            $request = collect($params);
+            $request = collect($params)->except('attributes', 'images');
 
             if($request->has('categories')){
                 $updated  = $product->update($request->except('categories')->toArray());
