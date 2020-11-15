@@ -1,5 +1,262 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[9],{
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/modules/settings/pages/settings.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/modules/settings/pages/settings.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {
+    document.title = 'Settings';
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/modules/settings/pages/settings.vue?vue&type=template&id=2c50d7a4&":
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/modules/settings/pages/settings.vue?vue&type=template&id=2c50d7a4& ***!
@@ -22,1598 +279,959 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "side-body padding-top" }, [
-      _c("h1", { staticClass: "page-title" }, [
-        _c("i", { staticClass: "voyager-news" }),
-        _vm._v("\n        Add Post\n    ")
+    return _c("main", { staticClass: "app-content", attrs: { id: "app" } }, [
+      _c("div", { staticClass: "app-title" }, [
+        _c("div", [
+          _c("h1", [
+            _c("i", { staticClass: "fa fa-cogs" }),
+            _vm._v(" Settings")
+          ])
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { attrs: { id: "voyager-notifications" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "page-content container-fluid" }, [
-        _c(
-          "form",
-          {
-            staticClass: "form-edit-add",
-            attrs: {
-              role: "form",
-              action: "http://127.0.0.1:8001/admin/posts",
-              method: "POST",
-              enctype: "multipart/form-data"
-            }
-          },
-          [
-            _c("input", {
-              attrs: {
-                type: "hidden",
-                name: "_token",
-                value: "4ycC1ueTtCRilX4eYiD1elfQSoesqRMcugT4cq1d"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-8" }, [
-                _c("div", { staticClass: "panel" }, [
-                  _c("div", { staticClass: "panel-heading" }, [
-                    _c("h3", { staticClass: "panel-title" }, [
-                      _c("i", { staticClass: "voyager-character" }),
-                      _vm._v(" Post Title\n                                "),
-                      _c("span", { staticClass: "panel-desc" }, [
-                        _vm._v(" The title for your post")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "panel-actions" }, [
-                      _c("a", {
-                        staticClass: "panel-action voyager-angle-down",
-                        attrs: {
-                          "data-toggle": "panel-collapse",
-                          "aria-hidden": "true"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "panel-body" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        id: "title",
-                        name: "title",
-                        placeholder: "Title",
-                        value: ""
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "panel" }, [
-                  _c("div", { staticClass: "panel-heading" }, [
-                    _c("h3", { staticClass: "panel-title" }, [
-                      _vm._v("Post Content")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "panel-actions" }, [
-                      _c("a", {
-                        staticClass: "panel-action voyager-resize-full",
-                        attrs: {
-                          "data-toggle": "panel-fullscreen",
-                          "aria-hidden": "true"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "panel-body" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "mce-tinymce mce-container mce-panel",
-                        staticStyle: {
-                          visibility: "hidden",
-                          "border-width": "1px",
-                          width: "100%"
-                        },
-                        attrs: {
-                          id: "mceu_17",
-                          hidefocus: "1",
-                          tabindex: "-1",
-                          role: "application"
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "mce-container-body mce-stack-layout",
-                            attrs: { id: "mceu_17-body" }
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "mce-top-part mce-container mce-stack-layout-item mce-first",
-                                attrs: { id: "mceu_18" }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "mce-container-body",
-                                    attrs: { id: "mceu_18-body" }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "mce-toolbar-grp mce-container mce-panel mce-first mce-last",
-                                        attrs: {
-                                          id: "mceu_19",
-                                          hidefocus: "1",
-                                          tabindex: "-1",
-                                          role: "group"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "mce-container-body mce-stack-layout",
-                                            attrs: { id: "mceu_19-body" }
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "mce-container mce-toolbar mce-stack-layout-item mce-first mce-last",
-                                                attrs: {
-                                                  id: "mceu_20",
-                                                  role: "toolbar"
-                                                }
-                                              },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "mce-container-body mce-flow-layout",
-                                                    attrs: {
-                                                      id: "mceu_20-body"
-                                                    }
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mce-container mce-flow-layout-item mce-first mce-btn-group",
-                                                        attrs: {
-                                                          id: "mceu_21",
-                                                          role: "group"
-                                                        }
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "div",
-                                                          {
-                                                            attrs: {
-                                                              id: "mceu_21-body"
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn mce-menubtn mce-first mce-btn-has-text",
-                                                                attrs: {
-                                                                  id: "mceu_0",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-labelledby":
-                                                                    "mceu_0",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-haspopup":
-                                                                    "true"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_0-open",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c(
-                                                                      "span",
-                                                                      {
-                                                                        staticClass:
-                                                                          "mce-txt"
-                                                                      },
-                                                                      [
-                                                                        _vm._v(
-                                                                          "Formats"
-                                                                        )
-                                                                      ]
-                                                                    ),
-                                                                    _vm._v(" "),
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-caret"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn",
-                                                                attrs: {
-                                                                  id: "mceu_1",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-pressed":
-                                                                    "false",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Bold"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_1-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-bold"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn",
-                                                                attrs: {
-                                                                  id: "mceu_2",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-pressed":
-                                                                    "false",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Italic"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_2-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-italic"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn mce-last",
-                                                                attrs: {
-                                                                  id: "mceu_3",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-pressed":
-                                                                    "false",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Underline"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_3-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-underline"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        )
-                                                      ]
-                                                    ),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mce-container mce-flow-layout-item mce-btn-group",
-                                                        attrs: {
-                                                          id: "mceu_22",
-                                                          role: "group"
-                                                        }
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "div",
-                                                          {
-                                                            attrs: {
-                                                              id: "mceu_22-body"
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn mce-splitbtn mce-colorbutton mce-first",
-                                                                attrs: {
-                                                                  id: "mceu_4",
-                                                                  role:
-                                                                    "button",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-haspopup":
-                                                                    "true",
-                                                                  "aria-label":
-                                                                    "Text color"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      role:
-                                                                        "presentation",
-                                                                      hidefocus:
-                                                                        "1",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-forecolor"
-                                                                    }),
-                                                                    _c("span", {
-                                                                      staticClass:
-                                                                        "mce-preview",
-                                                                      attrs: {
-                                                                        id:
-                                                                          "mceu_4-preview"
-                                                                      }
-                                                                    })
-                                                                  ]
-                                                                ),
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    staticClass:
-                                                                      "mce-open",
-                                                                    attrs: {
-                                                                      type:
-                                                                        "button",
-                                                                      hidefocus:
-                                                                        "1",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-caret"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn mce-splitbtn mce-colorbutton mce-last",
-                                                                attrs: {
-                                                                  id: "mceu_5",
-                                                                  role:
-                                                                    "button",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-haspopup":
-                                                                    "true",
-                                                                  "aria-label":
-                                                                    "Background color"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      role:
-                                                                        "presentation",
-                                                                      hidefocus:
-                                                                        "1",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-backcolor"
-                                                                    }),
-                                                                    _c("span", {
-                                                                      staticClass:
-                                                                        "mce-preview",
-                                                                      attrs: {
-                                                                        id:
-                                                                          "mceu_5-preview"
-                                                                      }
-                                                                    })
-                                                                  ]
-                                                                ),
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    staticClass:
-                                                                      "mce-open",
-                                                                    attrs: {
-                                                                      type:
-                                                                        "button",
-                                                                      hidefocus:
-                                                                        "1",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-caret"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        )
-                                                      ]
-                                                    ),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mce-container mce-flow-layout-item mce-btn-group",
-                                                        attrs: {
-                                                          id: "mceu_23",
-                                                          role: "group"
-                                                        }
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "div",
-                                                          {
-                                                            attrs: {
-                                                              id: "mceu_23-body"
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn mce-first",
-                                                                attrs: {
-                                                                  id: "mceu_6",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-pressed":
-                                                                    "false",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Align left"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_6-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-alignleft"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn",
-                                                                attrs: {
-                                                                  id: "mceu_7",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-pressed":
-                                                                    "false",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Align center"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_7-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-aligncenter"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn mce-last",
-                                                                attrs: {
-                                                                  id: "mceu_8",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-pressed":
-                                                                    "false",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Align right"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_8-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-alignright"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        )
-                                                      ]
-                                                    ),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mce-container mce-flow-layout-item mce-btn-group",
-                                                        attrs: {
-                                                          id: "mceu_24",
-                                                          role: "group"
-                                                        }
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "div",
-                                                          {
-                                                            attrs: {
-                                                              id: "mceu_24-body"
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn mce-first",
-                                                                attrs: {
-                                                                  id: "mceu_9",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-pressed":
-                                                                    "false",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Bullet list"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_9-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-bullist"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn",
-                                                                attrs: {
-                                                                  id: "mceu_10",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-pressed":
-                                                                    "false",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Numbered list"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_10-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-numlist"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn",
-                                                                attrs: {
-                                                                  id: "mceu_11",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Decrease indent"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_11-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-outdent"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn mce-last",
-                                                                attrs: {
-                                                                  id: "mceu_12",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Increase indent"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_12-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-indent"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        )
-                                                      ]
-                                                    ),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mce-container mce-flow-layout-item mce-btn-group",
-                                                        attrs: {
-                                                          id: "mceu_25",
-                                                          role: "group"
-                                                        }
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "div",
-                                                          {
-                                                            attrs: {
-                                                              id: "mceu_25-body"
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn mce-first",
-                                                                attrs: {
-                                                                  id: "mceu_13",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-pressed":
-                                                                    "false",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Insert/edit link"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_13-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-link"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn",
-                                                                attrs: {
-                                                                  id: "mceu_14",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-pressed":
-                                                                    "false",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Insert/edit image"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_14-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-image"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn mce-menubtn mce-last",
-                                                                attrs: {
-                                                                  id: "mceu_15",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  "aria-labelledby":
-                                                                    "mceu_15",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Table",
-                                                                  "aria-haspopup":
-                                                                    "true"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_15-open",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-table"
-                                                                    }),
-                                                                    _vm._v(" "),
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-caret"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        )
-                                                      ]
-                                                    ),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "mce-container mce-flow-layout-item mce-last mce-btn-group",
-                                                        attrs: {
-                                                          id: "mceu_26",
-                                                          role: "group"
-                                                        }
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "div",
-                                                          {
-                                                            attrs: {
-                                                              id: "mceu_26-body"
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "mce-widget mce-btn mce-first mce-last",
-                                                                attrs: {
-                                                                  id: "mceu_16",
-                                                                  tabindex:
-                                                                    "-1",
-                                                                  role:
-                                                                    "button",
-                                                                  "aria-label":
-                                                                    "Source code"
-                                                                }
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    attrs: {
-                                                                      id:
-                                                                        "mceu_16-button",
-                                                                      role:
-                                                                        "presentation",
-                                                                      type:
-                                                                        "button",
-                                                                      tabindex:
-                                                                        "-1"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
-                                                                      staticClass:
-                                                                        "mce-ico mce-i-code"
-                                                                    })
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        )
-                                                      ]
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "mce-edit-area mce-container mce-panel mce-stack-layout-item",
-                                staticStyle: { "border-width": "1px 0px 0px" },
-                                attrs: {
-                                  id: "mceu_27",
-                                  hidefocus: "1",
-                                  tabindex: "-1",
-                                  role: "group"
-                                }
-                              },
-                              [
-                                _c("iframe", {
-                                  staticStyle: {
-                                    width: "100%",
-                                    height: "600px",
-                                    display: "block"
-                                  },
-                                  attrs: {
-                                    id: "richtextbody_ifr",
-                                    allowtransparency: "true",
-                                    title:
-                                      "Rich Text Area. Press ALT-F9 for menu. Press ALT-F10 for toolbar. Press ALT-0 for help",
-                                    frameborder: "0"
-                                  }
-                                })
-                              ]
-                            ),
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "mce-statusbar mce-container mce-panel mce-stack-layout-item mce-last",
-                                staticStyle: { "border-width": "1px 0px 0px" },
-                                attrs: {
-                                  id: "mceu_28",
-                                  hidefocus: "1",
-                                  tabindex: "-1",
-                                  role: "group"
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "mce-container-body mce-flow-layout",
-                                    attrs: { id: "mceu_28-body" }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "mce-path mce-flow-layout-item mce-first",
-                                        attrs: { id: "mceu_29" }
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "mce-path-item" },
-                                          [_vm._v(" ")]
-                                        )
-                                      ]
-                                    ),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "mce-flow-layout-item mce-resizehandle",
-                                        attrs: { id: "mceu_30" }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "mce-ico mce-i-resize"
-                                        })
-                                      ]
-                                    ),
-                                    _c(
-                                      "span",
-                                      {
-                                        staticClass:
-                                          "mce-branding mce-widget mce-label mce-flow-layout-item mce-last",
-                                        attrs: { id: "mceu_31" }
-                                      },
-                                      [
-                                        _vm._v(" Powered by "),
-                                        _c(
-                                          "a",
-                                          {
-                                            attrs: {
-                                              href:
-                                                "https://www.tiny.cloud/?utm_campaign=editor_referral&utm_medium=poweredby&utm_source=tinymce",
-                                              rel: "noopener",
-                                              target: "_blank",
-                                              role: "presentation",
-                                              tabindex: "-1"
-                                            }
-                                          },
-                                          [_vm._v("Tiny")]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      ]
-                    ),
-                    _c("textarea", {
-                      staticClass: "form-control richTextBox",
-                      staticStyle: { display: "none" },
-                      attrs: {
-                        name: "body",
-                        id: "richtextbody",
-                        "aria-hidden": "true"
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "panel" }, [
-                  _c("div", { staticClass: "panel-heading" }, [
-                    _c("h3", { staticClass: "panel-title" }, [
-                      _vm._v("Excerpt "),
-                      _c("small", [_vm._v("Small description of this post")])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "panel-actions" }, [
-                      _c("a", {
-                        staticClass: "panel-action voyager-angle-down",
-                        attrs: {
-                          "data-toggle": "panel-collapse",
-                          "aria-hidden": "true"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "panel-body" }, [
-                    _c("textarea", {
-                      staticClass: "form-control",
-                      attrs: { name: "excerpt" }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "panel" }, [
-                  _c("div", { staticClass: "panel-heading" }, [
-                    _c("h3", { staticClass: "panel-title" }, [
-                      _vm._v("Additional Fields")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "panel-actions" }, [
-                      _c("a", {
-                        staticClass: "panel-action voyager-angle-down",
-                        attrs: {
-                          "data-toggle": "panel-collapse",
-                          "aria-hidden": "true"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "panel-body" })
-                ])
+      _c("div", { staticClass: "row user" }, [
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "tile p-0" }, [
+            _c("ul", { staticClass: "nav flex-column nav-tabs user-tabs" }, [
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link active",
+                    attrs: { href: "#general", "data-toggle": "tab" }
+                  },
+                  [_vm._v("General")]
+                )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }, [
+              _c("li", { staticClass: "nav-item" }, [
                 _c(
-                  "div",
-                  { staticClass: "panel panel panel-bordered panel-warning" },
-                  [
-                    _c("div", { staticClass: "panel-heading" }, [
-                      _c("h3", { staticClass: "panel-title" }, [
-                        _c("i", { staticClass: "icon wb-clipboard" }),
-                        _vm._v(" Post Details")
+                  "a",
+                  {
+                    staticClass: "nav-link",
+                    attrs: { href: "#site-logo", "data-toggle": "tab" }
+                  },
+                  [_vm._v("Site Logo")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link",
+                    attrs: { href: "#footer-seo", "data-toggle": "tab" }
+                  },
+                  [_vm._v("Footer & SEO")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link",
+                    attrs: { href: "#social-links", "data-toggle": "tab" }
+                  },
+                  [_vm._v("Social Links")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link",
+                    attrs: { href: "#analytics", "data-toggle": "tab" }
+                  },
+                  [_vm._v("Analytics")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "nav-item" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "nav-link",
+                    attrs: { href: "#payments", "data-toggle": "tab" }
+                  },
+                  [_vm._v("Payments")]
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-9" }, [
+          _c("div", { staticClass: "tab-content" }, [
+            _c(
+              "div",
+              { staticClass: "tab-pane active", attrs: { id: "general" } },
+              [
+                _c("div", { staticClass: "tile" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        action: "http://127.0.0.1:8000/admin/settings",
+                        method: "POST",
+                        role: "form"
+                      }
+                    },
+                    [
+                      _c("input", {
+                        attrs: {
+                          type: "hidden",
+                          name: "_token",
+                          value: "0kWShnjOaoFgsuDUYH4ku43LrP4EBbjylcJacyfQ"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("h3", { staticClass: "tile-title" }, [
+                        _vm._v("General Settings")
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "panel-actions" }, [
-                        _c("a", {
-                          staticClass:
-                            "panel-action panel-collapsed voyager-angle-down",
-                          attrs: {
-                            "data-toggle": "panel-collapse",
-                            "aria-hidden": "true"
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "panel-body",
-                        staticStyle: { display: "none" }
-                      },
-                      [
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "tile-body" }, [
                         _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "slug" } }, [
-                            _vm._v("URL slug")
-                          ]),
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "site_name" }
+                            },
+                            [_vm._v("Site Name")]
+                          ),
                           _vm._v(" "),
                           _c("input", {
                             staticClass: "form-control",
                             attrs: {
                               type: "text",
-                              id: "slug",
-                              name: "slug",
-                              placeholder: "slug",
-                              "data-slug-origin": "title",
-                              "data-slug-forceupdate": "true",
+                              placeholder: "Enter site name",
+                              id: "site_name",
+                              name: "site_name",
+                              value: "EShop BD"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "site_title" }
+                            },
+                            [_vm._v("Site Title")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter site title",
+                              id: "site_title",
+                              name: "site_title",
+                              value: "E-Commerce"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "default_email_address" }
+                            },
+                            [_vm._v("Default Email Address")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "email",
+                              placeholder: "Enter store default email address",
+                              id: "default_email_address",
+                              name: "default_email_address",
+                              value: "admin@admin.com"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "currency_code" }
+                            },
+                            [_vm._v("Currency Code")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter store currency code",
+                              id: "currency_code",
+                              name: "currency_code",
+                              value: "GBP"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "currency_symbol" }
+                            },
+                            [_vm._v("Currency Symbol")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter store currency symbol",
+                              id: "currency_symbol",
+                              name: "currency_symbol",
+                              value: "৳"
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "tile-footer" }, [
+                        _c("div", { staticClass: "row d-print-none mt-2" }, [
+                          _c("div", { staticClass: "col-12 text-right" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-success",
+                                attrs: { type: "submit" }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fa fa-fw fa-lg fa-check-circle"
+                                }),
+                                _vm._v("Update Settings")
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tab-pane fade", attrs: { id: "site-logo" } },
+              [
+                _c("div", { staticClass: "tile" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        action: "http://127.0.0.1:8000/admin/settings",
+                        method: "POST",
+                        role: "form",
+                        enctype: "multipart/form-data"
+                      }
+                    },
+                    [
+                      _c("input", {
+                        attrs: {
+                          type: "hidden",
+                          name: "_token",
+                          value: "0kWShnjOaoFgsuDUYH4ku43LrP4EBbjylcJacyfQ"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("h3", { staticClass: "tile-title" }, [
+                        _vm._v("Site Logo")
+                      ]),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "tile-body" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-3" }, [
+                            _c("img", {
+                              staticStyle: { width: "80px", height: "auto" },
+                              attrs: {
+                                src:
+                                  "http://127.0.0.1:8000/storage/img/TtsSyuyDeemGKfTNJPPXfa3ju.png",
+                                id: "logoImg"
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-9" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", { staticClass: "control-label" }, [
+                                _vm._v("Site Logo")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "file",
+                                  name: "site_logo",
+                                  onchange: "loadFile(event,'logoImg')"
+                                }
+                              })
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row mt-4" }, [
+                          _c("div", { staticClass: "col-3" }, [
+                            _c("img", {
+                              staticStyle: { width: "80px", height: "auto" },
+                              attrs: {
+                                src:
+                                  "http://127.0.0.1:8000/storage/img/m16MzwiOpigkNKVj1Unxodyv4.ico",
+                                id: "faviconImg"
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-9" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", { staticClass: "control-label" }, [
+                                _vm._v("Site Favicon")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "file",
+                                  name: "site_favicon",
+                                  onchange: "loadFile(event,'faviconImg')"
+                                }
+                              })
+                            ])
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "tile-footer" }, [
+                        _c("div", { staticClass: "row d-print-none mt-2" }, [
+                          _c("div", { staticClass: "col-12 text-right" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-success",
+                                attrs: { type: "submit" }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fa fa-fw fa-lg fa-check-circle"
+                                }),
+                                _vm._v("Update Settings")
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tab-pane fade", attrs: { id: "footer-seo" } },
+              [
+                _c("div", { staticClass: "tile" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        action: "http://127.0.0.1:8000/admin/settings",
+                        method: "POST",
+                        role: "form"
+                      }
+                    },
+                    [
+                      _c("input", {
+                        attrs: {
+                          type: "hidden",
+                          name: "_token",
+                          value: "0kWShnjOaoFgsuDUYH4ku43LrP4EBbjylcJacyfQ"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("h3", { staticClass: "tile-title" }, [
+                        _vm._v("Footer & SEO")
+                      ]),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "tile-body" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "footer_copyright_text" }
+                            },
+                            [_vm._v("Footer Copyright Text")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "textarea",
+                            {
+                              staticClass: "form-control",
+                              attrs: {
+                                rows: "4",
+                                placeholder: "Enter footer copyright text",
+                                id: "footer_copyright_text",
+                                name: "footer_copyright_text"
+                              }
+                            },
+                            [_vm._v("SMC 2021")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "seo_meta_title" }
+                            },
+                            [_vm._v("SEO Meta Title")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter seo meta title for store",
+                              id: "seo_meta_title",
+                              name: "seo_meta_title",
+                              value: "fotetr dummy"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "seo_meta_description" }
+                            },
+                            [_vm._v("SEO Meta Description")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "textarea",
+                            {
+                              staticClass: "form-control",
+                              attrs: {
+                                rows: "4",
+                                placeholder:
+                                  "Enter seo meta description for store",
+                                id: "seo_meta_description",
+                                name: "seo_meta_description"
+                              }
+                            },
+                            [_vm._v("sdfd")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "tile-footer" }, [
+                        _c("div", { staticClass: "row d-print-none mt-2" }, [
+                          _c("div", { staticClass: "col-12 text-right" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-success",
+                                attrs: { type: "submit" }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fa fa-fw fa-lg fa-check-circle"
+                                }),
+                                _vm._v("Update Settings")
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tab-pane fade", attrs: { id: "social-links" } },
+              [
+                _c("div", { staticClass: "tile" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        action: "http://127.0.0.1:8000/admin/settings",
+                        method: "POST",
+                        role: "form"
+                      }
+                    },
+                    [
+                      _c("input", {
+                        attrs: {
+                          type: "hidden",
+                          name: "_token",
+                          value: "0kWShnjOaoFgsuDUYH4ku43LrP4EBbjylcJacyfQ"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("h3", { staticClass: "tile-title" }, [
+                        _vm._v("Social Links")
+                      ]),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "tile-body" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "social_facebook" }
+                            },
+                            [_vm._v("Facebook Profile")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter facebook profile link",
+                              id: "social_facebook",
+                              name: "social_facebook",
+                              value: "facebook.com/samayunmc"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "social_twitter" }
+                            },
+                            [_vm._v("Twitter Profile")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter twitter profile link",
+                              id: "social_twitter",
+                              name: "social_twitter",
                               value: ""
                             }
                           })
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "status" } }, [
-                            _vm._v("Post Status")
-                          ]),
-                          _vm._v(" "),
                           _c(
-                            "select",
+                            "label",
                             {
-                              staticClass: "form-control",
-                              attrs: { name: "status" }
+                              staticClass: "control-label",
+                              attrs: { for: "social_instagram" }
                             },
-                            [
-                              _c("option", { attrs: { value: "PUBLISHED" } }, [
-                                _vm._v("published")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "DRAFT" } }, [
-                                _vm._v("draft")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "PENDING" } }, [
-                                _vm._v("pending")
-                              ])
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "category_id" } }, [
-                            _vm._v("Post Category")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              staticClass: "form-control",
-                              attrs: { name: "category_id" }
-                            },
-                            [
-                              _c("option", { attrs: { value: "1" } }, [
-                                _vm._v("Category 1")
-                              ]),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "2" } }, [
-                                _vm._v("Category 2")
-                              ])
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { attrs: { for: "featured" } }, [
-                            _vm._v("Featured")
-                          ]),
+                            [_vm._v("Instagram Profile")]
+                          ),
                           _vm._v(" "),
                           _c("input", {
-                            attrs: { type: "checkbox", name: "featured" }
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter instagram profile link",
+                              id: "social_instagram",
+                              name: "social_instagram",
+                              value: ""
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "social_linkedin" }
+                            },
+                            [_vm._v("LinkedIn Profile")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter linkedin profile link",
+                              id: "social_linkedin",
+                              name: "social_linkedin",
+                              value: ""
+                            }
                           })
                         ])
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "panel panel-bordered panel-primary" },
-                  [
-                    _c("div", { staticClass: "panel-heading" }, [
-                      _c("h3", { staticClass: "panel-title" }, [
-                        _c("i", { staticClass: "icon wb-image" }),
-                        _vm._v(" Post Image")
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "panel-actions" }, [
-                        _c("a", {
-                          staticClass:
-                            "panel-action panel-collapsed voyager-angle-down",
-                          attrs: {
-                            "data-toggle": "panel-collapse",
-                            "aria-hidden": "true"
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "panel-body",
-                        staticStyle: { display: "none" }
-                      },
-                      [_c("input", { attrs: { type: "file", name: "image" } })]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "panel panel-bordered panel-info" }, [
-                  _c("div", { staticClass: "panel-heading" }, [
-                    _c("h3", { staticClass: "panel-title" }, [
-                      _c("i", { staticClass: "icon wb-search" }),
-                      _vm._v(" SEO Content")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "panel-actions" }, [
-                      _c("a", {
-                        staticClass:
-                          "panel-action voyager-angle-down panel-collapsed",
-                        attrs: {
-                          "data-toggle": "panel-collapse",
-                          "aria-hidden": "true"
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "panel-body",
-                      staticStyle: { display: "none" }
-                    },
-                    [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", { attrs: { for: "meta_description" } }, [
-                          _vm._v("Meta Description")
-                        ]),
-                        _vm._v(" "),
-                        _c("textarea", {
-                          staticClass: "form-control",
-                          attrs: { name: "meta_description" }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", { attrs: { for: "meta_keywords" } }, [
-                          _vm._v("Meta Keywords")
-                        ]),
-                        _vm._v(" "),
-                        _c("textarea", {
-                          staticClass: "form-control",
-                          attrs: { name: "meta_keywords" }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", { attrs: { for: "seo_title" } }, [
-                          _vm._v("SEO Title")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            name: "seo_title",
-                            placeholder: "SEO Title",
-                            value: ""
-                          }
-                        })
+                      _c("div", { staticClass: "tile-footer" }, [
+                        _c("div", { staticClass: "row d-print-none mt-2" }, [
+                          _c("div", { staticClass: "col-12 text-right" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-success",
+                                attrs: { type: "submit" }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fa fa-fw fa-lg fa-check-circle"
+                                }),
+                                _vm._v("Update Settings")
+                              ]
+                            )
+                          ])
+                        ])
                       ])
                     ]
                   )
                 ])
-              ])
-            ]),
+              ]
+            ),
             _vm._v(" "),
             _c(
-              "button",
-              {
-                staticClass: "btn btn-primary pull-right",
-                attrs: { type: "submit" }
-              },
+              "div",
+              { staticClass: "tab-pane fade", attrs: { id: "analytics" } },
               [
-                _c("i", { staticClass: "icon wb-plus-circle" }),
-                _vm._v(" Create New Post                 ")
+                _c("div", { staticClass: "tile" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        action: "http://127.0.0.1:8000/admin/settings",
+                        method: "POST",
+                        role: "form"
+                      }
+                    },
+                    [
+                      _c("input", {
+                        attrs: {
+                          type: "hidden",
+                          name: "_token",
+                          value: "0kWShnjOaoFgsuDUYH4ku43LrP4EBbjylcJacyfQ"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("h3", { staticClass: "tile-title" }, [
+                        _vm._v("Analytics")
+                      ]),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "tile-body" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "google_analytics" }
+                            },
+                            [_vm._v("Google Analytics Code")]
+                          ),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            staticClass: "form-control",
+                            attrs: {
+                              rows: "4",
+                              placeholder: "Enter google analytics code",
+                              id: "google_analytics",
+                              name: "google_analytics"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "facebook_pixels" }
+                            },
+                            [_vm._v("Facebook Pixel Code")]
+                          ),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            staticClass: "form-control",
+                            attrs: {
+                              rows: "4",
+                              placeholder: "Enter facebook pixel code",
+                              id: "facebook_pixels",
+                              name: "facebook_pixels"
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "tile-footer" }, [
+                        _c("div", { staticClass: "row d-print-none mt-2" }, [
+                          _c("div", { staticClass: "col-12 text-right" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-success",
+                                attrs: { type: "submit" }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fa fa-fw fa-lg fa-check-circle"
+                                }),
+                                _vm._v("Update Settings")
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tab-pane fade", attrs: { id: "payments" } },
+              [
+                _c("div", { staticClass: "tile" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        action: "http://127.0.0.1:8000/admin/settings",
+                        method: "POST",
+                        role: "form"
+                      }
+                    },
+                    [
+                      _c("input", {
+                        attrs: {
+                          type: "hidden",
+                          name: "_token",
+                          value: "0kWShnjOaoFgsuDUYH4ku43LrP4EBbjylcJacyfQ"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("h3", { staticClass: "tile-title" }, [
+                        _vm._v("Payment Settings")
+                      ]),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "tile-body" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "stripe_payment_method" }
+                            },
+                            [_vm._v("Stripe Payment Method")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              staticClass: "form-control",
+                              attrs: {
+                                name: "stripe_payment_method",
+                                id: "stripe_payment_method"
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { value: "1", selected: "" } },
+                                [_vm._v("Enabled")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "0" } }, [
+                                _vm._v("Disabled")
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "stripe_key" }
+                            },
+                            [_vm._v("Key")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter stripe key",
+                              id: "stripe_key",
+                              name: "stripe_key",
+                              value: ""
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group pb-2" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "stripe_secret_key" }
+                            },
+                            [_vm._v("Secret Key")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter stripe secret key",
+                              id: "stripe_secret_key",
+                              name: "stripe_secret_key",
+                              value: ""
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("hr"),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group pt-2" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "paypal_payment_method" }
+                            },
+                            [_vm._v("PayPal Payment Method")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              staticClass: "form-control",
+                              attrs: {
+                                name: "paypal_payment_method",
+                                id: "paypal_payment_method"
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { value: "1", selected: "" } },
+                                [_vm._v("Enabled")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "0" } }, [
+                                _vm._v("Disabled")
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "paypal_client_id" }
+                            },
+                            [_vm._v("Client ID")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter paypal client Id",
+                              id: "paypal_client_id",
+                              name: "paypal_client_id",
+                              value: ""
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "control-label",
+                              attrs: { for: "paypal_secret_id" }
+                            },
+                            [_vm._v("Secret ID")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Enter paypal secret id",
+                              id: "paypal_secret_id",
+                              name: "paypal_secret_id",
+                              value: ""
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "tile-footer" }, [
+                        _c("div", { staticClass: "row d-print-none mt-2" }, [
+                          _c("div", { staticClass: "col-12 text-right" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-success",
+                                attrs: { type: "submit" }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fa fa-fw fa-lg fa-check-circle"
+                                }),
+                                _vm._v("Update Settings")
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ])
               ]
             )
-          ]
-        ),
-        _vm._v(" "),
-        _c("iframe", {
-          staticStyle: { display: "none" },
-          attrs: { id: "form_target", name: "form_target" }
-        }),
-        _vm._v(" "),
-        _c(
-          "form",
-          {
-            staticStyle: { width: "0", height: "0", overflow: "hidden" },
-            attrs: {
-              id: "my_form",
-              action: "http://127.0.0.1:8001/admin/upload",
-              target: "form_target",
-              method: "post",
-              enctype: "multipart/form-data"
-            }
-          },
-          [
-            _c("input", {
-              attrs: {
-                name: "image",
-                id: "upload_file",
-                type: "file",
-                onchange: "$('#my_form').submit();this.value='';"
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              attrs: {
-                type: "hidden",
-                name: "type_slug",
-                id: "type_slug",
-                value: "posts"
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              attrs: {
-                type: "hidden",
-                name: "_token",
-                value: "4ycC1ueTtCRilX4eYiD1elfQSoesqRMcugT4cq1d"
-              }
-            })
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "modal fade modal-danger",
-          attrs: { id: "confirm_delete_modal" }
-        },
-        [
-          _c("div", { staticClass: "modal-dialog" }, [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-hidden": "true"
-                    }
-                  },
-                  [_vm._v("×")]
-                ),
-                _vm._v(" "),
-                _c("h4", { staticClass: "modal-title" }, [
-                  _c("i", { staticClass: "voyager-warning" }),
-                  _vm._v(" Are you sure")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("h4", [
-                  _vm._v("Are you sure you want to delete '"),
-                  _c("span", { staticClass: "confirm_delete_name" }),
-                  _vm._v("'")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Cancel")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { type: "button", id: "confirm_delete" }
-                  },
-                  [_vm._v("Yes, Delete it!")]
-                )
-              ])
-            ])
           ])
-        ]
-      )
+        ])
+      ])
     ])
   }
 ]
@@ -1633,15 +1251,17 @@ render._withStripped = true
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings_vue_vue_type_template_id_2c50d7a4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./settings.vue?vue&type=template&id=2c50d7a4& */ "./resources/js/admin/modules/settings/pages/settings.vue?vue&type=template&id=2c50d7a4&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./settings.vue?vue&type=script&lang=js& */ "./resources/js/admin/modules/settings/pages/settings.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _settings_vue_vue_type_template_id_2c50d7a4___WEBPACK_IMPORTED_MODULE_0__["render"],
   _settings_vue_vue_type_template_id_2c50d7a4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -1655,6 +1275,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/admin/modules/settings/pages/settings.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/admin/modules/settings/pages/settings.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/admin/modules/settings/pages/settings.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./settings.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/modules/settings/pages/settings.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

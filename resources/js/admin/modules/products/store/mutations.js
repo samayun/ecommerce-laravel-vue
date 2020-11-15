@@ -37,6 +37,7 @@ export default {
                 defaultData[key] = payload[key]
             }
         }
+        defaultData.categories = defaultData.categories.map(el => el.id)
         state.editProductData =  new Form(defaultData)
     },
     UPDATE_PRODUCT(state , product){
