@@ -8,7 +8,7 @@ const routes = [
     {
         path: 'brands',
         name: 'Brands',
-        component: () => import(/* webpackChunkName: "Admin-Brands" */'../pages/brands.vue'),
+        component: () => import(/* webpackChunkName: "Chunks/Admin-Brands" */'../pages/brands.vue'),
         title: 'This is brand page',
         meta: {
             guest : false,

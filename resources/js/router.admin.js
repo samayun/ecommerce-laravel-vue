@@ -13,8 +13,8 @@ const requireModule = require.context('./modules', true, /\.js$/)
 const importedRoutes = []
 
 requireModule.keys().forEach(fileName => {
-    let str = fileName.split('/')
-    str = str[1]
+    let str = fileName.split('/');
+    str = str[1];
     if (fileName === `./${str}/router/index.js`){
         const moduleName = camelCase(
             fileName.replace(/(\.\/|\.js)/g, '')
@@ -32,18 +32,18 @@ const defaultRoutes = [
         path: '/admin/login',
         name: 'AdminLogin',
         title: 'Admin Login',
-        component: () => import(/* webpackChunkName: "Admin-Login" */'./admin/pages/AdminLogin.vue')
+        component: () => import(/* webpackChunkName: "Chunks/Admin-Login" */'./admin/pages/AdminLogin.vue')
     },
     {
         path: '/admin',
         name: 'AdminHome',
         title: 'Home',
-        component: () => import(/* webpackChunkName: "Admin-Home" */'./admin/pages/AdminHomePage.vue'),
+        component: () => import(/* webpackChunkName: "Chunks/Admin-Home" */'./admin/pages/AdminHomePage.vue'),
         children : [
             {
                 path: '/',
                 name: 'AdminHomeDashboard',
-                component: () => import( /* webpackChunkName: "Admin-Dashboard" */ './admin/pages/AdminHomeDashboard.vue'),
+                component: () => import( /* webpackChunkName: "Chunks/Admin-Dashboard" */ './admin/pages/AdminHomeDashboard.vue'),
                 title: 'This is a test page'
 
             },
@@ -53,7 +53,7 @@ const defaultRoutes = [
     {
         path: '*',
         name: "404",
-        component : () => import(/* webpackChunkName: "404" */'./admin/pages/NotFound.vue')
+        component : () => import(/* webpackChunkName: "Chunks/404" */'./admin/pages/NotFound.vue')
     }
 ]
 // const routes = allRoutes.concat(defaultRoutes , importedRoutes)

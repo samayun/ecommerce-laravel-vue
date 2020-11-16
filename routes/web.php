@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 */
 require "admin.php";
 Route::view('/', 'site');
+Route::view('/offline', 'offline');
 Route::get('/product/{id}', function ($id){
 	$product = Product::findOrFail($id);
     return view('product',[ 'product' =>  new ProductResource($product) ]);

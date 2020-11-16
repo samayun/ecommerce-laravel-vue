@@ -8,7 +8,7 @@ const routes = [
     {
         path: 'settings',
         name: 'Settings',
-        component: () => import('../pages/settings.vue'),
+        component: () => import(/* webpackChunkName: "Chunks/Admin-Settings" */ '../pages/settings.vue'),
         title: 'This is settings page',
         meta: {
             guest : false,

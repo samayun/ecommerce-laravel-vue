@@ -8,7 +8,7 @@ const routes = [
     {
         path: 'products',
         name: 'Products',
-        component: () => import(/* webpackChunkName: "Admin-Products" */'../pages/products.vue'),
+        component: () => import(/* webpackChunkName: "Chunks/Admin-Products" */'../pages/products.vue'),
         title: 'This is admijn product page',
         meta: {
             guest : false,
@@ -18,19 +18,19 @@ const routes = [
     {
         path: 'products/create',
         name: 'CreateProducts',
-        component: () => import(/* webpackChunkName: "Admin-Products-Create" */'../pages/create.vue'),
+        component: () => import(/* webpackChunkName: "Chunks/Admin-Products-Create" */'../pages/create.vue'),
         title: 'This is create product page'
     },
     {
         path: 'products/edit/:id',
         name: 'EditProducts',
-        component: () => import(/* webpackChunkName: "Admin-Products-Edit-:id" */ '../pages/edit.vue'),
+        component: () => import(/* webpackChunkName: "Chunks/Admin-Products-Edit-:id" */ '../pages/edit.vue'),
         title: 'This is Edit product page'
     },
     {
         path: 'products/view/:id',
         name: 'EditProducts',
-        component: () => import(/* webpackChunkName: "Admin-Products-View-:id" */ '../pages/view.vue'),
+        component: () => import(/* webpackChunkName: "Chunks/Admin-Products-View-:id" */ '../pages/view.vue'),
         title: 'This is View product page'
     }
 ]

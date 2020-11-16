@@ -1,0 +1,21 @@
+{
+  "short_name": "E Penguin Shop",
+  "name": "Penguin Online Shop ",
+  "icons": [
+    {
+      "src": "/storage/site/logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/storage/site/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#009688",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#f96545"
+}

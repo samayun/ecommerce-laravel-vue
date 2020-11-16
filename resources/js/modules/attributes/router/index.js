@@ -8,7 +8,7 @@ const routes = [
     {
         path: 'attributes',
         name: 'Attributes',
-        component: () => import(/* webpackChunkName: "Admin-Attributes" */'../pages/attributes.vue'),
+        component: () => import(/* webpackChunkName: "Chunks/Admin-Attributes" */'../pages/attributes.vue'),
         title: 'This is a test page',
         meta: {
             guest : false,
