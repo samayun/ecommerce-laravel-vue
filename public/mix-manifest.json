@@ -1,3 +1,14 @@
 {
-    "/js/admin.js": "/js/admin.js?id=4ca40791080983e459de"
+    "/js/admin.js": "/js/admin.js?id=87372a531d286f070897",
+    "/Admin-Home.js": "/Admin-Home.js?id=dbd7503250725f4e6b44",
+    "/Admin-Login.js": "/Admin-Login.js?id=72218f3d5dc2f6ce9cc5",
+    "/404.js": "/404.js?id=08265fc012de6854d450",
+    "/Admin-Dashboard.js": "/Admin-Dashboard.js?id=610bb9ab3a4982302519",
+    "/Admin-Attributes.js": "/Admin-Attributes.js?id=bc4b3174860ce98a2024",
+    "/Admin-Brands.js": "/Admin-Brands.js?id=1a1df43f99c23321a9b9",
+    "/Admin-Categories.js": "/Admin-Categories.js?id=088087cd89925a6c270d",
+    "/Admin-Products.js": "/Admin-Products.js?id=09a17622cb0e394b17b9",
+    "/Admin-Products-Create.js": "/Admin-Products-Create.js?id=f831760abfe1a5499e29",
+    "/Admin-Products-Edit-:id.js": "/Admin-Products-Edit-:id.js?id=e9be16a1091f19411e18",
+    "/Admin-Products-View-:id.js": "/Admin-Products-View-:id.js?id=f78779ea1aa14e11c7c0"
 }

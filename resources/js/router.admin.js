@@ -9,7 +9,7 @@ Vue.use(VueRouter);
 
 var allRoutes = []
 import camelCase from 'lodash/camelCase'
-const requireModule = require.context('./admin/modules', true, /\.js$/)
+const requireModule = require.context('./modules', true, /\.js$/)
 const importedRoutes = []
 
 requireModule.keys().forEach(fileName => {
@@ -32,18 +32,18 @@ const defaultRoutes = [
         path: '/admin/login',
         name: 'AdminLogin',
         title: 'Admin Login',
-        component: () => import('./admin/pages/AdminLogin.vue')
+        component: () => import(/* webpackChunkName: "Admin-Login" */'./admin/pages/AdminLogin.vue')
     },
     {
         path: '/admin',
         name: 'AdminHome',
         title: 'Home',
-        component: () => import('./admin/pages/AdminHomePage.vue'),
+        component: () => import(/* webpackChunkName: "Admin-Home" */'./admin/pages/AdminHomePage.vue'),
         children : [
             {
                 path: '/',
                 name: 'AdminHomeDashboard',
-                component: () => import(  './admin/pages/AdminHomeDashboard.vue'),
+                component: () => import( /* webpackChunkName: "Admin-Dashboard" */ './admin/pages/AdminHomeDashboard.vue'),
                 title: 'This is a test page'
 
             },
@@ -53,7 +53,7 @@ const defaultRoutes = [
     {
         path: '*',
         name: "404",
-        component : () => import('./admin/pages/NotFound.vue')
+        component : () => import(/* webpackChunkName: "404" */'./admin/pages/NotFound.vue')
     }
 ]
 // const routes = allRoutes.concat(defaultRoutes , importedRoutes)

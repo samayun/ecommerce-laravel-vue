@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Resources\ProductResource;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -14,8 +16,13 @@ use Illuminate\Http\Request;
 |
 */
 require "admin.php";
-Route::view('/', 'content');
-Route::view('/user-login', 'user_login')->name('login');
+Route::view('/', 'site');
+Route::get('/product/{id}', function ($id){
+	$product = Product::findOrFail($id);
+    return view('product',[ 'product' =>  new ProductResource($product) ]);
+});
+
+// Route::view('/user-login', 'user_login')->name('login');
 
 Route::view('/{any}', 'admin_layout')->where('any', 'admin.*');
 
