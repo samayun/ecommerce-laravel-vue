@@ -16,7 +16,10 @@ use Illuminate\Http\Request;
 |
 */
 require "admin.php";
-Route::view('/', 'site');
+Route::view('/admin/{r}', 'admin_layout')->where('r', '.*');
+
+Route::view('{any}', 'site')->where('any','.*');
+
 Route::view('/offline', 'offline');
 Route::get('/product/{id}', function ($id){
 	$product = Product::findOrFail($id);
@@ -25,7 +28,6 @@ Route::get('/product/{id}', function ($id){
 
 // Route::view('/user-login', 'user_login')->name('login');
 
-Route::view('/{any}', 'admin_layout')->where('any', 'admin.*');
 
 // Auth::routes();
 

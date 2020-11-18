@@ -1,5 +1,5 @@
 import camelCase from 'lodash/camelCase'
-const requireModule = require.context('./modules', true, /\.js$/)
+const requireModule = require.context('./site_modules', true, /\.js$/)
 const modules = {}
 
 
@@ -7,7 +7,6 @@ const modules = {}
 requireModule.keys().forEach(fileName => {
     let str = fileName.split('/')
     str = str[1]
-
 
     if (fileName === `./${str}/store/index.js`){
 

@@ -61,7 +61,7 @@ Vue.filter('timeFormat' , arg => {
 
 
 
-const app = new Vue({
+const aadminapp = new Vue({
     el: '#admin',
     i18n,
     router,

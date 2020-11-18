@@ -1,8 +1,12 @@
 var staticCacheName = "pwa-v" + new Date().getTime();
 var filesToCache = [
-    '/offline',
+    'https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800',
     '/css/main-app.min.css',
+    '/css/blue.css',
+    '/css/green.css',
+    '/css/yellow.css',
     '/js/template-cachable.js',
+    '/js/app.js'
 ];
 
 // Cache on install

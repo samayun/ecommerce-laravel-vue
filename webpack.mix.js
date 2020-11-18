@@ -15,28 +15,29 @@ const mix = require('laravel-mix');
 // mix.js('resources/js/app.js', 'public/js').version();
 // mix.sass('resources/sass/app.scss', 'public/css')
 
+mix.js('resources/js/app.js', 'public/js').version();
 // mix.js('resources/js/admin.js', 'public/js').version();
 
 
-mix.styles([
-    'public/assets/css/style.css',
-    'public/assets/css/bootstrap.min.css',
-    'public/assets/css/plugins/owl-carousel/owl.carousel.css',
-    'public/assets/css/plugins/magnific-popup/magnific-popup.css',
-    'public/assets/css/typo.css',
-], 'public/css/main-app.min.css');
+// mix.styles([
+//     'public/assets/css/style.css',
+//     'public/assets/css/bootstrap.min.css',
+//     'public/assets/css/plugins/owl-carousel/owl.carousel.css',
+//     'public/assets/css/plugins/magnific-popup/magnific-popup.css',
+//     'public/assets/css/typo.css',
+// ], 'public/css/main-app.min.css');
 
 
-mix.scripts([
-    'public/assets/js/jquery.min.js',
-    'public/assets/js/bootstrap.bundle.min.js',
-    'public/assets/js/owl.carousel.min.js',
-    // 'public/assets/js/jquery.hoverIntent.min.js',
-    // 'public/assets/js/jquery.waypoints.min.js',
-    // 'public/assets/js/superfish.min.js',
-    // 'public/assets/js/bootstrap-input-spinner.js',
-    // 'public/assets/js/jquery.magnific-popup.min.js',
-    'public/assets/js/jquery.elevateZoom.min.js',
-    'public/assets/js/jquery.plugin.min.js',
-    'public/assets/js/main.js'
-], 'public/js/template-cachable.js').version();
+// mix.scripts([
+//     'public/assets/js/jquery.min.js',
+//     'public/assets/js/bootstrap.bundle.min.js',
+//     'public/assets/js/owl.carousel.min.js',
+//     // 'public/assets/js/jquery.hoverIntent.min.js',
+//     // 'public/assets/js/jquery.waypoints.min.js',
+//     // 'public/assets/js/superfish.min.js',
+//     // 'public/assets/js/bootstrap-input-spinner.js',
+//     // 'public/assets/js/jquery.magnific-popup.min.js',
+//     'public/assets/js/jquery.elevateZoom.min.js',
+//     'public/assets/js/jquery.plugin.min.js',
+//     'public/assets/js/main.js'
+// ], 'public/js/template-cachable.js').version();

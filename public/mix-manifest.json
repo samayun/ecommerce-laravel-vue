@@ -1,4 +1,10 @@
 {
-    "/css/main-app.min.css": "/css/main-app.min.css?id=3123fc43a174468cc80e",
-    "/js/template-cachable.js": "/js/template-cachable.js?id=f9fe94acbe88e607fae3"
+    "/js/app.js": "/js/app.js?id=79ee18ba26a2f15b056f",
+    "/Chunks/404.site.js": "/Chunks/404.site.js?id=311ca637644da1fa43ed",
+    "/Chunks/Main-App-Footer.js": "/Chunks/Main-App-Footer.js?id=55188f1ee313e59d1115",
+    "/Chunks/Main-App-Header.js": "/Chunks/Main-App-Header.js?id=7dc448c8257fbd5fa16b",
+    "/Chunks/Site-Dashboard.js": "/Chunks/Site-Dashboard.js?id=550553c35d53edf03c16",
+    "/Chunks/Site-Home.js": "/Chunks/Site-Home.js?id=b3f080bb2a25b4feea9e",
+    "/Chunks/Site-Login.js": "/Chunks/Site-Login.js?id=90cc68c1e6132d9f7cda",
+    "/Chunks/Site-Settings.js": "/Chunks/Site-Settings.js?id=558b51199181f4d34a2c"
 }

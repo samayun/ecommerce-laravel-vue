@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["Chunks/Admin-Settings"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["Chunks/Site-Settings"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/site_modules/settings/pages/settings.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************!*\
