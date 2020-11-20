@@ -21,6 +21,7 @@
         <meta name="application-name" content="Molla">
         <meta name="msapplication-TileColor" content="#cc9966">
         <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml"> --}}
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="theme-color" content="#ffffff">
          <link rel="manifest" href="/manifest.json">
 
@@ -31,9 +32,10 @@
 <body>
     <div id="main-app">
           <main-app></main-app>
+          <mobile-menu></mobile-menu>
+          <mobile-footer></mobile-footer>
     </div>
-    @include('site.mobilemenu')
-  {{-- @include('site.auth') --}}
+
     <script src="{{mix('js/app.js')}}" defer></script>
     <script src="{{asset('js/template-cachable.js')}}"></script>
 

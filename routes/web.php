@@ -17,14 +17,11 @@ use Illuminate\Http\Request;
 */
 require "admin.php";
 Route::view('/admin/{r}', 'admin_layout')->where('r', '.*');
-
-Route::view('{any}', 'site')->where('any','.*');
+require "site.php";
+Route::view('/{any}', 'site')->where('any','.*');
 
 Route::view('/offline', 'offline');
-Route::get('/product/{id}', function ($id){
-	$product = Product::findOrFail($id);
-    return view('product',[ 'product' =>  new ProductResource($product) ]);
-});
+
 
 // Route::view('/user-login', 'user_login')->name('login');
 
