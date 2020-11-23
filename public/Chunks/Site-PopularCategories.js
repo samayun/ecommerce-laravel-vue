@@ -73,7 +73,7 @@ var render = function() {
   return _c("span", [
     _c("div", { staticClass: "container" }, [
       _c("h2", { staticClass: "title text-center mb-2" }, [
-        _vm._v("Explore Popular Categories")
+        _vm._v(" " + _vm._s(_vm.$t("explorePopularCategories")) + " ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "cat-blocks-container" }, [
@@ -87,7 +87,10 @@ var render = function() {
               [
                 _c(
                   "router-link",
-                  { staticClass: "cat-block", attrs: { to: "/category/slug" } },
+                  {
+                    staticClass: "cat-block",
+                    attrs: { to: "/category/" + category.slug }
+                  },
                   [
                     _c("figure", [
                       _c("span", [

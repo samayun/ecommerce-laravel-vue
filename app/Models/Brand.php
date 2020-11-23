@@ -33,4 +33,9 @@ class Brand extends Model
         return $query->search($q)->orderBy($orderBy , $sortBy)->paginate($perPage);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

@@ -25,7 +25,8 @@
                             </li>
                             <LanguegeSwitcher />
                             <li class="login">
-                                <a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a>
+                                <a href="#signin-modal" data-toggle="modal">
+                                    {{ $t('auth.signin') }} / {{ $t('auth.signup') }} </a>
                             </li>
                         </ul>
                     </li>
@@ -90,7 +91,7 @@
 
                             <div class="compare-actions">
                                 <router-link to="#" class="action-link">Clear All</router-link>
-                                <router-link to="#" class="btn btn-outline-primary-2"><span>Compare</span><i class="icon-long-arrow-right"></i></router-link>
+                                <router-link to="#" class="btn btn-outline-primary-2"><span>{{ $t('compare') }}</span><i class="icon-long-arrow-right"></i></router-link>
                             </div>
                         </div><!-- End .dropdown-menu -->
                     </div><!-- End .compare-dropdown -->
@@ -98,14 +99,14 @@
                     <router-link to="wishlist.html" class="wishlist-link">
                         <i class="icon-heart-o"></i>
                         <span class="wishlist-count">3</span>
-                        <span class="wishlist-txt">Wishlist</span>
+                        <span class="wishlist-txt">{{ $t('wishlist') }}</span>
                     </router-link>
 
                     <div class="dropdown cart-dropdown">
                         <router-link to="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                             <i class="icon-shopping-cart"></i>
                             <span class="cart-count">2</span>
-                            <span class="cart-txt">Cart</span>
+                            <span class="cart-txt"> {{ $t('cart') }}  </span>
                         </router-link>
 
                         <div class="dropdown-menu dropdown-menu-right">
@@ -124,7 +125,7 @@
 
                                     <figure class="product-image-container">
                                         <router-link to="product.html" class="product-image">
-                                            <img src="assets/images/products/cart/product-1.jpg" alt="product">
+                                            <img src="/assets/images/products/cart/product-1.jpg" alt="product">
                                         </router-link>
                                     </figure>
                                     <router-link to="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></router-link>
@@ -144,7 +145,7 @@
 
                                     <figure class="product-image-container">
                                         <router-link to="product" class="product-image">
-                                            <img src="assets/images/products/cart/product-2.jpg" alt="product">
+                                            <img src="/assets/images/products/cart/product-2.jpg" alt="product">
                                         </router-link>
                                     </figure>
                                     <router-link to="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></router-link>

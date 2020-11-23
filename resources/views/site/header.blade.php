@@ -178,5 +178,5 @@
         </div><!-- End .container -->
     </div><!-- End .header-middle -->
 
-    {{-- @include('site.stickyHeader') --}}
+    @include('site.stickyHeader')
 </header><!-- End .header -->

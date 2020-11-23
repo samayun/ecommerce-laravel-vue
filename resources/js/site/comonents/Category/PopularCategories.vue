@@ -1,12 +1,12 @@
 <template>
 <span>
   <div class="container">
-    <h2 class="title text-center mb-2">Explore Popular Categories</h2><!-- End .title -->
+    <h2 class="title text-center mb-2"> {{ $t('explorePopularCategories')}} </h2><!-- End .title -->
 
     <div class="cat-blocks-container">
         <div class="row">
             <div class="col-6 col-sm-4 col-lg-2" v-for="category in categories" :key="category.id">
-                <router-link to="/category/slug" class="cat-block">
+                <router-link :to="'/category/'+category.slug" class="cat-block">
                     <figure>
                         <span>
                             <img :src="category.icon" :alt="category.name">

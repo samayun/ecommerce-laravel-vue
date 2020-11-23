@@ -7,6 +7,16 @@
     "delete" : "Delete",
     "name": "Name",
     "image" : "Image",
+    "auth":{
+        "signin": "📩 Sign In",
+        "signup": "🔂 Sign Up",
+        "logout" : "Log Out"
+    },
+    "explorePopularCategories": "Explore Popular Categories",
+    "ShopByBrands": "Shop by Brands",
+    "wishlist" : "WishList",
+    "cart" :"Cart",
+    "compare":"Compare",
     "sidebar": {
         "attribute": "Attribute",
         "category" : "Category",

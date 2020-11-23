@@ -42,6 +42,65 @@ class Product extends Model
                     ->orWhere('id','LIKE', "%$q%")
                     ->orWhere('created_at','LIKE', "%$q%");
     }
+    public function scopeMultipleFilter($query, $request){
+        $categories = explode(',', $request->categories);
+        $brands     = explode(',', $request->brands);
+        $sizes     = explode(',', $request->sizes);
+        $prices     = explode('-', $request->input('prices'));
+
+
+        return
+            $query
+            ->when(count($brands), function($query) use($brands){
+                    $query->whereIn('brand_id', $brands);
+                })
+                ->when(count($categories),function($query) use($categories){
+                    $query->orWhereHas('categories',function ($q) use($categories){
+                       $q->whereIn('category_id', $categories);
+                       });
+               })
+               ->when($request->has('sizes'),function($query) use($sizes){
+                    $query->orWhereHas('attributes',function ($q) use($sizes){
+                        //  $q->whereIn('attribute_id', $sizes);
+                        $q->whereHas('attribute', function ($q) use($sizes){
+                            // dd($sizes);
+                            $q->whereIn('slug',$sizes);
+                        });
+
+                    });
+              })
+               ->when($request->has('prices'), function($query) use($prices){
+                    $start = $prices[0];
+                    $end = $prices[1];
+                     $query->orWhereBetween('price', [$start, $end ]);
+                });
+    }
+
+    // public function scopeWithMultiFilter($query, $request){
+    //     $categories = collect($request->input('categories'));
+
+    //     return ( $query->whereHas('categories',function ($q) use($categories){
+    //         $q->whereIn('category_id', $categories);
+    //     }) );
+
+    //     return $query->when(count($categories),function($query) use($categories){
+    //             $query->whereHas('categories',function ($q) use($categories){
+    //                 $q->whereIn('category_id', $categories);
+    //             });
+    //         });
+    // }
+
+    public function scopeMultiFilter($query){
+        dd(count($request->input('categories')));
+        // return $query->when(count($request->input('categories'),[]),function($query)){
+        //         $query->whereHas('categories',function ($q){
+        //             $q->whereIn('categoryable_id', $request->input('categories'));
+        //         });
+        //     });
+        // $query->whereHas('brand',function ($q) use($request){
+        //     $q->where('slug', $request->slug);
+        // });
+    }
     public function scopeFilter($query,$request)
     {
         $perPage =  $request->has('perPage') ? (int)$request->query('perPage') : 10;

@@ -4,11 +4,20 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\ProductResource;
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
+    public function products(Request $request)
+    {
+      $products = Product::multipleFilter($request)->paginate(5);
+       return ProductResource::collection($products);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +25,10 @@ class ProductController extends Controller
      */
     public function categoryProducts($categorySlug)
     {
-      return Category::with('products')->with('category')->where('slug' ,$categorySlug)->firstOrFail();
+        return Cache::remember('singleCategoryProducts.'.$categorySlug, now()->addMinutes(120),function () use($categorySlug)
+        {
+          return Category::with('products')->with('category')->where('slug' ,$categorySlug)->firstOrFail();
+        });
     }
 
     /**
@@ -26,11 +38,34 @@ class ProductController extends Controller
      */
     public function categories()
     {
-        return CategoryResource::collection(Category::where('parent_id',1)->where('id','!=',1)->with('subcategories')->latest()->get());
+        return Cache::remember('categoriesSubcategories', now()->addMinutes(120),function ()
+        {
+            return CategoryResource::collection(Category::where('parent_id',1)->with('products')->where('id','!=',1)->with('subcategories')->latest()->get());
+        });
+    }
+    public function ShopByBrands()
+    {
+        return Brand::latest()->get();
+
+        // return Cache::remember('ShopByBrands', now()->addMinutes(120),function (){
+        //     return Brand::latest()->get();
+        // });
+    }
+    public function SingleBrand(Request $request, $slug)
+    {
+
+    //   return Cache::remember('brand.'.$slug, now()->addMinute(60), function () use($slug) {
+        return Brand::where('slug',$slug)->with(['products' => function($q) use($request){
+            $q->filter($request);
+        }])->withCount('products')->firstOrFail();
+    //   });
     }
     public function index()
     {
-        return CategoryResource::collection(Category::take(6)->get());
+        return Cache::remember('categories', now()->addMinutes(120),function ()
+        {
+            return CategoryResource::collection(Category::where('id','!=',1)->take(6)->get());
+        });
     }
 
     /**
@@ -50,9 +85,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $product = Product::where('slug' ,$slug)->firstOrFail();
+        $KEY = 'product.'.$slug;
+        if($product){
+            return Cache::remember($KEY, now()->addMinutes(120), function () use($product) {
+                return new ProductResource($product);
+            });
+        }
     }
 
     /**

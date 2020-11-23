@@ -31,13 +31,13 @@ mix.js('resources/js/app.js', 'public/js').version();
 // mix.scripts([
 //     'public/assets/js/jquery.min.js',
 //     'public/assets/js/bootstrap.bundle.min.js',
+//     'public/assets/js/jquery.hoverIntent.min.js',
+//     'public/assets/js/jquery.waypoints.min.js',
+//     'public/assets/js/superfish.min.js',
 //     'public/assets/js/owl.carousel.min.js',
-//     // 'public/assets/js/jquery.hoverIntent.min.js',
-//     // 'public/assets/js/jquery.waypoints.min.js',
-//     // 'public/assets/js/superfish.min.js',
-//     // 'public/assets/js/bootstrap-input-spinner.js',
-//     // 'public/assets/js/jquery.magnific-popup.min.js',
+//     'public/assets/js/bootstrap-input-spinner.js',
 //     'public/assets/js/jquery.elevateZoom.min.js',
-//     'public/assets/js/jquery.plugin.min.js',
+//     'public/assets/js/jquery.magnific-popup.min.js',
+//     // 'public/assets/js/jquery.plugin.min.js',
 //     'public/assets/js/main.js'
 // ], 'public/js/template-cachable.js').version();

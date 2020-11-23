@@ -18,6 +18,8 @@ use Illuminate\Http\Request;
 require "admin.php";
 Route::view('/admin/{r}', 'admin_layout')->where('r', '.*');
 require "site.php";
+Route::view('/test', 'test');
+
 Route::view('/{any}', 'site')->where('any','.*');
 
 Route::view('/offline', 'offline');

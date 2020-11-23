@@ -3,15 +3,28 @@
 use App\Http\Controllers\Site\ProductController;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/product/{id}', function ($id){
-	$product = Product::findOrFail($id);
-    return view('product',[ 'product' =>  new ProductResource($product) ]);
-});
+// Route::get('/product/{slug}', function ($slug){
+//     $product = Product::where('slug' ,$slug)->firstOrFail();
+//     $product = Product::where('slug' ,$slug)->firstOrFail();
+//     $KEY = 'product.'.$slug;
+//     if($product){
+//         $product= Cache::remember($KEY, now()->addMinutes(120), function () use($product) {
+//             return new ProductResource($product);
+//         });
+//     }
+//     return view('test',[ 'product' =>  new ProductResource($product) ]);
+// });
 
-
+Route::view('test', 'test');
 Route::group(['prefix' => 'api'], function () {
+    Route::get('/products',  [ProductController::class, 'products']);
+
+    Route::get('/product/{slug}',  [ProductController::class, 'show']);
+    Route::get('/brands',  [ProductController::class, 'ShopByBrands']);
+    Route::get('/brands/{slug}',  [ProductController::class, 'SingleBrand']);
     Route::get('/categories',  [ProductController::class, 'index']);
     // categories with subcategories
     Route::get('/categoriesSubcategories',  [ProductController::class, 'categories']);

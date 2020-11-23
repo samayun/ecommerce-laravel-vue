@@ -379,11 +379,12 @@ export default {
         Product
     },
     computed:{
-        ...mapState("categoriesStoreIndex",["layout_type","category"])
+        ...mapState("categoriesStoreIndex",["category"]),
+        ...mapState("settingsStoreIndex",["layout_type"])
     },
     methods: {
       ...mapActions("categoriesStoreIndex",["getCategoryBySlug"]),
-      ...mapMutations("categoriesStoreIndex",["SET_LAYOUT"])
+      ...mapMutations("settingsStoreIndex",["SET_LAYOUT"])
     },
     created(){
         let slug = this.$route.params.slug;

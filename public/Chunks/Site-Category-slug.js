@@ -106,10 +106,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["product"],
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("categoriesStoreIndex", {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("settingsStoreIndex", {
     layout: "getLayout"
   }))
 });
@@ -512,8 +517,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   components: {
     Product: _components_Product__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("categoriesStoreIndex", ["layout_type", "category"])),
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ["getCategoryBySlug"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])("categoriesStoreIndex", ["SET_LAYOUT"])),
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("categoriesStoreIndex", ["category"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("settingsStoreIndex", ["layout_type"])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ["getCategoryBySlug"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])("settingsStoreIndex", ["SET_LAYOUT"])),
   created: function created() {
     var slug = this.$route.params.slug;
 
@@ -597,7 +602,18 @@ var render = function() {
             _c("div", { staticClass: "product-body product-action-inner" }, [
               _vm._m(3),
               _vm._v(" "),
-              _vm._m(4),
+              _c(
+                "div",
+                { staticClass: "product-cat" },
+                _vm._l(_vm.product.categories, function(cat) {
+                  return _c(
+                    "router-link",
+                    { key: cat.id, attrs: { to: "/category/" + cat.slug } },
+                    [_vm._v(" " + _vm._s(cat.name) + " ")]
+                  )
+                }),
+                1
+              ),
               _vm._v(" "),
               _c(
                 "h3",
@@ -631,7 +647,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "router-link",
-                { attrs: { to: "product/" + _vm.product.slug } },
+                { attrs: { to: "/product/" + _vm.product.slug } },
                 [
                   _c("img", {
                     staticClass: "product-image",
@@ -643,15 +659,26 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(5),
+              _vm._m(4),
               _vm._v(" "),
-              _vm._m(6)
+              _vm._m(5)
             ],
             1
           ),
           _vm._v(" "),
           _c("div", { staticClass: "product-body" }, [
-            _vm._m(7),
+            _c(
+              "div",
+              { staticClass: "product-cat" },
+              _vm._l(_vm.product.categories, function(cat) {
+                return _c(
+                  "router-link",
+                  { key: cat.id, attrs: { to: "/category/" + cat.slug } },
+                  [_vm._v(" " + _vm._s(cat.name) + " ")]
+                )
+              }),
+              1
+            ),
             _vm._v(" "),
             _c(
               "h3",
@@ -674,7 +701,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(8)
+            _vm._m(6)
           ])
         ])
       ])
@@ -743,15 +770,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "product-cat" }, [
-      _c("a", { attrs: { href: "/" } }, [_vm._v(" IMAC ")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "product-action" }, [
+    return _c("div", { staticClass: "product-action-vertical" }, [
       _c(
         "a",
         {
@@ -764,7 +783,7 @@ var staticRenderFns = [
       _c(
         "a",
         {
-          staticClass: "btn-product-icon btn-quickview",
+          staticClass: "btn-product-icon btn-quickview  btn-expandable",
           attrs: { href: "/assets/popup/quickView.html", title: "Quick view" }
         },
         [_c("span", [_vm._v("Quick view")])]
@@ -788,14 +807,6 @@ var staticRenderFns = [
       _c("a", { staticClass: "btn-product btn-cart", attrs: { href: "#" } }, [
         _c("span", [_vm._v("add to cart")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "product-cat" }, [
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Women")])
     ])
   },
   function() {

@@ -306,6 +306,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -743,7 +744,26 @@ var render = function() {
                       _vm._v(" "),
                       _c("LanguegeSwitcher"),
                       _vm._v(" "),
-                      _vm._m(0)
+                      _c("li", { staticClass: "login" }, [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: "#signin-modal",
+                              "data-toggle": "modal"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(_vm.$t("auth.signin")) +
+                                " / " +
+                                _vm._s(_vm.$t("auth.signup")) +
+                                " "
+                            )
+                          ]
+                        )
+                      ])
                     ],
                     1
                   )
@@ -761,7 +781,7 @@ var render = function() {
             "div",
             { staticClass: "header-left" },
             [
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
               _c("router-link", { attrs: { to: "/" } }, [
                 _c("img", {
@@ -790,7 +810,7 @@ var render = function() {
                   [_c("i", { staticClass: "icon-search" })]
                 ),
                 _vm._v(" "),
-                _vm._m(2)
+                _vm._m(1)
               ],
               1
             )
@@ -913,7 +933,7 @@ var render = function() {
                                 attrs: { to: "#" }
                               },
                               [
-                                _c("span", [_vm._v("Compare")]),
+                                _c("span", [_vm._v(_vm._s(_vm.$t("compare")))]),
                                 _c("i", {
                                   staticClass: "icon-long-arrow-right"
                                 })
@@ -942,7 +962,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("span", { staticClass: "wishlist-txt" }, [
-                      _vm._v("Wishlist")
+                      _vm._v(_vm._s(_vm.$t("wishlist")))
                     ])
                   ]
                 ),
@@ -972,7 +992,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("span", { staticClass: "cart-txt" }, [
-                          _vm._v("Cart")
+                          _vm._v(" " + _vm._s(_vm.$t("cart")) + "  ")
                         ])
                       ]
                     ),
@@ -1007,7 +1027,7 @@ var render = function() {
                                     1
                                   ),
                                   _vm._v(" "),
-                                  _vm._m(3)
+                                  _vm._m(2)
                                 ]
                               ),
                               _vm._v(" "),
@@ -1025,7 +1045,7 @@ var render = function() {
                                       _c("img", {
                                         attrs: {
                                           src:
-                                            "assets/images/products/cart/product-1.jpg",
+                                            "/assets/images/products/cart/product-1.jpg",
                                           alt: "product"
                                         }
                                       })
@@ -1072,7 +1092,7 @@ var render = function() {
                                     1
                                   ),
                                   _vm._v(" "),
-                                  _vm._m(4)
+                                  _vm._m(3)
                                 ]
                               ),
                               _vm._v(" "),
@@ -1090,7 +1110,7 @@ var render = function() {
                                       _c("img", {
                                         attrs: {
                                           src:
-                                            "assets/images/products/cart/product-2.jpg",
+                                            "/assets/images/products/cart/product-2.jpg",
                                           alt: "product"
                                         }
                                       })
@@ -1113,7 +1133,7 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _vm._m(5),
+                        _vm._m(4),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -1177,7 +1197,7 @@ var render = function() {
             [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-body" }, [
-                  _vm._m(6),
+                  _vm._m(5),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-box" }, [
                     _c("div", { staticClass: "form-tab" }, [
@@ -1255,17 +1275,17 @@ var render = function() {
                             },
                             [
                               _c("form", { attrs: { action: "#" } }, [
-                                _vm._m(7),
+                                _vm._m(6),
                                 _vm._v(" "),
-                                _vm._m(8),
+                                _vm._m(7),
                                 _vm._v(" "),
                                 _c(
                                   "div",
                                   { staticClass: "form-footer" },
                                   [
-                                    _vm._m(9),
+                                    _vm._m(8),
                                     _vm._v(" "),
-                                    _vm._m(10),
+                                    _vm._m(9),
                                     _vm._v(" "),
                                     _c(
                                       "router-link",
@@ -1348,12 +1368,12 @@ var render = function() {
                             },
                             [
                               _c("form", { attrs: { action: "#" } }, [
+                                _vm._m(10),
+                                _vm._v(" "),
                                 _vm._m(11),
                                 _vm._v(" "),
-                                _vm._m(12),
-                                _vm._v(" "),
                                 _c("div", { staticClass: "form-footer" }, [
-                                  _vm._m(13),
+                                  _vm._m(12),
                                   _vm._v(" "),
                                   _c(
                                     "div",
@@ -1465,16 +1485,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "login" }, [
-      _c("a", { attrs: { href: "#signin-modal", "data-toggle": "modal" } }, [
-        _vm._v("Sign in / Sign up")
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

@@ -24,9 +24,27 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="theme-color" content="#ffffff">
          <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/assets/vendor/line-awesome/css/line-awesome.min.css">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/css/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/plugins/jquery.countdown.css">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/skins/skin-demo-13.css">
+    <link rel="stylesheet" href="/assets/css/typo.css">
+    <link rel="stylesheet" href="/assets/css/plugins/nouislider/nouislider.css">
 
-        <link rel="stylesheet" href="{{ asset('css/main-app.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/blue.css') }}">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/css/plugins/magnific-popup/magnific-popup.css">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/plugins/nouislider/nouislider.css">
+    {{-- <link rel="stylesheet" href="{{ asset('css/main-app.min.css') }}"> --}}
+    <link rel="stylesheet" href="/css/green.css">
 </head>
 
 <body>
@@ -36,15 +54,31 @@
           <mobile-footer></mobile-footer>
     </div>
 
-    <script src="{{mix('js/app.js')}}" defer></script>
-    <script src="{{asset('js/template-cachable.js')}}"></script>
 
-    <script >
+    {{-- <script >
        if ('serviceWorker' in navigator) {
            navigator.serviceWorker.register('/sw.js')
        }else{
            console.log('Failed to register');
        }
-    </script>
+    </script> --}}
+
+    <!-- Plugins JS File -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/jquery.hoverIntent.min.js"></script>
+    <script src="/assets/js/jquery.waypoints.min.js"></script>
+    <script src="/assets/js/superfish.min.js"></script>
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/bootstrap-input-spinner.js"></script>
+    <script src="/assets/js/jquery.elevateZoom.min.js"></script>
+    <script src="/assets/js/bootstrap-input-spinner.js"></script>
+    <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Main JS File -->
+    <script src="/assets/js/main.js"></script>
+    {{-- <script src="{{asset('js/template-cachable.js')}}"></script> --}}
+
+    <script src="{{mix('js/app.js')}}" defer></script>
+
 </body>
 </html>

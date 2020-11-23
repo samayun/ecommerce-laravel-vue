@@ -6,7 +6,9 @@ export default {
         locale: selectedLocale,
         theme:{
             type: 'dark'
-        }
+        },
+        layout: "four",
+        layout_type: "four"
     },
     getters:{
         getTheme : state => {
@@ -15,7 +17,31 @@ export default {
             }
             return state.theme.type;
         },
-        getIsDark : state => state.theme.type == 'dark'
+        getIsDark : state => state.theme.type == 'dark',
+        getLayout : state => {
+            if (localStorage.getItem('layout')) {
+                let type = localStorage.getItem('layout');
+                if (type == 'four') {
+                    state.layout =  "col-6 col-md-4 col-lg-4 col-xl-3";
+                    state.layout_type = "four"
+                 }
+                 else if(type == "three"){
+                    state.layout =  "col-6 col-md-4 col-lg-4";
+                    state.layout_type = "three";
+                 }
+                 else if(type == "two"){
+                        state.layout =  "col-6";
+                        state.layout_type = "two"
+                 }
+                 else {
+                    state.layout =  "list";
+                    state.layout_type = "list"
+                 }
+                 return state.layout
+            }
+            state.layout_type = "four"
+            return state.layout = "four";
+        }
     },
     actions: {
         changeLocale({ commit }, newLocale) {
@@ -36,6 +62,10 @@ export default {
             }
             localStorage.setItem('theme',state.theme.type);
             return localStorage.getItem('theme')
+        },
+        SET_LAYOUT(state, type){
+            state.layout = type
+            localStorage.setItem('layout', type);
         }
     },
     plugins: [createPersistedState()]

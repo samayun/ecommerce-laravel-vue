@@ -63,7 +63,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a onclick="event.preventDefault()" href="assets/popup/quickView.html" class="btn-product-icon btn-quickview  btn-expandable" title="Quick view"><span>Quick view</span></a>
+                            <a onclick="event.preventDefault()" href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview  btn-expandable" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -102,7 +102,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -144,7 +144,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -185,7 +185,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -229,7 +229,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -265,7 +265,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -327,7 +327,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -368,7 +368,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -407,7 +407,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -443,13 +443,13 @@
                     <figure class="product-media">
                         <span class="product-label label-sale">Sale</span>
                         <a href="product.html">
-                            <img src="/storage//products/product-3.jpg" alt="Product image" class="product-image">
+                            <img src="/storage/products/default.png" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -485,7 +485,7 @@
                         <span class="product-label label-top">Top</span>
                         <span class="product-label label-sale">Sale</span>
                         <a href="product.html">
-                            <img src="/storage//products/product-5.jpg" alt="Product image" class="product-image">
+                            <img src="/storage/products/default.png" alt="Product image" class="product-image">
                         </a>
 
                         <div class="product-countdown" data-until="+7h" data-format="HMS" data-relative="true" data-labels-short="true"></div><!-- End .product-countdown -->
@@ -493,7 +493,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -556,7 +556,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -600,7 +600,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -636,7 +636,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -671,7 +671,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -712,7 +712,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -751,7 +751,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -820,7 +820,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -856,7 +856,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -897,7 +897,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -941,7 +941,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -1010,7 +1010,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -1045,7 +1045,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -1084,7 +1084,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -1120,7 +1120,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
@@ -1161,7 +1161,7 @@
                         <div class="product-action-vertical">
                             <a href="/product/2" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
                             <a href="/product/2" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                            <a href="assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
+                            <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
                         </div><!-- End .product-action-vertical -->
 
                         <div class="product-action">
