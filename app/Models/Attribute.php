@@ -18,6 +18,11 @@ class Attribute extends Model
     {
         return $this->belongsTo('App\Models\Attribute', 'parent_id');
     }
+    public function products()
+    {
+        return $this->hasMany('App\Models\ProductAttribute');
+    }
+
     public function setNameAttribute($value){
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = \Str::slug($value);

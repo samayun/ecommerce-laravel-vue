@@ -1,14 +1,14 @@
 import axios from 'axios';
-import createPersistedState from 'vuex-persistedstate'
 
 export default {
     state: {
-       categories:[],
-       nested_categories:[],
-       category: {}
+        categories: [],
+        nested_categories: [],
+        category: {},
+        filter:{ category : "" }
     },
     actions: {
-        async getCategories({commit}) {
+        async getCategories({ commit }) {
             try {
                 let res = await axios.get('/api/categories');
                 commit('FETCH_CATEGORIES', res.data.data);
@@ -16,9 +16,12 @@ export default {
 
             }
         },
-        async getCategoryBySlug({commit},slug) {
+        async getCategoryBySlug({state, commit }, slug) {
             try {
-                let res = await axios.get(`/api/category/${slug}`);
+
+                let res = await axios.get(`/api/category/${slug}`, {
+                    params: { filter : state.filter.category }
+                });
                 commit('FETCH_CATEGORY', res.data);
             } catch (error) {
                 if (error.response.status == 404) {
@@ -26,9 +29,8 @@ export default {
                 }
             }
         },
-        async getCategoriesSubcategories({commit}) {
+        async getCategoriesSubcategories({ commit }) {
             try {
-
                 let res = await axios.get(`/api/categoriesSubcategories`);
                 commit('FETCH_CATEGORIES_SUBCATEGORIES', res.data.data);
             } catch (error) {
@@ -37,16 +39,15 @@ export default {
         },
     },
     mutations: {
-        FETCH_CATEGORIES(state,payload) {
+        FETCH_CATEGORIES(state, payload) {
             state.categories = payload;
         },
-        FETCH_CATEGORIES_SUBCATEGORIES(state,payload) {
+        FETCH_CATEGORIES_SUBCATEGORIES(state, payload) {
             state.nested_categories = payload;
         },
-        FETCH_CATEGORY(state , payload){
+        FETCH_CATEGORY(state, payload) {
             state.category = payload;
         }
-    },
-    plugins: [createPersistedState()]
+    }
 
 };

@@ -8,9 +8,11 @@ export default {
 
         }
     },
-    async getBrand({commit},slug){
+    async getBrand({state,commit},slug){
         try {
-            let res = await axios.get(`/api/brands/${slug}`);
+            let res = await axios.get(`/api/brands/${slug}`, {
+                params: { filter : state.filter.brand }
+            });
             commit("FETCH_BRAND", res.data);
         } catch (error) {
             console.log(error);

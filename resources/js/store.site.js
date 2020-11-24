@@ -4,12 +4,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 // import axios from "axios";
-
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex);
 // load modules
 import modules from './modules.site';
 
 export default new Vuex.Store({
-    modules
+    modules,
+    // plugins: [createPersistedState()]
 });

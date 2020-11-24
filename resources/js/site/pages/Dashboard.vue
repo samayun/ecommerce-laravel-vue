@@ -1,13 +1,20 @@
 <template>
-<div>
-  <!-- <PopularCategories/> -->
-  <!-- <HotDealProducts/> -->
-  <!-- <CategoriesProducts
-        v-for="category in categories"
-        :key="category.id"
-        :category="category"
-  /> -->
-<ShopByBrands/>
+<div class="container">
+    <div class="row">
+
+    <!-- <HotDealProducts/> -->
+    <!-- <CategoriesProducts
+            v-for="category in categories"
+            :key="category.id"
+            :category="category"
+    /> -->
+
+        <MultipleFilter />
+        <div class="col-9">
+            <PopularCategories/>
+            <ShopByBrands/>
+        </div>
+    </div>
 </div>
 </template>
 <script>

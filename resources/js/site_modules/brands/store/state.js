@@ -1,4 +1,5 @@
 export default {
   brands: [],
-  brand:{}
+  brand:{},
+  filter:{ brand : "" }
 }

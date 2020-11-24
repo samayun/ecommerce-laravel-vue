@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('test', 'test');
 Route::group(['prefix' => 'api'], function () {
+    Route::get('/attributes',  [ProductController::class, 'attributes']);
+    Route::get('/sizes',  [ProductController::class, 'sizes']);
+    Route::get('/colours',  [ProductController::class, 'colours']);
     Route::get('/products',  [ProductController::class, 'products']);
 
     Route::get('/product/{slug}',  [ProductController::class, 'show']);

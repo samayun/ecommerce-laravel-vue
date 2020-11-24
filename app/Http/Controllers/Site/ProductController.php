@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
+use App\Models\Attribute;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -15,20 +17,33 @@ class ProductController extends Controller
 {
     public function products(Request $request)
     {
-      $products = Product::multipleFilter($request)->paginate(5);
-       return ProductResource::collection($products);
+
+        if ($request->filter) {
+            if ($request->filter == 'low_high') {
+                $products =  Product::orderBy('price', 'asc')->paginate();
+            }
+            if ($request->filter == 'high_low') {
+                $products =  Product::orderBy('price', 'desc')->paginate();
+            }
+
+            return ProductResource::collection($products);
+        }
+        $products = Product::multipleFilter($request)->filter($request);
+        return ProductResource::collection($products);
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function categoryProducts($categorySlug)
+    public function categoryProducts(Request $request , $categorySlug)
     {
-        return Cache::remember('singleCategoryProducts.'.$categorySlug, now()->addMinutes(120),function () use($categorySlug)
-        {
-          return Category::with('products')->with('category')->where('slug' ,$categorySlug)->firstOrFail();
-        });
+
+        // return Cache::remember('singleCategory.'.$categorySlug.$request->filter, now()->addMinutes(120), function () use ($categorySlug, $request) {
+            return Category::with(['products' => function ($q) use ($request) {
+                $q->priceFilter($request);
+            }])->withCount('products')->with('category')->where('slug', $categorySlug)->firstOrFail();
+        // });
     }
 
     /**
@@ -38,14 +53,43 @@ class ProductController extends Controller
      */
     public function categories()
     {
-        return Cache::remember('categoriesSubcategories', now()->addMinutes(120),function ()
-        {
-            return CategoryResource::collection(Category::where('parent_id',1)->with('products')->where('id','!=',1)->with('subcategories')->latest()->get());
+        return Cache::remember('categoriesSubcategories', now()->addMinutes(120), function () {
+            return CategoryResource::collection(Category::where('parent_id', 1)->withCount('products')->with('products')->where('id', '!=', 1)->with('subcategories')->latest()->get());
         });
     }
+
+    public function attributes()
+    {
+        return Cache::remember('attributes', now()->addMinutes(120), function () {
+            $sizesWithCountProduct = Attribute::whereNotNull('parent_id')->whereHas('value', function ($q) {
+                $q->where('slug', 'size');
+            })->withCount('products')->get();
+
+            $coloursWithCountProduct = Attribute::whereNotNull('parent_id')->whereHas('value', function ($q) {
+                $q->where('slug', 'color');
+            })->withCount('products')->get();
+            return response()->json([
+                'sizes' => $sizesWithCountProduct,
+                'colours' => $coloursWithCountProduct
+            ], 200);
+        });
+    }
+    public function sizes()
+    {
+        return Attribute::whereNotNull('parent_id')->whereHas('value', function ($q) {
+            $q->where('slug', 'size');
+        })->withCount('products')->get();
+    }
+    public function colours()
+    {
+        return Attribute::whereNotNull('parent_id')->whereHas('value', function ($q) {
+            $q->where('slug', 'color');
+        })->withCount('products')->get();
+    }
+
     public function ShopByBrands()
     {
-        return Brand::latest()->get();
+        return Brand::withCount('products')->latest()->get();
 
         // return Cache::remember('ShopByBrands', now()->addMinutes(120),function (){
         //     return Brand::latest()->get();
@@ -54,17 +98,17 @@ class ProductController extends Controller
     public function SingleBrand(Request $request, $slug)
     {
 
-    //   return Cache::remember('brand.'.$slug, now()->addMinute(60), function () use($slug) {
-        return Brand::where('slug',$slug)->with(['products' => function($q) use($request){
-            $q->filter($request);
+        //   return Cache::remember('brand.'.$slug.".".$request->filter, now()->addMinute(60), function () use($slug) {
+        return Brand::where('slug', $slug)->with(['products' => function ($q) use ($request) {
+            $q->priceFilter($request);
         }])->withCount('products')->firstOrFail();
-    //   });
+        //   });
     }
     public function index()
     {
-        return Cache::remember('categories', now()->addMinutes(120),function ()
-        {
-            return CategoryResource::collection(Category::where('id','!=',1)->take(6)->get());
+
+        return Cache::remember('categories', now()->addMinutes(120), function () {
+            return CategoryResource::collection(Category::where('id', '!=', 1)->take(6)->get());
         });
     }
 
@@ -87,10 +131,10 @@ class ProductController extends Controller
      */
     public function show($slug)
     {
-        $product = Product::where('slug' ,$slug)->firstOrFail();
-        $KEY = 'product.'.$slug;
-        if($product){
-            return Cache::remember($KEY, now()->addMinutes(120), function () use($product) {
+        $product = Product::where('slug', $slug)->firstOrFail();
+        $KEY = 'product.' . $slug;
+        if ($product) {
+            return Cache::remember($KEY, now()->addMinutes(120), function () use ($product) {
                 return new ProductResource($product);
             });
         }
