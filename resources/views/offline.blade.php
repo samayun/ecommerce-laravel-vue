@@ -10,8 +10,8 @@
         <meta name="description" content={{ env('APP_NAME') }}>
         <meta name="author" content="Samayun-Chy">
 
-        <link rel="stylesheet" href="{{ mix('css/main-app.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/blue.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/main-app.min.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('css/blue.css') }}"> --}}
         <link rel="stylesheet" href="{{ asset('css/yellow.css') }}">
         {{-- <link rel="stylesheet" href="{{ asset('css/green.css') }}"> --}}
 
@@ -23,6 +23,6 @@
             <h2> Sorry You are offline </h2>
         </div>
     </div>
-    <script src="{{mix('js/template-cachable.js')}}"></script>
+    <script src="{{asset('js/template-cachable.js')}}"></script>
 </body>
 </html>

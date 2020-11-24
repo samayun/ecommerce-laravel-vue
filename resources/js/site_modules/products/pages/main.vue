@@ -7,12 +7,12 @@
                     <div class="product-gallery product-gallery-vertical">
                         <div class="row">
                             <figure class="product-main-image">
-                                <img id="product-zoom" :src="product.image" :data-zoom-image="product.image" alt="product image">
-
+                                <vueMagnifier :small-img="product.image" :big-img="product.image"></vueMagnifier>
                                 <a href="#" id="btn-product-gallery" class="btn-product-gallery">
                                     <i class="icon-arrows"></i>
                                 </a>
                             </figure>
+
                             <div id="product-zoom-gallery" class="product-image-gallery">
                                 <a class="product-gallery-item"
                                     v-for="img in product.images"
@@ -229,6 +229,7 @@ export default {
      if (this.product.slug != slug) {
         this.getProduct(slug);
      }
+     this.$awn.success('Your custom message')
  }
 }
 </script>

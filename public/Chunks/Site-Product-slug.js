@@ -243,6 +243,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     if (this.product.slug != slug) {
       this.getProduct(slug);
     }
+
+    this.$awn.success('Your custom message');
   }
 });
 
@@ -292,18 +294,21 @@ var render = function() {
               { staticClass: "product-gallery product-gallery-vertical" },
               [
                 _c("div", { staticClass: "row" }, [
-                  _c("figure", { staticClass: "product-main-image" }, [
-                    _c("img", {
-                      attrs: {
-                        id: "product-zoom",
-                        src: _vm.product.image,
-                        "data-zoom-image": _vm.product.image,
-                        alt: "product image"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm._m(0)
-                  ]),
+                  _c(
+                    "figure",
+                    { staticClass: "product-main-image" },
+                    [
+                      _c("vueMagnifier", {
+                        attrs: {
+                          "small-img": _vm.product.image,
+                          "big-img": _vm.product.image
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(0)
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c(
                     "div",

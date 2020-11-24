@@ -127,11 +127,12 @@
 
             <div class="products mb-3">
               <div class="row justify-content-center">
-                <Product
-                  v-for="pro in brand.products"
-                  :key="pro.id"
-                  :product="pro"
-                />
+
+                    <Product
+                    v-for="pro in brand.products"
+                    :key="pro.id"
+                    :product="pro"
+                    />
               </div>
               <!-- End .row -->
             </div>
@@ -187,10 +188,11 @@
 import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
 import Product from "../components/Product";
 
+
 export default {
   name: "ProductsByBrand",
   components: {
-    Product,
+    Product
   },
   computed: {
     ...mapState("brandsStoreIndex", ["brand", "filter"]),

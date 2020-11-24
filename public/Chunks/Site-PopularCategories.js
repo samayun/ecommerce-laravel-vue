@@ -41,6 +41,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PopularCategories",
@@ -73,45 +100,66 @@ var render = function() {
   return _c("span", [
     _c("div", { staticClass: "container" }, [
       _c("h2", { staticClass: "title text-center mb-2" }, [
-        _vm._v(" " + _vm._s(_vm.$t("explorePopularCategories")) + " ")
+        _vm._v(
+          "\n      " + _vm._s(_vm.$t("explorePopularCategories")) + "\n    "
+        )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "cat-blocks-container" }, [
-        _c(
-          "div",
-          { staticClass: "row" },
-          _vm._l(_vm.categories, function(category) {
-            return _c(
-              "div",
-              { key: category.id, staticClass: "col-6 col-sm-4 col-lg-2" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "cat-block",
-                    attrs: { to: "/category/" + category.slug }
-                  },
-                  [
-                    _c("figure", [
-                      _c("span", [
-                        _c("img", {
-                          attrs: { src: category.icon, alt: category.name }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("h3", { staticClass: "cat-block-title" }, [
-                      _vm._v(" " + _vm._s(category.name) + " ")
-                    ])
-                  ]
-                )
-              ],
-              1
-            )
-          }),
-          0
-        )
-      ])
+      _c(
+        "div",
+        { staticClass: "cat-blocks-container" },
+        [
+          _c(
+            "carousel",
+            {
+              staticClass: "d-flex",
+              attrs: {
+                autoplay: true,
+                nav: false,
+                items: 6,
+                lazyLoad: true,
+                lazyLoadEager: 3,
+                loop: true,
+                margin: 10,
+                dots: true,
+                responsive: {
+                  0: { items: 2 },
+                  480: { items: 2 },
+                  768: { items: 3 },
+                  992: { items: 4, nav: false },
+                  1280: { items: 6, nav: false }
+                }
+              }
+            },
+            _vm._l(_vm.categories, function(category) {
+              return _c(
+                "router-link",
+                {
+                  key: category.id,
+                  attrs: { to: "/category/" + category.slug }
+                },
+                [
+                  _c("img", {
+                    staticClass: "owl-lazy",
+                    attrs: {
+                      "data-src": category.icon,
+                      src: category.icon,
+                      "data-src-retina": "/storage/products/default.png",
+                      alt: category.name
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("h3", { staticClass: "cat-block-title" }, [
+                    _vm._v(_vm._s(category.name))
+                  ])
+                ]
+              )
+            }),
+            1
+          )
+        ],
+        1
+      )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "mb-2" })

@@ -26,14 +26,19 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.1",
+        "@zeitiger/elevatezoom": "^2.5.4",
         "admin-lte": "^3.0.5",
         "moment": "^2.29.1",
         "vform": "^1.0.1",
         "view-design": "^4.4.0-rc.4",
+        "vue-awesome-notifications": "^3.1.1",
         "vue-i18n": "^8.22.1",
+        "vue-magnifier": "^1.0.6",
+        "vue-owl-carousel": "^2.0.3",
         "vue-router": "^3.4.6",
         "vue-types": "^2.0.2",
         "vuex": "^3.5.1",
+        "vuex-extensions": "^1.1.5",
         "vuex-persistedstate": "^4.0.0-beta.1"
     }
 }

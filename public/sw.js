@@ -5,8 +5,10 @@ var filesToCache = [
     '/css/blue.css',
     '/css/green.css',
     '/css/yellow.css',
-    '/js/template-cachable.js',
-    '/js/app.js'
+    // '/js/template-cachable.js',
+    '/js/app.js',
+    '/storage/site/logo.png',
+    '/offline'
 ];
 
 // Cache on install

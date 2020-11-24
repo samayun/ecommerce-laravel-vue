@@ -11,7 +11,8 @@ export default {
         async getCategories({ commit }) {
             try {
                 let res = await axios.get('/api/categories');
-                commit('FETCH_CATEGORIES', res.data.data);
+                commit('changeState', { categories : res.data.data });
+                // commit('FETCH_CATEGORIES', res.data.data);
             } catch (error) {
 
             }
@@ -22,7 +23,8 @@ export default {
                 let res = await axios.get(`/api/category/${slug}`, {
                     params: { filter : state.filter.category }
                 });
-                commit('FETCH_CATEGORY', res.data);
+                // commit('FETCH_CATEGORY', res.data);
+                commit('changeState', { category : res.data });
             } catch (error) {
                 if (error.response.status == 404) {
                     $Bus.$emit('404')
@@ -32,22 +34,12 @@ export default {
         async getCategoriesSubcategories({ commit }) {
             try {
                 let res = await axios.get(`/api/categoriesSubcategories`);
-                commit('FETCH_CATEGORIES_SUBCATEGORIES', res.data.data);
+                // commit('FETCH_CATEGORIES_SUBCATEGORIES', res.data.data);
+                commit('changeState', { nested_categories : res.data.data });
             } catch (error) {
 
             }
         },
-    },
-    mutations: {
-        FETCH_CATEGORIES(state, payload) {
-            state.categories = payload;
-        },
-        FETCH_CATEGORIES_SUBCATEGORIES(state, payload) {
-            state.nested_categories = payload;
-        },
-        FETCH_CATEGORY(state, payload) {
-            state.category = payload;
-        }
     }
 
 };

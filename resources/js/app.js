@@ -11,6 +11,21 @@ window.$Bus = new Vue() // EventBus Service for communicating component via comp
 
 // window.$Notice = Notice // Toast Notification . alternative sweetalert2 . I`ll use IViewUI
 // Vue.use(ViewUI, { locale });
+import VueAWN from "vue-awesome-notifications";
+import 'vue-awesome-notifications/dist/styles/style.css';
+// import 'vue-owl-carousel/dist/vue-owl-carousel';
+import vueMagnifier from 'vue-magnifier';
+
+let options = {
+    durations : {
+        global: 3000,
+        success: 1000,
+    }
+}
+
+Vue.use(VueAWN);
+Vue.use(vueMagnifier)
+
 
 
 import router from './router.site'
@@ -21,7 +36,10 @@ import store from './store.site';
 Vue.component('main-app', require('./site/comonents/MainApp.vue').default);
 Vue.component('MultipleFilter', require('./site/comonents/Filter/MultipleFilter.vue').default);
 Vue.component('SortingToolBox', require('./site/comonents/Filter/SortingToolBox.vue').default);
-
+require('owl.carousel/dist/owl.carousel.min.js');
+import 'owl.carousel/dist/assets/owl.carousel.min.css';
+// Vue.component('carousel', require('vue-owl-carousel/src/Carousel.vue').default);
+Vue.component('carousel', require('vue-owl-carousel'));
 Vue.component('mobile-menu', require('./site/comonents/MobileMenu.vue').default);
 Vue.component('mobile-footer', require('./site/comonents/MobileFooter.vue').default);
 
