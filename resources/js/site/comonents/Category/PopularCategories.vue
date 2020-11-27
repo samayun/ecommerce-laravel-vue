@@ -1,6 +1,5 @@
 <template>
-  <span>
-    <div class="container">
+    <div class="container mb-2">
       <h2 class="title text-center mb-2">
         {{ $t("explorePopularCategories") }}
       </h2>
@@ -20,16 +19,17 @@
           class="d-flex"
           :responsive="{
             0: { items: 2 },
-            480: { items: 2 },
-            768: { items: 3 },
-            992: { items: 4, nav: false },
-            1280: { items: 6, nav: false },
+            420: { items: 3 },
+            600: { items: 4 },
+            900: { items: 5, nav: false },
+            1024: { items: 6, nav: false },
           }"
         >
           <!-- <div > -->
             <router-link :to="'/category/' + category.slug" v-for="category in categories" :key="category.id">
               <img
-                class="owl-lazy"
+                class="owl-lazy img-thumbnail img-circle"
+                style="height:130px;"
                 :data-src="category.icon"
                 :src="category.icon"
                 data-src-retina="/storage/products/default.png"
@@ -45,10 +45,6 @@
       </div>
       <!-- End .cat-blocks-container -->
     </div>
-    <!-- End .container -->
-    <div class="mb-2"></div>
-    <!-- End .mb-2 -->
-  </span>
 </template>
 <script>
 import { mapActions, mapState } from "vuex";
@@ -67,3 +63,8 @@ export default {
   },
 };
 </script>
+<style lang="css">
+ .owl-carousel.owl-loaded {
+	display: flex;
+}
+</style>

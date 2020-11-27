@@ -1,23 +1,23 @@
 export default {
-    async getProduct({commit},slug){
+    async getProduct({ commit }, slug) {
         try {
             let res = await axios.get(`/api/product/${slug}`);
-            // commit('SET_PRODUCT',res.data.data)
             commit('changeState', {
-                product : res.data.data
+                product: res.data.data
             })
         } catch (error) {
             console.log('error', error);
         }
     },
-    async getProducts({commit},slug){
+    async getProducts({ state, commit }) {
         try {
-            let res = await axios.get(`/api/products`);
-            commit('changeState', {
-                products : res.data.data
-            })
+            let params = state.filter.product ?  {
+                filter: state.filter.product
+            }: null;
+            let res = await axios.get(`/api/products`, {params});
+            commit('changeState', { products: res.data.data, meta: res.data.meta });
         } catch (error) {
             console.log('error', error);
         }
-    },
+    }
 }

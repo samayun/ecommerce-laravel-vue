@@ -35,6 +35,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -49,6 +51,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     ShopByBrands: function ShopByBrands() {
       return __webpack_require__.e(/*! import() | Chunks/Site-ShopByBrands */ "Chunks/Site-ShopByBrands").then(__webpack_require__.bind(null, /*! ../comonents/Brand/ShopByBrands */ "./resources/js/site/comonents/Brand/ShopByBrands.vue"));
+    },
+    Products: function Products() {
+      return __webpack_require__.e(/*! import() | Chunks/Site-Products */ "Chunks/Site-Products").then(__webpack_require__.bind(null, /*! ../comonents/Product/Products */ "./resources/js/site/comonents/Product/Products.vue"));
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("categoriesStoreIndex", ["categories"]))
@@ -71,23 +76,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticClass: "row" },
-      [
-        _c("MultipleFilter"),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-9" },
-          [_c("PopularCategories"), _vm._v(" "), _c("ShopByBrands")],
-          1
-        )
-      ],
-      1
-    )
-  ])
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c(
+        "div",
+        { staticClass: "row" },
+        [
+          _c("MultipleFilter"),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-9" },
+            [
+              _c("PopularCategories"),
+              _vm._v(" "),
+              _c("ShopByBrands"),
+              _vm._v(" "),
+              _c("Products")
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("HotDealProducts"),
+      _vm._v(" "),
+      _vm._l(_vm.categories, function(category) {
+        return _c("CategoriesProducts", {
+          key: category.id,
+          attrs: { category: category }
+        })
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

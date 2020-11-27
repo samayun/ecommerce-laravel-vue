@@ -1,4 +1,6 @@
 export default {
  products: [] ,
- product : {}
+ product : {},
+ meta:{},
+ filter:{ product : ""}
 }

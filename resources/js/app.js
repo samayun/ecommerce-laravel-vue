@@ -36,8 +36,11 @@ import store from './store.site';
 Vue.component('main-app', require('./site/comonents/MainApp.vue').default);
 Vue.component('MultipleFilter', require('./site/comonents/Filter/MultipleFilter.vue').default);
 Vue.component('SortingToolBox', require('./site/comonents/Filter/SortingToolBox.vue').default);
-require('owl.carousel/dist/owl.carousel.min.js');
-import 'owl.carousel/dist/assets/owl.carousel.min.css';
+// require('owl.carousel');
+// import 'owl.carousel/dist/assets/owl.carousel.min.css';
+// import 'owl.carousel/dist/assets/owl.theme.green.min.css';
+
+
 // Vue.component('carousel', require('vue-owl-carousel/src/Carousel.vue').default);
 Vue.component('carousel', require('vue-owl-carousel'));
 Vue.component('mobile-menu', require('./site/comonents/MobileMenu.vue').default);

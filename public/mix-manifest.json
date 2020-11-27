@@ -1,17 +1,18 @@
 {
-    "/js/app.js": "/js/app.js?id=91665e029a36ffddd735",
+    "/js/app.js": "/js/app.js?id=3c0658f1de61981d4fad",
     "/Chunks/404.site.js": "/Chunks/404.site.js?id=311ca637644da1fa43ed",
     "/Chunks/Main-App-Footer.js": "/Chunks/Main-App-Footer.js?id=55188f1ee313e59d1115",
-    "/Chunks/Main-App-Header.js": "/Chunks/Main-App-Header.js?id=566fe67c994073ba79be",
-    "/Chunks/Site-CategoriesProducts.js": "/Chunks/Site-CategoriesProducts.js?id=2122b483054810c799ca",
-    "/Chunks/Site-Category-slug.js": "/Chunks/Site-Category-slug.js?id=35bd6a8594d0d83d9762",
-    "/Chunks/Site-Dashboard.js": "/Chunks/Site-Dashboard.js?id=049ee1884fe38e34480d",
+    "/Chunks/Main-App-Header.js": "/Chunks/Main-App-Header.js?id=cb979081776f4ab91e18",
+    "/Chunks/Site-CategoriesProducts.js": "/Chunks/Site-CategoriesProducts.js?id=f77b5b0547b8e9b0404e",
+    "/Chunks/Site-Category-slug.js": "/Chunks/Site-Category-slug.js?id=0ae960e4d958799ed8c8",
+    "/Chunks/Site-Dashboard.js": "/Chunks/Site-Dashboard.js?id=5fe8fd0d863a0cbd1c14",
     "/Chunks/Site-Home.js": "/Chunks/Site-Home.js?id=3d0f83f676496f2efdda",
     "/Chunks/Site-HotDealProducts.js": "/Chunks/Site-HotDealProducts.js?id=b7fae691e901fd028947",
     "/Chunks/Site-Login.js": "/Chunks/Site-Login.js?id=90cc68c1e6132d9f7cda",
-    "/Chunks/Site-PopularCategories.js": "/Chunks/Site-PopularCategories.js?id=7f17b17d8b63e3a78670",
+    "/Chunks/Site-PopularCategories.js": "/Chunks/Site-PopularCategories.js?id=4bd67c0993cf417d1be9",
     "/Chunks/Site-Product-slug.js": "/Chunks/Site-Product-slug.js?id=cf734555255df5832408",
-    "/Chunks/Site-ProductsByBrand-slug.js": "/Chunks/Site-ProductsByBrand-slug.js?id=95764b402c81279ca7ce",
+    "/Chunks/Site-Products.js": "/Chunks/Site-Products.js?id=ec196ae5baee4b0e14d7",
+    "/Chunks/Site-ProductsByBrand-slug.js": "/Chunks/Site-ProductsByBrand-slug.js?id=e4c153bb56359339644b",
     "/Chunks/Site-Settings.js": "/Chunks/Site-Settings.js?id=558b51199181f4d34a2c",
-    "/Chunks/Site-ShopByBrands.js": "/Chunks/Site-ShopByBrands.js?id=8e2d83bcee1e676bed4a"
+    "/Chunks/Site-ShopByBrands.js": "/Chunks/Site-ShopByBrands.js?id=bbbb4e320350843f7b9f"
 }

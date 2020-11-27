@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PhpParser\Node\Expr\Cast\Array_;
 use Str;
 
 class Product extends Model
@@ -46,9 +47,52 @@ class Product extends Model
     }
     public function scopeMultipleFilter($query, $request)
     {
+        $categories = preg_replace("/^\[|]/", "", $request->categories);
+        $brands   = preg_replace("/^\[|]/", "", $request->brands);
+        $sizes    = preg_replace("/^\[|]/", "", $request->sizes);
+        $colours    = preg_replace("/^\[|]/", "", $request->colours);
+        $prices   = explode('-', $request->input('prices'));
+
+        return
+            $query
+            ->when($brands != "", function ($query) use ($brands) {
+                $query->where('brand_id', [$brands]);
+            })
+            ->when($categories != "", function ($query) use ($categories) {
+                $query->whereHas('categories', function ($q) use ($categories) {
+                    $q->whereIn('category_id', [$categories]);
+                });
+            })
+            ->when($request->has('sizes'), function ($query) use ($sizes) {
+                $query->whereHas('attributes', function ($q) use ($sizes) {
+                    //  $q->whereIn('attribute_id', $sizes);
+                    $q->whereHas('attribute', function ($q) use ($sizes) {
+                        // dd([$sizes]);
+                        $q->whereIn('slug', [$sizes]);
+                    });
+                });
+            })
+            ->when($request->has('colours'), function ($query) use ($colours) {
+                $query->whereHas('attributes', function ($q) use ($colours) {
+                    //  $q->whereIn('attribute_id', $sizes);
+                    $q->whereHas('attribute', function ($q) use ($colours) {
+                        // dd([$sizes]);
+                        $q->whereIn('slug', [$colours]);
+                    });
+                });
+            })
+            ->when($request->has('prices'), function ($query) use ($prices) {
+                $start = $prices[0];
+                $end = $prices[1];
+                $query->orWhereBetween('price', [$start, $end]);
+            });
+    }
+
+    public function scopePrevMultipleFilter($query, $request)
+    {
         $categories = explode(',', $request->categories);
         $brands     = explode(',', $request->brands);
-        $sizes     = explode(',', $request->sizes);
+        $sizes      = explode(',', $request->sizes);
         $prices     = explode('-', $request->input('prices'));
 
 

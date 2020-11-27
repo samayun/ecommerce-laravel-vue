@@ -13,11 +13,16 @@ use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
+use function PHPUnit\Framework\isNull;
+
 class ProductController extends Controller
 {
     public function products(Request $request)
     {
-
+        if($request->all() == []){
+            $products = Product::latest()->filter($request);
+            return ProductResource::collection($products);
+        }
         if ($request->filter) {
             if ($request->filter == 'low_high') {
                 $products =  Product::orderBy('price', 'asc')->paginate();
@@ -25,9 +30,9 @@ class ProductController extends Controller
             if ($request->filter == 'high_low') {
                 $products =  Product::orderBy('price', 'desc')->paginate();
             }
-
             return ProductResource::collection($products);
         }
+
         $products = Product::multipleFilter($request)->filter($request);
         return ProductResource::collection($products);
     }

@@ -18,6 +18,7 @@
          <link rel="manifest" href="/manifest.json">
 
     
+    
     <link rel="stylesheet" href="<?php echo e(asset('css/main-app.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('css/green.css')); ?>">
 </head>

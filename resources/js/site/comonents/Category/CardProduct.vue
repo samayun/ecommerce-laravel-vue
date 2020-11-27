@@ -1,9 +1,9 @@
 <template>
-   <div class="product col-sm-6 col-md-4 col-lg-3">
+   <div class="product">
         <figure class="product-media">
             <!-- <span class="product-label label-sale">Sale</span> -->
              <router-link :to="'/product/'+product.slug">
-                <img :src="'/storage/products/'+product.image" :alt="product.name" class="product-image">
+                <img :src="'/storage/products/'+product.image" :alt="product.name" class="product-image" style="height: 160px;">
             </router-link>
 
             <div class="product-action-vertical">

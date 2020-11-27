@@ -683,268 +683,256 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "page-content" }, [
       _c("div", { staticClass: "container" }, [
-        _c(
-          "div",
-          { staticClass: "row" },
-          [
-            _c("div", { staticClass: "col-lg-9" }, [
-              _c("div", { staticClass: "toolbox" }, [
-                _c("div", { staticClass: "toolbox-left" }, [
-                  _c("div", { staticClass: "toolbox-info" }, [
-                    _vm._v("\n                Showing\n                "),
-                    _c("span", [
-                      _vm._v(
-                        "\n                  " +
-                          _vm._s(_vm.brand.products_count) +
-                          " of\n                  " +
-                          _vm._s(_vm.brand.products_count)
-                      )
-                    ]),
-                    _vm._v("\n                Products\n              ")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "toolbox-right" }, [
-                  _c("div", { staticClass: "toolbox-sort" }, [
-                    _c("label", { attrs: { for: "sortby" } }, [
-                      _vm._v("Sort by:")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "Select-custom" }, [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.filter.brand,
-                              expression: "filter.brand"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.filter,
-                                "brand",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c(
-                            "option",
-                            {
-                              attrs: { disabled: "", value: "", selected: "" }
-                            },
-                            [
-                              _vm._v(
-                                "\n                      Please Select one\n                    "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "low_high" } }, [
-                            _vm._v("Low To High Prices")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "high_low" } }, [
-                            _vm._v("High To Low prices")
-                          ])
-                        ]
-                      )
-                    ])
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c("div", { staticClass: "toolbox" }, [
+              _c("div", { staticClass: "toolbox-left" }, [
+                _c("div", { staticClass: "toolbox-info" }, [
+                  _vm._v("\n                Showing\n                "),
+                  _c("span", [
+                    _vm._v(
+                      "\n                  " +
+                        _vm._s(_vm.brand.products_count) +
+                        " of\n                  " +
+                        _vm._s(_vm.brand.products_count)
+                    )
+                  ]),
+                  _vm._v("\n                Products\n              ")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "toolbox-right" }, [
+                _c("div", { staticClass: "toolbox-sort" }, [
+                  _c("label", { attrs: { for: "sortby" } }, [
+                    _vm._v("Sort by:")
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "toolbox-layout" }, [
+                  _c("div", { staticClass: "Select-custom" }, [
                     _c(
-                      "a",
+                      "select",
                       {
-                        staticClass: "btn-layout",
-                        class: _vm.layout_type == "list" ? "active" : "",
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.filter.brand,
+                            expression: "filter.brand"
+                          }
+                        ],
+                        staticClass: "form-control",
                         on: {
-                          click: function($event) {
-                            return _vm.SET_LAYOUT("list")
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.filter,
+                              "brand",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
                           }
                         }
                       },
                       [
-                        _c("svg", { attrs: { width: "16", height: "10" } }, [
-                          _c("rect", {
-                            attrs: { x: "0", y: "0", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "6", y: "0", width: "10", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "0", y: "6", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "6", y: "6", width: "10", height: "4" }
-                          })
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn-layout",
-                        class: _vm.layout_type == "two" ? "active" : "",
-                        on: {
-                          click: function($event) {
-                            return _vm.SET_LAYOUT("two")
-                          }
-                        }
-                      },
-                      [
-                        _c("svg", { attrs: { width: "10", height: "10" } }, [
-                          _c("rect", {
-                            attrs: { x: "0", y: "0", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "6", y: "0", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "0", y: "6", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "6", y: "6", width: "4", height: "4" }
-                          })
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn-layout",
-                        class: _vm.layout_type == "three" ? "active" : "",
-                        on: {
-                          click: function($event) {
-                            return _vm.SET_LAYOUT("three")
-                          }
-                        }
-                      },
-                      [
-                        _c("svg", { attrs: { width: "16", height: "10" } }, [
-                          _c("rect", {
-                            attrs: { x: "0", y: "0", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "6", y: "0", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "12", y: "0", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "0", y: "6", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "6", y: "6", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "12", y: "6", width: "4", height: "4" }
-                          })
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn-layout",
-                        class: _vm.layout_type == "four" ? "active" : "",
-                        on: {
-                          click: function($event) {
-                            return _vm.SET_LAYOUT("four")
-                          }
-                        }
-                      },
-                      [
-                        _c("svg", { attrs: { width: "22", height: "10" } }, [
-                          _c("rect", {
-                            attrs: { x: "0", y: "0", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "6", y: "0", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "12", y: "0", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "18", y: "0", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "0", y: "6", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "6", y: "6", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "12", y: "6", width: "4", height: "4" }
-                          }),
-                          _vm._v(" "),
-                          _c("rect", {
-                            attrs: { x: "18", y: "6", width: "4", height: "4" }
-                          })
+                        _c(
+                          "option",
+                          { attrs: { disabled: "", value: "", selected: "" } },
+                          [
+                            _vm._v(
+                              "\n                      Please Select one\n                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "low_high" } }, [
+                          _vm._v("Low To High Prices")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "high_low" } }, [
+                          _vm._v("High To Low prices")
                         ])
                       ]
                     )
                   ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "toolbox-layout" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn-layout",
+                      class: _vm.layout_type == "list" ? "active" : "",
+                      on: {
+                        click: function($event) {
+                          return _vm.SET_LAYOUT("list")
+                        }
+                      }
+                    },
+                    [
+                      _c("svg", { attrs: { width: "16", height: "10" } }, [
+                        _c("rect", {
+                          attrs: { x: "0", y: "0", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "6", y: "0", width: "10", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "0", y: "6", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "6", y: "6", width: "10", height: "4" }
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn-layout",
+                      class: _vm.layout_type == "two" ? "active" : "",
+                      on: {
+                        click: function($event) {
+                          return _vm.SET_LAYOUT("two")
+                        }
+                      }
+                    },
+                    [
+                      _c("svg", { attrs: { width: "10", height: "10" } }, [
+                        _c("rect", {
+                          attrs: { x: "0", y: "0", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "6", y: "0", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "0", y: "6", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "6", y: "6", width: "4", height: "4" }
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn-layout",
+                      class: _vm.layout_type == "three" ? "active" : "",
+                      on: {
+                        click: function($event) {
+                          return _vm.SET_LAYOUT("three")
+                        }
+                      }
+                    },
+                    [
+                      _c("svg", { attrs: { width: "16", height: "10" } }, [
+                        _c("rect", {
+                          attrs: { x: "0", y: "0", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "6", y: "0", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "12", y: "0", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "0", y: "6", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "6", y: "6", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "12", y: "6", width: "4", height: "4" }
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn-layout",
+                      class: _vm.layout_type == "four" ? "active" : "",
+                      on: {
+                        click: function($event) {
+                          return _vm.SET_LAYOUT("four")
+                        }
+                      }
+                    },
+                    [
+                      _c("svg", { attrs: { width: "22", height: "10" } }, [
+                        _c("rect", {
+                          attrs: { x: "0", y: "0", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "6", y: "0", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "12", y: "0", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "18", y: "0", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "0", y: "6", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "6", y: "6", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "12", y: "6", width: "4", height: "4" }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          attrs: { x: "18", y: "6", width: "4", height: "4" }
+                        })
+                      ])
+                    ]
+                  )
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "products mb-3" }, [
-                _c(
-                  "div",
-                  { staticClass: "row justify-content-center" },
-                  _vm._l(_vm.brand.products, function(pro) {
-                    return _c("Product", {
-                      key: pro.id,
-                      attrs: { product: pro }
-                    })
-                  }),
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _vm._m(1)
+              ])
             ]),
             _vm._v(" "),
-            _c("MultipleFilter")
-          ],
-          1
-        )
+            _c("div", { staticClass: "products mb-3" }, [
+              _c(
+                "div",
+                { staticClass: "row justify-content-center" },
+                _vm._l(_vm.brand.products, function(pro) {
+                  return _c("Product", { key: pro.id, attrs: { product: pro } })
+                }),
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ])
       ])
     ])
   ])

@@ -49,36 +49,9 @@
             <nav class="main-nav">
                 <ul class="menu sf-arrows">
                     <li class="megamenu-container active">
-                        <router-link to="index.html" class="sf-with-ul">Home</router-link>
-
-                        <div class="megamenu demo">
-                        <div class="menu-col">
-                            <div class="menu-title">Choose your demo</div><!-- End .menu-title -->
-
-                            <div class="demo-list">
-                                <div class="demo-item">
-                                    <router-link to="index-1.html">
-                                        <span class="demo-bg" style="background-image: url(assets/images/menu/demos/1.jpg);"></span>
-                                        <span class="demo-title">01 - furniture store</span>
-                                    </router-link>
-                                </div><!-- End .demo-item -->
-
-
-                                <div class="demo-item hidden">
-                                    <router-link to="index-24.html">
-                                        <span class="demo-bg" style="background-image: url(assets/images/menu/demos/24.jpg);"></span>
-                                        <span class="demo-title">24 - extreme sport store</span>
-                                    </router-link>
-                                </div><!-- End .demo-item -->
-
-                            </div><!-- End .demo-list -->
-
-                            <div class="megamenu-action text-center">
-                                <router-link to="#" class="btn btn-outline-primary-2 view-all-demos"><span>View All Demos</span><i class="icon-long-arrow-right"></i></router-link>
-                            </div><!-- End .text-center -->
-                        </div><!-- End .menu-col -->
-                    </div><!-- End .megamenu -->
+                        <router-link to="/" class="sf-with-ul">Home</router-link>
                     </li>
+                    <!--
                     <li>
                         <router-link to="category.html" class="sf-with-ul">Shop</router-link>
 
@@ -88,12 +61,12 @@
                                 <div class="menu-col">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="menu-title">Shop with sidebar</div><!-- End .menu-title -->
+                                            <div class="menu-title">Shop with sidebar</div>
                                             <ul>
                                                 <li><router-link to="category-list.html">Shop List</router-link></li>
                                             </ul>
 
-                                            <div class="menu-title">Shop no sidebar</div><!-- End .menu-title -->
+                                            <div class="menu-title">Shop no sidebar</div>
                                             <ul>
                                                 <li>
                                                     <router-link to="category-boxed">
@@ -104,12 +77,12 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <div class="menu-title">Product Category</div><!-- End .menu-title -->
+                                            <div class="menu-title">Product Category</div>
                                             <ul>
                                                 <li><router-link to="product-category-boxed.html">Product Category Boxed</router-link></li>
                                                 <li><router-link to="product-category-fullwidth.html"><span>Product Category Fullwidth<span class="tip tip-new">New</span></span></router-link></li>
                                             </ul>
-                                            <div class="menu-title">Shop Pages</div><!-- End .menu-title -->
+                                            <div class="menu-title">Shop Pages</div>
                                             <ul>
                                                 <li><router-link to="cart.html">Cart</router-link></li>
                                                 <li><router-link to="checkout.html">Checkout</router-link></li>
@@ -117,69 +90,38 @@
                                                 <li><router-link to="dashboard.html">My Account</router-link></li>
                                                 <li><router-link to="#">Lookbook</router-link></li>
                                             </ul>
-                                        </div><!-- End .col-md-6 -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .menu-col -->
-                            </div><!-- End .col-md-8 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-md-4">
                                 <div class="banner banner-overlay">
                                     <router-link to="category.html" class="banner banner-menu">
-                                        <img src="assets/images/menu/banner-1.jpg" alt="Banner">
+                                        <img src="/storage/products/default.png" alt="Banner">
 
                                         <div class="banner-content banner-content-top">
-                                            <div class="banner-title text-white">Last <br>Chance<br><span><strong>Sale</strong></span></div><!-- End .banner-title -->
-                                        </div><!-- End .banner-content -->
+                                            <div class="banner-title text-white">Last <br>Chance<br><span><strong>Sale</strong></span></div>
+                                        </div>
                                     </router-link>
-                                </div><!-- End .banner banner-overlay -->
-                            </div><!-- End .col-md-4 -->
-                        </div><!-- End .row -->
-                    </div><!-- End .megamenu megamenu-md -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </li>
+                    -->
                     <li>
-                        <router-link to="product.html" class="sf-with-ul">Product</router-link>
-
-                        <div class="megamenu megamenu-sm">
-                            <div class="row no-gutters">
-                                <div class="col-md-6">
-                                    <div class="menu-col">
-                                        <div class="menu-title">Product Details</div><!-- End .menu-title -->
-                                        <ul>
-                                            <li><router-link to="product.html">Default</router-link></li>
-                                        </ul>
-                                    </div><!-- End .menu-col -->
-                                </div><!-- End .col-md-6 -->
-
-                                <div class="col-md-6">
-                                    <div class="banner banner-overlay">
-                                        <router-link to="category.html">
-                                            <img src="assets/images/menu/banner-2.jpg" alt="Banner">
-
-                                            <div class="banner-content banner-content-bottom">
-                                                <div class="banner-title text-white">New Trends<br><span><strong>spring 2019</strong></span></div><!-- End .banner-title -->
-                                            </div><!-- End .banner-content -->
-                                        </router-link>
-                                    </div><!-- End .banner -->
-                                </div><!-- End .col-md-6 -->
-                            </div><!-- End .row -->
-                        </div><!-- End .megamenu megamenu-sm -->
+                        <router-link to="/products"> Products </router-link>
                     </li>
                     <li>
                         <router-link to="#" class="sf-with-ul">Pages</router-link>
 
                         <ul>
                             <li>
-                                <router-link to="about.html" class="sf-with-ul">About</router-link>
-                                <ul>
-                                    <li><router-link to="about.html">About 01</router-link></li>
-                                </ul>
+                                <router-link to="/about">About</router-link>
                             </li>
                             <li>
-                                <router-link to="contact.html" class="sf-with-ul">Contact</router-link>
-
-                                <ul>
-                                    <li><router-link to="contact.html">Contact 01</router-link></li>
-                                </ul>
+                                <router-link to="/contact">Contact</router-link>
                             </li>
                             <li><router-link to="login.html">Login</router-link></li>
                         </ul>
@@ -236,8 +178,8 @@
         <div class="header-right">
             <i class="la la-lightbulb-o"></i><p>Clearance Up to 30% Off</span></p>
         </div>
-    </div><!-- End .container -->
-</div><!-- End .header-bottom -->
+    </div>
+</div>
 
 </template>
 <script>

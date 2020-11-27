@@ -2,8 +2,8 @@
 <div class="container" >
     <div class="heading heading-flex heading-border mb-3">
         <div class="heading-left">
-            <h2 class="title">{{ category.name }}</h2><!-- End .title -->
-        </div><!-- End .heading-left -->
+            <h2 class="title">{{ category.name }}  <span> ( {{ category.products_count }} ) </span> </h2>
+        </div>
 
        <div class="heading-right">
             <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
@@ -22,74 +22,50 @@
         <div class="tab-pane p-0 fade show active" :id="category.slug+'-new-tab'" role="tabpanel" :aria-labelledby="category.slug+'-new-link'">
             <!-- {{-- owl-carousel owl-full carousel-equal-height carousel-with-shadow owl-loaded owl-drag --}} -->
             <!-- {{-- owl-carousel owl-simple carousel-equal-height carousel-with-shadow --}} -->
-            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow owl-loaded owl-drag" data-toggle="owl"
-                data-owl-options='{
-                    "nav": false,
-                    "dots": true,
-                    "margin": 20,
-                    "loop": true,
-                    "responsive": {
-                        "0": {
-                            "items":2
-                        },
-                        "480": {
-                            "items":2
-                        },
-                        "768": {
-                            "items":3
-                        },
-                        "992": {
-                            "items":4
-                        },
-                        "1280": {
-                            "items":5,
-                            "nav": true
-                        }
-                    }
-                }'>
-
-             <div class="row">
-                <!-- <span > -->
-                 <CardProduct v-for="product in category.products" :key="product.id"
-                    :product="product" />
-                    <!-- </span> -->
-             </div>
-
-            </div><!-- End .owl-carousel -->
+            <carousel
+                :autoplay="true"
+                :nav="false"
+                :items="6"
+                :lazyLoad="true"
+                :lazyLoadEager="3"
+                :loop="true"
+                :margin="10"
+                :dots="true"
+                class="d-flex"
+                :responsive="{
+                    0: { items: 2 },
+                    420: { items: 3 },
+                    600: { items: 4 },
+                    900: { items: 5, nav: false },
+                    1024: { items: 6, nav: false },
+                }"
+                >
+                 <CardProduct v-for="product in category.products" :key="product.id" :product="product"
+                   />
+            </carousel>
         </div><!-- .End .tab-pane -->
         <div class="tab-pane p-0 fade " :id="category.slug+'-featured-tab'" role="tabpanel" :aria-labelledby="category.slug+'-featured-link'">
-            <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow owl-loaded owl-drag" data-toggle="owl"
-                data-owl-options='{
-                    "nav": false,
-                    "dots": true,
-                    "margin": 20,
-                    "loop": false,
-                    "responsive": {
-                        "0": {
-                            "items":2
-                        },
-                        "480": {
-                            "items":2
-                        },
-                        "768": {
-                            "items":3
-                        },
-                        "992": {
-                            "items":4
-                        },
-                        "1280": {
-                            "items":5,
-                            "nav": true
-                        }
-                    }
-                }'>
-              <div class="row">
-                  <CardProduct
-                    v-for="product in category.products" :key="product.id"
-                    :product="product"
-              />
-              </div>
-            </div><!-- End .owl-carousel -->
+            <carousel
+                :autoplay="true"
+                :nav="false"
+                :items="4"
+                :lazyLoad="true"
+                :lazyLoadEager="3"
+                :loop="false"
+                :margin="10"
+                :dots="true"
+                class="d-flex"
+                :responsive="{
+                    0: { items: 2 },
+                    420: { items: 3 },
+                    600: { items: 4 },
+                    900: { items: 5, nav: false },
+                    1024: { items: 6, nav: false },
+                }"
+                >
+                 <CardProduct v-for="product in category.products" :key="product.id"
+                    :product="product" v-if="product.featured == 1" />
+            </carousel>
         </div><!-- .End .tab-pane -->
     </div><!-- End .tab-content -->
 

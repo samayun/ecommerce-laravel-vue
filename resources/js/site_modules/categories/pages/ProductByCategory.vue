@@ -36,7 +36,7 @@
     <div class="page-content">
       <div class="container">
         <div class="row">
-          <div class="col-lg-9">
+          <div class="col-lg-12">
             <div class="toolbox">
               <div class="toolbox-left">
                 <div class="toolbox-info">
@@ -179,13 +179,12 @@
             </nav>
           </div>
           <!-- End .col-lg-9 -->
-          <MultipleFilter />
+          <!-- <MultipleFilter /> -->
         </div>
         <!-- End .row -->
       </div>
       <!-- End .container -->
     </div>
-    <!-- End .page-content -->
   </div>
 </template>
 <script>

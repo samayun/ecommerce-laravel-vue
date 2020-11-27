@@ -1,46 +1,41 @@
 <template>
 <div class="container">
-    <h2 class="title title-border mb-5">{{ $t('ShopByBrands') }}</h2><!-- End .title -->
-    <!-- <div class="owl-carousel mb-5 owl-simple row" data-toggle="owl"
-                    data-owl-options='{
-                        "nav": false,
-                        "dots": true,
-                        "margin": 30,
-                        "loop": false,
-                        "responsive": {
-                            "0": {
-                                "items":2
-                            },
-                            "420": {
-                                "items":3
-                            },
-                            "600": {
-                                "items":4
-                            },
-                            "900": {
-                                "items":5
-                            },
-                            "1024": {
-                                "items":6
-                            },
-                            "1280": {
-                                "items":6,
-                                "nav": true,
-                                "dots": false
-                            }
-                        }
-                    }'> -->
-        <div class="row">
-         <div class="col-md-2"
-            v-for="brand in brands"
-            :key="brand.id">
-            <router-link :to="`/brand/${brand.slug}`" class="brand">
-                <img :src="brand.logo" :alt="brand.name" width="50" >
-            </router-link>
-        </div>
-    </div>
-</div>
+    <h2 class="title title-border mb-5">{{ $t('ShopByBrands') }}</h2>
+        <carousel
+          :autoplay="true"
+          :nav="false"
+          :items="6"
+          :lazyLoad="true"
+          :lazyLoadEager="3"
+          :loop="true"
+          :margin="10"
+          :dots="true"
+          class="d-flex"
+          :responsive="{
+            0: { items: 2 },
+            420: { items: 3 },
+            600: { items: 4 },
+            900: { items: 5, nav: false },
+            1024: { items: 6, nav: false },
+            1280: { items: 6, nav: false, dots: true }
+          }"
+        >
 
+            <router-link
+            v-for="brand in brands"
+            :key="brand.id" :to="`/brand/${brand.slug}`" class="brand">
+
+                <img
+                    class="owl-lazy img-circle"
+                    style="height:130px;"
+                    :data-src="brand.logo"
+                    :src="brand.logo"
+                    data-src-retina="/storage/products/default.png"
+                   :alt="brand.name"  >
+            </router-link>
+
+        </carousel>
+</div>
 </template>
 <script>
 import { mapActions, mapState } from 'vuex'
@@ -59,3 +54,8 @@ export default {
     }
 }
 </script>
+<style lang="css">
+ .owl-carousel.owl-loaded {
+	display: flex;
+}
+</style>

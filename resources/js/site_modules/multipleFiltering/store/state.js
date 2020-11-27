@@ -1,6 +1,8 @@
 export default {
     selected: {
-        categories: []
+        categories: [],
+        brands: [],
+        sizes: [],
     },
     filter: {
         brand: "",

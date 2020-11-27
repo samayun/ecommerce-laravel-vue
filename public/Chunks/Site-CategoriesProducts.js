@@ -153,30 +153,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -203,7 +179,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "product col-sm-6 col-md-4 col-lg-3" }, [
+  return _c("div", { staticClass: "product" }, [
     _c(
       "figure",
       { staticClass: "product-media" },
@@ -211,6 +187,7 @@ var render = function() {
         _c("router-link", { attrs: { to: "/product/" + _vm.product.slug } }, [
           _c("img", {
             staticClass: "product-image",
+            staticStyle: { height: "160px" },
             attrs: {
               src: "/storage/products/" + _vm.product.image,
               alt: _vm.product.name
@@ -359,7 +336,12 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "heading heading-flex heading-border mb-3" }, [
       _c("div", { staticClass: "heading-left" }, [
-        _c("h2", { staticClass: "title" }, [_vm._v(_vm._s(_vm.category.name))])
+        _c("h2", { staticClass: "title" }, [
+          _vm._v(_vm._s(_vm.category.name) + "  "),
+          _c("span", [
+            _vm._v(" ( " + _vm._s(_vm.category.products_count) + " ) ")
+          ])
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "heading-right" }, [
@@ -423,31 +405,37 @@ var render = function() {
         },
         [
           _c(
-            "div",
+            "carousel",
             {
-              staticClass:
-                "owl-carousel owl-full carousel-equal-height carousel-with-shadow owl-loaded owl-drag",
+              staticClass: "d-flex",
               attrs: {
-                "data-toggle": "owl",
-                "data-owl-options":
-                  '{\n                    "nav": false,\n                    "dots": true,\n                    "margin": 20,\n                    "loop": true,\n                    "responsive": {\n                        "0": {\n                            "items":2\n                        },\n                        "480": {\n                            "items":2\n                        },\n                        "768": {\n                            "items":3\n                        },\n                        "992": {\n                            "items":4\n                        },\n                        "1280": {\n                            "items":5,\n                            "nav": true\n                        }\n                    }\n                }'
+                autoplay: true,
+                nav: false,
+                items: 6,
+                lazyLoad: true,
+                lazyLoadEager: 3,
+                loop: true,
+                margin: 10,
+                dots: true,
+                responsive: {
+                  0: { items: 2 },
+                  420: { items: 3 },
+                  600: { items: 4 },
+                  900: { items: 5, nav: false },
+                  1024: { items: 6, nav: false }
+                }
               }
             },
-            [
-              _c(
-                "div",
-                { staticClass: "row" },
-                _vm._l(_vm.category.products, function(product) {
-                  return _c("CardProduct", {
-                    key: product.id,
-                    attrs: { product: product }
-                  })
-                }),
-                1
-              )
-            ]
+            _vm._l(_vm.category.products, function(product) {
+              return _c("CardProduct", {
+                key: product.id,
+                attrs: { product: product }
+              })
+            }),
+            1
           )
-        ]
+        ],
+        1
       ),
       _vm._v(" "),
       _c(
@@ -462,31 +450,39 @@ var render = function() {
         },
         [
           _c(
-            "div",
+            "carousel",
             {
-              staticClass:
-                "owl-carousel owl-full carousel-equal-height carousel-with-shadow owl-loaded owl-drag",
+              staticClass: "d-flex",
               attrs: {
-                "data-toggle": "owl",
-                "data-owl-options":
-                  '{\n                    "nav": false,\n                    "dots": true,\n                    "margin": 20,\n                    "loop": false,\n                    "responsive": {\n                        "0": {\n                            "items":2\n                        },\n                        "480": {\n                            "items":2\n                        },\n                        "768": {\n                            "items":3\n                        },\n                        "992": {\n                            "items":4\n                        },\n                        "1280": {\n                            "items":5,\n                            "nav": true\n                        }\n                    }\n                }'
+                autoplay: true,
+                nav: false,
+                items: 4,
+                lazyLoad: true,
+                lazyLoadEager: 3,
+                loop: false,
+                margin: 10,
+                dots: true,
+                responsive: {
+                  0: { items: 2 },
+                  420: { items: 3 },
+                  600: { items: 4 },
+                  900: { items: 5, nav: false },
+                  1024: { items: 6, nav: false }
+                }
               }
             },
-            [
-              _c(
-                "div",
-                { staticClass: "row" },
-                _vm._l(_vm.category.products, function(product) {
-                  return _c("CardProduct", {
+            _vm._l(_vm.category.products, function(product) {
+              return product.featured == 1
+                ? _c("CardProduct", {
                     key: product.id,
                     attrs: { product: product }
                   })
-                }),
-                1
-              )
-            ]
+                : _vm._e()
+            }),
+            1
           )
-        ]
+        ],
+        1
       )
     ])
   ])

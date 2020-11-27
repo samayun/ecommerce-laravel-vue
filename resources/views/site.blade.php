@@ -42,8 +42,8 @@
     <link rel="stylesheet" href="/assets/css/plugins/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="/assets/css/plugins/magnific-popup/magnific-popup.css">
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/plugins/nouislider/nouislider.css"> --}}
+    <link rel="stylesheet" href="/assets/css/style.css"> --}}
+    {{-- <link rel="stylesheet" href="/assets/css/plugins/nouislider/nouislider.css"> --}}
     <link rel="stylesheet" href="{{ asset('css/main-app.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/green.css') }}">
 </head>

@@ -1,44 +1,15 @@
 <template>
-  <div>
-    <div
-      class="page-header text-center"
-      v-if="brand"
-      :style="'background-image: url(' + brand.logo + ')'"
-    >
-      <div class="container">
-        <h1 class="page-title">
-          {{ brand.name }}
-          <span> {{ brand.slug }} </span>
-        </h1>
-      </div>
-      <!-- End .container -->
-    </div>
-    <!-- End .page-header -->
-    <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
-      <div class="container">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">Shop</a></li>
-          <li class="breadcrumb-item active" aria-current="page">
-            Grid 4 Columns
-          </li>
-        </ol>
-      </div>
-      <!-- End .container -->
-    </nav>
-    <!-- End .breadcrumb-nav -->
-
-    <div class="page-content">
+    <div class="container-fluid">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-md-12">
             <div class="toolbox">
               <div class="toolbox-left">
                 <div class="toolbox-info">
                   Showing
                   <span>
-                    {{ brand.products_count }} of
-                    {{ brand.products_count }}</span
+                    {{ meta.to }} of
+                    {{ meta.total }}</span
                   >
                   Products
                 </div>
@@ -48,14 +19,14 @@
 
               <div class="toolbox-right">
                 <div class="toolbox-sort">
-                  <label for="sortby">Sort by:</label>
+                  <label for="sortby">Sort by Price :</label>
                   <div class="Select-custom">
-                    <select v-model="filter.brand" class="form-control">
-                      <option disabled value="" selected>
-                        Please Select one
+                    <select v-model="filter.product" class="form-control">
+                      <option value="" selected>
+                        Latest
                       </option>
-                      <option value="low_high">Low To High Prices</option>
-                      <option value="high_low">High To Low prices</option>
+                      <option value="low_high"> Low To High </option>
+                      <option value="high_low"> High To Low </option>
                     </select>
                   </div>
                 </div>
@@ -127,12 +98,11 @@
 
             <div class="products mb-3">
               <div class="row justify-content-center">
-
-                    <Product
-                    v-for="pro in brand.products"
-                    :key="pro.id"
-                    :product="pro"
-                    />
+                <Product
+                  v-for="pro in products"
+                  :key="pro.id"
+                  :product="pro"
+                />
               </div>
               <!-- End .row -->
             </div>
@@ -174,49 +144,42 @@
               </ul>
             </nav>
           </div>
-          <!-- col 9 -->
-          <!-- <MultipleFilter /> -->
+
         </div>
         <!-- End .row -->
       </div>
       <!-- End .container -->
     </div>
-    <!-- End .page-content -->
-  </div>
 </template>
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
-import Product from "../components/Product";
-
-
+import Product from "./Product";
 export default {
-  name: "ProductsByBrand",
+  name: "Products",
   components: {
-    Product
+    Product,
   },
   computed: {
-    ...mapState("brandsStoreIndex", ["brand", "filter"]),
+    ...mapState("productsStoreIndex",["products", "filter","meta"]),
     ...mapState("settingsStoreIndex", ["layout_type"]),
   },
   methods: {
+    ...mapActions("productsStoreIndex",["getProducts"]),
     ...mapMutations("settingsStoreIndex", ["SET_LAYOUT"]),
-    ...mapActions("brandsStoreIndex", ["getBrand"]),
+    ...mapMutations("productsStoreIndex", ["changeState"]),
   },
   created() {
-    let slug = this.$route.params.slug;
-    if (this.brand.slug != slug) {
-      this.getBrand(slug);
+    if (this.products.length < 1) {
+      this.getProducts();
     }
-    let _this = this;
-    $Bus.$on("404", function () {
-      alert("404 Not Found");
-    });
+    $Bus.$on('fetchProducts', ({products,meta}) => {
+        this.changeState({ products, meta });
+    })
   },
-  watch: {
-    "$route.params.slug": "getBrand",
-    "filter.brand": function (e) {
-      this.getBrand(this.$route.params.slug);
+  watch:{
+   "filter.product": function (e) {
+       this.getProducts();
     },
-  },
+  }
 };
 </script>
