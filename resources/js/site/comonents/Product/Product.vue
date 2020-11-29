@@ -1,4 +1,4 @@
-<template>
+<template >
   <!-- LIST VIEW  -->
   <div class="product product-list" v-if="layout == 'list'">
     <div class="row">
@@ -31,7 +31,7 @@
           <!-- End .rating-container -->
 
           <div class="product-action">
-            <button class="btn-product btn-quickview" title="Quick view">
+            <button class="btn-product btn-quickview" title="Quick view" @click="QuickView(product)">
               <span>quick view</span>
             </button>
             <a href="#" class="btn-product btn-compare" title="Compare"
@@ -92,12 +92,12 @@
           <a href="#" class="btn-product-icon btn-wishlist btn-expandable"
             ><span>add to wishlist</span></a
           >
-          <a
-            href="/assets/popup/quickView.html"
+          <button
+            @click="QuickView(product)"
             class="btn-product-icon btn-quickview btn-expandable"
             title="Quick view"
-            ><span>Quick view</span></a
-          >
+            ><span>Quick view</span></button>
+
           <a href="#" class="btn-product-icon btn-compare" title="Compare"
             ><span>Compare</span></a
           >
@@ -135,7 +135,7 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   props: ["product"],
   computed: {
@@ -143,6 +143,13 @@ export default {
       layout: "getLayout",
     }),
   },
+  methods : {
+      ...mapActions("productsStoreIndex" , ["QuickView"])
+  }
 };
 </script>
-
+<style lang="css" scoped>
+ .product-image{
+     height: 250px;
+ }
+</style>

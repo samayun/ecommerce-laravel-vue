@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
-    use HasFactory;
+    // use HasFactory;
     protected $guarded = [];
 
     public function scopeSearch($query,$q)

@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["Chunks/Site-ShopByBrands"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["Chunks/Site/Components/ShopByBrands"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/site/comonents/Brand/ShopByBrands.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************************!*\
@@ -81,7 +81,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.owl-carousel.owl-loaded {\n\tdisplay: flex;\n}\n", ""]);
+exports.push([module.i, "\n.owl-carousel.owl-loaded {\n  display: flex;\n}\n", ""]);
 
 // exports
 

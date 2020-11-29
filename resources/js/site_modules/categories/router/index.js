@@ -2,7 +2,7 @@ const routes = [
     {
         path: 'category/:slug',
         name: 'Product By Category',
-        component: () => import(/* webpackChunkName: "Chunks/Site-Category-slug"*/ '../pages/ProductByCategory.vue'),
+        component: () => import(/* webpackChunkName: "Chunks/Site/Router/Category-slug"*/ '../pages/ProductByCategory.vue'),
         title: 'This is settings page',
         meta: {
             guest : true,

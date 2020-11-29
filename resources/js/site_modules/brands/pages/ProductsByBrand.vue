@@ -186,14 +186,10 @@
 </template>
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
-import Product from "../components/Product";
 
 
 export default {
   name: "ProductsByBrand",
-  components: {
-    Product
-  },
   computed: {
     ...mapState("brandsStoreIndex", ["brand", "filter"]),
     ...mapState("settingsStoreIndex", ["layout_type"]),

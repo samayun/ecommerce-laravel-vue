@@ -24,26 +24,25 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#ffffff">
         <link rel="manifest" href="/manifest.json">
-
-    {{-- <link rel="stylesheet" href="/assets/vendor/line-awesome/css/line-awesome.min.css"> --}}
+     <link rel="stylesheet" href="/assets/vendor/line-awesome/css/line-awesome.min.css">
     <!-- Plugins CSS File -->
-    {{-- <link rel="stylesheet" href="/assets/css/bootstrap.min.css"> --}}
-    {{-- <link rel="stylesheet" href="/assets/css/plugins/owl-carousel/owl.carousel.css"> --}}
-    {{-- <link rel="stylesheet" href="/assets/css/plugins/magnific-popup/magnific-popup.css"> --}}
-    {{-- <link rel="stylesheet" href="/assets/css/plugins/jquery.countdown.css"> --}}
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/css/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/plugins/jquery.countdown.css">
     <!-- Main CSS File -->
-    {{-- <link rel="stylesheet" href="/assets/css/style.css"> --}}
-    {{-- <link rel="stylesheet" href="/assets/css/skins/skin-demo-13.css"> --}}
-    {{-- <link rel="stylesheet" href="/assets/css/typo.css"> --}}
-    {{-- <link rel="stylesheet" href="/assets/css/plugins/nouislider/nouislider.css">  --}}
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/skins/skin-demo-13.css">
+    <link rel="stylesheet" href="/assets/css/typo.css">
+    <link rel="stylesheet" href="/assets/css/plugins/nouislider/nouislider.css">
 
 
-    {{-- <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/plugins/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="/assets/css/plugins/magnific-popup/magnific-popup.css">
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/plugins/nouislider/nouislider.css"> --}}
+    <link rel="stylesheet" href="/assets/css/style.css"> --}}
+     <link rel="stylesheet" href="/assets/css/plugins/nouislider/nouislider.css"> 
 
     <link rel="stylesheet" href="{{ asset('css/main-app.min.css') }}">
     <link rel="stylesheet" href="/css/green.css">

@@ -11,6 +11,7 @@ var allRoutes = []
 import camelCase from 'lodash/camelCase'
 const requireModule = require.context('./site_modules', true, /\.js$/)
 const importedRoutes = []
+const cimportedRoutes = []
 
 requireModule.keys().forEach(fileName => {
     let str = fileName.split('/');
@@ -32,18 +33,18 @@ const defaultRoutes = [
         path: '/login',
         name: 'Login',
         title: 'Login',
-        component: () => import(/* webpackChunkName: "Chunks/Site-Login" */'./site/pages/Login.vue')
+        component: () => import(/* webpackChunkName: "Chunks/Site/Router/Login" */'./site/pages/Login.vue')
     },
     {
         path: '/',
         name: 'Home',
         title: 'Home',
-        component: () => import(/* webpackChunkName: "Chunks/Site-Home" */'./site/pages/HomePage.vue'),
+        component: () => import(/* webpackChunkName: "Chunks/Site/HomePageRouteContainer" */'./site/pages/HomePage.vue'),
         children : [
             {
                 path: '/',
                 name: 'Dashboard',
-                component: () => import( /* webpackChunkName: "Chunks/Site-Dashboard" */ './site/pages/Dashboard.vue'),
+                component: () => import( /* webpackChunkName: "Chunks/Site/Router/HomeDashboard" */ './site/pages/Dashboard.vue'),
                 title: 'This is a test page'
 
             },
@@ -53,7 +54,7 @@ const defaultRoutes = [
     {
         path: '*',
         name: "404",
-        component : () => import(/* webpackChunkName: "Chunks/404.site" */'./site/pages/NotFound.vue')
+        component : () => import(/* webpackChunkName: "Chunks/Site/404" */'./site/pages/NotFound.vue')
     }
 ]
 // const routes = allRoutes.concat(defaultRoutes , importedRoutes)

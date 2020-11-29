@@ -10,49 +10,24 @@
         <meta name="description" content={{ env('APP_NAME') }}>
         <meta name="author" content="Samayun-Chy">
 
-       {{-- <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/icons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/icons/favicon-16x16.png">
-
-        <link rel="mask-icon" href="/assets/images/icons/safari-pinned-tab.svg" color="#666666">
-        <link rel="shortcut icon" href="/assets/images/icons/favicon.ico"> --}}
-
-        {{-- <meta name="apple-mobile-web-app-title" content="Molla">
-        <meta name="application-name" content="Molla">
-        <meta name="msapplication-TileColor" content="#cc9966">
-        <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml"> --}}
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="theme-color" content="#ffffff">
          <link rel="manifest" href="/manifest.json">
 
-    {{-- <link rel="stylesheet" href="/assets/vendor/line-awesome/css/line-awesome.min.css">
-    <!-- Plugins CSS File -->
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/plugins/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="/assets/css/plugins/magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="/assets/css/plugins/jquery.countdown.css">
-    <!-- Main CSS File -->
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/skins/skin-demo-13.css">
-    <link rel="stylesheet" href="/assets/css/typo.css">
-    <link rel="stylesheet" href="/assets/css/plugins/nouislider/nouislider.css">
-
-
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/plugins/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="/assets/css/plugins/magnific-popup/magnific-popup.css">
-    <!-- Main CSS File -->
-    <link rel="stylesheet" href="/assets/css/style.css"> --}}
-    {{-- <link rel="stylesheet" href="/assets/css/plugins/nouislider/nouislider.css"> --}}
-    <link rel="stylesheet" href="{{ asset('css/main-app.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/green.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/main-app.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/blue.css') }}">
 </head>
 
 <body>
     <div id="main-app">
-          <main-app></main-app>
-          <mobile-menu></mobile-menu>
-          <mobile-footer></mobile-footer>
+        @if (Auth::check())
+        <main-app :user="{{ Auth::user() }}"></main-app>
+        @else
+        <main-app :user="false"></main-app>
+        @endif
+           <mobile-menu></mobile-menu>
+           <mobile-footer></mobile-footer>
+           <quick-view></quick-view>
     </div>
 
 
@@ -65,7 +40,7 @@
     </script> --}}
 
     <!-- Plugins JS File -->
-    {{-- <script src="/assets/js/jquery.min.js"></script>
+<!--     {{-- <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script> --}}
     {{-- <script src="/assets/js/jquery.hoverIntent.min.js"></script>
     <script src="/assets/js/jquery.waypoints.min.js"></script>
@@ -75,9 +50,9 @@
     <script src="/assets/js/jquery.elevateZoom.min.js"></script>
     <script src="/assets/js/bootstrap-input-spinner.js"></script>
     <script src="/assets/js/jquery.magnific-popup.min.js"></script> --}}
-    <!-- Main JS File -->
-    {{-- <script src="/assets/js/main.js"></script> --}}
-    {{-- <script src="{{asset('js/template-cachable.js')}}"></script> --}}
+    
+    {{-- <script src="/assets/js/main.js"></script> --}} -->
+     <script src="{{asset('js/template-cachable.js')}}"></script> 
 
     <script src="{{mix('js/app.js')}}" defer></script>
     <script>

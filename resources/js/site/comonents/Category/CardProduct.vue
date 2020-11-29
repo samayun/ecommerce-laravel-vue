@@ -8,8 +8,9 @@
 
             <div class="product-action-vertical">
                 <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                 <button @click="QuickView(product)" class="btn-product-icon btn-quickview btn-expandable" title="Quick view"><span>Quick view</span></button>
                 <a href="#" class="btn-product-icon btn-compare btn-expandable" title="Compare"><span>Compare</span></a>
-                <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview btn-expandable" title="Quick view"><span>Quick view</span></a>
+               
             </div><!-- End .product-action-vertical -->
 
             <div class="product-action">
@@ -50,8 +51,11 @@
   </div><!-- End .product -->
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters , mapActions} from 'vuex'
 export default {
-    props:["product"]
+    props:["product"] ,
+    methods : {
+       ...mapActions("productsStoreIndex" , ["QuickView"])
+    }
 }
 </script>

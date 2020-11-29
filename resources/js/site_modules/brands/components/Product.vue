@@ -5,7 +5,7 @@
             <div class="col-6 col-lg-3">
                 <figure class="product-media">
                     <router-link :to="'product/'+product.slug">
-                        <img :src="'/storage/products/'+product.image" :alt="product.name" class="product-image">
+                        <img :src="product.image" :alt="product.name" class="product-image">
                     </router-link>
                 </figure><!-- End .product-media -->
             </div><!-- End .col-sm-6 col-lg-3 -->
@@ -23,7 +23,7 @@
                     </div><!-- End .rating-container -->
 
                     <div class="product-action">
-                        <button class="btn-product btn-quickview" title="Quick view"><span>quick view</span></button>
+                        <button class="btn-product btn-quickview" title="Quick view"  @click="QuickView(product)"><span>quick view</span></button>
                         <a href="#" class="btn-product btn-compare" title="Compare"><span>compare</span></a>
                     </div>
                     <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
@@ -55,12 +55,12 @@
             <figure class="product-media">
                 <span class="product-label label-new">New</span>
                 <router-link :to="'/product/'+product.slug">
-                    <img :src="'/storage/products/'+product.image" :alt="product.name" class="product-image">
+                    <img :src="product.image" :alt="product.name" class="product-image">
                 </router-link>
 
                 <div class="product-action-vertical">
                     <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                    <a href="/assets/popup/quickView.html" class="btn-product-icon btn-quickview  btn-expandable" title="Quick view"><span>Quick view</span></a>
+                    <a @click="QuickView(product)" class="btn-product-icon btn-quickview  btn-expandable" title="Quick view"><span>Quick view</span></a>
                     <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
                 </div>
 
@@ -94,7 +94,7 @@
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
     props:["product"],
     computed:{
@@ -102,6 +102,14 @@ export default {
           layout: "getLayout"
       })
     },
+    methods : {
+        ...mapActions("productsStoreIndex" , ["QuickView"]),
+    }
 }
 </script>
 
+<style lang="css">
+.product-image{
+    height: 250px;
+}
+</style>

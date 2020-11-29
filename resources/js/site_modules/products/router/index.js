@@ -2,7 +2,7 @@ const routes = [
     {
         path: '/products',
         name: 'Products',
-        component: () => import(/* webpackChunkName: "Chunks/Site-Products"*/ '../pages/products.vue'),
+        component: () => import(/* webpackChunkName: "Chunks/Site/Router/Products"*/ '../pages/products.vue'),
         title: 'This is  products page',
         meta: {
             guest : true,
@@ -12,8 +12,8 @@ const routes = [
     },
     {
         path: '/product/:slug',
-        name: 'Product',
-        component: () => import(/* webpackChunkName: "Chunks/Site-Product-slug"*/ '../pages/main.vue'),
+        name: 'Single Product',
+        component: () => import(/* webpackChunkName: "Chunks/Site/Router/Product-slug"*/ '../pages/single.vue'),
         title: 'This is single product page',
         meta: {
             guest : true,

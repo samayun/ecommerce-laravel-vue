@@ -10,35 +10,35 @@
         <meta name="description" content=<?php echo e(env('APP_NAME')); ?>>
         <meta name="author" content="Samayun-Chy">
 
-       
-
-        
         <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
         <meta name="theme-color" content="#ffffff">
          <link rel="manifest" href="/manifest.json">
 
-    
-    
-    <link rel="stylesheet" href="<?php echo e(asset('css/main-app.min.css')); ?>">
-    <link rel="stylesheet" href="<?php echo e(asset('css/green.css')); ?>">
+        <link rel="stylesheet" href="<?php echo e(asset('css/main-app.min.css')); ?>">
+        <link rel="stylesheet" href="<?php echo e(asset('css/blue.css')); ?>">
 </head>
 
 <body>
     <div id="main-app">
-          <main-app></main-app>
-          <mobile-menu></mobile-menu>
-          <mobile-footer></mobile-footer>
+        <?php if(Auth::check()): ?>
+        <main-app :user="<?php echo e(Auth::user()); ?>"></main-app>
+        <?php else: ?>
+        <main-app :user="false"></main-app>
+        <?php endif; ?>
+           <mobile-menu></mobile-menu>
+           <mobile-footer></mobile-footer>
+           <quick-view></quick-view>
     </div>
 
 
     
 
     <!-- Plugins JS File -->
+<!--     
     
     
-    <!-- Main JS File -->
-    
-    
+     -->
+     <script src="<?php echo e(asset('js/template-cachable.js')); ?>"></script> 
 
     <script src="<?php echo e(mix('js/app.js')); ?>" defer></script>
     <script>

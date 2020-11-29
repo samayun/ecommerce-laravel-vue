@@ -56,6 +56,6 @@ export default {
 </script>
 <style lang="css">
  .owl-carousel.owl-loaded {
-	display: flex;
+  display: flex;
 }
 </style>

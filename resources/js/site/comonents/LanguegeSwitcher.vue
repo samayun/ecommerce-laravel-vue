@@ -9,7 +9,7 @@
                     v-for="(lang,i) in langArray"
                     :key="`lang${i}`"
                     :value="lang"
-                    class="d-flex list-item"
+                    class="d-flex"
                     @click="changeLocale(lang)"
                 >
                 <img :src="'/storage/flags/'+lang+'.png'" :alt="locale" class="w-25 p-2" />

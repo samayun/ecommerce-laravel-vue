@@ -24,10 +24,22 @@
                                 </div><!-- End .header-dropdown -->
                             </li>
                             <LanguegeSwitcher />
-                            <li class="login">
+                            <li class="login"  v-if="!user.id">
                                 <a href="#signin-modal" data-toggle="modal">
                                     {{ $t('auth.signin') }} / {{ $t('auth.signup') }} </a>
                             </li>
+                            <li class="sf-ul" v-else>
+                                    <div class="header-dropdown">
+                                        <a href="#" > {{user.name}} </a>
+                                        <div class="header-menu">
+                                            <ul>
+                                                <li><router-link to="/profile"> Profile </router-link></li>
+                                                <li><router-link to="/orders"> Orders </router-link></li>
+                                                <li><router-link to="/logout" > Log Out </router-link></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
                         </ul>
                     </li>
                 </ul><!-- End .top-menu -->
@@ -169,137 +181,23 @@
         </div><!-- End .container -->
     </div><!-- End .header-middle -->
 
-    <!-- Sign in / Register Modal -->
-    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="icon-close"></i></span>
-                    </button>
-
-                    <div class="form-box">
-                        <div class="form-tab">
-                            <ul class="nav nav-pills nav-fill nav-border-anim" role="tablist">
-                                <li class="nav-item">
-                                    <router-link class="nav-link active" id="signin-tab" data-toggle="tab" to="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</router-link>
-                                </li>
-                                <li class="nav-item">
-                                    <router-link class="nav-link" id="register-tab" data-toggle="tab" to="#register" role="tab" aria-controls="register" aria-selected="false">Register</router-link>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="tab-content-5">
-                                <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
-                                    <form action="#">
-                                        <div class="form-group">
-                                            <label for="singin-email">Username or email address *</label>
-                                            <input type="text" class="form-control" id="singin-email" name="singin-email" required>
-                                        </div><!-- End .form-group -->
-
-                                        <div class="form-group">
-                                            <label for="singin-password">Password *</label>
-                                            <input type="password" class="form-control" id="singin-password" name="singin-password" required>
-                                        </div><!-- End .form-group -->
-
-                                        <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>LOG IN</span>
-                                                <i class="icon-long-arrow-right"></i>
-                                            </button>
-
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="signin-remember">
-                                                <label class="custom-control-label" for="signin-remember">Remember Me</label>
-                                            </div><!-- End .custom-checkbox -->
-
-                                            <router-link to="#" class="forgot-link">Forgot Your Password?</router-link>
-                                        </div><!-- End .form-footer -->
-                                    </form>
-                                    <div class="form-choice">
-                                        <p class="text-center">or sign in with</p>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <router-link to="#" class="btn btn-login btn-g">
-                                                    <i class="icon-google"></i>
-                                                    Login With Google
-                                                </router-link>
-                                            </div><!-- End .col-6 -->
-                                            <div class="col-sm-6">
-                                                <router-link to="#" class="btn btn-login btn-f">
-                                                    <i class="icon-facebook-f"></i>
-                                                    Login With Facebook
-                                                </router-link>
-                                            </div><!-- End .col-6 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .form-choice -->
-                                </div><!-- .End .tab-pane -->
-                                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                                    <form action="#">
-                                        <div class="form-group">
-                                            <label for="register-email">Your email address *</label>
-                                            <input type="email" class="form-control" id="register-email" name="register-email" required>
-                                        </div><!-- End .form-group -->
-
-                                        <div class="form-group">
-                                            <label for="register-password">Password *</label>
-                                            <input type="password" class="form-control" id="register-password" name="register-password" required>
-                                        </div><!-- End .form-group -->
-
-                                        <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2">
-                                                <span>SIGN UP</span>
-                                                <i class="icon-long-arrow-right"></i>
-                                            </button>
-
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="register-policy" required>
-                                                <label class="custom-control-label" for="register-policy">I agree to the <router-link to="#">privacy policy</router-link> *</label>
-                                            </div><!-- End .custom-checkbox -->
-                                        </div><!-- End .form-footer -->
-                                    </form>
-                                    <div class="form-choice">
-                                        <p class="text-center">or sign in with</p>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <router-link to="#" class="btn btn-login btn-g">
-                                                    <i class="icon-google"></i>
-                                                    Login With Google
-                                                </router-link>
-                                            </div><!-- End .col-6 -->
-                                            <div class="col-sm-6">
-                                                <router-link to="#" class="btn btn-login  btn-f">
-                                                    <i class="icon-facebook-f"></i>
-                                                    Login With Facebook
-                                                </router-link>
-                                            </div><!-- End .col-6 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .form-choice -->
-                                </div><!-- .End .tab-pane -->
-                            </div><!-- End .tab-content -->
-                        </div><!-- End .form-tab -->
-                    </div><!-- End .form-box -->
-                </div><!-- End .modal-body -->
-            </div><!-- End .modal-content -->
-        </div><!-- End .modal-dialog -->
-    </div><!-- End .modal -->
-
+    <AuthModal />
 
     <StickyHeader />
 </header><!-- End .header -->
 </template>
 <script>
-import LanguegeSwitcher from './LanguegeSwitcher';
-import StickyHeader from './StickyHeader';
-
- import { mapActions, mapState } from 'vuex';
-
+import { mapActions, mapState } from 'vuex';
 export default {
     components: {
-        LanguegeSwitcher,StickyHeader
-        //  CategoriesSubcategories: () => import(/* webpackChunkName: "Chunks/Site-CategoriesSubcategories" */ '../comonents/Category/CategoriesSubcategories')
+        LanguegeSwitcher : () => import(/* webpackChunkName: "Chunks/Site/Components/LanguegeSwitcher" */ './LanguegeSwitcher'),
+        StickyHeader  : () => import(/* webpackChunkName: "Chunks/Site/Components/StickyHeader" */ './StickyHeader'),
+        AuthModal  : () => import(/* webpackChunkName: "Chunks/Site/Components/AuthModal" */ './Login'),
+        //  CategoriesSubcategories: () => import(/* webpackChunkName: "Chunks/Site/Components/CategoriesSubcategories" */ '../comonents/Category/CategoriesSubcategories')
     },
     computed:{
-        ...mapState("categoriesStoreIndex",["nested_categories"])
+        ...mapState("authStoreIndex",["user"]),
+        ...mapState("categoriesStoreIndex",["nested_categories"]),
     },
     methods:{
         ...mapActions("categoriesStoreIndex",["getCategoriesSubcategories"])

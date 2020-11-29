@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["Chunks/Main-App-Footer"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["Chunks/Site/Main-App-Footer"],{
 
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/site/comonents/Footer.vue?vue&type=template&id=3be896dc&":
 /*!*************************************************************************************************************************************************************************************************************!*\

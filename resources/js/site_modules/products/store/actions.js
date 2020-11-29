@@ -19,5 +19,8 @@ export default {
         } catch (error) {
             console.log('error', error);
         }
+    },
+    QuickView({commit} , product){
+        commit('changeState', {quickView: product});
     }
 }

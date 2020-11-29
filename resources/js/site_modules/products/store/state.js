@@ -1,6 +1,7 @@
 export default {
  products: [] ,
  product : {},
- meta:{},
- filter:{ product : ""}
+ meta : {},
+ filter  : { product : "" },
+ quickView: {}
 }

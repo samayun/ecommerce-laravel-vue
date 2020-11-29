@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["Chunks/Site-PopularCategories"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["Chunks/Site/Components/PopularCategories"],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/site/comonents/Category/PopularCategories.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************!*\

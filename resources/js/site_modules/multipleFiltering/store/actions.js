@@ -7,10 +7,10 @@ export default {
             let sizes = state.selected.sizes.length != 0 ?  state.selected.sizes : null;
             let prices = state.selected.prices && state.selected.prices.length != 0 ?  `0-${state.selected.prices}` : null;
 
-            let res = await axios.get(`/api/products`, {params: {
+            let res = await Object.freeze(axios.get(`/api/products`, {params: {
                 categories: state.selected.categories,
                 brands , sizes,prices
-            } });
+            } }));
             $Bus.$emit('fetchProducts',{
                 products: res.data.data, meta: res.data.meta
             })

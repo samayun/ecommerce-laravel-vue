@@ -20,8 +20,6 @@
 
     <div class="tab-content tab-content-carousel">
         <div class="tab-pane p-0 fade show active" :id="category.slug+'-new-tab'" role="tabpanel" :aria-labelledby="category.slug+'-new-link'">
-            <!-- {{-- owl-carousel owl-full carousel-equal-height carousel-with-shadow owl-loaded owl-drag --}} -->
-            <!-- {{-- owl-carousel owl-simple carousel-equal-height carousel-with-shadow --}} -->
             <carousel
                 :autoplay="true"
                 :nav="false"
@@ -40,8 +38,7 @@
                     1024: { items: 6, nav: false },
                 }"
                 >
-                 <CardProduct v-for="product in category.products" :key="product.id" :product="product"
-                   />
+                 <CardProduct v-for="product in category.products" :key="product.id" :product="product" />
             </carousel>
         </div><!-- .End .tab-pane -->
         <div class="tab-pane p-0 fade " :id="category.slug+'-featured-tab'" role="tabpanel" :aria-labelledby="category.slug+'-featured-link'">
@@ -64,7 +61,7 @@
                 }"
                 >
                  <CardProduct v-for="product in category.products" :key="product.id"
-                    :product="product" v-if="product.featured == 1" />
+                    :product="product" v-show="product.featured == 1" />
             </carousel>
         </div><!-- .End .tab-pane -->
     </div><!-- End .tab-content -->
@@ -74,12 +71,17 @@
 </template>
 <script>
 import { mapState } from 'vuex';
-import CardProduct from './CardProduct';
+
 export default {
     props: ["category"],
     components:{
-        CardProduct,
+        CardProduct : () => import( /* webpackChunkName: "Chunks/Site/Components/CardProduct" */ './CardProduct')
     },
 
 }
 </script>
+<style lang="css">
+ .owl-carousel.owl-loaded {
+    display: flex;
+}
+</style>

@@ -28,6 +28,6 @@ Route::view('/offline', 'offline');
 // Route::view('/user-login', 'user_login')->name('login');
 
 
-// Auth::routes();
+Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

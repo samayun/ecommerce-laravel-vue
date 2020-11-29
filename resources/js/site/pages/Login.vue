@@ -20,26 +20,29 @@
                             </ul>
                             <div class="tab-content" id="tab-content-5">
                                 <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
-                                    <form action="#">
+                                    <form action="#"  @submit.prevent="doLogin">
+                                         Login {{ form }}
                                         <div class="form-group">
-                                            <label for="singin-email">Username or email address *</label>
-                                            <input type="text" class="form-control" id="singin-email" name="singin-email" required>
+                                            <label for="email">Username or email address *</label>
+                                            <input type="text" class="form-control" id="email" name="email" v-model="form.email" required>
                                         </div><!-- End .form-group -->
 
                                         <div class="form-group">
                                             <label for="singin-password">Password *</label>
-                                            <input type="password" class="form-control" id="singin-password" name="singin-password" required>
+                                            <input type="password" class="form-control" id="singin-password" 
+                                                name="singin-password" 
+                                                v-model="form.password" required>
                                         </div><!-- End .form-group -->
 
                                         <div class="form-footer">
-                                            <button type="submit" class="btn btn-outline-primary-2">
+                                            <button type="submit" class="btn btn-outline-primary-2" @click="doLogin">
                                                 <span>LOG IN</span>
                                                 <i class="icon-long-arrow-right"></i>
                                             </button>
 
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="signin-remember">
-                                                <label class="custom-control-label" for="signin-remember">Remember Me</label>
+                                                <label class="custom-control-label" for="signin-remember" v-model="form.remember">Remember Me</label>
                                             </div><!-- End .custom-checkbox -->
 
                                             <a href="#" class="forgot-link">Forgot Your Password?</a>
@@ -113,3 +116,34 @@
         </div><!-- End .modal-dialog -->
     </div><!-- End .modal -->
 </template>
+<script>
+    export default {
+      data(){
+        return {
+          form : {
+            email: '',
+            password: '',
+            remember: true
+          }
+        }
+      },
+       methods:{
+          async doLogin() {
+            try {
+                console.log(this.form)
+                let res = await axios.post('/login' , this.form);
+                if (res.status == 200) {
+                      window.location.reload();
+                      // this.$store.dispatch('updateUser' , res.data.user);
+                      //  localStorage.setItem('adminAuthUser' , JSON.stringify(res.data.user))
+                      //  this.$router.replace({name : 'AdminHome'})
+                }
+            }
+            catch(error) {
+                console,log('error', error)
+            }
+         }
+       },
+
+    }
+</script>

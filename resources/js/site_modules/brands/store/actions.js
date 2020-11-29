@@ -18,7 +18,7 @@ export default {
             });
             // commit("FETCH_BRAND", res.data);
             commit('changeState', {
-                brand : res.data
+                brand : res.data.data
             })
         } catch (error) {
             console.log(error);

@@ -2,17 +2,27 @@
     <div class="page-wrapper">
         <Header />
         <main class="main">
-           <router-view></router-view>
+           <keep-alive>
+             <router-view></router-view>
+           </keep-alive>
         </main>
         <!-- <Footer /> -->
     </div>
 </template>
 <script>
+import { mapMutations } from 'vuex';
 
 export default {
-    components:{
-        Header: () => import(/* webpackChunkName: "Chunks/Main-App-Header" */ './Header' ),
-        Footer: () => import(/* webpackChunkName: "Chunks/Main-App-Footer" */ './Footer' ),
+ props: ['user'],
+ components:{
+    Header: () => import(/* webpackChunkName: "Chunks/Site/Main-App-Header" */ './Header' ),
+    Footer: () => import(/* webpackChunkName: "Chunks/Site/Main-App-Footer" */ './Footer' ),
+ },
+ methods:{
+    ...mapMutations("authStoreIndex",["changeState"])
+ },
+ created(){
+        this.changeState({ user: this.user });
     }
-}
+ }
 </script>

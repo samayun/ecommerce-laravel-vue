@@ -153,12 +153,9 @@
 </template>
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
-import Product from "./Product";
+
 export default {
-  name: "Products",
-  components: {
-    Product,
-  },
+
   computed: {
     ...mapState("productsStoreIndex",["products", "filter","meta"]),
     ...mapState("settingsStoreIndex", ["layout_type"]),
