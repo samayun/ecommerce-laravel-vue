@@ -35,7 +35,7 @@
                                             <ul>
                                                 <li><router-link to="/profile"> Profile </router-link></li>
                                                 <li><router-link to="/orders"> Orders </router-link></li>
-                                                <li><router-link to="/logout" > Log Out </router-link></li>
+                                                <li><a @click.prevent="doLogout"> Log Out </a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -182,7 +182,6 @@
     </div><!-- End .header-middle -->
 
     <AuthModal />
-
     <StickyHeader />
 </header><!-- End .header -->
 </template>
@@ -200,7 +199,8 @@ export default {
         ...mapState("categoriesStoreIndex",["nested_categories"]),
     },
     methods:{
-        ...mapActions("categoriesStoreIndex",["getCategoriesSubcategories"])
+        ...mapActions("authStoreIndex",["doLogout"]),
+        ...mapActions("categoriesStoreIndex",["getCategoriesSubcategories"]),
     },
     created(){
         if (this.nested_categories.length < 1) {

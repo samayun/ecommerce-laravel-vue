@@ -9,13 +9,21 @@
         <meta name="keywords" content=<?php echo e(env('APP_NAME')); ?>>
         <meta name="description" content=<?php echo e(env('APP_NAME')); ?>>
         <meta name="author" content="Samayun-Chy">
-
+        <!-- CSRF Token -->
         <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
         <meta name="theme-color" content="#ffffff">
          <link rel="manifest" href="/manifest.json">
 
         <link rel="stylesheet" href="<?php echo e(asset('css/main-app.min.css')); ?>">
         <link rel="stylesheet" href="<?php echo e(asset('css/blue.css')); ?>">
+        <script>
+            (function () {
+                window.Laravel = {
+                    csrfToken: '<?php echo e(csrf_token()); ?>',
+                    _token : "<?php echo e(session()->get('_token')); ?>"
+                };
+            })();
+        </script>
 </head>
 
 <body>
@@ -36,9 +44,9 @@
     <!-- Plugins JS File -->
 <!--     
     
-    
+
      -->
-     <script src="<?php echo e(asset('js/template-cachable.js')); ?>"></script> 
+     <script src="<?php echo e(asset('js/template-cachable.js')); ?>"></script>
 
     <script src="<?php echo e(mix('js/app.js')); ?>" defer></script>
     <script>

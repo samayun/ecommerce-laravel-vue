@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"Chunks/Site-Product-slug":"Chunks/Site-Product-slug","Chunks/Site-Settings":"Chunks/Site-Settings","Chunks/Site/404":"Chunks/Site/404","Chunks/Site/Components/MainApp":"Chunks/Site/Components/MainApp","Chunks/Site/Components/MobileFooter":"Chunks/Site/Components/MobileFooter","Chunks/Site/Components/MobileMenu":"Chunks/Site/Components/MobileMenu","Chunks/Site/Components/MultipleFilter":"Chunks/Site/Components/MultipleFilter","Chunks/Site/Components/Product":"Chunks/Site/Components/Product","Chunks/Site/Components/QuickView":"Chunks/Site/Components/QuickView","Chunks/Site/Components/SortingToolBox":"Chunks/Site/Components/SortingToolBox","Chunks/Site/HomePageRouteContainer":"Chunks/Site/HomePageRouteContainer","Chunks/Site/Router/Category-slug":"Chunks/Site/Router/Category-slug","Chunks/Site/Router/HomeDashboard":"Chunks/Site/Router/HomeDashboard","Chunks/Site/Router/Login":"Chunks/Site/Router/Login","Chunks/Site/Router/Product-slug":"Chunks/Site/Router/Product-slug","Chunks/Site/Router/Products":"Chunks/Site/Router/Products","Chunks/Site/Router/ProductsByBrand-slug":"Chunks/Site/Router/ProductsByBrand-slug","Chunks/Site/Main-App-Footer":"Chunks/Site/Main-App-Footer","Chunks/Site/Main-App-Header":"Chunks/Site/Main-App-Header","Chunks/Site/Components/CategoriesProducts":"Chunks/Site/Components/CategoriesProducts","Chunks/Site/Components/HomeProducts":"Chunks/Site/Components/HomeProducts","Chunks/Site/Components/PopularCategories":"Chunks/Site/Components/PopularCategories","Chunks/Site/Components/ShopByBrands":"Chunks/Site/Components/ShopByBrands","Chunks/Site/Components/AuthModal":"Chunks/Site/Components/AuthModal","Chunks/Site/Components/LanguegeSwitcher":"Chunks/Site/Components/LanguegeSwitcher","Chunks/Site/Components/StickyHeader":"Chunks/Site/Components/StickyHeader","Chunks/Site/Components/CardProduct":"Chunks/Site/Components/CardProduct"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"Chunks/Site-Product-slug":"Chunks/Site-Product-slug","Chunks/Site-Settings":"Chunks/Site-Settings","Chunks/Site/404":"Chunks/Site/404","Chunks/Site/Components/AuthModal":"Chunks/Site/Components/AuthModal","Chunks/Site/Router/Login":"Chunks/Site/Router/Login","Chunks/Site/Components/MainApp":"Chunks/Site/Components/MainApp","Chunks/Site/Components/MobileFooter":"Chunks/Site/Components/MobileFooter","Chunks/Site/Components/MobileMenu":"Chunks/Site/Components/MobileMenu","Chunks/Site/Components/MultipleFilter":"Chunks/Site/Components/MultipleFilter","Chunks/Site/Components/Product":"Chunks/Site/Components/Product","Chunks/Site/Components/QuickView":"Chunks/Site/Components/QuickView","Chunks/Site/Components/SortingToolBox":"Chunks/Site/Components/SortingToolBox","Chunks/Site/HomePageRouteContainer":"Chunks/Site/HomePageRouteContainer","Chunks/Site/Router/Category-slug":"Chunks/Site/Router/Category-slug","Chunks/Site/Router/HomeDashboard":"Chunks/Site/Router/HomeDashboard","Chunks/Site/Router/Product-slug":"Chunks/Site/Router/Product-slug","Chunks/Site/Router/Products":"Chunks/Site/Router/Products","Chunks/Site/Router/ProductsByBrand-slug":"Chunks/Site/Router/ProductsByBrand-slug","Chunks/Site/Main-App-Footer":"Chunks/Site/Main-App-Footer","Chunks/Site/Main-App-Header":"Chunks/Site/Main-App-Header","Chunks/Site/Components/CategoriesProducts":"Chunks/Site/Components/CategoriesProducts","Chunks/Site/Components/HomeProducts":"Chunks/Site/Components/HomeProducts","Chunks/Site/Components/PopularCategories":"Chunks/Site/Components/PopularCategories","Chunks/Site/Components/ShopByBrands":"Chunks/Site/Components/ShopByBrands","Chunks/Site/Components/LanguegeSwitcher":"Chunks/Site/Components/LanguegeSwitcher","Chunks/Site/Components/StickyHeader":"Chunks/Site/Components/StickyHeader","Chunks/Site/Components/CardProduct":"Chunks/Site/Components/CardProduct"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -59073,6 +59073,7 @@ var options = {
   }
 };
 Vue.use(vue_awesome_notifications__WEBPACK_IMPORTED_MODULE_0___default.a);
+window.$awn = Vue.prototype.$awn;
 Vue.use(vue_magnifier__WEBPACK_IMPORTED_MODULE_2___default.a);
 
  // IMPORT THE STORE
@@ -59141,8 +59142,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.token = token.content;
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content; // window.axios.defaults.headers.common['Authorization'] = token;
+  // window.token = token.content
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
+  window.axios.defaults.headers.common['Authorization'] = window.Laravel.csrfToken;
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 } // axios.interceptors.response.use( res => {
@@ -59395,7 +59397,7 @@ var defaultRoutes = [{
   name: 'Login',
   title: 'Login',
   component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Login */ "Chunks/Site/Router/Login").then(__webpack_require__.bind(null, /*! ./site/pages/Login.vue */ "./resources/js/site/pages/Login.vue"));
+    return Promise.all(/*! import() | Chunks/Site/Router/Login */[__webpack_require__.e("Chunks/Site/Components/AuthModal"), __webpack_require__.e("Chunks/Site/Router/Login")]).then(__webpack_require__.bind(null, /*! ./site/comonents/Login.vue */ "./resources/js/site/comonents/Login.vue"));
   }
 }, {
   path: '/',
@@ -59632,7 +59634,61 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  doLogout: function doLogout(_ref) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var commit, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit;
+              _context.prev = 1;
+              _context.next = 4;
+              return axios.post('/logout', {}, {
+                headers: {
+                  Authorization: window.Laravel.csrfToken
+                }
+              });
+
+            case 4:
+              res = _context.sent;
+
+              if (res.status == 200 || res.status == 204) {
+                window.Laravel.csrfToken = res.data.csrfToken;
+                window.axios.defaults.headers.common['X-CSRF-TOKEN'] = res.data.csrfToken;
+                commit('changeState', {
+                  user: false
+                }); // window.location.reload();
+
+                $awn.info(res.data.message);
+              }
+
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](1);
+              console.log(_context.t0.response.data);
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[1, 8]]);
+    }))();
+  }
+});
 
 /***/ }),
 

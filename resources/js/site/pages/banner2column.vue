@@ -1,4 +1,5 @@
-<div class="container">
+<template>
+<div class="container mb-1">
     <div class="row">
         <div class="col-lg-6">
             <div class="banner banner-overlay banner-overlay-light">
@@ -29,5 +30,4 @@
         </div><!-- End .col-lg-6 -->
     </div><!-- End .row -->
 </div><!-- End .container -->
-
-<div class="mb-1"></div><!-- End .mb-1 -->
+</template>

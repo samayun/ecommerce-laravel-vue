@@ -9,13 +9,21 @@
         <meta name="keywords" content={{ env('APP_NAME') }}>
         <meta name="description" content={{ env('APP_NAME') }}>
         <meta name="author" content="Samayun-Chy">
-
+        <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="theme-color" content="#ffffff">
          <link rel="manifest" href="/manifest.json">
 
         <link rel="stylesheet" href="{{ asset('css/main-app.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/blue.css') }}">
+        <script>
+            (function () {
+                window.Laravel = {
+                    csrfToken: '{{ csrf_token() }}',
+                    _token : "{{ session()->get('_token') }}"
+                };
+            })();
+        </script>
 </head>
 
 <body>
@@ -50,9 +58,9 @@
     <script src="/assets/js/jquery.elevateZoom.min.js"></script>
     <script src="/assets/js/bootstrap-input-spinner.js"></script>
     <script src="/assets/js/jquery.magnific-popup.min.js"></script> --}}
-    
+
     {{-- <script src="/assets/js/main.js"></script> --}} -->
-     <script src="{{asset('js/template-cachable.js')}}"></script> 
+     <script src="{{asset('js/template-cachable.js')}}"></script>
 
     <script src="{{mix('js/app.js')}}" defer></script>
     <script>

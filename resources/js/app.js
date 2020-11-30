@@ -25,6 +25,7 @@ let options = {
 }
 
 Vue.use(VueAWN);
+window.$awn = Vue.prototype.$awn;
 Vue.use(vueMagnifier)
 
 

@@ -33,7 +33,7 @@ const defaultRoutes = [
         path: '/login',
         name: 'Login',
         title: 'Login',
-        component: () => import(/* webpackChunkName: "Chunks/Site/Router/Login" */'./site/pages/Login.vue')
+        component: () => import(/* webpackChunkName: "Chunks/Site/Router/Login" */'./site/comonents/Login.vue')
     },
     {
         path: '/',

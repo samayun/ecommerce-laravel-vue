@@ -1,4 +1,16 @@
-<img src="docs/images/logo.png" alt="E Penguin Shop" style="margin: 0px 15%;text-align:center;"/>
+<p align="center"><img src="docs/images/logo.png" alt="E Penguin Shop" style="margin: 0px 15%;text-align:center;"/>
+</p>
+<p align="center">
+<img src="https://img.shields.io/github/issues/samayun/ecommerce-laravel-vue" alt="Issues">
+<img src="https://img.shields.io/github/forks/samayun/ecommerce-laravel-vue" alt="Forks">
+
+<img src="https://img.shields.io/github/stars/samayun/ecommerce-laravel-vue?color=%2312ff65&label=Stars&logo=Star&logoColor=green&style=flat" alt="Stars">
+<img src="https://img.shields.io/github/license/samayun/ecommerce-laravel-vue" alt="License">
+
+<a href="https://twitter.com/intent/tweet?text=What an application ! Wow !Check It =>  :&url=https://github.com/samayun/ecommerce-laravel-vue"> 
+<img src="https://img.shields.io/twitter/url?label=Follow@samayunmc&logoColor=%230f0&url=https%3A%2F%2Fgithub.com%2Fsamayun%2Fecommerce-laravel-vue" alt="Tweet">
+</a>
+</p>
 
 ##  :heart: Application Name: <b style="color:green;"> E Penguin Shop </>
 <p> Single Vendor Ecommerce web application </p>
@@ -178,4 +190,5 @@
 </table>
 
 
- :heart: Happy Coding  :clap:
+ :heart: Happy Coding  :clap: 🚀 
+ ![twitter](https://img.shields.io/twitter/follow/samayunmc.svg?style=social)

@@ -229,7 +229,7 @@ export default {
      if (this.product.slug != slug) {
         this.getProduct(slug);
      }
-     this.$awn.success('Your custom message')
+
  }
 }
 </script>

@@ -2,6 +2,7 @@
 
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,15 @@ Route::view('/admin/{r}', 'admin_layout')->where('r', '.*');
 require "site.php";
 Route::view('/test', 'test');
 
+Route::get('/get', function (Request $request) {
+    // return $request->session()->all();
+    return session()->get("_token");
+});
+Route::get('/set', function (Request $request) {
+    // return $request->session()->all();
+    session()->regenerate("_token");
+    return session()->get("_token");
+});
 Route::view('/{any}', 'site')->where('any','.*');
 
 Route::view('/offline', 'offline');

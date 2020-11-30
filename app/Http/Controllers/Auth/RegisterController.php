@@ -5,12 +5,19 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
+    // use AuthenticatesUsers;
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -21,7 +28,7 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
+    // use AuthenticatesUsers;
     use RegistersUsers;
 
     /**
@@ -29,7 +36,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -69,5 +76,38 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        // if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'] ])) {
+        //     $user = Auth::user();
+        //     return response()->json([
+        //         'success' => true ,
+        //         'message' => 'User Register Successfully',
+        //         'user' => $user
+        //     ], 200);
+        // }
+
+    }
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+                    ? new JsonResponse([
+                        'success' => true ,
+                       'message' => 'User Register Successfully',
+                        'user' => $user
+                    ], 201)
+                    : new JsonResponse([
+                        'success' => false ,
+                        'message' => 'User Register Failed'
+                    ], 404);
     }
 }

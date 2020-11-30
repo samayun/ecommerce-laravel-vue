@@ -243,8 +243,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     if (this.product.slug != slug) {
       this.getProduct(slug);
     }
-
-    this.$awn.success('Your custom message');
   }
 });
 

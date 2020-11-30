@@ -29,7 +29,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['user'],
+  props: ["user"],
   components: {
     Header: function Header() {
       return __webpack_require__.e(/*! import() | Chunks/Site/Main-App-Header */ "Chunks/Site/Main-App-Header").then(__webpack_require__.bind(null, /*! ./Header */ "./resources/js/site/comonents/Header.vue"));

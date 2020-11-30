@@ -203,7 +203,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -219,7 +218,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
   },
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("authStoreIndex", ["user"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("categoriesStoreIndex", ["nested_categories"])),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ["getCategoriesSubcategories"])),
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("authStoreIndex", ["doLogout"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ["getCategoriesSubcategories"])),
   created: function created() {
     if (this.nested_categories.length < 1) {
       this.getCategoriesSubcategories();
@@ -364,17 +363,20 @@ var render = function() {
                                     1
                                   ),
                                   _vm._v(" "),
-                                  _c(
-                                    "li",
-                                    [
-                                      _c(
-                                        "router-link",
-                                        { attrs: { to: "/logout" } },
-                                        [_vm._v(" Log Out ")]
-                                      )
-                                    ],
-                                    1
-                                  )
+                                  _c("li", [
+                                    _c(
+                                      "a",
+                                      {
+                                        on: {
+                                          click: function($event) {
+                                            $event.preventDefault()
+                                            return _vm.doLogout($event)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v(" Log Out ")]
+                                    )
+                                  ])
                                 ])
                               ])
                             ])
