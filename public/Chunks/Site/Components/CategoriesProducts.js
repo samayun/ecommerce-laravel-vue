@@ -80,7 +80,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["category"],
@@ -236,8 +235,6 @@ var render = function() {
                 autoplay: true,
                 nav: false,
                 items: 6,
-                lazyLoad: true,
-                lazyLoadEager: 3,
                 loop: true,
                 margin: 10,
                 dots: true,
@@ -246,7 +243,7 @@ var render = function() {
                   420: { items: 3 },
                   600: { items: 4 },
                   900: { items: 5, nav: false },
-                  1024: { items: 6, nav: false }
+                  1024: { items: 6, nav: true }
                 }
               }
             },

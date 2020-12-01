@@ -390,7 +390,7 @@ export default {
 };
 </script>
 <style >
- .modal-backdrop.show {
+ /* .modal-backdrop.show {
      opacity: 0;
- }
+ } */
 </style>

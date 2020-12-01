@@ -190,19 +190,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -217,11 +204,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     } //  CategoriesSubcategories: () => import(/* webpackChunkName: "Chunks/Site/Components/CategoriesSubcategories" */ '../comonents/Category/CategoriesSubcategories')
 
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("authStoreIndex", ["user"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("categoriesStoreIndex", ["nested_categories"])),
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("authStoreIndex", ["doLogout"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ["getCategoriesSubcategories"])),
+  computed: _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("authStoreIndex", ["user"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("cartStoreIndex", ["cartData"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("wishlistsStoreIndex", ["wishlistData"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("compareStoreIndex", ["compareData"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("cartStoreIndex", ["cartsArray"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])("categoriesStoreIndex", ["nested_categories"])),
+  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("authStoreIndex", ["doLogout"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("categoriesStoreIndex", ["getCategoriesSubcategories"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("cartStoreIndex", ["getCarts", "removeCartItem"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("compareStoreIndex", ["getCompares", "removeCompareItem", "clearAllCompareItem"])),
   created: function created() {
     if (this.nested_categories.length < 1) {
       this.getCategoriesSubcategories();
+    }
+
+    if (Object.keys(this.cartData.carts).length < 1) {
+      this.getCarts();
+    }
+
+    if (Object.keys(this.compareData.compares).length < 1) {
+      this.getCompares();
     }
   }
 });
@@ -461,7 +456,7 @@ var render = function() {
                         _c("i", { staticClass: "icon-random" }),
                         _vm._v(" "),
                         _c("span", { staticClass: "compare-txt" }, [
-                          _vm._v("Compare")
+                          _vm._v(_vm._s(_vm.$t("compare")))
                         ])
                       ]
                     ),
@@ -470,75 +465,73 @@ var render = function() {
                       "div",
                       { staticClass: "dropdown-menu dropdown-menu-right" },
                       [
-                        _c("ul", { staticClass: "compare-products" }, [
-                          _c(
-                            "li",
-                            { staticClass: "compare-product" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "btn-remove",
-                                  attrs: { to: "#", title: "Remove Product" }
-                                },
-                                [_c("i", { staticClass: "icon-close" })]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "h4",
-                                { staticClass: "compare-product-title" },
-                                [
-                                  _c(
-                                    "router-link",
-                                    { attrs: { to: "product.html" } },
-                                    [_vm._v("Blue Night Dress")]
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "li",
-                            { staticClass: "compare-product" },
-                            [
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "btn-remove",
-                                  attrs: { to: "#", title: "Remove Product" }
-                                },
-                                [_c("i", { staticClass: "icon-close" })]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "h4",
-                                { staticClass: "compare-product-title" },
-                                [
-                                  _c(
-                                    "router-link",
-                                    { attrs: { to: "product.html" } },
-                                    [_vm._v("White Long Skirt")]
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ]),
+                        _c(
+                          "ul",
+                          { staticClass: "compare-products" },
+                          _vm._l(_vm.compareData.compares, function(compare) {
+                            return _c(
+                              "li",
+                              {
+                                key: compare.rowId,
+                                staticClass: "compare-product"
+                              },
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn-remove",
+                                    attrs: {
+                                      href: "#",
+                                      title: "Remove Product"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.removeCompareItem(
+                                          compare.rowId
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "icon-close" })]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "h4",
+                                  {
+                                    staticClass: "compare-product-title d-flex"
+                                  },
+                                  [
+                                    _c("img", {
+                                      staticClass: "w-25",
+                                      attrs: {
+                                        src: compare.options[0].image
+                                          ? "" + compare.options[0].image
+                                          : "/storage/products/default.png",
+                                        alt: compare.name
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("span", { staticClass: "pt-1 pl-2" }, [
+                                      _vm._v(" " + _vm._s(compare.name) + " ")
+                                    ])
+                                  ]
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        ),
                         _vm._v(" "),
                         _c(
                           "div",
                           { staticClass: "compare-actions" },
                           [
                             _c(
-                              "router-link",
+                              "a",
                               {
                                 staticClass: "action-link",
-                                attrs: { to: "#" }
+                                attrs: { href: "#" },
+                                on: { click: _vm.clearAllCompareItem }
                               },
                               [_vm._v("Clear All")]
                             ),
@@ -547,7 +540,7 @@ var render = function() {
                               "router-link",
                               {
                                 staticClass: "btn btn-outline-primary-2",
-                                attrs: { to: "#" }
+                                attrs: { to: "/compare" }
                               },
                               [
                                 _c("span", [_vm._v(_vm._s(_vm.$t("compare")))]),
@@ -567,15 +560,16 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "router-link",
-                  {
-                    staticClass: "wishlist-link",
-                    attrs: { to: "wishlist.html" }
-                  },
+                  { staticClass: "wishlist-link", attrs: { to: "/wishlists" } },
                   [
                     _c("i", { staticClass: "icon-heart-o" }),
                     _vm._v(" "),
                     _c("span", { staticClass: "wishlist-count" }, [
-                      _vm._v("3")
+                      _vm._v(
+                        _vm._s(
+                          _vm.wishlistData.count ? _vm.wishlistData.count : 0
+                        )
+                      )
                     ]),
                     _vm._v(" "),
                     _c("span", { staticClass: "wishlist-txt" }, [
@@ -605,7 +599,12 @@ var render = function() {
                         _c("i", { staticClass: "icon-shopping-cart" }),
                         _vm._v(" "),
                         _c("span", { staticClass: "cart-count" }, [
-                          _vm._v("2")
+                          _vm._v(
+                            " " +
+                              _vm._s(
+                                _vm.cartData.count ? _vm.cartData.count : 0
+                              )
+                          )
                         ]),
                         _vm._v(" "),
                         _c("span", { staticClass: "cart-txt" }, [
@@ -618,139 +617,100 @@ var render = function() {
                       "div",
                       { staticClass: "dropdown-menu dropdown-menu-right" },
                       [
-                        _c("div", { staticClass: "dropdown-cart-products" }, [
-                          _c(
-                            "div",
-                            { staticClass: "product" },
-                            [
-                              _c(
-                                "div",
-                                { staticClass: "product-cart-details" },
-                                [
-                                  _c(
-                                    "h4",
-                                    { staticClass: "product-title" },
-                                    [
-                                      _c(
-                                        "router-link",
-                                        { attrs: { to: "product.html" } },
-                                        [
-                                          _vm._v(
-                                            "Beige knitted elastic runner shoes"
-                                          )
-                                        ]
+                        _c(
+                          "div",
+                          { staticClass: "dropdown-cart-products" },
+                          _vm._l(_vm.cartData.carts, function(cart) {
+                            return _c(
+                              "div",
+                              { key: cart.rowId, staticClass: "product" },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "product-cart-details" },
+                                  [
+                                    _c("h4", { staticClass: "product-title" }, [
+                                      _vm._v(
+                                        "\n                                           " +
+                                          _vm._s(cart.name) +
+                                          "\n                                        "
                                       )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _vm._m(2)
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "figure",
-                                { staticClass: "product-image-container" },
-                                [
-                                  _c(
-                                    "router-link",
-                                    {
-                                      staticClass: "product-image",
-                                      attrs: { to: "product.html" }
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "span",
+                                      { staticClass: "cart-product-info" },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "cart-product-qty" },
+                                          [_vm._v(" " + _vm._s(cart.qty) + " ")]
+                                        ),
+                                        _vm._v(
+                                          "\n                                            x $ " +
+                                            _vm._s(cart.price) +
+                                            " =  " +
+                                            _vm._s(cart.subtotal) +
+                                            "\n                                        "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "figure",
+                                  { staticClass: "product-image-container" },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "product-image",
+                                        attrs: { href: "#" }
+                                      },
+                                      [
+                                        _c("img", {
+                                          attrs: {
+                                            src: cart.options[0].image
+                                              ? "" + cart.options[0].image
+                                              : "/storage/products/default.png",
+                                            alt: cart.name
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn-remove",
+                                    attrs: {
+                                      href: "#",
+                                      title: "Remove Product"
                                     },
-                                    [
-                                      _c("img", {
-                                        attrs: {
-                                          src:
-                                            "/assets/images/products/cart/product-1.jpg",
-                                          alt: "product"
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "btn-remove",
-                                  attrs: { to: "#", title: "Remove Product" }
-                                },
-                                [_c("i", { staticClass: "icon-close" })]
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "product" },
-                            [
-                              _c(
-                                "div",
-                                { staticClass: "product-cart-details" },
-                                [
-                                  _c(
-                                    "h4",
-                                    { staticClass: "product-title" },
-                                    [
-                                      _c(
-                                        "router-link",
-                                        { attrs: { to: "product.html" } },
-                                        [
-                                          _vm._v(
-                                            "Blue utility pinafore denim dress"
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _vm._m(3)
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "figure",
-                                { staticClass: "product-image-container" },
-                                [
-                                  _c(
-                                    "router-link",
-                                    {
-                                      staticClass: "product-image",
-                                      attrs: { to: "product" }
-                                    },
-                                    [
-                                      _c("img", {
-                                        attrs: {
-                                          src:
-                                            "/assets/images/products/cart/product-2.jpg",
-                                          alt: "product"
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "router-link",
-                                {
-                                  staticClass: "btn-remove",
-                                  attrs: { to: "#", title: "Remove Product" }
-                                },
-                                [_c("i", { staticClass: "icon-close" })]
-                              )
-                            ],
-                            1
-                          )
-                        ]),
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.removeCartItem(cart.rowId)
+                                      }
+                                    }
+                                  },
+                                  [_c("i", { staticClass: "icon-close" })]
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        ),
                         _vm._v(" "),
-                        _vm._m(4),
+                        _c("div", { staticClass: "dropdown-cart-total" }, [
+                          _c("span", [_vm._v("Total")]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "cart-total-price" }, [
+                            _vm._v("$ " + _vm._s(_vm.cartData.total) + " ")
+                          ])
+                        ]),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -760,7 +720,7 @@ var render = function() {
                               "router-link",
                               {
                                 staticClass: "btn btn-primary",
-                                attrs: { to: "cart" }
+                                attrs: { to: "/cart" }
                               },
                               [_vm._v("View Cart")]
                             ),
@@ -769,7 +729,7 @@ var render = function() {
                               "router-link",
                               {
                                 staticClass: "btn btn-outline-primary-2",
-                                attrs: { to: "checkout" }
+                                attrs: { to: "/checkout" }
                               },
                               [
                                 _c("span", [_vm._v("Checkout")]),
@@ -850,38 +810,6 @@ var staticRenderFns = [
           [_c("i", { staticClass: "icon-search" })]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "cart-product-info" }, [
-      _c("span", { staticClass: "cart-product-qty" }, [_vm._v("1")]),
-      _vm._v(
-        "\n                                            x $84.00\n                                        "
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "cart-product-info" }, [
-      _c("span", { staticClass: "cart-product-qty" }, [_vm._v("1")]),
-      _vm._v(
-        "\n                                            x $76.00\n                                        "
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "dropdown-cart-total" }, [
-      _c("span", [_vm._v("Total")]),
-      _vm._v(" "),
-      _c("span", { staticClass: "cart-total-price" }, [_vm._v("$160.00")])
     ])
   }
 ]

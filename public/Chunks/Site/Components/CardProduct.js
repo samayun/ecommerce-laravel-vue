@@ -68,10 +68,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["product"],
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("productsStoreIndex", ["QuickView"]))
+  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("productsStoreIndex", ["QuickView"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("cartStoreIndex", ["addToCart"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("wishlistsStoreIndex", ["addToWishlist"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("compareStoreIndex", ["addToCompare"]))
 });
 
 /***/ }),
@@ -108,7 +110,19 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "product-action-vertical" }, [
-          _vm._m(0),
+          _c(
+            "a",
+            {
+              staticClass: "btn-product-icon btn-wishlist btn-expandable",
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  return _vm.addToWishlist(_vm.product)
+                }
+              }
+            },
+            [_c("span", [_vm._v("add to wishlist")])]
+          ),
           _vm._v(" "),
           _c(
             "button",
@@ -124,10 +138,36 @@ var render = function() {
             [_c("span", [_vm._v("Quick view")])]
           ),
           _vm._v(" "),
-          _vm._m(1)
+          _c(
+            "a",
+            {
+              staticClass: "btn-product-icon btn-compare btn-expandable",
+              attrs: { href: "#", title: "Compare" },
+              on: {
+                click: function($event) {
+                  return _vm.addToCompare(_vm.product)
+                }
+              }
+            },
+            [_c("span", [_vm._v("Compare")])]
+          )
         ]),
         _vm._v(" "),
-        _vm._m(2)
+        _c("div", { staticClass: "product-action" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn-product btn-cart",
+              attrs: { href: "#", title: "Add to cart" },
+              on: {
+                click: function($event) {
+                  return _vm.addToCart(_vm.product)
+                }
+              }
+            },
+            [_c("span", [_vm._v("add to cart")])]
+          )
+        ])
       ],
       1
     ),
@@ -176,52 +216,11 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(3)
+      _vm._m(0)
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn-product-icon btn-wishlist btn-expandable",
-        attrs: { href: "#" }
-      },
-      [_c("span", [_vm._v("add to wishlist")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn-product-icon btn-compare btn-expandable",
-        attrs: { href: "#", title: "Compare" }
-      },
-      [_c("span", [_vm._v("Compare")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "product-action" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn-product btn-cart",
-          attrs: { href: "#", title: "Add to cart" }
-        },
-        [_c("span", [_vm._v("add to cart")])]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -231,7 +230,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "ratings-val", staticStyle: { width: "60%" } })
       ]),
       _vm._v(" "),
-      _c("span", { staticClass: "ratings-text" }, [_vm._v("( 6 Reviews )")])
+      _c("span", { staticClass: "ratings-text" }, [_vm._v("( 2 Reviews )")])
     ])
   }
 ]

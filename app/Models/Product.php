@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use PhpParser\Node\Expr\Cast\Array_;
 use Str;
+use Gloudemans\Shoppingcart\Contracts\Buyable;
 
-class Product extends Model
+class Product extends Model implements Buyable
 {
     use HasFactory;
     protected $guarded = [];
@@ -141,5 +142,19 @@ class Product extends Model
         if ($filter && $request->filter == "high_low") {
             return $query->orderBy('price', 'desc');
         }
+    }
+
+
+    public function getBuyableIdentifier($options = null) {
+        return $this->id;
+    }
+    public function getBuyableDescription($options = null) {
+        return $this->name;
+    }
+    public function getBuyablePrice($options = null) {
+        return $this->price;
+    }
+    public function getBuyableWeight($options = null) {
+        return $this->weight;
     }
 }

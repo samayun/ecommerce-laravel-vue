@@ -86,96 +86,83 @@
                     <div class="dropdown compare-dropdown">
                         <router-link to="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Compare Products" aria-label="Compare Products">
                             <i class="icon-random"></i>
-                            <span class="compare-txt">Compare</span>
+                            <span class="compare-txt">{{ $t('compare') }}</span>
                         </router-link>
 
                         <div class="dropdown-menu dropdown-menu-right">
                             <ul class="compare-products">
-                                <li class="compare-product">
-                                    <router-link to="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></router-link>
-                                    <h4 class="compare-product-title"><router-link to="product.html">Blue Night Dress</router-link></h4>
-                                </li>
-                                <li class="compare-product">
-                                    <router-link to="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></router-link>
-                                    <h4 class="compare-product-title"><router-link to="product.html">White Long Skirt</router-link></h4>
+                                <li class="compare-product"
+                                 v-for="compare in compareData.compares" :key="compare.rowId"
+                                >
+                                    <a href="#" @click="removeCompareItem(compare.rowId)"  class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                    <h4 class="compare-product-title d-flex">
+                                       <img :src="compare.options[0].image ? `${compare.options[0].image}` : `/storage/products/default.png` " :alt="compare.name" class="w-25">
+                                       <span class="pt-1 pl-2"> {{ compare.name }} </span>
+                                    </h4>
                                 </li>
                             </ul>
 
                             <div class="compare-actions">
-                                <router-link to="#" class="action-link">Clear All</router-link>
-                                <router-link to="#" class="btn btn-outline-primary-2"><span>{{ $t('compare') }}</span><i class="icon-long-arrow-right"></i></router-link>
+                                <a href="#" @click="clearAllCompareItem" class="action-link">Clear All</a>
+                                <router-link to="/compare" class="btn btn-outline-primary-2"><span>{{ $t('compare') }}</span><i class="icon-long-arrow-right"></i></router-link>
                             </div>
                         </div><!-- End .dropdown-menu -->
                     </div><!-- End .compare-dropdown -->
 
-                    <router-link to="wishlist.html" class="wishlist-link">
+                    <router-link to="/wishlists" class="wishlist-link">
                         <i class="icon-heart-o"></i>
-                        <span class="wishlist-count">3</span>
+                        <span class="wishlist-count">{{ wishlistData.count ? wishlistData.count : 0 }}</span>
                         <span class="wishlist-txt">{{ $t('wishlist') }}</span>
                     </router-link>
 
                     <div class="dropdown cart-dropdown">
                         <router-link to="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                             <i class="icon-shopping-cart"></i>
-                            <span class="cart-count">2</span>
+                            <span class="cart-count"> {{ cartData.count ? cartData.count : 0 }}</span>
                             <span class="cart-txt"> {{ $t('cart') }}  </span>
                         </router-link>
 
-                        <div class="dropdown-menu dropdown-menu-right">
+                       <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-cart-products">
-                                <div class="product">
+                                <div class="product"
+                                v-for="cart in cartData.carts" :key="cart.rowId"
+                                >
                                     <div class="product-cart-details">
                                         <h4 class="product-title">
-                                            <router-link to="product.html">Beige knitted elastic runner shoes</router-link>
+                                           {{ cart.name }}
                                         </h4>
 
                                         <span class="cart-product-info">
-                                            <span class="cart-product-qty">1</span>
-                                            x $84.00
+                                            <span class="cart-product-qty"> {{ cart.qty }} </span>
+                                            x $ {{ cart.price }} =  {{ cart.subtotal }}
                                         </span>
-                                    </div><!-- End .product-cart-details -->
+                                    </div>
 
                                     <figure class="product-image-container">
-                                        <router-link to="product.html" class="product-image">
-                                            <img src="/assets/images/products/cart/product-1.jpg" alt="product">
-                                        </router-link>
+                                        <a href="#" class="product-image">
+                                            <img :src="cart.options[0].image ? `${cart.options[0].image}` : `/storage/products/default.png` " :alt="cart.name">
+                                        </a>
                                     </figure>
-                                    <router-link to="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></router-link>
-                                </div><!-- End .product -->
+                                    <a href="#" @click="removeCartItem(cart.rowId)" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                </div>
 
-                                <div class="product">
-                                    <div class="product-cart-details">
-                                        <h4 class="product-title">
-                                            <router-link to="product.html">Blue utility pinafore denim dress</router-link>
-                                        </h4>
 
-                                        <span class="cart-product-info">
-                                            <span class="cart-product-qty">1</span>
-                                            x $76.00
-                                        </span>
-                                    </div><!-- End .product-cart-details -->
-
-                                    <figure class="product-image-container">
-                                        <router-link to="product" class="product-image">
-                                            <img src="/assets/images/products/cart/product-2.jpg" alt="product">
-                                        </router-link>
-                                    </figure>
-                                    <router-link to="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></router-link>
-                                </div><!-- End .product -->
-                            </div><!-- End .cart-product -->
+                            </div>
 
                             <div class="dropdown-cart-total">
                                 <span>Total</span>
 
-                                <span class="cart-total-price">$160.00</span>
-                            </div><!-- End .dropdown-cart-total -->
+                                <span class="cart-total-price">$ {{ cartData.total }} </span>
+                            </div>
 
                             <div class="dropdown-cart-action">
-                                <router-link to="cart" class="btn btn-primary">View Cart</router-link>
-                                <router-link to="checkout" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></router-link>
-                            </div><!-- End .dropdown-cart-total -->
-                        </div><!-- End .dropdown-menu -->
+                                <router-link to="/cart" class="btn btn-primary">View Cart</router-link>
+                                <router-link to="/checkout" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></router-link>
+                            </div>
+                        </div>
                     </div><!-- End .cart-dropdown -->
+
+
                 </div>
             </div><!-- End .header-right -->
         </div><!-- End .container -->
@@ -186,7 +173,7 @@
 </header><!-- End .header -->
 </template>
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapGetters, mapState } from 'vuex';
 export default {
     components: {
         LanguegeSwitcher : () => import(/* webpackChunkName: "Chunks/Site/Components/LanguegeSwitcher" */ './LanguegeSwitcher'),
@@ -196,15 +183,27 @@ export default {
     },
     computed:{
         ...mapState("authStoreIndex",["user"]),
+        ...mapState("cartStoreIndex",["cartData"]),
+        ...mapState("wishlistsStoreIndex",["wishlistData"]),
+        ...mapState("compareStoreIndex",["compareData"]),
+        ...mapGetters("cartStoreIndex",["cartsArray"]),
         ...mapState("categoriesStoreIndex",["nested_categories"]),
     },
     methods:{
         ...mapActions("authStoreIndex",["doLogout"]),
         ...mapActions("categoriesStoreIndex",["getCategoriesSubcategories"]),
+        ...mapActions("cartStoreIndex",["getCarts","removeCartItem"]),
+        ...mapActions("compareStoreIndex",["getCompares","removeCompareItem","clearAllCompareItem"]),
     },
     created(){
         if (this.nested_categories.length < 1) {
             this.getCategoriesSubcategories()
+        }
+        if (Object.keys(this.cartData.carts).length < 1) {
+            this.getCarts()
+        }
+        if (Object.keys(this.compareData.compares).length < 1) {
+            this.getCompares()
         }
     }
 

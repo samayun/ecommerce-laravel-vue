@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"Chunks/Site-Product-slug":"Chunks/Site-Product-slug","Chunks/Site-Settings":"Chunks/Site-Settings","Chunks/Site/404":"Chunks/Site/404","Chunks/Site/Components/AuthModal":"Chunks/Site/Components/AuthModal","Chunks/Site/Router/Login":"Chunks/Site/Router/Login","Chunks/Site/Components/MainApp":"Chunks/Site/Components/MainApp","Chunks/Site/Components/MobileFooter":"Chunks/Site/Components/MobileFooter","Chunks/Site/Components/MobileMenu":"Chunks/Site/Components/MobileMenu","Chunks/Site/Components/MultipleFilter":"Chunks/Site/Components/MultipleFilter","Chunks/Site/Components/Product":"Chunks/Site/Components/Product","Chunks/Site/Components/QuickView":"Chunks/Site/Components/QuickView","Chunks/Site/Components/SortingToolBox":"Chunks/Site/Components/SortingToolBox","Chunks/Site/HomePageRouteContainer":"Chunks/Site/HomePageRouteContainer","Chunks/Site/Router/Category-slug":"Chunks/Site/Router/Category-slug","Chunks/Site/Router/HomeDashboard":"Chunks/Site/Router/HomeDashboard","Chunks/Site/Router/Product-slug":"Chunks/Site/Router/Product-slug","Chunks/Site/Router/Products":"Chunks/Site/Router/Products","Chunks/Site/Router/ProductsByBrand-slug":"Chunks/Site/Router/ProductsByBrand-slug","Chunks/Site/Main-App-Footer":"Chunks/Site/Main-App-Footer","Chunks/Site/Main-App-Header":"Chunks/Site/Main-App-Header","Chunks/Site/Components/CategoriesProducts":"Chunks/Site/Components/CategoriesProducts","Chunks/Site/Components/HomeProducts":"Chunks/Site/Components/HomeProducts","Chunks/Site/Components/PopularCategories":"Chunks/Site/Components/PopularCategories","Chunks/Site/Components/ShopByBrands":"Chunks/Site/Components/ShopByBrands","Chunks/Site/Components/LanguegeSwitcher":"Chunks/Site/Components/LanguegeSwitcher","Chunks/Site/Components/StickyHeader":"Chunks/Site/Components/StickyHeader","Chunks/Site/Components/CardProduct":"Chunks/Site/Components/CardProduct"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"Chunks/Site-Product-slug":"Chunks/Site-Product-slug","Chunks/Site-Settings":"Chunks/Site-Settings","Chunks/Site/404":"Chunks/Site/404","Chunks/Site/Components/AuthModal":"Chunks/Site/Components/AuthModal","Chunks/Site/Router/Login":"Chunks/Site/Router/Login","Chunks/Site/Components/MainApp":"Chunks/Site/Components/MainApp","Chunks/Site/Components/MobileFooter":"Chunks/Site/Components/MobileFooter","Chunks/Site/Components/MobileMenu":"Chunks/Site/Components/MobileMenu","Chunks/Site/Components/MultipleFilter":"Chunks/Site/Components/MultipleFilter","Chunks/Site/Components/Product":"Chunks/Site/Components/Product","Chunks/Site/Components/QuickView":"Chunks/Site/Components/QuickView","Chunks/Site/Components/SortingToolBox":"Chunks/Site/Components/SortingToolBox","Chunks/Site/HomePageRouteContainer":"Chunks/Site/HomePageRouteContainer","Chunks/Site/Router/Carts":"Chunks/Site/Router/Carts","Chunks/Site/Router/Category-slug":"Chunks/Site/Router/Category-slug","Chunks/Site/Router/Compare":"Chunks/Site/Router/Compare","Chunks/Site/Router/HomeDashboard":"Chunks/Site/Router/HomeDashboard","Chunks/Site/Router/Product-slug":"Chunks/Site/Router/Product-slug","Chunks/Site/Router/Products":"Chunks/Site/Router/Products","Chunks/Site/Router/ProductsByBrand-slug":"Chunks/Site/Router/ProductsByBrand-slug","Chunks/Site/Router/Wishlist":"Chunks/Site/Router/Wishlist","Chunks/Site/Main-App-Footer":"Chunks/Site/Main-App-Footer","Chunks/Site/Main-App-Header":"Chunks/Site/Main-App-Header","Chunks/Site/Components/CategoriesProducts":"Chunks/Site/Components/CategoriesProducts","Chunks/Site/Components/HomeProducts":"Chunks/Site/Components/HomeProducts","Chunks/Site/Components/PopularCategories":"Chunks/Site/Components/PopularCategories","Chunks/Site/Components/ShopByBrands":"Chunks/Site/Components/ShopByBrands","Chunks/Site/Components/LanguegeSwitcher":"Chunks/Site/Components/LanguegeSwitcher","Chunks/Site/Components/StickyHeader":"Chunks/Site/Components/StickyHeader","Chunks/Site/Components/CardProduct":"Chunks/Site/Components/CardProduct"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -59326,8 +59326,8 @@ requireModule.keys().forEach(function (fileName) {
   if (fileName === "./".concat(str, "/store/index.js")) {
     // filter fullstops and extension
     // and return a camel-case name for the file
-    var moduleName = lodash_camelCase__WEBPACK_IMPORTED_MODULE_0___default()(fileName.replace(/(\.\/|\.js)/g, ''));
-    console.log(moduleName); // create a dynamic object with all modules
+    var moduleName = lodash_camelCase__WEBPACK_IMPORTED_MODULE_0___default()(fileName.replace(/(\.\/|\.js)/g, '')); // console.log(moduleName);
+    // create a dynamic object with all modules
 
     modules[moduleName] = _objectSpread({
       // add namespace here
@@ -59453,8 +59453,20 @@ var map = {
 	"./brands/store/index.js": "./resources/js/site_modules/brands/store/index.js",
 	"./brands/store/mutations.js": "./resources/js/site_modules/brands/store/mutations.js",
 	"./brands/store/state.js": "./resources/js/site_modules/brands/store/state.js",
+	"./cart/router/index.js": "./resources/js/site_modules/cart/router/index.js",
+	"./cart/store/actions.js": "./resources/js/site_modules/cart/store/actions.js",
+	"./cart/store/getters.js": "./resources/js/site_modules/cart/store/getters.js",
+	"./cart/store/index.js": "./resources/js/site_modules/cart/store/index.js",
+	"./cart/store/mutations.js": "./resources/js/site_modules/cart/store/mutations.js",
+	"./cart/store/state.js": "./resources/js/site_modules/cart/store/state.js",
 	"./categories/router/index.js": "./resources/js/site_modules/categories/router/index.js",
 	"./categories/store/index.js": "./resources/js/site_modules/categories/store/index.js",
+	"./compare/router/index.js": "./resources/js/site_modules/compare/router/index.js",
+	"./compare/store/actions.js": "./resources/js/site_modules/compare/store/actions.js",
+	"./compare/store/getters.js": "./resources/js/site_modules/compare/store/getters.js",
+	"./compare/store/index.js": "./resources/js/site_modules/compare/store/index.js",
+	"./compare/store/mutations.js": "./resources/js/site_modules/compare/store/mutations.js",
+	"./compare/store/state.js": "./resources/js/site_modules/compare/store/state.js",
 	"./multipleFiltering/store/actions.js": "./resources/js/site_modules/multipleFiltering/store/actions.js",
 	"./multipleFiltering/store/getters.js": "./resources/js/site_modules/multipleFiltering/store/getters.js",
 	"./multipleFiltering/store/index.js": "./resources/js/site_modules/multipleFiltering/store/index.js",
@@ -59473,7 +59485,13 @@ var map = {
 	"./test/store/getters.js": "./resources/js/site_modules/test/store/getters.js",
 	"./test/store/index.js": "./resources/js/site_modules/test/store/index.js",
 	"./test/store/mutations.js": "./resources/js/site_modules/test/store/mutations.js",
-	"./test/store/state.js": "./resources/js/site_modules/test/store/state.js"
+	"./test/store/state.js": "./resources/js/site_modules/test/store/state.js",
+	"./wishlists/router/index.js": "./resources/js/site_modules/wishlists/router/index.js",
+	"./wishlists/store/actions.js": "./resources/js/site_modules/wishlists/store/actions.js",
+	"./wishlists/store/getters.js": "./resources/js/site_modules/wishlists/store/getters.js",
+	"./wishlists/store/index.js": "./resources/js/site_modules/wishlists/store/index.js",
+	"./wishlists/store/mutations.js": "./resources/js/site_modules/wishlists/store/mutations.js",
+	"./wishlists/store/state.js": "./resources/js/site_modules/wishlists/store/state.js"
 };
 
 
@@ -59956,6 +59974,329 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/site_modules/cart/router/index.js":
+/*!********************************************************!*\
+  !*** ./resources/js/site_modules/cart/router/index.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var routes = [{
+  path: '/cart',
+  name: 'Cart',
+  component: function component() {
+    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Carts */ "Chunks/Site/Router/Carts").then(__webpack_require__.bind(null, /*! ../pages/cart.vue */ "./resources/js/site_modules/cart/pages/cart.vue"));
+  },
+  title: 'This is cart page',
+  meta: {
+    guest: true,
+    allowedUserType: ['User']
+  }
+}];
+/* harmony default export */ __webpack_exports__["default"] = (routes);
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/cart/store/actions.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/site_modules/cart/store/actions.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getCarts: function getCarts(_ref) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var commit, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit;
+              _context.prev = 1;
+              _context.next = 4;
+              return axios.get("/api/cart");
+
+            case 4:
+              res = _context.sent;
+              commit('changeState', {
+                cartData: res.data
+              });
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](1);
+              console.log(_context.t0);
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[1, 8]]);
+    }))();
+  },
+  addToCart: function addToCart(_ref2, product) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var commit, id, name, price, image, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              commit = _ref2.commit;
+              _context2.prev = 1;
+              id = product.id, name = product.name, price = product.price, image = product.image;
+              _context2.next = 5;
+              return axios.post("/api/cart", {
+                id: id,
+                name: name,
+                price: price,
+                qty: 1,
+                image: image
+              });
+
+            case 5:
+              res = _context2.sent;
+              commit('changeState', {
+                cartData: res.data
+              });
+              _context2.next = 12;
+              break;
+
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](1);
+              console.log(_context2.t0);
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[1, 9]]);
+    }))();
+  },
+  updateCartQuantity: function updateCartQuantity(_ref3, _ref4) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      var commit, state, rowId, qty, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              commit = _ref3.commit, state = _ref3.state;
+              rowId = _ref4.rowId, qty = _ref4.qty;
+              _context3.prev = 2;
+              _context3.next = 5;
+              return axios.put("/api/cart/".concat(rowId), {
+                qty: qty
+              });
+
+            case 5:
+              res = _context3.sent;
+              commit('changeState', {
+                cartData: res.data
+              });
+              $awn.success('Cart Updated Successfully');
+              _context3.next = 13;
+              break;
+
+            case 10:
+              _context3.prev = 10;
+              _context3.t0 = _context3["catch"](2);
+
+              if (_context3.t0.response.status == 422) {
+                $awn.warning(_context3.t0.response.data.errors.qty[0]);
+              }
+
+            case 13:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[2, 10]]);
+    }))();
+  },
+  removeCartItem: function removeCartItem(_ref5, rowId) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      var commit, state, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              commit = _ref5.commit, state = _ref5.state;
+              _context4.prev = 1;
+              _context4.next = 4;
+              return axios["delete"]("/api/cart/".concat(rowId));
+
+            case 4:
+              res = _context4.sent;
+
+              if (res.status == 200) {
+                commit('changeState', {
+                  cartData: res.data
+                }); // commit('removeCartItem',rowId);
+              }
+
+              _context4.next = 11;
+              break;
+
+            case 8:
+              _context4.prev = 8;
+              _context4.t0 = _context4["catch"](1);
+              console.log(_context4.t0);
+
+            case 11:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[1, 8]]);
+    }))();
+  },
+  clearAllItem: function clearAllItem(_ref6) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+      var commit, state, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              commit = _ref6.commit, state = _ref6.state;
+              _context5.prev = 1;
+              _context5.next = 4;
+              return axios["delete"]("/api/cart/destroy");
+
+            case 4:
+              res = _context5.sent;
+
+              if (res.status == 200) {
+                commit('changeState', {
+                  cartData: res.data
+                });
+              }
+
+              _context5.next = 11;
+              break;
+
+            case 8:
+              _context5.prev = 8;
+              _context5.t0 = _context5["catch"](1);
+              console.log(_context5.t0);
+
+            case 11:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, null, [[1, 8]]);
+    }))();
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/cart/store/getters.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/site_modules/cart/store/getters.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  cartsArray: function cartsArray(state) {
+    //    Object to Array Conversion
+    var cartsArray = [];
+    var carts = state.cartData.carts;
+
+    for (var key in carts) {
+      if (carts.hasOwnProperty(key)) {
+        cartsArray.push(carts[key]);
+      }
+    }
+
+    return cartsArray;
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/cart/store/index.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/site_modules/cart/store/index.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/site_modules/cart/store/state.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/site_modules/cart/store/getters.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/js/site_modules/cart/store/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/site_modules/cart/store/mutations.js");
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: _state__WEBPACK_IMPORTED_MODULE_0__["default"],
+  getters: _getters__WEBPACK_IMPORTED_MODULE_1__["default"],
+  actions: _actions__WEBPACK_IMPORTED_MODULE_2__["default"],
+  mutations: _mutations__WEBPACK_IMPORTED_MODULE_3__["default"]
+});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/cart/store/mutations.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/site_modules/cart/store/mutations.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  removeCartItem: function removeCartItem(state, rowId) {
+    // delete state.cartData.carts[rowId];
+    // state.cartData.carts =  state.cartData.carts
+    state.cartData.carts[rowId] = undefined;
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/cart/store/state.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/site_modules/cart/store/state.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  cartData: {
+    carts: {}
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/site_modules/categories/router/index.js":
 /*!**************************************************************!*\
   !*** ./resources/js/site_modules/categories/router/index.js ***!
@@ -60116,6 +60457,323 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3, null, [[1, 8]]);
       }))();
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/compare/router/index.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/site_modules/compare/router/index.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var routes = [{
+  path: '/compare',
+  name: 'Compare',
+  component: function component() {
+    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Compare */ "Chunks/Site/Router/Compare").then(__webpack_require__.bind(null, /*! ../pages/compare.vue */ "./resources/js/site_modules/compare/pages/compare.vue"));
+  },
+  title: 'This is compare page',
+  meta: {
+    guest: true,
+    allowedUserType: ['User']
+  }
+}];
+/* harmony default export */ __webpack_exports__["default"] = (routes);
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/compare/store/actions.js":
+/*!************************************************************!*\
+  !*** ./resources/js/site_modules/compare/store/actions.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getCompares: function getCompares(_ref) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var commit, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit;
+              _context.prev = 1;
+              _context.next = 4;
+              return axios.get("/api/compare");
+
+            case 4:
+              res = _context.sent;
+              commit('changeState', {
+                compareData: res.data
+              });
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](1);
+              console.log(_context.t0);
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[1, 8]]);
+    }))();
+  },
+  addToCompare: function addToCompare(_ref2, product) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var commit, id, name, price, image, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              commit = _ref2.commit;
+              _context2.prev = 1;
+              id = product.id, name = product.name, price = product.price, image = product.image;
+              _context2.next = 5;
+              return axios.post("/api/compare", {
+                id: id,
+                name: name,
+                price: price,
+                qty: 1,
+                image: image
+              });
+
+            case 5:
+              res = _context2.sent;
+              commit('changeState', {
+                compareData: res.data
+              });
+              _context2.next = 12;
+              break;
+
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](1);
+              console.log(_context2.t0);
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[1, 9]]);
+    }))();
+  },
+  updateCompareQuantity: function updateCompareQuantity(_ref3, _ref4) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      var commit, state, rowId, qty, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              commit = _ref3.commit, state = _ref3.state;
+              rowId = _ref4.rowId, qty = _ref4.qty;
+              _context3.prev = 2;
+              _context3.next = 5;
+              return axios.put("/api/compare/".concat(rowId), {
+                qty: qty
+              });
+
+            case 5:
+              res = _context3.sent;
+              commit('changeState', {
+                compareData: res.data
+              });
+              $awn.success('Compare Updated Successfully');
+              _context3.next = 13;
+              break;
+
+            case 10:
+              _context3.prev = 10;
+              _context3.t0 = _context3["catch"](2);
+
+              if (_context3.t0.response.status == 422) {
+                $awn.warning(_context3.t0.response.data.errors.qty[0]);
+              }
+
+            case 13:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[2, 10]]);
+    }))();
+  },
+  removeCompareItem: function removeCompareItem(_ref5, rowId) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      var commit, state, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              commit = _ref5.commit, state = _ref5.state;
+              _context4.prev = 1;
+              _context4.next = 4;
+              return axios["delete"]("/api/compare/".concat(rowId));
+
+            case 4:
+              res = _context4.sent;
+
+              if (res.status == 200) {
+                commit('changeState', {
+                  compareData: res.data
+                });
+              }
+
+              _context4.next = 11;
+              break;
+
+            case 8:
+              _context4.prev = 8;
+              _context4.t0 = _context4["catch"](1);
+              console.log(_context4.t0);
+
+            case 11:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[1, 8]]);
+    }))();
+  },
+  clearAllCompareItem: function clearAllCompareItem(_ref6) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+      var commit, state, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              commit = _ref6.commit, state = _ref6.state;
+              _context5.prev = 1;
+              _context5.next = 4;
+              return axios["delete"]("/api/compare/destroy");
+
+            case 4:
+              res = _context5.sent;
+
+              if (res.status == 200) {
+                commit('changeState', {
+                  compareData: res.data
+                });
+              }
+
+              _context5.next = 11;
+              break;
+
+            case 8:
+              _context5.prev = 8;
+              _context5.t0 = _context5["catch"](1);
+              console.log(_context5.t0);
+
+            case 11:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, null, [[1, 8]]);
+    }))();
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/compare/store/getters.js":
+/*!************************************************************!*\
+  !*** ./resources/js/site_modules/compare/store/getters.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  comparesArray: function comparesArray(state) {
+    //    Object to Array Conversion
+    var comparesArray = [];
+    var compares = state.compareData.compares;
+
+    for (var key in compares) {
+      if (compares.hasOwnProperty(key)) {
+        comparesArray.push(compares[key]);
+      }
+    }
+
+    return comparesArray;
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/compare/store/index.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/site_modules/compare/store/index.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/site_modules/compare/store/state.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/site_modules/compare/store/getters.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/js/site_modules/compare/store/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/site_modules/compare/store/mutations.js");
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: _state__WEBPACK_IMPORTED_MODULE_0__["default"],
+  getters: _getters__WEBPACK_IMPORTED_MODULE_1__["default"],
+  actions: _actions__WEBPACK_IMPORTED_MODULE_2__["default"],
+  mutations: _mutations__WEBPACK_IMPORTED_MODULE_3__["default"]
+});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/compare/store/mutations.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/site_modules/compare/store/mutations.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/compare/store/state.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/site_modules/compare/store/state.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  compareData: {
+    compares: {}
   }
 });
 
@@ -60711,6 +61369,323 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/wishlists/router/index.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/site_modules/wishlists/router/index.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var routes = [{
+  path: '/wishlists',
+  name: 'Wishlist',
+  component: function component() {
+    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Wishlist */ "Chunks/Site/Router/Wishlist").then(__webpack_require__.bind(null, /*! ../pages/wishlists.vue */ "./resources/js/site_modules/wishlists/pages/wishlists.vue"));
+  },
+  title: 'This is wishlist page',
+  meta: {
+    guest: true,
+    allowedUserType: ['User']
+  }
+}];
+/* harmony default export */ __webpack_exports__["default"] = (routes);
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/wishlists/store/actions.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/site_modules/wishlists/store/actions.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getWishlists: function getWishlists(_ref) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var commit, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit;
+              _context.prev = 1;
+              _context.next = 4;
+              return axios.get("/api/wishlist");
+
+            case 4:
+              res = _context.sent;
+              commit('changeState', {
+                wishlistData: res.data
+              });
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](1);
+              console.log(_context.t0);
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[1, 8]]);
+    }))();
+  },
+  addToWishlist: function addToWishlist(_ref2, product) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var commit, id, name, price, image, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              commit = _ref2.commit;
+              _context2.prev = 1;
+              id = product.id, name = product.name, price = product.price, image = product.image;
+              _context2.next = 5;
+              return axios.post("/api/wishlist", {
+                id: id,
+                name: name,
+                price: price,
+                qty: 1,
+                image: image
+              });
+
+            case 5:
+              res = _context2.sent;
+              commit('changeState', {
+                wishlistData: res.data
+              });
+              _context2.next = 12;
+              break;
+
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](1);
+              console.log(_context2.t0);
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[1, 9]]);
+    }))();
+  },
+  updateWishlistQuantity: function updateWishlistQuantity(_ref3, _ref4) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      var commit, state, rowId, qty, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              commit = _ref3.commit, state = _ref3.state;
+              rowId = _ref4.rowId, qty = _ref4.qty;
+              _context3.prev = 2;
+              _context3.next = 5;
+              return axios.put("/api/wishlist/".concat(rowId), {
+                qty: qty
+              });
+
+            case 5:
+              res = _context3.sent;
+              commit('changeState', {
+                wishlistData: res.data
+              });
+              $awn.success('Wishlist Updated Successfully');
+              _context3.next = 13;
+              break;
+
+            case 10:
+              _context3.prev = 10;
+              _context3.t0 = _context3["catch"](2);
+
+              if (_context3.t0.response.status == 422) {
+                $awn.warning(_context3.t0.response.data.errors.qty[0]);
+              }
+
+            case 13:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[2, 10]]);
+    }))();
+  },
+  removeWishlistItem: function removeWishlistItem(_ref5, rowId) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      var commit, state, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              commit = _ref5.commit, state = _ref5.state;
+              _context4.prev = 1;
+              _context4.next = 4;
+              return axios["delete"]("/api/wishlist/".concat(rowId));
+
+            case 4:
+              res = _context4.sent;
+
+              if (res.status == 200) {
+                commit('changeState', {
+                  wishlistData: res.data
+                });
+              }
+
+              _context4.next = 11;
+              break;
+
+            case 8:
+              _context4.prev = 8;
+              _context4.t0 = _context4["catch"](1);
+              console.log(_context4.t0);
+
+            case 11:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[1, 8]]);
+    }))();
+  },
+  clearAllItem: function clearAllItem(_ref6) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+      var commit, state, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              commit = _ref6.commit, state = _ref6.state;
+              _context5.prev = 1;
+              _context5.next = 4;
+              return axios["delete"]("/api/wishlist/destroy");
+
+            case 4:
+              res = _context5.sent;
+
+              if (res.status == 200) {
+                commit('changeState', {
+                  wishlistData: res.data
+                });
+              }
+
+              _context5.next = 11;
+              break;
+
+            case 8:
+              _context5.prev = 8;
+              _context5.t0 = _context5["catch"](1);
+              console.log(_context5.t0);
+
+            case 11:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, null, [[1, 8]]);
+    }))();
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/wishlists/store/getters.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/site_modules/wishlists/store/getters.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  wishlistsArray: function wishlistsArray(state) {
+    //    Object to Array Conversion
+    var wishlistsArray = [];
+    var wishlists = state.wishlistData.wishlists;
+
+    for (var key in wishlists) {
+      if (wishlists.hasOwnProperty(key)) {
+        wishlistsArray.push(wishlists[key]);
+      }
+    }
+
+    return wishlistsArray;
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/wishlists/store/index.js":
+/*!************************************************************!*\
+  !*** ./resources/js/site_modules/wishlists/store/index.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/site_modules/wishlists/store/state.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/site_modules/wishlists/store/getters.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/js/site_modules/wishlists/store/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/site_modules/wishlists/store/mutations.js");
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: _state__WEBPACK_IMPORTED_MODULE_0__["default"],
+  getters: _getters__WEBPACK_IMPORTED_MODULE_1__["default"],
+  actions: _actions__WEBPACK_IMPORTED_MODULE_2__["default"],
+  mutations: _mutations__WEBPACK_IMPORTED_MODULE_3__["default"]
+});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/wishlists/store/mutations.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/site_modules/wishlists/store/mutations.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./resources/js/site_modules/wishlists/store/state.js":
+/*!************************************************************!*\
+  !*** ./resources/js/site_modules/wishlists/store/state.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  wishlistData: {
+    wishlists: {}
+  }
+});
 
 /***/ }),
 

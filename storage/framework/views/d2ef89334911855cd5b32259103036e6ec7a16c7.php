@@ -19,8 +19,7 @@
         <script>
             (function () {
                 window.Laravel = {
-                    csrfToken: '<?php echo e(csrf_token()); ?>',
-                    _token : "<?php echo e(session()->get('_token')); ?>"
+                    csrfToken: '<?php echo e(csrf_token()); ?>'
                 };
             })();
         </script>

@@ -34,11 +34,11 @@
             <button class="btn-product btn-quickview" title="Quick view" @click="QuickView(product)">
               <span>quick view</span>
             </button>
-            <a href="#" class="btn-product btn-compare" title="Compare"
+            <a href="#" @click="addToCompare(product)"  class="btn-product btn-compare" title="Compare"
               ><span>compare</span></a
             >
           </div>
-          <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+          <a href="#" @click="addToCart(product)" class="btn-product btn-cart"><span>add to cart</span></a>
         </div>
         <!-- End .product-list-action -->
       </div>
@@ -46,7 +46,7 @@
 
       <div class="col-lg-6">
         <div class="product-body product-action-inner">
-          <a href="#" class="btn-product btn-wishlist" title="Add to wishlist"
+          <a href="#"  @click="addToWishlist(product)"  class="btn-product btn-wishlist" title="Add to wishlist"
             ><span>add to wishlist</span></a
           >
           <div class="product-cat">
@@ -89,7 +89,7 @@
         </router-link>
 
         <div class="product-action-vertical">
-          <a href="#" class="btn-product-icon btn-wishlist btn-expandable"
+          <a href="#"  @click="addToWishlist(product)" class="btn-product-icon btn-wishlist btn-expandable"
             ><span>add to wishlist</span></a
           >
           <button
@@ -98,13 +98,13 @@
             title="Quick view"
             ><span>Quick view</span></button>
 
-          <a href="#" class="btn-product-icon btn-compare" title="Compare"
+          <a href="#" @click="addToCompare(product)" class="btn-product-icon btn-compare" title="Compare"
             ><span>Compare</span></a
           >
         </div>
 
         <div class="product-action">
-          <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+          <a href="#" @click="addToCart(product)" class="btn-product btn-cart"><span>add to cart</span></a>
         </div>
       </figure>
 
@@ -144,7 +144,10 @@ export default {
     }),
   },
   methods : {
-      ...mapActions("productsStoreIndex" , ["QuickView"])
+      ...mapActions("productsStoreIndex" , ["QuickView"]),
+      ...mapActions("cartStoreIndex" , ["addToCart"]),
+      ...mapActions("wishlistsStoreIndex" , ["addToWishlist"]),
+      ...mapActions("compareStoreIndex" , ["addToCompare"]),
   }
 };
 </script>

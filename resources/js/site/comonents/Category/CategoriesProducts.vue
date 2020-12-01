@@ -24,8 +24,7 @@
                 :autoplay="true"
                 :nav="false"
                 :items="6"
-                :lazyLoad="true"
-                :lazyLoadEager="3"
+
                 :loop="true"
                 :margin="10"
                 :dots="true"
@@ -35,7 +34,7 @@
                     420: { items: 3 },
                     600: { items: 4 },
                     900: { items: 5, nav: false },
-                    1024: { items: 6, nav: false },
+                    1024: { items: 6, nav: true },
                 }"
                 >
                  <CardProduct v-for="product in category.products" :key="product.id" :product="product" />

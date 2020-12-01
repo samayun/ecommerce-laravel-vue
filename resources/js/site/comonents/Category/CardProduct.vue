@@ -7,14 +7,16 @@
             </router-link>
 
             <div class="product-action-vertical">
-                <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+                <a href="#" @click="addToWishlist(product)" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
+
                  <button @click="QuickView(product)" class="btn-product-icon btn-quickview btn-expandable" title="Quick view"><span>Quick view</span></button>
-                <a href="#" class="btn-product-icon btn-compare btn-expandable" title="Compare"><span>Compare</span></a>
-               
+
+                <a href="#" @click="addToCompare(product)" class="btn-product-icon btn-compare btn-expandable" title="Compare"><span>Compare</span></a>
+
             </div><!-- End .product-action-vertical -->
 
             <div class="product-action">
-                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                <a href="#" @click="addToCart(product)" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
             </div><!-- End .product-action -->
         </figure>
 
@@ -40,7 +42,7 @@
                 <div class="ratings">
                     <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
                 </div><!-- End .ratings -->
-                <span class="ratings-text">( 6 Reviews )</span>
+                <span class="ratings-text">( 2 Reviews )</span>
             </div><!-- End .rating-container -->
 
             <!-- <div class="product-nav product-nav-dots">
@@ -55,7 +57,10 @@ import { mapGetters , mapActions} from 'vuex'
 export default {
     props:["product"] ,
     methods : {
-       ...mapActions("productsStoreIndex" , ["QuickView"])
+      ...mapActions("productsStoreIndex" , ["QuickView"]),
+      ...mapActions("cartStoreIndex" , ["addToCart"]),
+      ...mapActions("wishlistsStoreIndex" , ["addToWishlist"]),
+      ...mapActions("compareStoreIndex" , ["addToCompare"]),
     }
 }
 </script>
