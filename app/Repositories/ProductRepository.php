@@ -125,15 +125,17 @@ class ProductRepository implements ProductContract
     public function bulk_delete($selected_data)
     {
         $this->flush($this->CACHE_KEY);
+        DB::beginTransaction();
         foreach ($selected_data as $product) {
             $found = $this->findById($product['id']);
             $path = 'products/'.$found['image'];
+
             if (Storage::disk('public')->exists($path)) {
                 Storage::disk('public')->delete($path);
             }
-            DB::beginTransaction();
             $found->delete();
-            DB::commit();
         }
+        DB::commit();
+        // success
     }
 }

@@ -153,11 +153,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $deletedData = $this->productRepository->delete($product->id);
         $path = 'products/'.$product->image;
         if (Storage::disk('public')->exists($path)) {
             Storage::disk('public')->delete($path);
-         }
-        return $this->productRepository->delete($product->id);
+        }
+        return $deletedData;
     }
 
     public function bulk_delete(Request $request){
