@@ -59079,30 +59079,30 @@ Vue.use(vue_magnifier__WEBPACK_IMPORTED_MODULE_2___default.a);
  // IMPORT THE STORE
 
 
-Vue.component('main-app', function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MainApp */ "Chunks/Site/Components/MainApp").then(__webpack_require__.bind(null, /*! ./site/comonents/MainApp.vue */ "./resources/js/site/comonents/MainApp.vue"));
+Vue.component("main-app", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MainApp */ "Chunks/Site/Components/MainApp").then(__webpack_require__.bind(null, /*! ./site/components/MainApp.vue */ "./resources/js/site/components/MainApp.vue"));
 });
-Vue.component('MultipleFilter', function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MultipleFilter */ "Chunks/Site/Components/MultipleFilter").then(__webpack_require__.bind(null, /*! ./site/comonents/Filter/MultipleFilter.vue */ "./resources/js/site/comonents/Filter/MultipleFilter.vue"));
+Vue.component("MultipleFilter", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MultipleFilter */ "Chunks/Site/Components/MultipleFilter").then(__webpack_require__.bind(null, /*! ./site/components/Filter/MultipleFilter.vue */ "./resources/js/site/components/Filter/MultipleFilter.vue"));
 });
-Vue.component('SortingToolBox', function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/SortingToolBox */ "Chunks/Site/Components/SortingToolBox").then(__webpack_require__.bind(null, /*! ./site/comonents/Filter/SortingToolBox.vue */ "./resources/js/site/comonents/Filter/SortingToolBox.vue"));
+Vue.component("SortingToolBox", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/SortingToolBox */ "Chunks/Site/Components/SortingToolBox").then(__webpack_require__.bind(null, /*! ./site/components/Filter/SortingToolBox.vue */ "./resources/js/site/components/Filter/SortingToolBox.vue"));
 });
-Vue.component('QuickView', function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/QuickView */ "Chunks/Site/Components/QuickView").then(__webpack_require__.bind(null, /*! ./site/comonents/Product/QuickView.vue */ "./resources/js/site/comonents/Product/QuickView.vue"));
+Vue.component("QuickView", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/QuickView */ "Chunks/Site/Components/QuickView").then(__webpack_require__.bind(null, /*! ./site/components/Product/QuickView.vue */ "./resources/js/site/components/Product/QuickView.vue"));
 });
-Vue.component('Product', function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/Product */ "Chunks/Site/Components/Product").then(__webpack_require__.bind(null, /*! ./site/comonents/Product/Product.vue */ "./resources/js/site/comonents/Product/Product.vue"));
+Vue.component("Product", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/Product */ "Chunks/Site/Components/Product").then(__webpack_require__.bind(null, /*! ./site/components/Product/Product.vue */ "./resources/js/site/components/Product/Product.vue"));
 });
-Vue.component('carousel', __webpack_require__(/*! vue-owl-carousel */ "./node_modules/vue-owl-carousel/dist/vue-owl-carousel.js"));
-Vue.component('mobile-menu', function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MobileMenu */ "Chunks/Site/Components/MobileMenu").then(__webpack_require__.bind(null, /*! ./site/comonents/MobileMenu.vue */ "./resources/js/site/comonents/MobileMenu.vue"));
+Vue.component("carousel", __webpack_require__(/*! vue-owl-carousel */ "./node_modules/vue-owl-carousel/dist/vue-owl-carousel.js"));
+Vue.component("mobile-menu", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MobileMenu */ "Chunks/Site/Components/MobileMenu").then(__webpack_require__.bind(null, /*! ./site/components/MobileMenu.vue */ "./resources/js/site/components/MobileMenu.vue"));
 });
-Vue.component('mobile-footer', function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MobileFooter */ "Chunks/Site/Components/MobileFooter").then(__webpack_require__.bind(null, /*! ./site/comonents/MobileFooter.vue */ "./resources/js/site/comonents/MobileFooter.vue"));
+Vue.component("mobile-footer", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MobileFooter */ "Chunks/Site/Components/MobileFooter").then(__webpack_require__.bind(null, /*! ./site/components/MobileFooter.vue */ "./resources/js/site/components/MobileFooter.vue"));
 });
 var app = new Vue({
-  el: '#main-app',
+  el: "#main-app",
   i18n: _i18n__WEBPACK_IMPORTED_MODULE_4__["default"],
   router: _router_site__WEBPACK_IMPORTED_MODULE_3__["default"],
   store: _store_site__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -59320,14 +59320,14 @@ var requireModule = __webpack_require__("./resources/js/site_modules sync recurs
 
 var modules = {};
 requireModule.keys().forEach(function (fileName) {
-  var str = fileName.split('/');
+  var str = fileName.split("/");
   str = str[1];
 
   if (fileName === "./".concat(str, "/store/index.js")) {
     // filter fullstops and extension
     // and return a camel-case name for the file
-    var moduleName = lodash_camelCase__WEBPACK_IMPORTED_MODULE_0___default()(fileName.replace(/(\.\/|\.js)/g, '')); // console.log(moduleName);
-    // create a dynamic object with all modules
+    var moduleName = lodash_camelCase__WEBPACK_IMPORTED_MODULE_0___default()(fileName.replace(/(\.\/|\.js)/g, ""));
+    console.log(moduleName); // create a dynamic object with all modules
 
     modules[moduleName] = _objectSpread({
       // add namespace here
@@ -59396,7 +59396,7 @@ var defaultRoutes = [{
   name: "Login",
   title: "Login",
   component: function component() {
-    return Promise.all(/*! import() | Chunks/Site/Router/Login */[__webpack_require__.e("Chunks/Site/Components/AuthModal"), __webpack_require__.e("Chunks/Site/Router/Login")]).then(__webpack_require__.bind(null, /*! ./site/comonents/Login.vue */ "./resources/js/site/comonents/Login.vue"));
+    return Promise.all(/*! import() | Chunks/Site/Router/Login */[__webpack_require__.e("Chunks/Site/Components/AuthModal"), __webpack_require__.e("Chunks/Site/Router/Login")]).then(__webpack_require__.bind(null, /*! ./site/components/Login.vue */ "./resources/js/site/components/Login.vue"));
   }
 }, {
   path: "/",
