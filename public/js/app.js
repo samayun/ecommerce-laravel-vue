@@ -61799,7 +61799,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/sayburgh/Videos/ecommerce-laravel-vue/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/sayburgh/Desktop/ecommerce-laravel-vue/resources/js/app.js */"./resources/js/app.js");
 
 
 /***/ })

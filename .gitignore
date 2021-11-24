@@ -11,3 +11,5 @@ npm-debug.log
 yarn-error.log
 
 /public/Chunks
+public/storage/**
+!public/storage/flags

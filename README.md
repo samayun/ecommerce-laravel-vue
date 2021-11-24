@@ -60,6 +60,7 @@
 
     php artisan db:seed
 
+    mkdir public/storage && cp .storage/** public/storage -r
 
     php artisan storage:link
 
