@@ -59370,7 +59370,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /**
  * IMPORT ALL ROUTES DYNAMICALLY FROM THE MODULES FOLDERS....
-*/
+ */
 
 var allRoutes = [];
 
@@ -59378,13 +59378,12 @@ var allRoutes = [];
 var requireModule = __webpack_require__("./resources/js/site_modules sync recursive \\.js$");
 
 var importedRoutes = [];
-var cimportedRoutes = [];
 requireModule.keys().forEach(function (fileName) {
-  var str = fileName.split('/');
+  var str = fileName.split("/");
   str = str[1];
 
   if (fileName === "./".concat(str, "/router/index.js")) {
-    var moduleName = lodash_camelCase__WEBPACK_IMPORTED_MODULE_2___default()(fileName.replace(/(\.\/|\.js)/g, ''));
+    var moduleName = lodash_camelCase__WEBPACK_IMPORTED_MODULE_2___default()(fileName.replace(/(\.\/|\.js)/g, ""));
     importedRoutes.push.apply(importedRoutes, _toConsumableArray(requireModule(fileName)["default"]));
   }
 });
@@ -59393,29 +59392,29 @@ requireModule.keys().forEach(function (fileName) {
  */
 
 var defaultRoutes = [{
-  path: '/login',
-  name: 'Login',
-  title: 'Login',
+  path: "/login",
+  name: "Login",
+  title: "Login",
   component: function component() {
     return Promise.all(/*! import() | Chunks/Site/Router/Login */[__webpack_require__.e("Chunks/Site/Components/AuthModal"), __webpack_require__.e("Chunks/Site/Router/Login")]).then(__webpack_require__.bind(null, /*! ./site/comonents/Login.vue */ "./resources/js/site/comonents/Login.vue"));
   }
 }, {
-  path: '/',
-  name: 'Home',
-  title: 'Home',
+  path: "/",
+  name: "Home",
+  title: "Home",
   component: function component() {
     return __webpack_require__.e(/*! import() | Chunks/Site/HomePageRouteContainer */ "Chunks/Site/HomePageRouteContainer").then(__webpack_require__.bind(null, /*! ./site/pages/HomePage.vue */ "./resources/js/site/pages/HomePage.vue"));
   },
   children: [{
-    path: '/',
-    name: 'Dashboard',
+    path: "/",
+    name: "Dashboard",
     component: function component() {
       return __webpack_require__.e(/*! import() | Chunks/Site/Router/HomeDashboard */ "Chunks/Site/Router/HomeDashboard").then(__webpack_require__.bind(null, /*! ./site/pages/Dashboard.vue */ "./resources/js/site/pages/Dashboard.vue"));
     },
-    title: 'This is a test page'
+    title: "This is a test page"
   }].concat(importedRoutes)
 }, {
-  path: '*',
+  path: "*",
   name: "404",
   component: function component() {
     return __webpack_require__.e(/*! import() | Chunks/Site/404 */ "Chunks/Site/404").then(__webpack_require__.bind(null, /*! ./site/pages/NotFound.vue */ "./resources/js/site/pages/NotFound.vue"));
@@ -59423,7 +59422,7 @@ var defaultRoutes = [{
 }]; // const routes = allRoutes.concat(defaultRoutes , importedRoutes)
 
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  mode: 'history',
+  mode: "history",
   routes: defaultRoutes
 }));
 
@@ -61800,7 +61799,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /media/samayun/Backend/Next Modern Project/ECommerce/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/sayburgh/Videos/ecommerce-laravel-vue/resources/js/app.js */"./resources/js/app.js");
 
 
 /***/ })

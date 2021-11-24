@@ -3,11 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Admin;
 use App\Models\Attribute;
 use App\Models\Category;
 
-class CreateAdminSeeder extends Seeder
+class CreateVariantSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,12 +15,7 @@ class CreateAdminSeeder extends Seeder
      */
     public function run()
     {
-        Admin::create([
-            'name'=>'Samayun Chowdhury ',
-            'email'=>'samayun.m.chowdhury@gmail.com',
-            'is_super' => 1,
-            'password'=> \Hash::make('123456'),
-        ]);
+
         Attribute::create(['name' => 'Color','slug' => 'color']);
         Attribute::create(['name' => 'Size','slug' => 'size']);
 
@@ -33,11 +27,5 @@ class CreateAdminSeeder extends Seeder
             'parent_id' => 1
         ]);
 
-        Admin::create([
-            'name'=>'Admin BoSs',
-            'email'=>'samayunmc99@gmail.com',
-            'is_super' => 0,
-            'password'=> \Hash::make('123456'),
-        ]);
     }
 }

@@ -1,5 +1,5 @@
 {
-    "/js/app.js": "/js/app.js?id=f106320cc8188eaf9761",
+    "/js/app.js": "/js/app.js?id=f464c701d5e1284ad332",
     "/Chunks/Site-Product-slug.js": "/Chunks/Site-Product-slug.js?id=7cae5fe6578e65147fc6",
     "/Chunks/Site-Settings.js": "/Chunks/Site-Settings.js?id=055c376d47c2ca687370",
     "/Chunks/Site/404.js": "/Chunks/Site/404.js?id=c4dd3784696f918c3c93",
@@ -23,11 +23,11 @@
     "/Chunks/Site/Main-App-Header.js": "/Chunks/Site/Main-App-Header.js?id=aac2e229e6fa7f300971",
     "/Chunks/Site/Router/Carts.js": "/Chunks/Site/Router/Carts.js?id=ed6fd0552eddcbd59088",
     "/Chunks/Site/Router/Category-slug.js": "/Chunks/Site/Router/Category-slug.js?id=7b3f45c12742e5223969",
+    "/Chunks/Site/Router/Compare.js": "/Chunks/Site/Router/Compare.js?id=45dbfd50924c55ef89e7",
     "/Chunks/Site/Router/HomeDashboard.js": "/Chunks/Site/Router/HomeDashboard.js?id=e20e56f706dd02db64fb",
     "/Chunks/Site/Router/Login.js": "/Chunks/Site/Router/Login.js?id=c4123e590db847dac49a",
     "/Chunks/Site/Router/Product-slug.js": "/Chunks/Site/Router/Product-slug.js?id=a15a1557174415e49be7",
     "/Chunks/Site/Router/Products.js": "/Chunks/Site/Router/Products.js?id=760504bece2f96dc6d70",
     "/Chunks/Site/Router/ProductsByBrand-slug.js": "/Chunks/Site/Router/ProductsByBrand-slug.js?id=ed7fcb49015f57d3974c",
-    "/Chunks/Site/Router/Wishlist.js": "/Chunks/Site/Router/Wishlist.js?id=ba7c874d5456448dbf96",
-    "/Chunks/Site/Router/Compare.js": "/Chunks/Site/Router/Compare.js?id=45dbfd50924c55ef89e7"
+    "/Chunks/Site/Router/Wishlist.js": "/Chunks/Site/Router/Wishlist.js?id=ba7c874d5456448dbf96"
 }

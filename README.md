@@ -12,40 +12,64 @@
 </a>
 </p>
 
-##  :heart: Application Name: <b style="color:green;"> E Penguin Shop </>
+## :heart: Application Name: <b style="color:green;"> E Penguin Shop </>
+
 <p> Single Vendor Ecommerce web application </p>
 </b>
 
 ![Admin Home Page](docs/images/admin-dashboard-dark.png)
+
 <p style="text-align:center"> (Image:  Admin Dashboard Dark Theme ) </p>
 
 ![Admin ](docs/images/admin-dashboard-light.png)
+
 <p style="text-align:center"> (Image:  Admin Dashboard (Light Theme)) </p>
 
 ![Home Page](docs/images/home.png)
+
 <p style="text-align:center"> (Image:  Home Page  </p>
 
- ## :hugs: Requirements
-        *  PHP >= 7.3 
-        *  MySQL 
-        *  Apache 
-        *  Laravel >= 8.0 
+## :hugs: Requirements
+
+        *  PHP >= 7.3
+        *  MySQL
+        *  Apache
+        *  Laravel >= 8.0
         *  Composer
 
-##  :clap: Installation:
+## :clap: Installation:
 
-```
+```bash
     composer install
 
     npm install
+
+    cp .env.example .env
+
+    # Database Connection on .env
 
     php artisan cache:clear
 
     php artisan key:generate
 
-    php artisan serve
-```
+    # First Time
+    php artisan migrate:fresh --seed
 
+    # After first time migration
+    php artisan migrate
+
+    php artisan db:seed
+
+
+    php artisan storage:link
+
+    # Run Backend Server by Terminal
+    php artisan serve
+
+    # Run Frontend Server by Terminal
+    npm run watch-poll
+
+```
 
 <table width="80%" style="margin-top:10px;margin-bottom:10px;color:yellow;font-weight:bold;background:#012;">
     <thead>
@@ -63,29 +87,27 @@
     </tbody>
 </table>
 
- ## :hand: Features
-* #### ;) Backend
-    * **Caching** 
-    *  Authentication : ( *Multi Guard* ) Session based Authentication
-    *  **Repository Pattern**
-    *  Packages & Stub
-    *  Model Observer ( used for cache deleting)
-    *  Authorization: Gate, Policies 
-    *  Requests, Validation , Refactoring & File Upload
-    *  Scope Filter in Model
-    *  ORM for MySQL ( Elequent ORM )
-        *  
-* ### :* Frontend:
-    * Frontend Framework : `Vue Js`
-    * Library : `IViewUi`, `Vue-owl-carousel`,`VueX`,`Vue-router`,`lodash`,`jQuery`,`axios`
-    * `Admin LTE 3` in Admin Panel & Molla Ecommerce Template in Frontend
-    * **Dynamic/ Auto Import Modules (Store, Routes) in frontend**
-    * **Localization : Mutliple Languege (Bangla :bangladesh:  + English :us:  implemented) by `vue-i18n`** 
-    * Light/Dark Theme & Grid/List Layout
-    * <u color="red">Code Spliting , Lazy Loading </u>, Less Ajax request
-    * 
+## :hand: Features
 
-
+-   #### ;) Backend
+    -   **Caching**
+    -   Authentication : ( _Multi Guard_ ) Session based Authentication
+    -   **Repository Pattern**
+    -   Packages & Stub
+    -   Model Observer ( used for cache deleting)
+    -   Authorization: Gate, Policies
+    -   Requests, Validation , Refactoring & File Upload
+    -   Scope Filter in Model
+    -   ## ORM for MySQL ( Elequent ORM )
+-   ### :\* Frontend:
+    -   Frontend Framework : `Vue Js`
+    -   Library : `IViewUi`, `Vue-owl-carousel`,`VueX`,`Vue-router`,`lodash`,`jQuery`,`axios`
+    -   `Admin LTE 3` in Admin Panel & Molla Ecommerce Template in Frontend
+    -   **Dynamic/ Auto Import Modules (Store, Routes) in frontend**
+    -   **Localization : Mutliple Languege (Bangla :bangladesh: + English :us: implemented) by `vue-i18n`**
+    -   Light/Dark Theme & Grid/List Layout
+    -   <u color="red">Code Spliting , Lazy Loading </u>, Less Ajax request
+    -
 
 <table width="80%" style="margin-top:10px;margin-bottom:10px;color:yellow;font-weight:bold;background:#210;">
     <thead>
@@ -189,6 +211,5 @@
     </tbody>
 </table>
 
-
- :heart: Happy Coding  :clap: 🚀 
- ![twitter](https://img.shields.io/twitter/follow/samayunmc.svg?style=social)
+:heart: Happy Coding :clap: 🚀
+![twitter](https://img.shields.io/twitter/follow/samayunmc.svg?style=social)
