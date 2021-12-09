@@ -15,7 +15,7 @@
          <link rel="manifest" href="/manifest.json">
 
         <link rel="stylesheet" href="{{ asset('css/main-app.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/blue.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/green.css') }}">
         <script>
             (function () {
                 window.Laravel = {
@@ -38,27 +38,14 @@
     </div>
 
 
-    {{-- <script >
+   <script >
        if ('serviceWorker' in navigator) {
            navigator.serviceWorker.register('/sw.js')
        }else{
            console.log('Failed to register');
        }
-    </script> --}}
+    </script>
 
-    <!-- Plugins JS File -->
-<!--     {{-- <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min.js"></script> --}}
-    {{-- <script src="/assets/js/jquery.hoverIntent.min.js"></script>
-    <script src="/assets/js/jquery.waypoints.min.js"></script>
-    <script src="/assets/js/superfish.min.js"></script>
-    <script src="/assets/js/owl.carousel.min.js"></script>
-    <script src="/assets/js/bootstrap-input-spinner.js"></script>
-    <script src="/assets/js/jquery.elevateZoom.min.js"></script>
-    <script src="/assets/js/bootstrap-input-spinner.js"></script>
-    <script src="/assets/js/jquery.magnific-popup.min.js"></script> --}}
-
-    {{-- <script src="/assets/js/main.js"></script> --}} -->
      <script src="{{asset('js/template-cachable.js')}}"></script>
 
     <script src="{{mix('js/app.js')}}" defer></script>

@@ -41,8 +41,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script>
       window.adminUser = @json(auth()->guard('admin')->user());
   </script>
-<!-- REQUIRED SCRIPTS -->
-{{-- <script src="{{mix('js/admin.js')}}" defer></script> --}}
-<script src="{{asset('js/admin.js')}}" defer></script>
+ <script src="{{mix('js/admin.js')}}" defer></script> 
+
 </body>
 </html>

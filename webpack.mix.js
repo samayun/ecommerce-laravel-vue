@@ -15,12 +15,12 @@ const mix = require("laravel-mix");
 // mix.sass('resources/sass/app.scss', 'public/css')
 
 mix.js(
-    "resources/microfrontends/admin-mf/index.js",
+    "resources/microfrontends/@admin-mf/index.js",
     "public/js/admin.js"
 ).version();
 
 mix.js(
-    "resources/microfrontends/site-mf/index.js",
+    "resources/microfrontends/@site-mf/index.js",
     "public/js/app.js"
 ).version();
 
