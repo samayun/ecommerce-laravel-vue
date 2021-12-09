@@ -35,42 +35,42 @@ import store from "./store.site";
 
 Vue.component("main-app", () =>
     import(
-        /* webpackChunkName: "Chunks/Site/Components/MainApp" */ "./site/components/MainApp.vue"
+        /* webpackChunkName: "Chunks/Site/Components/MainApp" */ "./site_layout/components/MainApp.vue"
     )
 );
 Vue.component("MultipleFilter", () =>
     import(
-        /* webpackChunkName: "Chunks/Site/Components/MultipleFilter" */ "./site/components/Filter/MultipleFilter.vue"
+        /* webpackChunkName: "Chunks/Site/Components/MultipleFilter" */ "./site_layout/components/Filter/MultipleFilter.vue"
     )
 );
 Vue.component("SortingToolBox", () =>
     import(
-        /* webpackChunkName: "Chunks/Site/Components/SortingToolBox" */ "./site/components/Filter/SortingToolBox.vue"
+        /* webpackChunkName: "Chunks/Site/Components/SortingToolBox" */ "./site_layout/components/Filter/SortingToolBox.vue"
     )
 );
 Vue.component("QuickView", () =>
     import(
-        /* webpackChunkName: "Chunks/Site/Components/QuickView" */ "./site/components/Product/QuickView.vue"
+        /* webpackChunkName: "Chunks/Site/Components/QuickView" */ "./site_layout/components/Product/QuickView.vue"
     )
 );
 Vue.component("Product", () =>
     import(
-        /* webpackChunkName: "Chunks/Site/Components/Product" */ "./site/components/Product/Product.vue"
+        /* webpackChunkName: "Chunks/Site/Components/Product" */ "./site_layout/components/Product/Product.vue"
     )
 );
 Vue.component("carousel", require("vue-owl-carousel"));
 Vue.component("mobile-menu", () =>
     import(
-        /* webpackChunkName: "Chunks/Site/Components/MobileMenu" */ "./site/components/MobileMenu.vue"
+        /* webpackChunkName: "Chunks/Site/Components/MobileMenu" */ "./site_layout/components/MobileMenu.vue"
     )
 );
 Vue.component("mobile-footer", () =>
     import(
-        /* webpackChunkName: "Chunks/Site/Components/MobileFooter" */ "./site/components/MobileFooter.vue"
+        /* webpackChunkName: "Chunks/Site/Components/MobileFooter" */ "./site_layout/components/MobileFooter.vue"
     )
 );
 
-const app = new Vue({
+new Vue({
     el: "#main-app",
     i18n,
     router,

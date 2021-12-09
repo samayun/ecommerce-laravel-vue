@@ -59080,28 +59080,28 @@ Vue.use(vue_magnifier__WEBPACK_IMPORTED_MODULE_2___default.a);
 
 
 Vue.component("main-app", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MainApp */ "Chunks/Site/Components/MainApp").then(__webpack_require__.bind(null, /*! ./site/components/MainApp.vue */ "./resources/js/site/components/MainApp.vue"));
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MainApp */ "Chunks/Site/Components/MainApp").then(__webpack_require__.bind(null, /*! ./site_layout/components/MainApp.vue */ "./resources/js/site_layout/components/MainApp.vue"));
 });
 Vue.component("MultipleFilter", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MultipleFilter */ "Chunks/Site/Components/MultipleFilter").then(__webpack_require__.bind(null, /*! ./site/components/Filter/MultipleFilter.vue */ "./resources/js/site/components/Filter/MultipleFilter.vue"));
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MultipleFilter */ "Chunks/Site/Components/MultipleFilter").then(__webpack_require__.bind(null, /*! ./site_layout/components/Filter/MultipleFilter.vue */ "./resources/js/site_layout/components/Filter/MultipleFilter.vue"));
 });
 Vue.component("SortingToolBox", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/SortingToolBox */ "Chunks/Site/Components/SortingToolBox").then(__webpack_require__.bind(null, /*! ./site/components/Filter/SortingToolBox.vue */ "./resources/js/site/components/Filter/SortingToolBox.vue"));
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/SortingToolBox */ "Chunks/Site/Components/SortingToolBox").then(__webpack_require__.bind(null, /*! ./site_layout/components/Filter/SortingToolBox.vue */ "./resources/js/site_layout/components/Filter/SortingToolBox.vue"));
 });
 Vue.component("QuickView", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/QuickView */ "Chunks/Site/Components/QuickView").then(__webpack_require__.bind(null, /*! ./site/components/Product/QuickView.vue */ "./resources/js/site/components/Product/QuickView.vue"));
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/QuickView */ "Chunks/Site/Components/QuickView").then(__webpack_require__.bind(null, /*! ./site_layout/components/Product/QuickView.vue */ "./resources/js/site_layout/components/Product/QuickView.vue"));
 });
 Vue.component("Product", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/Product */ "Chunks/Site/Components/Product").then(__webpack_require__.bind(null, /*! ./site/components/Product/Product.vue */ "./resources/js/site/components/Product/Product.vue"));
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/Product */ "Chunks/Site/Components/Product").then(__webpack_require__.bind(null, /*! ./site_layout/components/Product/Product.vue */ "./resources/js/site_layout/components/Product/Product.vue"));
 });
 Vue.component("carousel", __webpack_require__(/*! vue-owl-carousel */ "./node_modules/vue-owl-carousel/dist/vue-owl-carousel.js"));
 Vue.component("mobile-menu", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MobileMenu */ "Chunks/Site/Components/MobileMenu").then(__webpack_require__.bind(null, /*! ./site/components/MobileMenu.vue */ "./resources/js/site/components/MobileMenu.vue"));
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MobileMenu */ "Chunks/Site/Components/MobileMenu").then(__webpack_require__.bind(null, /*! ./site_layout/components/MobileMenu.vue */ "./resources/js/site_layout/components/MobileMenu.vue"));
 });
 Vue.component("mobile-footer", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MobileFooter */ "Chunks/Site/Components/MobileFooter").then(__webpack_require__.bind(null, /*! ./site/components/MobileFooter.vue */ "./resources/js/site/components/MobileFooter.vue"));
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MobileFooter */ "Chunks/Site/Components/MobileFooter").then(__webpack_require__.bind(null, /*! ./site_layout/components/MobileFooter.vue */ "./resources/js/site_layout/components/MobileFooter.vue"));
 });
-var app = new Vue({
+new Vue({
   el: "#main-app",
   i18n: _i18n__WEBPACK_IMPORTED_MODULE_4__["default"],
   router: _router_site__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -59204,7 +59204,7 @@ function checkDefaultLanguage() {
 
   if (!matched) {
     languages.forEach(function (lang) {
-      var languagePartials = navigator.language.split('-')[0];
+      var languagePartials = navigator.language.split("-")[0];
 
       if (lang === languagePartials) {
         matched = lang;
@@ -59230,11 +59230,11 @@ function loadLocaleMessages() {
   return messages;
 }
 
-var selectedLocale = localStorage.getItem('locale') || checkDefaultLanguage() || process.env.VUE_APP_I18N_LOCALE || 'en';
+var selectedLocale = localStorage.getItem("locale") || checkDefaultLanguage() || process.env.VUE_APP_I18N_LOCALE || "en";
 var languages = Object.getOwnPropertyNames(loadLocaleMessages());
 /* harmony default export */ __webpack_exports__["default"] = (new vue_i18n__WEBPACK_IMPORTED_MODULE_1__["default"]({
   locale: selectedLocale,
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
+  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "en",
   messages: loadLocaleMessages()
 }));
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
@@ -59396,20 +59396,20 @@ var defaultRoutes = [{
   name: "Login",
   title: "Login",
   component: function component() {
-    return Promise.all(/*! import() | Chunks/Site/Router/Login */[__webpack_require__.e("Chunks/Site/Components/AuthModal"), __webpack_require__.e("Chunks/Site/Router/Login")]).then(__webpack_require__.bind(null, /*! ./site/components/Login.vue */ "./resources/js/site/components/Login.vue"));
+    return Promise.all(/*! import() | Chunks/Site/Router/Login */[__webpack_require__.e("Chunks/Site/Components/AuthModal"), __webpack_require__.e("Chunks/Site/Router/Login")]).then(__webpack_require__.bind(null, /*! ./site_layout/components/Login.vue */ "./resources/js/site_layout/components/Login.vue"));
   }
 }, {
   path: "/",
   name: "Home",
   title: "Home",
   component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site/HomePageRouteContainer */ "Chunks/Site/HomePageRouteContainer").then(__webpack_require__.bind(null, /*! ./site/pages/HomePage.vue */ "./resources/js/site/pages/HomePage.vue"));
+    return __webpack_require__.e(/*! import() | Chunks/Site/HomePageRouteContainer */ "Chunks/Site/HomePageRouteContainer").then(__webpack_require__.bind(null, /*! ./site_layout/pages/HomePage.vue */ "./resources/js/site_layout/pages/HomePage.vue"));
   },
   children: [{
     path: "/",
     name: "Dashboard",
     component: function component() {
-      return __webpack_require__.e(/*! import() | Chunks/Site/Router/HomeDashboard */ "Chunks/Site/Router/HomeDashboard").then(__webpack_require__.bind(null, /*! ./site/pages/Dashboard.vue */ "./resources/js/site/pages/Dashboard.vue"));
+      return __webpack_require__.e(/*! import() | Chunks/Site/Router/HomeDashboard */ "Chunks/Site/Router/HomeDashboard").then(__webpack_require__.bind(null, /*! ./site_layout/pages/Dashboard.vue */ "./resources/js/site_layout/pages/Dashboard.vue"));
     },
     title: "This is a test page"
   }].concat(importedRoutes)
@@ -59417,7 +59417,7 @@ var defaultRoutes = [{
   path: "*",
   name: "404",
   component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site/404 */ "Chunks/Site/404").then(__webpack_require__.bind(null, /*! ./site/pages/NotFound.vue */ "./resources/js/site/pages/NotFound.vue"));
+    return __webpack_require__.e(/*! import() | Chunks/Site/404 */ "Chunks/Site/404").then(__webpack_require__.bind(null, /*! ./site_layout/pages/NotFound.vue */ "./resources/js/site_layout/pages/NotFound.vue"));
   }
 }]; // const routes = allRoutes.concat(defaultRoutes , importedRoutes)
 
@@ -61704,8 +61704,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vuex_extensions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex-extensions */ "./node_modules/vuex-extensions/lib/index.js");
 /* harmony import */ var vuex_extensions__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vuex_extensions__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var vuex_persistedstate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex-persistedstate */ "./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js");
-/* harmony import */ var _modules_site__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules.site */ "./resources/js/modules.site.js");
+/* harmony import */ var _modules_site__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules.site */ "./resources/js/modules.site.js");
 
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -61730,13 +61729,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
  // import axios from "axios";
 
-
+ // import createPersistedState from 'vuex-persistedstate';
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]); // load modules
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(vuex_extensions__WEBPACK_IMPORTED_MODULE_3__["createStore"])(vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store, {
-  modules: _modules_site__WEBPACK_IMPORTED_MODULE_5__["default"],
+  modules: _modules_site__WEBPACK_IMPORTED_MODULE_4__["default"],
   // plugins: [createPersistedState()],
   mixins: {
     actions: {
@@ -61756,7 +61755,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 
                 case 5:
                   res = _context.sent;
-                  commit('changeState', {
+                  commit("changeState", {
                     cbObj: res.data
                   });
                   _context.next = 12;

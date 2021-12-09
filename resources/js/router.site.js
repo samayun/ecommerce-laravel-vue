@@ -31,7 +31,7 @@ const defaultRoutes = [
         title: "Login",
         component: () =>
             import(
-                /* webpackChunkName: "Chunks/Site/Router/Login" */ "./site/components/Login.vue"
+                /* webpackChunkName: "Chunks/Site/Router/Login" */ "./site_layout/components/Login.vue"
             )
     },
     {
@@ -40,7 +40,7 @@ const defaultRoutes = [
         title: "Home",
         component: () =>
             import(
-                /* webpackChunkName: "Chunks/Site/HomePageRouteContainer" */ "./site/pages/HomePage.vue"
+                /* webpackChunkName: "Chunks/Site/HomePageRouteContainer" */ "./site_layout/pages/HomePage.vue"
             ),
         children: [
             {
@@ -48,7 +48,7 @@ const defaultRoutes = [
                 name: "Dashboard",
                 component: () =>
                     import(
-                        /* webpackChunkName: "Chunks/Site/Router/HomeDashboard" */ "./site/pages/Dashboard.vue"
+                        /* webpackChunkName: "Chunks/Site/Router/HomeDashboard" */ "./site_layout/pages/Dashboard.vue"
                     ),
                 title: "This is a test page"
             },
@@ -60,7 +60,7 @@ const defaultRoutes = [
         name: "404",
         component: () =>
             import(
-                /* webpackChunkName: "Chunks/Site/404" */ "./site/pages/NotFound.vue"
+                /* webpackChunkName: "Chunks/Site/404" */ "./site_layout/pages/NotFound.vue"
             )
     }
 ];
