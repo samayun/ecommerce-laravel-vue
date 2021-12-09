@@ -196,7 +196,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -59031,89 +59031,10 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_awesome_notifications__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-awesome-notifications */ "./node_modules/vue-awesome-notifications/dist/index.js");
-/* harmony import */ var vue_awesome_notifications__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_awesome_notifications__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_awesome_notifications_dist_styles_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-awesome-notifications/dist/styles/style.css */ "./node_modules/vue-awesome-notifications/dist/styles/style.css");
-/* harmony import */ var vue_awesome_notifications_dist_styles_style_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_awesome_notifications_dist_styles_style_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vue_magnifier__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-magnifier */ "./node_modules/vue-magnifier/dist/vueMagnifier.js");
-/* harmony import */ var vue_magnifier__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_magnifier__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _router_site__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./router.site */ "./resources/js/router.site.js");
-/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./i18n */ "./resources/js/i18n.js");
-/* harmony import */ var _store_site__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store.site */ "./resources/js/store.site.js");
-__webpack_require__(/*! ./bootstrap.site */ "./resources/js/bootstrap.site.js");
-
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-window.$Bus = new Vue(); // EventBus Service for communicating component via component
-// import ViewUI from 'view-design';
-// import 'view-design/dist/styles/iview.css';
-// import locale from 'view-design/dist/locale/en-US';
-// import { Notice } from "view-design";
-
-Vue.config.productionTips = false;
-Vue.config.performance = "development" !== "production"; // window.$Notice = Notice // Toast Notification . alternative sweetalert2 . I`ll use IViewUI
-// Vue.use(ViewUI, { locale });
-
-
- // import 'vue-owl-carousel/dist/vue-owl-carousel';
-
-
-var options = {
-  durations: {
-    global: 3000,
-    success: 1000
-  }
-};
-Vue.use(vue_awesome_notifications__WEBPACK_IMPORTED_MODULE_0___default.a);
-window.$awn = Vue.prototype.$awn;
-Vue.use(vue_magnifier__WEBPACK_IMPORTED_MODULE_2___default.a);
-
- // IMPORT THE STORE
-
-
-Vue.component("main-app", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MainApp */ "Chunks/Site/Components/MainApp").then(__webpack_require__.bind(null, /*! ./site_layout/components/MainApp.vue */ "./resources/js/site_layout/components/MainApp.vue"));
-});
-Vue.component("MultipleFilter", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MultipleFilter */ "Chunks/Site/Components/MultipleFilter").then(__webpack_require__.bind(null, /*! ./site_layout/components/Filter/MultipleFilter.vue */ "./resources/js/site_layout/components/Filter/MultipleFilter.vue"));
-});
-Vue.component("SortingToolBox", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/SortingToolBox */ "Chunks/Site/Components/SortingToolBox").then(__webpack_require__.bind(null, /*! ./site_layout/components/Filter/SortingToolBox.vue */ "./resources/js/site_layout/components/Filter/SortingToolBox.vue"));
-});
-Vue.component("QuickView", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/QuickView */ "Chunks/Site/Components/QuickView").then(__webpack_require__.bind(null, /*! ./site_layout/components/Product/QuickView.vue */ "./resources/js/site_layout/components/Product/QuickView.vue"));
-});
-Vue.component("Product", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/Product */ "Chunks/Site/Components/Product").then(__webpack_require__.bind(null, /*! ./site_layout/components/Product/Product.vue */ "./resources/js/site_layout/components/Product/Product.vue"));
-});
-Vue.component("carousel", __webpack_require__(/*! vue-owl-carousel */ "./node_modules/vue-owl-carousel/dist/vue-owl-carousel.js"));
-Vue.component("mobile-menu", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MobileMenu */ "Chunks/Site/Components/MobileMenu").then(__webpack_require__.bind(null, /*! ./site_layout/components/MobileMenu.vue */ "./resources/js/site_layout/components/MobileMenu.vue"));
-});
-Vue.component("mobile-footer", function () {
-  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MobileFooter */ "Chunks/Site/Components/MobileFooter").then(__webpack_require__.bind(null, /*! ./site_layout/components/MobileFooter.vue */ "./resources/js/site_layout/components/MobileFooter.vue"));
-});
-new Vue({
-  el: "#main-app",
-  i18n: _i18n__WEBPACK_IMPORTED_MODULE_4__["default"],
-  router: _router_site__WEBPACK_IMPORTED_MODULE_3__["default"],
-  store: _store_site__WEBPACK_IMPORTED_MODULE_5__["default"]
-});
-
-/***/ }),
-
-/***/ "./resources/js/bootstrap.site.js":
-/*!****************************************!*\
-  !*** ./resources/js/bootstrap.site.js ***!
-  \****************************************/
+/***/ "./resources/microfrontends/site-mf/bootstrap.js":
+/*!*******************************************************!*\
+  !*** ./resources/microfrontends/site-mf/bootstrap.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -59175,10 +59096,10 @@ if (token) {
 
 /***/ }),
 
-/***/ "./resources/js/i18n.js":
-/*!******************************!*\
-  !*** ./resources/js/i18n.js ***!
-  \******************************/
+/***/ "./resources/microfrontends/site-mf/i18n.js":
+/*!**************************************************!*\
+  !*** ./resources/microfrontends/site-mf/i18n.js ***!
+  \**************************************************/
 /*! exports provided: selectedLocale, languages, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59216,7 +59137,7 @@ function checkDefaultLanguage() {
 }
 
 function loadLocaleMessages() {
-  var locales = __webpack_require__("./resources/js/locales sync recursive [A-Za-z0-9-_,\\s]+\\.json$/");
+  var locales = __webpack_require__("./resources/microfrontends/site-mf/locales sync recursive [A-Za-z0-9-_,\\s]+\\.json$/");
 
   var messages = {};
   locales.keys().forEach(function (key) {
@@ -59237,20 +59158,99 @@ var languages = Object.getOwnPropertyNames(loadLocaleMessages());
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "en",
   messages: loadLocaleMessages()
 }));
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
-/***/ "./resources/js/locales sync recursive [A-Za-z0-9-_,\\s]+\\.json$/":
-/*!*************************************************************!*\
-  !*** ./resources/js/locales sync [A-Za-z0-9-_,\s]+\.json$/ ***!
-  \*************************************************************/
+/***/ "./resources/microfrontends/site-mf/index.js":
+/*!***************************************************!*\
+  !*** ./resources/microfrontends/site-mf/index.js ***!
+  \***************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_awesome_notifications__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-awesome-notifications */ "./node_modules/vue-awesome-notifications/dist/index.js");
+/* harmony import */ var vue_awesome_notifications__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_awesome_notifications__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_awesome_notifications_dist_styles_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-awesome-notifications/dist/styles/style.css */ "./node_modules/vue-awesome-notifications/dist/styles/style.css");
+/* harmony import */ var vue_awesome_notifications_dist_styles_style_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_awesome_notifications_dist_styles_style_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_magnifier__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-magnifier */ "./node_modules/vue-magnifier/dist/vueMagnifier.js");
+/* harmony import */ var vue_magnifier__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_magnifier__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./router */ "./resources/microfrontends/site-mf/router.js");
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./i18n */ "./resources/microfrontends/site-mf/i18n.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store */ "./resources/microfrontends/site-mf/store.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/microfrontends/site-mf/bootstrap.js");
+
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.$Bus = new Vue(); // EventBus Service for communicating component via component
+// import ViewUI from 'view-design';
+// import 'view-design/dist/styles/iview.css';
+// import locale from 'view-design/dist/locale/en-US';
+// import { Notice } from "view-design";
+
+Vue.config.productionTips = false;
+Vue.config.performance = "development" !== "production"; // window.$Notice = Notice // Toast Notification . alternative sweetalert2 . I`ll use IViewUI
+// Vue.use(ViewUI, { locale });
+
+
+ // import 'vue-owl-carousel/dist/vue-owl-carousel';
+
+
+var options = {
+  durations: {
+    global: 3000,
+    success: 1000
+  }
+};
+Vue.use(vue_awesome_notifications__WEBPACK_IMPORTED_MODULE_0___default.a);
+window.$awn = Vue.prototype.$awn;
+Vue.use(vue_magnifier__WEBPACK_IMPORTED_MODULE_2___default.a);
+
+ // IMPORT THE STORE
+
+
+Vue.component("main-app", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MainApp */ "Chunks/Site/Components/MainApp").then(__webpack_require__.bind(null, /*! ./layout/components/MainApp.vue */ "./resources/microfrontends/site-mf/layout/components/MainApp.vue"));
+});
+Vue.component("MultipleFilter", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MultipleFilter */ "Chunks/Site/Components/MultipleFilter").then(__webpack_require__.bind(null, /*! ./layout/components/Filter/MultipleFilter.vue */ "./resources/microfrontends/site-mf/layout/components/Filter/MultipleFilter.vue"));
+});
+Vue.component("SortingToolBox", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/SortingToolBox */ "Chunks/Site/Components/SortingToolBox").then(__webpack_require__.bind(null, /*! ./layout/components/Filter/SortingToolBox.vue */ "./resources/microfrontends/site-mf/layout/components/Filter/SortingToolBox.vue"));
+});
+Vue.component("QuickView", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/QuickView */ "Chunks/Site/Components/QuickView").then(__webpack_require__.bind(null, /*! ./layout/components/Product/QuickView.vue */ "./resources/microfrontends/site-mf/layout/components/Product/QuickView.vue"));
+});
+Vue.component("Product", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/Product */ "Chunks/Site/Components/Product").then(__webpack_require__.bind(null, /*! ./layout/components/Product/Product.vue */ "./resources/microfrontends/site-mf/layout/components/Product/Product.vue"));
+});
+Vue.component("carousel", __webpack_require__(/*! vue-owl-carousel */ "./node_modules/vue-owl-carousel/dist/vue-owl-carousel.js"));
+Vue.component("mobile-menu", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MobileMenu */ "Chunks/Site/Components/MobileMenu").then(__webpack_require__.bind(null, /*! ./layout/components/MobileMenu.vue */ "./resources/microfrontends/site-mf/layout/components/MobileMenu.vue"));
+});
+Vue.component("mobile-footer", function () {
+  return __webpack_require__.e(/*! import() | Chunks/Site/Components/MobileFooter */ "Chunks/Site/Components/MobileFooter").then(__webpack_require__.bind(null, /*! ./layout/components/MobileFooter.vue */ "./resources/microfrontends/site-mf/layout/components/MobileFooter.vue"));
+});
+new Vue({
+  el: "#main-app",
+  i18n: _i18n__WEBPACK_IMPORTED_MODULE_4__["default"],
+  router: _router__WEBPACK_IMPORTED_MODULE_3__["default"],
+  store: _store__WEBPACK_IMPORTED_MODULE_5__["default"]
+});
+
+/***/ }),
+
+/***/ "./resources/microfrontends/site-mf/locales sync recursive [A-Za-z0-9-_,\\s]+\\.json$/":
+/*!*********************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/locales sync [A-Za-z0-9-_,\s]+\.json$/ ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./bn.json": "./resources/js/locales/bn.json",
-	"./en.json": "./resources/js/locales/en.json"
+	"./bn.json": "./resources/microfrontends/site-mf/locales/bn.json",
+	"./en.json": "./resources/microfrontends/site-mf/locales/en.json"
 };
 
 
@@ -59271,14 +59271,14 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = "./resources/js/locales sync recursive [A-Za-z0-9-_,\\s]+\\.json$/";
+webpackContext.id = "./resources/microfrontends/site-mf/locales sync recursive [A-Za-z0-9-_,\\s]+\\.json$/";
 
 /***/ }),
 
-/***/ "./resources/js/locales/bn.json":
-/*!**************************************!*\
-  !*** ./resources/js/locales/bn.json ***!
-  \**************************************/
+/***/ "./resources/microfrontends/site-mf/locales/bn.json":
+/*!**********************************************************!*\
+  !*** ./resources/microfrontends/site-mf/locales/bn.json ***!
+  \**********************************************************/
 /*! exports provided: loading, en, bn, add, edit, editing, delete, name, image, auth, explorePopularCategories, ShopByBrands, wishlist, cart, compare, sidebar, categories, attributes, subcategories, products, brands, filter, default */
 /***/ (function(module) {
 
@@ -59286,10 +59286,10 @@ module.exports = JSON.parse("{\"loading\":\"লোডিং হচ্ছে\",\"
 
 /***/ }),
 
-/***/ "./resources/js/locales/en.json":
-/*!**************************************!*\
-  !*** ./resources/js/locales/en.json ***!
-  \**************************************/
+/***/ "./resources/microfrontends/site-mf/locales/en.json":
+/*!**********************************************************!*\
+  !*** ./resources/microfrontends/site-mf/locales/en.json ***!
+  \**********************************************************/
 /*! exports provided: loading, en, bn, add, edit, delete, name, image, auth, explorePopularCategories, ShopByBrands, wishlist, cart, compare, sidebar, attributes, categories, subcategories, products, brands, filter, default */
 /***/ (function(module) {
 
@@ -59297,10 +59297,97 @@ module.exports = JSON.parse("{\"loading\":\"Loading\",\"en\":\"English\",\"bn\":
 
 /***/ }),
 
-/***/ "./resources/js/modules.site.js":
-/*!**************************************!*\
-  !*** ./resources/js/modules.site.js ***!
-  \**************************************/
+/***/ "./resources/microfrontends/site-mf/modules sync recursive \\.js$":
+/*!*************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules sync \.js$ ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./attributes/store/actions.js": "./resources/microfrontends/site-mf/modules/attributes/store/actions.js",
+	"./attributes/store/getters.js": "./resources/microfrontends/site-mf/modules/attributes/store/getters.js",
+	"./attributes/store/index.js": "./resources/microfrontends/site-mf/modules/attributes/store/index.js",
+	"./attributes/store/mutations.js": "./resources/microfrontends/site-mf/modules/attributes/store/mutations.js",
+	"./attributes/store/state.js": "./resources/microfrontends/site-mf/modules/attributes/store/state.js",
+	"./auth/store/actions.js": "./resources/microfrontends/site-mf/modules/auth/store/actions.js",
+	"./auth/store/getters.js": "./resources/microfrontends/site-mf/modules/auth/store/getters.js",
+	"./auth/store/index.js": "./resources/microfrontends/site-mf/modules/auth/store/index.js",
+	"./auth/store/mutations.js": "./resources/microfrontends/site-mf/modules/auth/store/mutations.js",
+	"./auth/store/state.js": "./resources/microfrontends/site-mf/modules/auth/store/state.js",
+	"./brands/router/index.js": "./resources/microfrontends/site-mf/modules/brands/router/index.js",
+	"./brands/store/actions.js": "./resources/microfrontends/site-mf/modules/brands/store/actions.js",
+	"./brands/store/getters.js": "./resources/microfrontends/site-mf/modules/brands/store/getters.js",
+	"./brands/store/index.js": "./resources/microfrontends/site-mf/modules/brands/store/index.js",
+	"./brands/store/mutations.js": "./resources/microfrontends/site-mf/modules/brands/store/mutations.js",
+	"./brands/store/state.js": "./resources/microfrontends/site-mf/modules/brands/store/state.js",
+	"./cart/router/index.js": "./resources/microfrontends/site-mf/modules/cart/router/index.js",
+	"./cart/store/actions.js": "./resources/microfrontends/site-mf/modules/cart/store/actions.js",
+	"./cart/store/getters.js": "./resources/microfrontends/site-mf/modules/cart/store/getters.js",
+	"./cart/store/index.js": "./resources/microfrontends/site-mf/modules/cart/store/index.js",
+	"./cart/store/mutations.js": "./resources/microfrontends/site-mf/modules/cart/store/mutations.js",
+	"./cart/store/state.js": "./resources/microfrontends/site-mf/modules/cart/store/state.js",
+	"./categories/router/index.js": "./resources/microfrontends/site-mf/modules/categories/router/index.js",
+	"./categories/store/index.js": "./resources/microfrontends/site-mf/modules/categories/store/index.js",
+	"./compare/router/index.js": "./resources/microfrontends/site-mf/modules/compare/router/index.js",
+	"./compare/store/actions.js": "./resources/microfrontends/site-mf/modules/compare/store/actions.js",
+	"./compare/store/getters.js": "./resources/microfrontends/site-mf/modules/compare/store/getters.js",
+	"./compare/store/index.js": "./resources/microfrontends/site-mf/modules/compare/store/index.js",
+	"./compare/store/mutations.js": "./resources/microfrontends/site-mf/modules/compare/store/mutations.js",
+	"./compare/store/state.js": "./resources/microfrontends/site-mf/modules/compare/store/state.js",
+	"./multipleFiltering/store/actions.js": "./resources/microfrontends/site-mf/modules/multipleFiltering/store/actions.js",
+	"./multipleFiltering/store/getters.js": "./resources/microfrontends/site-mf/modules/multipleFiltering/store/getters.js",
+	"./multipleFiltering/store/index.js": "./resources/microfrontends/site-mf/modules/multipleFiltering/store/index.js",
+	"./multipleFiltering/store/mutations.js": "./resources/microfrontends/site-mf/modules/multipleFiltering/store/mutations.js",
+	"./multipleFiltering/store/state.js": "./resources/microfrontends/site-mf/modules/multipleFiltering/store/state.js",
+	"./products/router/index.js": "./resources/microfrontends/site-mf/modules/products/router/index.js",
+	"./products/store/actions.js": "./resources/microfrontends/site-mf/modules/products/store/actions.js",
+	"./products/store/getters.js": "./resources/microfrontends/site-mf/modules/products/store/getters.js",
+	"./products/store/index.js": "./resources/microfrontends/site-mf/modules/products/store/index.js",
+	"./products/store/mutations.js": "./resources/microfrontends/site-mf/modules/products/store/mutations.js",
+	"./products/store/state.js": "./resources/microfrontends/site-mf/modules/products/store/state.js",
+	"./settings/router/index.js": "./resources/microfrontends/site-mf/modules/settings/router/index.js",
+	"./settings/store/index.js": "./resources/microfrontends/site-mf/modules/settings/store/index.js",
+	"./test/router/index..js": "./resources/microfrontends/site-mf/modules/test/router/index..js",
+	"./test/store/actions.js": "./resources/microfrontends/site-mf/modules/test/store/actions.js",
+	"./test/store/getters.js": "./resources/microfrontends/site-mf/modules/test/store/getters.js",
+	"./test/store/index.js": "./resources/microfrontends/site-mf/modules/test/store/index.js",
+	"./test/store/mutations.js": "./resources/microfrontends/site-mf/modules/test/store/mutations.js",
+	"./test/store/state.js": "./resources/microfrontends/site-mf/modules/test/store/state.js",
+	"./wishlists/router/index.js": "./resources/microfrontends/site-mf/modules/wishlists/router/index.js",
+	"./wishlists/store/actions.js": "./resources/microfrontends/site-mf/modules/wishlists/store/actions.js",
+	"./wishlists/store/getters.js": "./resources/microfrontends/site-mf/modules/wishlists/store/getters.js",
+	"./wishlists/store/index.js": "./resources/microfrontends/site-mf/modules/wishlists/store/index.js",
+	"./wishlists/store/mutations.js": "./resources/microfrontends/site-mf/modules/wishlists/store/mutations.js",
+	"./wishlists/store/state.js": "./resources/microfrontends/site-mf/modules/wishlists/store/state.js"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./resources/microfrontends/site-mf/modules sync recursive \\.js$";
+
+/***/ }),
+
+/***/ "./resources/microfrontends/site-mf/modules.js":
+/*!*****************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules.js ***!
+  \*****************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59316,7 +59403,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var requireModule = __webpack_require__("./resources/js/site_modules sync recursive \\.js$");
+var requireModule = __webpack_require__("./resources/microfrontends/site-mf/modules sync recursive \\.js$");
 
 var modules = {};
 requireModule.keys().forEach(function (fileName) {
@@ -59339,186 +59426,10 @@ requireModule.keys().forEach(function (fileName) {
 
 /***/ }),
 
-/***/ "./resources/js/router.site.js":
-/*!*************************************!*\
-  !*** ./resources/js/router.site.js ***!
-  \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var lodash_camelCase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/camelCase */ "./node_modules/lodash/camelCase.js");
-/* harmony import */ var lodash_camelCase__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_camelCase__WEBPACK_IMPORTED_MODULE_2__);
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-/**
- * IMPORT ALL ROUTES DYNAMICALLY FROM THE MODULES FOLDERS....
- */
-
-var allRoutes = [];
-
-
-var requireModule = __webpack_require__("./resources/js/site_modules sync recursive \\.js$");
-
-var importedRoutes = [];
-requireModule.keys().forEach(function (fileName) {
-  var str = fileName.split("/");
-  str = str[1];
-
-  if (fileName === "./".concat(str, "/router/index.js")) {
-    var moduleName = lodash_camelCase__WEBPACK_IMPORTED_MODULE_2___default()(fileName.replace(/(\.\/|\.js)/g, ""));
-    importedRoutes.push.apply(importedRoutes, _toConsumableArray(requireModule(fileName)["default"]));
-  }
-});
-/**
- * CONCAT ALL THE IMPORTED ROUTES WITH MAIN ROUTES...
- */
-
-var defaultRoutes = [{
-  path: "/login",
-  name: "Login",
-  title: "Login",
-  component: function component() {
-    return Promise.all(/*! import() | Chunks/Site/Router/Login */[__webpack_require__.e("Chunks/Site/Components/AuthModal"), __webpack_require__.e("Chunks/Site/Router/Login")]).then(__webpack_require__.bind(null, /*! ./site_layout/components/Login.vue */ "./resources/js/site_layout/components/Login.vue"));
-  }
-}, {
-  path: "/",
-  name: "Home",
-  title: "Home",
-  component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site/HomePageRouteContainer */ "Chunks/Site/HomePageRouteContainer").then(__webpack_require__.bind(null, /*! ./site_layout/pages/HomePage.vue */ "./resources/js/site_layout/pages/HomePage.vue"));
-  },
-  children: [{
-    path: "/",
-    name: "Dashboard",
-    component: function component() {
-      return __webpack_require__.e(/*! import() | Chunks/Site/Router/HomeDashboard */ "Chunks/Site/Router/HomeDashboard").then(__webpack_require__.bind(null, /*! ./site_layout/pages/Dashboard.vue */ "./resources/js/site_layout/pages/Dashboard.vue"));
-    },
-    title: "This is a test page"
-  }].concat(importedRoutes)
-}, {
-  path: "*",
-  name: "404",
-  component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site/404 */ "Chunks/Site/404").then(__webpack_require__.bind(null, /*! ./site_layout/pages/NotFound.vue */ "./resources/js/site_layout/pages/NotFound.vue"));
-  }
-}]; // const routes = allRoutes.concat(defaultRoutes , importedRoutes)
-
-/* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  mode: "history",
-  routes: defaultRoutes
-}));
-
-/***/ }),
-
-/***/ "./resources/js/site_modules sync recursive \\.js$":
-/*!**********************************************!*\
-  !*** ./resources/js/site_modules sync \.js$ ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./attributes/store/actions.js": "./resources/js/site_modules/attributes/store/actions.js",
-	"./attributes/store/getters.js": "./resources/js/site_modules/attributes/store/getters.js",
-	"./attributes/store/index.js": "./resources/js/site_modules/attributes/store/index.js",
-	"./attributes/store/mutations.js": "./resources/js/site_modules/attributes/store/mutations.js",
-	"./attributes/store/state.js": "./resources/js/site_modules/attributes/store/state.js",
-	"./auth/store/actions.js": "./resources/js/site_modules/auth/store/actions.js",
-	"./auth/store/getters.js": "./resources/js/site_modules/auth/store/getters.js",
-	"./auth/store/index.js": "./resources/js/site_modules/auth/store/index.js",
-	"./auth/store/mutations.js": "./resources/js/site_modules/auth/store/mutations.js",
-	"./auth/store/state.js": "./resources/js/site_modules/auth/store/state.js",
-	"./brands/router/index.js": "./resources/js/site_modules/brands/router/index.js",
-	"./brands/store/actions.js": "./resources/js/site_modules/brands/store/actions.js",
-	"./brands/store/getters.js": "./resources/js/site_modules/brands/store/getters.js",
-	"./brands/store/index.js": "./resources/js/site_modules/brands/store/index.js",
-	"./brands/store/mutations.js": "./resources/js/site_modules/brands/store/mutations.js",
-	"./brands/store/state.js": "./resources/js/site_modules/brands/store/state.js",
-	"./cart/router/index.js": "./resources/js/site_modules/cart/router/index.js",
-	"./cart/store/actions.js": "./resources/js/site_modules/cart/store/actions.js",
-	"./cart/store/getters.js": "./resources/js/site_modules/cart/store/getters.js",
-	"./cart/store/index.js": "./resources/js/site_modules/cart/store/index.js",
-	"./cart/store/mutations.js": "./resources/js/site_modules/cart/store/mutations.js",
-	"./cart/store/state.js": "./resources/js/site_modules/cart/store/state.js",
-	"./categories/router/index.js": "./resources/js/site_modules/categories/router/index.js",
-	"./categories/store/index.js": "./resources/js/site_modules/categories/store/index.js",
-	"./compare/router/index.js": "./resources/js/site_modules/compare/router/index.js",
-	"./compare/store/actions.js": "./resources/js/site_modules/compare/store/actions.js",
-	"./compare/store/getters.js": "./resources/js/site_modules/compare/store/getters.js",
-	"./compare/store/index.js": "./resources/js/site_modules/compare/store/index.js",
-	"./compare/store/mutations.js": "./resources/js/site_modules/compare/store/mutations.js",
-	"./compare/store/state.js": "./resources/js/site_modules/compare/store/state.js",
-	"./multipleFiltering/store/actions.js": "./resources/js/site_modules/multipleFiltering/store/actions.js",
-	"./multipleFiltering/store/getters.js": "./resources/js/site_modules/multipleFiltering/store/getters.js",
-	"./multipleFiltering/store/index.js": "./resources/js/site_modules/multipleFiltering/store/index.js",
-	"./multipleFiltering/store/mutations.js": "./resources/js/site_modules/multipleFiltering/store/mutations.js",
-	"./multipleFiltering/store/state.js": "./resources/js/site_modules/multipleFiltering/store/state.js",
-	"./products/router/index.js": "./resources/js/site_modules/products/router/index.js",
-	"./products/store/actions.js": "./resources/js/site_modules/products/store/actions.js",
-	"./products/store/getters.js": "./resources/js/site_modules/products/store/getters.js",
-	"./products/store/index.js": "./resources/js/site_modules/products/store/index.js",
-	"./products/store/mutations.js": "./resources/js/site_modules/products/store/mutations.js",
-	"./products/store/state.js": "./resources/js/site_modules/products/store/state.js",
-	"./settings/router/index.js": "./resources/js/site_modules/settings/router/index.js",
-	"./settings/store/index.js": "./resources/js/site_modules/settings/store/index.js",
-	"./test/router/index..js": "./resources/js/site_modules/test/router/index..js",
-	"./test/store/actions.js": "./resources/js/site_modules/test/store/actions.js",
-	"./test/store/getters.js": "./resources/js/site_modules/test/store/getters.js",
-	"./test/store/index.js": "./resources/js/site_modules/test/store/index.js",
-	"./test/store/mutations.js": "./resources/js/site_modules/test/store/mutations.js",
-	"./test/store/state.js": "./resources/js/site_modules/test/store/state.js",
-	"./wishlists/router/index.js": "./resources/js/site_modules/wishlists/router/index.js",
-	"./wishlists/store/actions.js": "./resources/js/site_modules/wishlists/store/actions.js",
-	"./wishlists/store/getters.js": "./resources/js/site_modules/wishlists/store/getters.js",
-	"./wishlists/store/index.js": "./resources/js/site_modules/wishlists/store/index.js",
-	"./wishlists/store/mutations.js": "./resources/js/site_modules/wishlists/store/mutations.js",
-	"./wishlists/store/state.js": "./resources/js/site_modules/wishlists/store/state.js"
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "./resources/js/site_modules sync recursive \\.js$";
-
-/***/ }),
-
-/***/ "./resources/js/site_modules/attributes/store/actions.js":
-/*!***************************************************************!*\
-  !*** ./resources/js/site_modules/attributes/store/actions.js ***!
-  \***************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/attributes/store/actions.js":
+/*!******************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/attributes/store/actions.js ***!
+  \******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59571,10 +59482,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/attributes/store/getters.js":
-/*!***************************************************************!*\
-  !*** ./resources/js/site_modules/attributes/store/getters.js ***!
-  \***************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/attributes/store/getters.js":
+/*!******************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/attributes/store/getters.js ***!
+  \******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59584,19 +59495,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/attributes/store/index.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/site_modules/attributes/store/index.js ***!
-  \*************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/attributes/store/index.js":
+/*!****************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/attributes/store/index.js ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/site_modules/attributes/store/state.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/site_modules/attributes/store/getters.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/js/site_modules/attributes/store/actions.js");
-/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/site_modules/attributes/store/mutations.js");
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/microfrontends/site-mf/modules/attributes/store/state.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/microfrontends/site-mf/modules/attributes/store/getters.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/microfrontends/site-mf/modules/attributes/store/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/microfrontends/site-mf/modules/attributes/store/mutations.js");
 
 
 
@@ -59610,10 +59521,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/attributes/store/mutations.js":
-/*!*****************************************************************!*\
-  !*** ./resources/js/site_modules/attributes/store/mutations.js ***!
-  \*****************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/attributes/store/mutations.js":
+/*!********************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/attributes/store/mutations.js ***!
+  \********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59627,10 +59538,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/attributes/store/state.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/site_modules/attributes/store/state.js ***!
-  \*************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/attributes/store/state.js":
+/*!****************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/attributes/store/state.js ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59642,10 +59553,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/auth/store/actions.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/site_modules/auth/store/actions.js ***!
-  \*********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/auth/store/actions.js":
+/*!************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/auth/store/actions.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59709,10 +59620,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/auth/store/getters.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/site_modules/auth/store/getters.js ***!
-  \*********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/auth/store/getters.js":
+/*!************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/auth/store/getters.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59722,19 +59633,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/auth/store/index.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/site_modules/auth/store/index.js ***!
-  \*******************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/auth/store/index.js":
+/*!**********************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/auth/store/index.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/site_modules/auth/store/state.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/site_modules/auth/store/getters.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/js/site_modules/auth/store/actions.js");
-/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/site_modules/auth/store/mutations.js");
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/microfrontends/site-mf/modules/auth/store/state.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/microfrontends/site-mf/modules/auth/store/getters.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/microfrontends/site-mf/modules/auth/store/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/microfrontends/site-mf/modules/auth/store/mutations.js");
 
 
 
@@ -59748,10 +59659,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/auth/store/mutations.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/site_modules/auth/store/mutations.js ***!
-  \***********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/auth/store/mutations.js":
+/*!**************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/auth/store/mutations.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59761,10 +59672,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/auth/store/state.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/site_modules/auth/store/state.js ***!
-  \*******************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/auth/store/state.js":
+/*!**********************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/auth/store/state.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59776,10 +59687,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/brands/router/index.js":
-/*!**********************************************************!*\
-  !*** ./resources/js/site_modules/brands/router/index.js ***!
-  \**********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/brands/router/index.js":
+/*!*************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/brands/router/index.js ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59789,7 +59700,7 @@ var routes = [{
   path: 'brand/:slug',
   name: 'Brand',
   component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site/Router/ProductsByBrand-slug */ "Chunks/Site/Router/ProductsByBrand-slug").then(__webpack_require__.bind(null, /*! ../pages/ProductsByBrand.vue */ "./resources/js/site_modules/brands/pages/ProductsByBrand.vue"));
+    return __webpack_require__.e(/*! import() | Chunks/Site/Router/ProductsByBrand-slug */ "Chunks/Site/Router/ProductsByBrand-slug").then(__webpack_require__.bind(null, /*! ../pages/ProductsByBrand.vue */ "./resources/microfrontends/site-mf/modules/brands/pages/ProductsByBrand.vue"));
   },
   title: 'This is single Brand page',
   meta: {
@@ -59801,10 +59712,10 @@ var routes = [{
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/brands/store/actions.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/site_modules/brands/store/actions.js ***!
-  \***********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/brands/store/actions.js":
+/*!**************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/brands/store/actions.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59895,10 +59806,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/brands/store/getters.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/site_modules/brands/store/getters.js ***!
-  \***********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/brands/store/getters.js":
+/*!**************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/brands/store/getters.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59908,19 +59819,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/brands/store/index.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/site_modules/brands/store/index.js ***!
-  \*********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/brands/store/index.js":
+/*!************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/brands/store/index.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/site_modules/brands/store/state.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/site_modules/brands/store/getters.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/js/site_modules/brands/store/actions.js");
-/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/site_modules/brands/store/mutations.js");
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/microfrontends/site-mf/modules/brands/store/state.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/microfrontends/site-mf/modules/brands/store/getters.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/microfrontends/site-mf/modules/brands/store/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/microfrontends/site-mf/modules/brands/store/mutations.js");
 
 
 
@@ -59934,10 +59845,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/brands/store/mutations.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/site_modules/brands/store/mutations.js ***!
-  \*************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/brands/store/mutations.js":
+/*!****************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/brands/store/mutations.js ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59954,10 +59865,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/brands/store/state.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/site_modules/brands/store/state.js ***!
-  \*********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/brands/store/state.js":
+/*!************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/brands/store/state.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59973,10 +59884,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/cart/router/index.js":
-/*!********************************************************!*\
-  !*** ./resources/js/site_modules/cart/router/index.js ***!
-  \********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/cart/router/index.js":
+/*!***********************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/cart/router/index.js ***!
+  \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59986,7 +59897,7 @@ var routes = [{
   path: '/cart',
   name: 'Cart',
   component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Carts */ "Chunks/Site/Router/Carts").then(__webpack_require__.bind(null, /*! ../pages/cart.vue */ "./resources/js/site_modules/cart/pages/cart.vue"));
+    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Carts */ "Chunks/Site/Router/Carts").then(__webpack_require__.bind(null, /*! ../pages/cart.vue */ "./resources/microfrontends/site-mf/modules/cart/pages/cart.vue"));
   },
   title: 'This is cart page',
   meta: {
@@ -59998,10 +59909,10 @@ var routes = [{
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/cart/store/actions.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/site_modules/cart/store/actions.js ***!
-  \*********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/cart/store/actions.js":
+/*!************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/cart/store/actions.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60207,10 +60118,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/cart/store/getters.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/site_modules/cart/store/getters.js ***!
-  \*********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/cart/store/getters.js":
+/*!************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/cart/store/getters.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60234,19 +60145,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/cart/store/index.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/site_modules/cart/store/index.js ***!
-  \*******************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/cart/store/index.js":
+/*!**********************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/cart/store/index.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/site_modules/cart/store/state.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/site_modules/cart/store/getters.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/js/site_modules/cart/store/actions.js");
-/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/site_modules/cart/store/mutations.js");
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/microfrontends/site-mf/modules/cart/store/state.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/microfrontends/site-mf/modules/cart/store/getters.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/microfrontends/site-mf/modules/cart/store/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/microfrontends/site-mf/modules/cart/store/mutations.js");
 
 
 
@@ -60260,10 +60171,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/cart/store/mutations.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/site_modules/cart/store/mutations.js ***!
-  \***********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/cart/store/mutations.js":
+/*!**************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/cart/store/mutations.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60279,10 +60190,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/cart/store/state.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/site_modules/cart/store/state.js ***!
-  \*******************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/cart/store/state.js":
+/*!**********************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/cart/store/state.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60296,10 +60207,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/categories/router/index.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/site_modules/categories/router/index.js ***!
-  \**************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/categories/router/index.js":
+/*!*****************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/categories/router/index.js ***!
+  \*****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60309,7 +60220,7 @@ var routes = [{
   path: 'category/:slug',
   name: 'Product By Category',
   component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Category-slug */ "Chunks/Site/Router/Category-slug").then(__webpack_require__.bind(null, /*! ../pages/ProductByCategory.vue */ "./resources/js/site_modules/categories/pages/ProductByCategory.vue"));
+    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Category-slug */ "Chunks/Site/Router/Category-slug").then(__webpack_require__.bind(null, /*! ../pages/ProductByCategory.vue */ "./resources/microfrontends/site-mf/modules/categories/pages/ProductByCategory.vue"));
   },
   title: 'This is settings page',
   meta: {
@@ -60321,10 +60232,10 @@ var routes = [{
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/categories/store/index.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/site_modules/categories/store/index.js ***!
-  \*************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/categories/store/index.js":
+/*!****************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/categories/store/index.js ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60461,10 +60372,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/compare/router/index.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/site_modules/compare/router/index.js ***!
-  \***********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/compare/router/index.js":
+/*!**************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/compare/router/index.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60474,7 +60385,7 @@ var routes = [{
   path: '/compare',
   name: 'Compare',
   component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Compare */ "Chunks/Site/Router/Compare").then(__webpack_require__.bind(null, /*! ../pages/compare.vue */ "./resources/js/site_modules/compare/pages/compare.vue"));
+    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Compare */ "Chunks/Site/Router/Compare").then(__webpack_require__.bind(null, /*! ../pages/compare.vue */ "./resources/microfrontends/site-mf/modules/compare/pages/compare.vue"));
   },
   title: 'This is compare page',
   meta: {
@@ -60486,10 +60397,10 @@ var routes = [{
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/compare/store/actions.js":
-/*!************************************************************!*\
-  !*** ./resources/js/site_modules/compare/store/actions.js ***!
-  \************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/compare/store/actions.js":
+/*!***************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/compare/store/actions.js ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60695,10 +60606,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/compare/store/getters.js":
-/*!************************************************************!*\
-  !*** ./resources/js/site_modules/compare/store/getters.js ***!
-  \************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/compare/store/getters.js":
+/*!***************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/compare/store/getters.js ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60722,19 +60633,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/compare/store/index.js":
-/*!**********************************************************!*\
-  !*** ./resources/js/site_modules/compare/store/index.js ***!
-  \**********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/compare/store/index.js":
+/*!*************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/compare/store/index.js ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/site_modules/compare/store/state.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/site_modules/compare/store/getters.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/js/site_modules/compare/store/actions.js");
-/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/site_modules/compare/store/mutations.js");
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/microfrontends/site-mf/modules/compare/store/state.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/microfrontends/site-mf/modules/compare/store/getters.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/microfrontends/site-mf/modules/compare/store/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/microfrontends/site-mf/modules/compare/store/mutations.js");
 
 
 
@@ -60748,10 +60659,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/compare/store/mutations.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/site_modules/compare/store/mutations.js ***!
-  \**************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/compare/store/mutations.js":
+/*!*****************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/compare/store/mutations.js ***!
+  \*****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60761,10 +60672,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/compare/store/state.js":
-/*!**********************************************************!*\
-  !*** ./resources/js/site_modules/compare/store/state.js ***!
-  \**********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/compare/store/state.js":
+/*!*************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/compare/store/state.js ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60778,10 +60689,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/multipleFiltering/store/actions.js":
-/*!**********************************************************************!*\
-  !*** ./resources/js/site_modules/multipleFiltering/store/actions.js ***!
-  \**********************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/multipleFiltering/store/actions.js":
+/*!*************************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/multipleFiltering/store/actions.js ***!
+  \*************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60846,10 +60757,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/multipleFiltering/store/getters.js":
-/*!**********************************************************************!*\
-  !*** ./resources/js/site_modules/multipleFiltering/store/getters.js ***!
-  \**********************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/multipleFiltering/store/getters.js":
+/*!*************************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/multipleFiltering/store/getters.js ***!
+  \*************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60863,19 +60774,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/multipleFiltering/store/index.js":
-/*!********************************************************************!*\
-  !*** ./resources/js/site_modules/multipleFiltering/store/index.js ***!
-  \********************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/multipleFiltering/store/index.js":
+/*!***********************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/multipleFiltering/store/index.js ***!
+  \***********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/site_modules/multipleFiltering/store/state.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/site_modules/multipleFiltering/store/getters.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/js/site_modules/multipleFiltering/store/actions.js");
-/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/site_modules/multipleFiltering/store/mutations.js");
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/microfrontends/site-mf/modules/multipleFiltering/store/state.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/microfrontends/site-mf/modules/multipleFiltering/store/getters.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/microfrontends/site-mf/modules/multipleFiltering/store/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/microfrontends/site-mf/modules/multipleFiltering/store/mutations.js");
 
 
 
@@ -60889,10 +60800,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/multipleFiltering/store/mutations.js":
-/*!************************************************************************!*\
-  !*** ./resources/js/site_modules/multipleFiltering/store/mutations.js ***!
-  \************************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/multipleFiltering/store/mutations.js":
+/*!***************************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/multipleFiltering/store/mutations.js ***!
+  \***************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60910,10 +60821,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/multipleFiltering/store/state.js":
-/*!********************************************************************!*\
-  !*** ./resources/js/site_modules/multipleFiltering/store/state.js ***!
-  \********************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/multipleFiltering/store/state.js":
+/*!***********************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/multipleFiltering/store/state.js ***!
+  \***********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60933,10 +60844,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/products/router/index.js":
-/*!************************************************************!*\
-  !*** ./resources/js/site_modules/products/router/index.js ***!
-  \************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/products/router/index.js":
+/*!***************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/products/router/index.js ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60946,7 +60857,7 @@ var routes = [{
   path: '/products',
   name: 'Products',
   component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Products */ "Chunks/Site/Router/Products").then(__webpack_require__.bind(null, /*! ../pages/products.vue */ "./resources/js/site_modules/products/pages/products.vue"));
+    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Products */ "Chunks/Site/Router/Products").then(__webpack_require__.bind(null, /*! ../pages/products.vue */ "./resources/microfrontends/site-mf/modules/products/pages/products.vue"));
   },
   title: 'This is  products page',
   meta: {
@@ -60957,7 +60868,7 @@ var routes = [{
   path: '/product/:slug',
   name: 'Single Product',
   component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Product-slug */ "Chunks/Site/Router/Product-slug").then(__webpack_require__.bind(null, /*! ../pages/single.vue */ "./resources/js/site_modules/products/pages/single.vue"));
+    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Product-slug */ "Chunks/Site/Router/Product-slug").then(__webpack_require__.bind(null, /*! ../pages/single.vue */ "./resources/microfrontends/site-mf/modules/products/pages/single.vue"));
   },
   title: 'This is single product page',
   meta: {
@@ -60969,10 +60880,10 @@ var routes = [{
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/products/store/actions.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/site_modules/products/store/actions.js ***!
-  \*************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/products/store/actions.js":
+/*!****************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/products/store/actions.js ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61069,10 +60980,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/products/store/getters.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/site_modules/products/store/getters.js ***!
-  \*************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/products/store/getters.js":
+/*!****************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/products/store/getters.js ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61082,19 +60993,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/products/store/index.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/site_modules/products/store/index.js ***!
-  \***********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/products/store/index.js":
+/*!**************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/products/store/index.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/site_modules/products/store/state.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/site_modules/products/store/getters.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/js/site_modules/products/store/actions.js");
-/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/site_modules/products/store/mutations.js");
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/microfrontends/site-mf/modules/products/store/state.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/microfrontends/site-mf/modules/products/store/getters.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/microfrontends/site-mf/modules/products/store/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/microfrontends/site-mf/modules/products/store/mutations.js");
 
 
 
@@ -61108,10 +61019,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/products/store/mutations.js":
-/*!***************************************************************!*\
-  !*** ./resources/js/site_modules/products/store/mutations.js ***!
-  \***************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/products/store/mutations.js":
+/*!******************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/products/store/mutations.js ***!
+  \******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61121,10 +61032,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/products/store/state.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/site_modules/products/store/state.js ***!
-  \***********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/products/store/state.js":
+/*!**************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/products/store/state.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61142,10 +61053,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/settings/router/index.js":
-/*!************************************************************!*\
-  !*** ./resources/js/site_modules/settings/router/index.js ***!
-  \************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/settings/router/index.js":
+/*!***************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/settings/router/index.js ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61160,7 +61071,7 @@ var routes = [{
   path: 'settings',
   name: 'Settings',
   component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site-Settings */ "Chunks/Site-Settings").then(__webpack_require__.bind(null, /*! ../pages/settings.vue */ "./resources/js/site_modules/settings/pages/settings.vue"));
+    return __webpack_require__.e(/*! import() | Chunks/Site-Settings */ "Chunks/Site-Settings").then(__webpack_require__.bind(null, /*! ../pages/settings.vue */ "./resources/microfrontends/site-mf/modules/settings/pages/settings.vue"));
   },
   title: 'This is settings page',
   meta: {
@@ -61172,17 +61083,17 @@ var routes = [{
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/settings/store/index.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/site_modules/settings/store/index.js ***!
-  \***********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/settings/store/index.js":
+/*!**************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/settings/store/index.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_persistedstate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-persistedstate */ "./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js");
-/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../i18n */ "./resources/js/i18n.js");
+/* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../i18n */ "./resources/microfrontends/site-mf/i18n.js");
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -61268,10 +61179,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/test/router/index..js":
-/*!*********************************************************!*\
-  !*** ./resources/js/site_modules/test/router/index..js ***!
-  \*********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/test/router/index..js":
+/*!************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/test/router/index..js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61281,7 +61192,7 @@ var routes = [{
   path: 'product/:slug',
   name: 'Product',
   component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site-Product-slug */ "Chunks/Site-Product-slug").then(__webpack_require__.bind(null, /*! ../pages/main.vue */ "./resources/js/site_modules/test/pages/main.vue"));
+    return __webpack_require__.e(/*! import() | Chunks/Site-Product-slug */ "Chunks/Site-Product-slug").then(__webpack_require__.bind(null, /*! ../pages/main.vue */ "./resources/microfrontends/site-mf/modules/test/pages/main.vue"));
   },
   title: 'This is single product page',
   meta: {
@@ -61293,10 +61204,10 @@ var routes = [{
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/test/store/actions.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/site_modules/test/store/actions.js ***!
-  \*********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/test/store/actions.js":
+/*!************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/test/store/actions.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61306,10 +61217,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/test/store/getters.js":
-/*!*********************************************************!*\
-  !*** ./resources/js/site_modules/test/store/getters.js ***!
-  \*********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/test/store/getters.js":
+/*!************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/test/store/getters.js ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61319,19 +61230,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/test/store/index.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/site_modules/test/store/index.js ***!
-  \*******************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/test/store/index.js":
+/*!**********************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/test/store/index.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/site_modules/test/store/state.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/site_modules/test/store/getters.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/js/site_modules/test/store/actions.js");
-/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/site_modules/test/store/mutations.js");
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/microfrontends/site-mf/modules/test/store/state.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/microfrontends/site-mf/modules/test/store/getters.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/microfrontends/site-mf/modules/test/store/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/microfrontends/site-mf/modules/test/store/mutations.js");
 
 
 
@@ -61345,10 +61256,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/test/store/mutations.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/site_modules/test/store/mutations.js ***!
-  \***********************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/test/store/mutations.js":
+/*!**************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/test/store/mutations.js ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61358,10 +61269,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/test/store/state.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/site_modules/test/store/state.js ***!
-  \*******************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/test/store/state.js":
+/*!**********************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/test/store/state.js ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61371,10 +61282,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/wishlists/router/index.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/site_modules/wishlists/router/index.js ***!
-  \*************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/wishlists/router/index.js":
+/*!****************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/wishlists/router/index.js ***!
+  \****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61384,7 +61295,7 @@ var routes = [{
   path: '/wishlists',
   name: 'Wishlist',
   component: function component() {
-    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Wishlist */ "Chunks/Site/Router/Wishlist").then(__webpack_require__.bind(null, /*! ../pages/wishlists.vue */ "./resources/js/site_modules/wishlists/pages/wishlists.vue"));
+    return __webpack_require__.e(/*! import() | Chunks/Site/Router/Wishlist */ "Chunks/Site/Router/Wishlist").then(__webpack_require__.bind(null, /*! ../pages/wishlists.vue */ "./resources/microfrontends/site-mf/modules/wishlists/pages/wishlists.vue"));
   },
   title: 'This is wishlist page',
   meta: {
@@ -61396,10 +61307,10 @@ var routes = [{
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/wishlists/store/actions.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/site_modules/wishlists/store/actions.js ***!
-  \**************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/wishlists/store/actions.js":
+/*!*****************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/wishlists/store/actions.js ***!
+  \*****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61605,10 +61516,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/wishlists/store/getters.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/site_modules/wishlists/store/getters.js ***!
-  \**************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/wishlists/store/getters.js":
+/*!*****************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/wishlists/store/getters.js ***!
+  \*****************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61632,19 +61543,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/wishlists/store/index.js":
-/*!************************************************************!*\
-  !*** ./resources/js/site_modules/wishlists/store/index.js ***!
-  \************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/wishlists/store/index.js":
+/*!***************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/wishlists/store/index.js ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/site_modules/wishlists/store/state.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/site_modules/wishlists/store/getters.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/js/site_modules/wishlists/store/actions.js");
-/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/js/site_modules/wishlists/store/mutations.js");
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/microfrontends/site-mf/modules/wishlists/store/state.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/microfrontends/site-mf/modules/wishlists/store/getters.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/microfrontends/site-mf/modules/wishlists/store/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./mutations */ "./resources/microfrontends/site-mf/modules/wishlists/store/mutations.js");
 
 
 
@@ -61658,10 +61569,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/wishlists/store/mutations.js":
-/*!****************************************************************!*\
-  !*** ./resources/js/site_modules/wishlists/store/mutations.js ***!
-  \****************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/wishlists/store/mutations.js":
+/*!*******************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/wishlists/store/mutations.js ***!
+  \*******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61671,10 +61582,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/site_modules/wishlists/store/state.js":
-/*!************************************************************!*\
-  !*** ./resources/js/site_modules/wishlists/store/state.js ***!
-  \************************************************************/
+/***/ "./resources/microfrontends/site-mf/modules/wishlists/store/state.js":
+/*!***************************************************************************!*\
+  !*** ./resources/microfrontends/site-mf/modules/wishlists/store/state.js ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61688,10 +61599,99 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/store.site.js":
-/*!************************************!*\
-  !*** ./resources/js/store.site.js ***!
-  \************************************/
+/***/ "./resources/microfrontends/site-mf/router.js":
+/*!****************************************************!*\
+  !*** ./resources/microfrontends/site-mf/router.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var lodash_camelCase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/camelCase */ "./node_modules/lodash/camelCase.js");
+/* harmony import */ var lodash_camelCase__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_camelCase__WEBPACK_IMPORTED_MODULE_2__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+/**
+ * IMPORT ALL ROUTES DYNAMICALLY FROM THE MODULES FOLDERS....
+ */
+
+var allRoutes = [];
+
+
+var requireModule = __webpack_require__("./resources/microfrontends/site-mf/modules sync recursive \\.js$");
+
+var importedRoutes = [];
+requireModule.keys().forEach(function (fileName) {
+  var str = fileName.split("/");
+  str = str[1];
+
+  if (fileName === "./".concat(str, "/router/index.js")) {
+    var moduleName = lodash_camelCase__WEBPACK_IMPORTED_MODULE_2___default()(fileName.replace(/(\.\/|\.js)/g, ""));
+    importedRoutes.push.apply(importedRoutes, _toConsumableArray(requireModule(fileName)["default"]));
+  }
+});
+/**
+ * CONCAT ALL THE IMPORTED ROUTES WITH MAIN ROUTES...
+ */
+
+var defaultRoutes = [{
+  path: "/login",
+  name: "Login",
+  title: "Login",
+  component: function component() {
+    return Promise.all(/*! import() | Chunks/Site/Router/Login */[__webpack_require__.e("Chunks/Site/Components/AuthModal"), __webpack_require__.e("Chunks/Site/Router/Login")]).then(__webpack_require__.bind(null, /*! ./layout/components/Login.vue */ "./resources/microfrontends/site-mf/layout/components/Login.vue"));
+  }
+}, {
+  path: "/",
+  name: "Home",
+  title: "Home",
+  component: function component() {
+    return __webpack_require__.e(/*! import() | Chunks/Site/HomePageRouteContainer */ "Chunks/Site/HomePageRouteContainer").then(__webpack_require__.bind(null, /*! ./layout/pages/HomePage.vue */ "./resources/microfrontends/site-mf/layout/pages/HomePage.vue"));
+  },
+  children: [{
+    path: "/",
+    name: "Dashboard",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | Chunks/Site/Router/HomeDashboard */ "Chunks/Site/Router/HomeDashboard").then(__webpack_require__.bind(null, /*! ./layout/pages/Dashboard.vue */ "./resources/microfrontends/site-mf/layout/pages/Dashboard.vue"));
+    },
+    title: "This is a test page"
+  }].concat(importedRoutes)
+}, {
+  path: "*",
+  name: "404",
+  component: function component() {
+    return __webpack_require__.e(/*! import() | Chunks/Site/404 */ "Chunks/Site/404").then(__webpack_require__.bind(null, /*! ./layout/pages/NotFound.vue */ "./resources/microfrontends/site-mf/layout/pages/NotFound.vue"));
+  }
+}]; // const routes = allRoutes.concat(defaultRoutes , importedRoutes)
+
+/* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  mode: "history",
+  routes: defaultRoutes
+}));
+
+/***/ }),
+
+/***/ "./resources/microfrontends/site-mf/store.js":
+/*!***************************************************!*\
+  !*** ./resources/microfrontends/site-mf/store.js ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -61704,7 +61704,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vuex_extensions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex-extensions */ "./node_modules/vuex-extensions/lib/index.js");
 /* harmony import */ var vuex_extensions__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vuex_extensions__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _modules_site__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules.site */ "./resources/js/modules.site.js");
+/* harmony import */ var _modules__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules */ "./resources/microfrontends/site-mf/modules.js");
 
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -61735,7 +61735,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(vuex_extensions__WEBPACK_IMPORTED_MODULE_3__["createStore"])(vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store, {
-  modules: _modules_site__WEBPACK_IMPORTED_MODULE_4__["default"],
+  modules: _modules__WEBPACK_IMPORTED_MODULE_4__["default"],
   // plugins: [createPersistedState()],
   mixins: {
     actions: {
@@ -61791,14 +61791,14 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 
 /***/ }),
 
-/***/ 0:
-/*!***********************************!*\
-  !*** multi ./resources/js/app.js ***!
-  \***********************************/
+/***/ 1:
+/*!*********************************************************!*\
+  !*** multi ./resources/microfrontends/site-mf/index.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/sayburgh/Desktop/ecommerce-laravel-vue/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/sayburgh/Desktop/ecommerce-laravel-vue/resources/microfrontends/site-mf/index.js */"./resources/microfrontends/site-mf/index.js");
 
 
 /***/ })

@@ -1,0 +1,73 @@
+{
+    "loading" : "লোডিং হচ্ছে",
+    "en":"English",
+    "bn":"বাংলা",
+    "add" : "যোগ করুন",
+    "edit" : "সম্পাদনা করুন",
+    "editing": "সম্পাদনা করা হচ্ছে",
+    "delete" : "মুছে ফেলুন",
+    "name": "নাম",
+    "image" : "ছবি",
+    "auth":{
+        "signin": "📩 সাইন ইন",
+        "signup": "🔂 সাইন আপ",
+        "logout" : "লগ আউট"
+    },
+    "explorePopularCategories": "জনপ্রিয় ক্যাটাগরিসমুহ",
+    "ShopByBrands": "ব্র্যান্ড অনুযায়ী কেনাকাটা করুন",
+    "wishlist" : "পছন্দের তালিকা",
+    "cart" :"ব্যাগ",
+    "compare":"Compare",
+    "sidebar": {
+        "product" : "পণ্য",
+        "attribute" : "উপাদান",
+        "category" : "ক্যাটাগরি",
+        "brand" : "ব্র্যান্ড",
+        "logout" : "লগ আউট"
+    },
+    "categories" : {
+        "name" : "@:sidebar.category সমূহ",
+        "add": "@:sidebar.category যোগ করুন",
+        "adding": "@:sidebar.category যোগ করা হচ্ছে",
+        "edit" : "@:sidebar.category @:edit ",
+        "editing" : "@:sidebar.category সম্পাদনা করা হচ্ছে",
+        "delete" : "@:sidebar.category ডিলেট করুন"
+
+    },
+    "attributes" : {
+        "name" : "@:sidebar.attribute সমূহ",
+        "add": "@:sidebar.attribute যোগ করুন",
+        "adding": "@:sidebar.attribute যোগ করা হচ্ছে",
+        "edit" : "@:sidebar.attribute @:edit ",
+        "editing" : "@:sidebar.attribute সম্পাদনা করা হচ্ছে",
+        "delete" : "@:sidebar.attribute ডিলেট করুন"
+
+    },
+    "subcategories" : {
+        "name" : "উপ @:categories.name",
+        "add": "উপ @:categories.name",
+        "adding": " উপ @:categories।adding ...",
+        "edit" : "@:categories.edit",
+        "editing" : "উপ @:categories.editing",
+        "delete" : "উপ @:categories.delete"
+    },
+    "products" : {
+        "name" : "পণ্যসমূহ",
+        "add": "@:sidebar.product @:add",
+        "adding": " Adding Product...",
+        "edit" : "@:sidebar.product @:edit ",
+        "editing" : "@:editing @:products.name",
+        "delete" : "@:sidebar.product @:delete "
+    },
+    "brands" : {
+        "name" : "@:sidebar.brand সমূহ",
+        "add": "@:sidebar.brand যোগ করুন",
+        "adding": "@:sidebar.brand যোগ করা হচ্ছে",
+        "edit" : "@:sidebar.brand @:edit",
+        "editing" : "@:sidebar.brand সম্পাদনা করা হচ্ছে",
+        "delete" : "@:sidebar.brand @:delete"
+    },
+    "filter":{
+        "name" : "ফিল্টার করুন"
+    }
+}

@@ -14,8 +14,15 @@ const mix = require("laravel-mix");
 // mix.js('resources/js/app.js', 'public/js').version();
 // mix.sass('resources/sass/app.scss', 'public/css')
 
-mix.js("resources/js/app.js", "public/js").version();
-mix.js("resources/js/admin.js", "public/js").version();
+mix.js(
+    "resources/microfrontends/admin-mf/index.js",
+    "public/js/admin.js"
+).version();
+
+mix.js(
+    "resources/microfrontends/site-mf/index.js",
+    "public/js/app.js"
+).version();
 
 // mix.styles([
 //     'public/assets/css/style.css',

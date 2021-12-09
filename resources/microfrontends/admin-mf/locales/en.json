@@ -1,0 +1,69 @@
+{
+    "loading" : "Loading",
+    "en":"English",
+    "bn":"বাংলা",
+    "add"  : "Add",
+    "edit" : "Edit",
+    "delete" : "Delete",
+    "name": "Name",
+    "image" : "Image",
+    "auth":{
+        "signin": "📩 Sign In",
+        "signup": "🔂 Sign Up",
+        "logout" : "Log Out"
+    },
+    "explorePopularCategories": "Explore Popular Categories",
+    "ShopByBrands": "Shop by Brands",
+    "wishlist" : "WishList",
+    "cart" :"Cart",
+    "compare":"Compare",
+    "sidebar": {
+        "attribute": "Attribute",
+        "category" : "Category",
+        "product" : "Product",
+        "brand" : "Brand",
+        "logout" : "logout"
+    },
+    "attributes" : {
+        "name" : "@:sidebar.attributes",
+        "add": "Create @:sidebar.attribute",
+        "adding": "@:sidebar.attribute adding..",
+        "edit" : "@:sidebar.attribute @:edit ",
+        "editing" : "@:sidebar.attribute editing .. ",
+        "delete" : "@:delete @:sidebar.attribute"
+
+    },
+    "categories" : {
+        "name" : "Categories",
+        "add": "Add @:sidebar.category",
+        "edit" : "Edit @:sidebar.category",
+        "delete" : "Delete @:sidebar.category"
+    },
+    "subcategories" : {
+        "name" : "Sub @:categories.name",
+        "add": "Add Sub @:categories.name",
+        "adding": " Adding Subcategory...",
+        "edit" : "Edit @:categories.edit",
+        "editing" : "Editing Sub @:categories.name",
+        "delete" : "Delete Sub @:categories.name"
+    },
+    "products" : {
+        "name" : "Products",
+        "add": "@:add @:sidebar.product",
+        "adding": " Adding Subcategory...",
+        "edit" : "@:edit @:sidebar.product",
+        "editing" : "Editing @:products.name",
+        "delete" : "@:delete @:sidebar.product"
+    },
+    "brands" : {
+        "name" : "Brands",
+        "add": "Add @:sidebar.brand",
+        "adding": " Adding...",
+        "edit" : "Edit @:sidebar.brand",
+        "editing" : "Editing @:sidebar.brand",
+        "delete" : "Delete @:sidebar.brand"
+    },
+    "filter":{
+        "name" : "Filter"
+    }
+}
