@@ -6,10 +6,6 @@
 
 <img src="https://img.shields.io/github/stars/samayun/ecommerce-laravel-vue?color=%2312ff65&label=Stars&logo=Star&logoColor=green&style=flat" alt="Stars">
 <img src="https://img.shields.io/github/license/samayun/ecommerce-laravel-vue" alt="License">
-
-<a href="https://twitter.com/intent/tweet?text=What an application ! Wow !Check It =>  :&url=https://github.com/samayun/ecommerce-laravel-vue"> 
-<img src="https://img.shields.io/twitter/url?label=Follow@samayunmc&logoColor=%230f0&url=https%3A%2F%2Fgithub.com%2Fsamayun%2Fecommerce-laravel-vue" alt="Tweet">
-</a>
 </p>
 
 ## :heart: Application Name: <b style="color:green;"> E Penguin Shop </>
